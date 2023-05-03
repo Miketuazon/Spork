@@ -97,3 +97,28 @@
   * When I'm on my profile:
     * I can view the most recent followers I have acquired.
       * So that I can know who follows me.
+
+
+## Likes
+
+### Creating like on post or comment
+
+* As a logged in user, I want to be able to like user's post or comments so I can show I liked what they posted/commented.
+  * When I'm on a post or comment:
+    * I can click the heart icon to increase the like count and add my like.
+      * So that I can show others I liked the content and also be able to find the post later.
+
+
+### Viewing likes
+
+* As a logged in _or_ logged out user, I want to be able to see the amount of likes a post/comment has gotten.
+  * When I'm on a user's post/comment:
+    * I can view the amount of likes.
+      * So that I can see who else liked the content I am seeing.
+
+### Deleting/Updating likes
+
+* As a logged in user, I want to be able to remove likes I have given to a post/comment.
+  * When I'm on a user's post/comment:
+    * I can remove the like.
+      * So that I can change my mind on whether I liked the content or not.
