@@ -72,3 +72,28 @@
   * When I'm on the `/fauxposts`, `/fauxposts/:id`, or `/users/:id/fauxposts` pages:
     * I can click "Delete" to permanently delete a fauxpost I have posted.
       * So that when I realize I shouldn't have publicly said something, I can easily remove it.
+
+## Follows
+
+### Follow another user
+
+* As a logged in user, I want to be able to follow other users I like.
+  * When I'm on a post or user profile:
+    * I can click the follow button and follow a user.
+      * So that I can see what they post when they post and who they follow.
+
+
+### Viewing followers
+
+* As a logged in _or_ logged out user, I want to be able to see what who follows a user and who they follow.
+  * When I'm on a user's profile:
+    * I can view the most recently followed user.
+      * So that I can see who else they follow and if I want to follow them as well.
+  * When I'm on a user's profile who I don't follow:
+    * I can see that the person I follow follows them.
+      * So I can decide if I want to follow them as well.
+
+* As a logged in user, I want to be able to view the users who follow me.
+  * When I'm on my profile:
+    * I can view the most recent followers I have acquired.
+      * So that I can know who follows me.
