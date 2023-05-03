@@ -38,28 +38,28 @@
     * I can log out of my account and be redirected to a page displaying recent fauxposts.
       * So that I can easily log out to keep my information secure.
 
-## FauxPosts
+## Posts
 
-### Create FauxPosts
+### Create posts
 
-* As a logged in user, I want to be able to post new fauxposts.
-  * When I'm on the `/new-fauxpost` page:
-    * I can write and submit a new fauxpost.
+* As a logged in user, I want to be able to post new posts.
+  * When I'm on the `/new-post` page:
+    * I can write and submit a new post.
       * So that I can share my thoughts and memes with my friends.
 
-### Viewing fauxposts
+### Viewing posts
 
-* As a logged in _or_ logged out user, I want to be able to view a selection of the most recent fauxposts.
-  * When I'm on the `/fauxposts` page:
-    * I can view the ten most recently posted fauxposts.
+* As a logged in _or_ logged out user, I want to be able to view a selection of the most recent posts.
+  * When I'm on the `/posts` page:
+    * I can view the ten most recently created posts.
       * So that I can read and interact with the thoughts and memes of my friends.
 
-* As a logged in _or_ logged out user, I want to be able to view a specific fauxpost and its associated FauxComments and FauxLikes.
-  * When I'm on the `/fauxposts/:id` page:
-    * I can view the content of the fauxpost, as well as the associated FauxComments and FauxLikes.
-      * So that I can read and interact with the thoughts and memes of my friends, and add my own thoughts and memes in the FauxComments.
+* As a logged in _or_ logged out user, I want to be able to view a specific post and its associated comments and likes.
+  * When I'm on the `/posts/:id` page:
+    * I can view the content of the post, as well as the associated comments and likes.
+      * So that I can read and interact with the thoughts and memes of my friends, and add my own thoughts and memes in the comments.
 
-### Updating fauxposts
+### Updating posts
 
 * As a logged in user, I want to be able to edit my fauxposts by clicking an Edit button associated with the fauxpost anywhere that fauxpost appears.
   * When I'm on the `/fauxposts`, `/fauxposts/:id`, or `/users/:id/fauxposts` pages:
