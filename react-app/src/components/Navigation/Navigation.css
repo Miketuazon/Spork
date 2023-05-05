@@ -5,3 +5,14 @@
 .hidden {
   display: none;
 }
+
+
+.home-button-icons{
+  display: flex;
+  text-decoration: none;
+}
+
+.home-whole-nav-bar{
+  display: flex;
+  justify-content: space-around;
+}
