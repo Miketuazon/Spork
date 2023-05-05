@@ -20,9 +20,9 @@
   - Logged in users can like and follow the post.
   - Guest users cannot like and follow the post.
 ### - Follows
-  - Logged in users can follow the post.
-  - Logged in users can remove their follow on the post.
-  - All users can see how many follows a user has.
+  - Logged in users can follow a user.
+  - Logged in users can remove their followed user.
+  - All users can see how many followers a user has.
 ### - Likes
   - Logged in users can like the post.
   - Logged in users can remove their like on the post.
