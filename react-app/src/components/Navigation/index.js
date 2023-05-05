@@ -12,7 +12,7 @@ function Navigation({ isLoaded }){
 
 		<ul className='home-whole-nav-bar'>
 			<div className="left-nav-bar">
-			<NavLink exact to="/"><div className="spork-logo">hi</div></NavLink>
+			<NavLink exact to="/"><div className="spork-logo">S</div></NavLink>
 			</div>
 			<li className="home-button-icons">
 				{/* <NavLink exact to="/"><div className="spork-logo"></div></NavLink> */}
