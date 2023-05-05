@@ -10,9 +10,28 @@
 .home-button-icons{
   display: flex;
   text-decoration: none;
+  justify-content: right;
 }
 
 .home-whole-nav-bar{
   display: flex;
   justify-content: space-around;
+  background-color: rgb(18, 18, 84);
+  color: white;
+}
+
+.right-nav-bar{
+  position: absolute;
+  right: 100px;
+}
+
+.left-nav-bar{
+  text-decoration: none;
+  left: 100px;
+   position: absolute;
+}
+
+
+a.active{
+  text-decoration: none;
 }

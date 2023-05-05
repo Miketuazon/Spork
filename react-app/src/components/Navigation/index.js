@@ -12,8 +12,9 @@ function Navigation({ isLoaded }){
 
 		<ul className='home-whole-nav-bar'>
 			<div className="left-nav-bar">
-			<NavLink exact to="/"><div className="spork-logo">S</div></NavLink>
+			<NavLink exact to="/"><div className="spork-logo">Spork</div></NavLink>
 			</div>
+			<div className='right-nav-bar'>
 			<li className="home-button-icons">
 				{/* <NavLink exact to="/"><div className="spork-logo"></div></NavLink> */}
 				<NavLink exact to="/"><i className="fa fa-home"></i></NavLink>
@@ -27,7 +28,7 @@ function Navigation({ isLoaded }){
 				<NavLink exact to="/"><i className='fas fa-pen-square'></i></NavLink>
 
 			</li>
-
+			</div>
 			{isLoaded && (
 				<li>
 					<ProfileButton user={sessionUser} />
