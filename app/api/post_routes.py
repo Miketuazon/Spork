@@ -22,6 +22,22 @@ def posts():
         return_list.append(post_dict)
     return return_list
 
+@post_routes.route('/current_user')
+@login_required
+def current_user_posts():
+    """
+    Query for all user's posts and returns them in a list of post dictionaries
+    """
+    current_user_dict = current_user.to_dict()
+    posts = Post.query.filter(Post.userId == current_user_dict['id'])
+    return_list = []
+    for post in posts:
+        post_dict = post.to_dict()
+        owner = post.owner
+        post_dict['owner'] = owner.to_dict()
+        return_list.append(post_dict)
+    return return_list
+
 
 @post_routes.route('/create', methods=['POST'])
 @login_required
