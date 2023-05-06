@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Feed from "./components/Posts/Feed"
 import AllLikes from "./components/Likes/AllLikes";
+import LikesCounter from "./components/Likes/LikesCounter";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -30,6 +31,12 @@ function App() {
           </Route>
           <Route exact path="/likes">
             <AllLikes />
+          </Route>
+          <Route exact path="/likesCounter">
+            <LikesCounter />
+          </Route>
+          <Route exact path="/feed">
+            <Feed />
           </Route>
         </Switch>
       )}
