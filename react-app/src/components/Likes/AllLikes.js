@@ -7,31 +7,35 @@ export default function AllLikes() {
     // const likesObj = useSelector((state) => state.posts.allLikes)
     // const likes = Object.values(likesObj)
 
-    // test data
+    // mock data for likes
     const likesData = [
         {
             id: 1,
             userId: 4,
             userName: "User_Mike",
-            name: "Mike"
+            name: "Mike",
+            postId: 1
         },
         {
             id: 2,
             userId: 5,
             userName: "User_Brian",
-            name: "Brian"
+            name: "Brian",
+            postId: 2
         },
         {
             id: 3,
             userId: 6,
             userName: "User_Derrick",
-            name: "Derrick"
+            name: "Derrick",
+            postId: 1,
         },
         {
             id: 4,
             userId: 7,
             userName: "User_Kisha",
-            name: "Kisha"
+            name: "Kisha",
+            postId: 3
         },
     ]
 
