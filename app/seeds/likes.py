@@ -1,5 +1,4 @@
-from app.models import db, environment, SCHEMA
-from app.models.likes import Like
+from app.models import db, environment, SCHEMA, Like
 from sqlalchemy.sql import text
 
 def seed_likes():
