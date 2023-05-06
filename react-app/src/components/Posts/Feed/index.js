@@ -13,6 +13,8 @@ const Feed = () => {
         dispatch(getAllPosts())
     }, [])
 
+    console.log(posts)
+
     return (
         <div className='Feed'>
             <div className="post-option">

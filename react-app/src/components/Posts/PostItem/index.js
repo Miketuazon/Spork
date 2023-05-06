@@ -18,7 +18,7 @@ const PostItem = ({ post }) => {
             <div className="post-header">
                 <img src="https://assets.tumblr.com/images/default_avatar/cone_open_64.png" />
                 <span className="username">{post.owner.username}</span>
-                {/* <span className="timestamp">{post.timestamp}</span> */}
+                <span className="timestamp">{post.createdAt}</span>
             </div>
             <div className="post-content">
                 {post.content}
