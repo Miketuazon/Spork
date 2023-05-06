@@ -6,7 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Feed from "./components/Posts/Feed"
-import LikesCounter from "./components/Likes/LikesCounter";
+import AllLikes from "./components/Likes/AllLikes";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -19,17 +19,17 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path="/" >
+          <Route exact path="/" >
             <Feed />
           </Route>
-          <Route path="/login" >
+          <Route exact path="/login" >
             <LoginFormPage />
           </Route>
-          <Route path="/signup">
+          <Route exact path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/likes">
-            <LikesCounter />
+          <Route exact path="/likes">
+            <AllLikes />
           </Route>
         </Switch>
       )}
