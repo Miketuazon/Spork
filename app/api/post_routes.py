@@ -36,3 +36,12 @@ def create_a_post():
         db.session.add(new_post)
         db.session.commit()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@post_routes.route('/delete/<id>', methods=['DELETE'])
+@login_required
+def delete_post(id):
+    to_delete = Post.query.get(id)
+    db.session.delete(to_delete)
+    db.session.commit()
+    return {"Message": "Post Delete Successfully"}
