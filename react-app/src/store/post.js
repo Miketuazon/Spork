@@ -20,7 +20,7 @@ export default function postsReducer(state = {}, action) {
     switch (action.type) {
         case GET_POSTS:
             newState = {}
-            action.posts.posts.forEach((post) => newState[post.id] = post)
+            action.posts.forEach((post) => newState[post.id] = post)
             return newState
         default:
             return state
