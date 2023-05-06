@@ -1,9 +1,9 @@
 
 
-const PostItem = ({ post, user }) => {
+const PostItem = ({ post }) => {
     return (
         <div>
-            <p>{post.username}</p>
+            <p>{post.owner.username}</p>
             <p>{post.content}</p>
         </div>
 

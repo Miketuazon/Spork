@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { getAllPosts } from '../../../store/post'
 import { Link } from 'react-router-dom'
-import PostItem from "../Post"
+import PostItem from '../PostItem'
 
 const Feed = () => {
     const dispatch = useDispatch()
@@ -11,7 +11,7 @@ const Feed = () => {
     useEffect(() => {
         dispatch(getAllPosts())
     }, [])
-    console.log(posts)
+
     return (
         <div className='Feed'>
             <ul className='posts'>
