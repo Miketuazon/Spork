@@ -58,20 +58,28 @@ def create_a_post():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-@post_routes.route("/edit/<int:id>", methods=["PUT"])
+@post_routes.route("/edit/<id>", methods=["GET", "POST"])
 @login_required
 def update_post(id):
     form = PostForm()
-
+    current_user_dict = current_user.to_dict()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
         post_to_edit = Post.query.get(id)
-        post_to_edit.content = form.data['content']
-        post_to_edit.updatedAt = date.today()
-        db.session.commit()
-        returning_value = post_to_edit.to_dict()
-        return returning_value
+
+        if not post_to_edit:
+            return {'Message': "Post Does Not Exist"}
+
+        post_to_edit_dict = post_to_edit.to_dict()
+
+        if post_to_edit_dict['userId'] == current_user_dict['id']:
+            post_to_edit.content = form.data['content']
+            post_to_edit.userId = current_user_dict['id']
+            db.session.commit()
+            returning_value = post_to_edit.to_dict()
+            return returning_value
+        return {'Message': 'Unauthorized'}
     return {'errors': validation_errors_to_error_messages(form.errors)},401
 
 
