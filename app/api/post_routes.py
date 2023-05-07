@@ -3,6 +3,7 @@ from app.models import User, db, Post
 from .auth_routes import validation_errors_to_error_messages
 from app.forms import PostForm
 from flask_login import current_user, login_required
+from datetime import date
 
 post_routes = Blueprint('posts', __name__)
 
@@ -55,6 +56,24 @@ def create_a_post():
         db.session.commit()
         return {"Successfully Created Post": new_post.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@post_routes.route("/edit/<int:id>", methods=["PUT"])
+@login_required
+def update_post(id):
+    form = PostForm()
+
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        post_to_edit = Post.query.get(id)
+        post_to_edit.content = form.data['content']
+        post_to_edit.updatedAt = date.today()
+        db.session.commit()
+        returning_value = post_to_edit.to_dict()
+        return returning_value
+    return {'errors': validation_errors_to_error_messages(form.errors)},401
+
 
 
 
