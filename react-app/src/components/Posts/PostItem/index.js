@@ -5,11 +5,6 @@ import "./PostItem.css"
 const PostItem = ({ post }) => {
     return (
         <div>
-            <div>
-                <p>{post.owner.username}</p>
-                <p>{post.content}</p>
-            </div>
-
             <div className="post-header">
                 <img src="https://assets.tumblr.com/images/default_avatar/cone_open_64.png" alt="default_image.png" />
                 <span className="username">{post.owner.username}</span>
