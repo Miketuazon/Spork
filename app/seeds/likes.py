@@ -32,6 +32,7 @@ def seed_likes():
     db.session.add(like_3)
     db.session.add(like_4)
     db.session.add(like_5)
+    db.session.commit()
 
 def undo_likes():
     if environment == "production":

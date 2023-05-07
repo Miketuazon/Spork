@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import User, db, Post
+from app.models import User, db, Post, Like
 from .auth_routes import validation_errors_to_error_messages
 from app.forms import PostForm
 from flask_login import current_user, login_required
@@ -18,6 +18,12 @@ def posts():
     return_list = []
     for post in posts:
         post_dict = post.to_dict()
+        likes = post.likes
+        notes = 0
+        for like in likes:
+            notes += 1
+        post_dict["notes"] = notes
+        post_dict["likes_user_list"] = like.to_dict()
         owner = post.owner
         post_dict['owner'] = owner.to_dict()
         return_list.append(post_dict)

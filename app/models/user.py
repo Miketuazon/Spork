@@ -15,7 +15,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     posts = db.relationship('Post', back_populates='owner')
-    likes = db.relationship('Like', back_populates='owner')
+    likes = db.relationship('Like', back_populates='user')
 
     @property
     def password(self):

@@ -12,7 +12,7 @@ class Like(db.Model):
     createdAt = db.Column(db.DateTime, default=db.func.now())
     updatedAt = db.Column(db.DateTime, default=db.func.now())
 
-    owner = db.relationship('User', back_populates='likes')
+    user = db.relationship('User', back_populates='likes')
     post = db.relationship('Post', back_populates='likes')
 
     def to_dict(self):
