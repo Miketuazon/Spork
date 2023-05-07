@@ -80,7 +80,16 @@ def update_post(id):
 @post_routes.route('/delete/<id>', methods=['DELETE'])
 @login_required
 def delete_post(id):
+    current_user_dict = current_user.to_dict()
     to_delete = Post.query.get(id)
-    db.session.delete(to_delete)
-    db.session.commit()
-    return {"Message": "Post Delete Successfully"}
+
+    if not to_delete:
+        return {"Message": "Post Does Not Exist"}
+
+    to_delete_dict = to_delete.to_dict()
+
+    if current_user_dict['id'] == to_delete_dict['userId']:
+        db.session.delete(to_delete)
+        db.session.commit()
+        return {"Message": "Post Deleted Successfully"}
+    return {"Message": "Unauthorized"}

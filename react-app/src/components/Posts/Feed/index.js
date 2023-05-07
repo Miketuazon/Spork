@@ -6,7 +6,6 @@ import PostItem from "../PostItem"
 import "./Feed.css"
 import { NavLink } from "react-router-dom"
 
-
 const Feed = () => {
     const dispatch = useDispatch()
     const posts = useSelector(state => state.posts)

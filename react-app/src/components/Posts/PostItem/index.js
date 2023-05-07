@@ -1,6 +1,4 @@
-
 import "./PostItem.css"
-
 
 const PostItem = ({ post }) => {
     return (

@@ -18,6 +18,7 @@ class Post(db.Model):
         return {
             'id': self.id,
             'content': self.content,
+            'userId': self.userId,
             'createdAt': self.createdAt,
             'updatedAt': self.updatedAt
         }
