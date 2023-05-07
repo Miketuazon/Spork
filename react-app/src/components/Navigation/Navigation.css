@@ -7,7 +7,7 @@
 }
 
 
-.home-button-icons{
+.home-button-icons {
   display: flex;
   text-decoration: none;
 }
@@ -31,6 +31,7 @@
   align-items: center;
   margin-left: -34px;
 }
+
 .right-nav-bar {
   display: flex;
   align-items: center;
@@ -147,6 +148,7 @@
 .profile-dropdown li a:hover {
   color: #0d2559;
 }
-a.active{
+
+a.active {
   text-decoration: none;
 }

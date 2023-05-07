@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import Feed from "./components/Posts/Feed"
 import AllLikes from "./components/Likes/AllLikes";
 import LikesCounter from "./components/Likes/LikesCounter";
+import CreatePost from "./components/Posts/CreatePostForm";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -22,6 +23,9 @@ function App() {
         <Switch>
           <Route exact path="/" >
             <Feed />
+          </Route>
+          <Route exact path="/create" >
+            <CreatePost />
           </Route>
           <Route exact path="/login" >
             <LoginFormPage />

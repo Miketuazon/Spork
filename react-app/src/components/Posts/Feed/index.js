@@ -11,20 +11,19 @@ const Feed = () => {
     const posts = useSelector(state => state.posts)
     useEffect(() => {
         dispatch(getAllPosts())
-    }, [])
 
-    console.log(posts)
+    }, [dispatch])
 
     return (
         <div className='Feed'>
             <div className="post-option">
                 <NavLink exact to="/"> Aa</NavLink>
-                <NavLink exact to="/"><i class="fa fa-camera"></i></NavLink>
-                <NavLink exact to="/"><i class="fa fa-quote-left"></i></NavLink>
-                <NavLink exact to="/"><i class="fa fa-chain"></i></NavLink>
-                <NavLink exact to="/"><i class='fas fa-comment-dots'></i></NavLink>
-                <NavLink exact to="/"><i class="fa fa-headphones"></i></NavLink>
-                <NavLink exact to="/"><i class="fa fa-video-camera"></i></NavLink>
+                <NavLink exact to="/"><i className="fa fa-camera"></i></NavLink>
+                <NavLink exact to="/"><i className="fa fa-quote-left"></i></NavLink>
+                <NavLink exact to="/"><i className="fa fa-chain"></i></NavLink>
+                <NavLink exact to="/"><i className='fas fa-comment-dots'></i></NavLink>
+                <NavLink exact to="/"><i className="fa fa-headphones"></i></NavLink>
+                <NavLink exact to="/"><i className="fa fa-video-camera"></i></NavLink>
                 <span></span>
             </div>
             <ul className='posts'>
