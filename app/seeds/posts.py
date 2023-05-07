@@ -14,10 +14,15 @@ def seed_posts():
         content="wow really",
         userId=3
     )
+    demo2 = Post(
+        content="bruh",
+        userId=1
+    )
 
     db.session.add(demo)
     db.session.add(marnie)
     db.session.add(bobbie)
+    db.session.add(demo2)
     db.session.commit()
 
 
