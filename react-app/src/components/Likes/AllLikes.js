@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect } from "react"
+import { useSelector } from "react-redux";
 
 export default function AllLikes() {
     const sessionUser = useSelector(state => state.session.user)
@@ -7,41 +7,62 @@ export default function AllLikes() {
     // const likesObj = useSelector((state) => state.posts.allLikes)
     // const likes = Object.values(likesObj)
 
-    // if (likes.length) return <h1 Hi />
+    // mock data for likes
+    const likesData = [
+        {
+            id: 1,
+            userId: 4,
+            userName: "User_Mike",
+            name: "Mike",
+            postId: 1
+        },
+        {
+            id: 2,
+            userId: 5,
+            userName: "User_Brian",
+            name: "Brian",
+            postId: 2
+        },
+        {
+            id: 3,
+            userId: 6,
+            userName: "User_Derrick",
+            name: "Derrick",
+            postId: 1,
+        },
+        {
+            id: 4,
+            userId: 7,
+            userName: "User_Kisha",
+            name: "Kisha",
+            postId: 3
+        },
+    ]
 
-    // test data
-    const likes = {
-           likes: [
-            {
-                userId: 4,
-                userName: "User_Mike",
-                name: "Mike"
-            },
-            {
-                userId: 5,
-                userName: "User_Brian",
-                name: "Brian"
-            },
-        ]
 
 
-    }
-    const likesArr = Object.values(likes)
-    console.log(likesArr)
-
+    const likes = Object.values(likesData)
+    console.log(likes)
+    console.log(sessionUser)
     return (
         <div className="likes-container">
-
-            <div className="users-container">
-                {/* # likes > 0 ? map through all users that liked the post : return <div>Return the first like!</div>*/}
-                <div className="user-container">
-
-                    <span className="username-of-user-like">Username 1</span>
-                    <span className="name-of-user-like">Name 1</span>
-                </div>
-            </div>
-            {/* will need to implement: currUser following this user ? show follow button : return null */}
-            <div className="follow-button">Follow</div>
+            {/* # likes > 0 ? map through all users that liked the post : return <div>Return the first like!</div>*/}
+            { likes.length > 0 ?
+                likes.map(like => {
+                    console.log("like ->", like)
+                    return (
+                        <div key={like.id} className="likes">
+                            <div className="like-owner">
+                                <div className="like-owner-username">{like.userName}</div>
+                                <div className="like-owner-username">{like.name}</div>
+                            </div>
+                            {/* will need to implement: currUser following this user ? show follow button : return null */}
+                            <button className="follow-button">Follow</button>
+                        </div>
+                    )
+                })
+            : <>Be the first one to follow!</>
+            }
         </div>
     )
 }

@@ -7,31 +7,148 @@
 }
 
 
-.home-button-icons{
+.home-button-icons {
   display: flex;
   text-decoration: none;
-  justify-content: right;
 }
 
-.home-whole-nav-bar{
+
+.home-whole-nav-bar {
   display: flex;
-  justify-content: space-around;
-  background-color: rgb(18, 18, 84);
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  background-color: #0a1b40;
   color: white;
+  font-size: 1.2rem;
+  margin-top: 0;
+  border-bottom: 0.5px solid white;
+
 }
 
-.right-nav-bar{
-  position: absolute;
-  right: 100px;
+.left-nav-bar {
+  display: flex;
+  align-items: center;
+  margin-left: -34px;
 }
 
-.left-nav-bar{
+.right-nav-bar {
+  display: flex;
+  align-items: center;
+}
+
+.spork-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 45px;
+  border-radius: 50%;
+  font-size: 2rem;
+  background-color: #0a1b40;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.search-bar input[type="text"] {
+  width: 400px;
+  height: 30px;
+  padding: 5px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #4a5a82;
+  color: #f5f6f7;
+  outline: none;
+}
+
+.home-button-icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.home-button-icons a {
+  color: white;
+  margin-right: 20px;
   text-decoration: none;
-  left: 100px;
-   position: absolute;
+  font-size: 1.5rem;
 }
 
+.home-button-icons i {
+  cursor: pointer;
+}
 
-a.active{
+.home-button-icons i:hover {
+  color: #fff;
+}
+
+.home-button-icons a:hover {
+  color: #fff;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  z-index: 1;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  display: none;
+}
+
+.profile-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #fff;
+  color: #0d2559;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.profile-button:hover .profile-dropdown {
+  display: block;
+}
+
+.profile-dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.profile-dropdown li {
+  padding: 5px 0;
+}
+
+.profile-dropdown li a {
+  color: #35465d;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.profile-dropdown li a:hover {
+  color: #0d2559;
+}
+
+a.active {
   text-decoration: none;
 }
