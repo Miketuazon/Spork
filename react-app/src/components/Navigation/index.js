@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import OpenModalButton from '../OpenModalButton';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
+import LoginFormModal from '../LoginFormModal';
+import CreatePost from '../Posts/CreatePost';
+
 // import logo from "../../assets/logo-spork.jpeg"
 
 function Navigation({ isLoaded }) {
-	const sessionUser = useSelector(state => state.session.user);
+	const sessionUser = useSelector(state => state?.session?.user);
+	const [showProfileButton, setShowProfileButton] = useState(false);
 
+	const handleProfileButtonClick = () => {
+		setShowProfileButton(!showProfileButton);
+	};
+	console.log('session-user', sessionUser)
 	return (
 
 		<ul className='home-whole-nav-bar'>
@@ -18,27 +27,34 @@ function Navigation({ isLoaded }) {
 
 				</div>
 			</div>
-			<div className='right-nav-bar'>
-				<li className="home-button-icons">
-					{/* <NavLink exact to="/"><div className="spork-logo"></div></NavLink> */}
-					<NavLink exact to="/"><i className="fa fa-home"></i></NavLink>
-					<NavLink exact to="/"><i className="fa fa-video-camera"></i></NavLink>
-					<NavLink exact to="/"><i className="fa fa-compass"></i></NavLink>
-					<NavLink exact to="/"><i className='fas fa-store-alt'></i></NavLink>
-					<NavLink exact to="/"><i className="fa fa-envelope"></i></NavLink>
-					<NavLink exact to="/"><i className='fas fa-comment-dots'></i></NavLink>
-					<NavLink exact to="/"><i className="fa fa-bolt"></i></NavLink>
-					<NavLink exact to="/"><i className='fas fa-user-alt'></i></NavLink>
-					<NavLink exact to="/"><i className='fas fa-pen-square'></i></NavLink>
+			{sessionUser && isLoaded ? (
+				<div className='right-nav-bar'>
+					<li className="home-button-icons">
+						{/* <NavLink exact to="/"><div className="spork-logo"></div></NavLink> */}
+						<NavLink exact to="/"><i className="fa fa-home"></i></NavLink>
+						<NavLink exact to="/"><i className="fa fa-video-camera"></i></NavLink>
+						<NavLink exact to="/"><i className="fa fa-compass"></i></NavLink>
+						<NavLink exact to="/"><i className='fas fa-store-alt'></i></NavLink>
+						<NavLink exact to="/"><i className="fa fa-envelope"></i></NavLink>
+						<NavLink exact to="/"><i className='fas fa-comment-dots'></i></NavLink>
+						<NavLink exact to="/"><i className="fa fa-bolt"></i></NavLink>
+						<ProfileButton user={sessionUser} />
+						<OpenModalButton modalComponent={<CreatePost className="fa fa-pen-square"/>}></OpenModalButton>
 
-				</li>
-			</div>
-			{isLoaded && (
-				<li>
-					<ProfileButton user={sessionUser} />
+					</li>
+				</div>)
+				 : (
+					<div>
+					<OpenModalButton
+					  clasName="button-green-login"
+					  buttonText="Log In"
+					  modalComponent={<LoginFormModal />}
+					/>
+				  </div>
+				 )
 
-				</li>
-			)}
+			}
+
 		</ul>
 	);
 }

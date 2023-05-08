@@ -13,11 +13,16 @@ class Post(db.Model):
     updatedAt = db.Column(db.DateTime, default=db.func.now())
 
     owner = db.relationship('User', back_populates='posts')
+    likes = db.relationship('Like', back_populates="post")
+    like = db.relationship('Like', back_populates='post')
+    comments = db.relationship('Comment', back_populates='comment_post')
+
 
     def to_dict(self):
         return {
             'id': self.id,
             'content': self.content,
+            'userId': self.userId,
             'createdAt': self.createdAt,
             'updatedAt': self.updatedAt
         }

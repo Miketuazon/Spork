@@ -1,9 +1,23 @@
-.profile-dropdown {
+.profile-dropdown-login{
+  display: none;
   position: absolute;
+  top: 35px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  z-index: 1;
+  height: 120px;
+  width: 210px;
+
 }
 
-.hidden {
+
+.profile-dropdown-login.hidden {
   display: none;
+}
+.profile-dropdown-login:not(.hidden) {
+  display: block;
 }
 
 
@@ -49,6 +63,7 @@
   color: #fff;
   font-weight: bold;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .search-bar {
@@ -96,59 +111,24 @@
 .home-button-icons a:hover {
   color: #fff;
 }
-
-.profile-dropdown {
-  position: absolute;
-  top: 60px;
-  right: 0;
-  z-index: 1;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  padding: 10px;
-  display: none;
+.button-green-login{
+  color: rgb(65, 224, 65);
+  text-decoration: solid;
+  font-style: normal;
+  border-radius: 3px;
+  font-size: 15px;
+  padding: 5px 3px;
+  margin: 13px;
+  border: none;
 }
 
-.profile-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: #fff;
-  color: #0d2559;
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-right: 20px;
-  cursor: pointer;
+.nav-bar-create-post-modal {
+  display: inline-flex;
+
 }
 
-.profile-button:hover .profile-dropdown {
-  display: block;
-}
 
-.profile-dropdown ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.profile-dropdown li {
-  padding: 5px 0;
-}
-
-.profile-dropdown li a {
-  color: #35465d;
-  text-decoration: none;
-  font-size: 1rem;
-}
-
-.profile-dropdown li a:hover {
-  color: #0d2559;
-}
-
-a.active {
+a.active{
   text-decoration: none;
 }
+

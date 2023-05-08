@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import User, db, Post
+from app.models import User, db, Post, Like, Comment
 from .auth_routes import validation_errors_to_error_messages
-from app.forms import PostForm
+from app.forms import PostForm, CommentForm
 from flask_login import current_user, login_required
 from datetime import date
 
@@ -19,6 +19,21 @@ def posts():
     for post in posts:
         post_dict = post.to_dict()
         owner = post.owner
+        likes = post.likes
+        post_comments = post.comments
+        like_dict = []
+        comment_list = []
+        notes = 0
+        for like in likes:
+            notes += 1
+            like_dict.append(like.user.username)
+        for comment in post_comments:
+            comment_dict = comment.to_dict()
+            comment_dict['comment-owner'] = comment.comment_owner.username
+            comment_list.append(comment_dict)
+        post_dict['comments'] = comment_list
+        post_dict["notes"] = notes
+        post_dict["likes_user_list"] = like_dict
         post_dict['owner'] = owner.to_dict()
         return_list.append(post_dict)
     return return_list
@@ -36,6 +51,21 @@ def current_user_posts():
     for post in posts:
         post_dict = post.to_dict()
         owner = post.owner
+        likes = post.likes
+        post_comments = post.comments
+        like_dict = []
+        comment_list = []
+        notes = 0
+        for like in likes:
+            notes += 1
+            like_dict.append(like.user.username)
+        for comment in post_comments:
+            comment_dict = comment.to_dict()
+            comment_dict['comment-owner'] = comment.comment_owner.username
+            comment_list.append(comment_dict)
+        post_dict['comments'] = comment_list
+        post_dict["notes"] = notes
+        post_dict["likes_user_list"] = like_dict
         post_dict['owner'] = owner.to_dict()
         return_list.append(post_dict)
     return return_list
@@ -44,6 +74,9 @@ def current_user_posts():
 @post_routes.route('/create', methods=['POST'])
 @login_required
 def create_a_post():
+    """
+    Query for creating a post and returns it in a dictionary
+    """
     form = PostForm()
     current_user_dict = current_user.to_dict()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -57,21 +90,60 @@ def create_a_post():
         return {"Successfully Created Post": new_post.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+@post_routes.route('/<id>/comments', methods=['POST'])
+@login_required
+def create_a_comment(id):
+    """
+    Query for creating a comment on an existing post
+    """
+    form = CommentForm()
+    current_user_dict = current_user.to_dict()
+    current_post = Post.query.get(id)
 
-@post_routes.route("/edit/<int:id>", methods=["PUT"])
+    if not current_post:
+        return {"Message": "Post Does Not Exist"}
+
+    current_post_dict = current_post.to_dict()
+
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        new_comment = Comment(
+            content=form.data['content'],
+            userId=current_user_dict['id'],
+            postId=current_post_dict['id']
+        )
+        db.session.add(new_comment)
+        db.session.commit()
+        return {"Successfully Created Comment": new_comment.to_dict()}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@post_routes.route("/edit/<id>", methods=["GET", "POST"])
 @login_required
 def update_post(id):
+    """
+    Query for editing an existing post the current user has created
+    """
     form = PostForm()
-
+    current_user_dict = current_user.to_dict()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
         post_to_edit = Post.query.get(id)
-        post_to_edit.content = form.data['content']
-        post_to_edit.updatedAt = date.today()
-        db.session.commit()
-        returning_value = post_to_edit.to_dict()
-        return returning_value
+
+        if not post_to_edit:
+            return {'Message': "Post Does Not Exist"}
+
+        post_to_edit_dict = post_to_edit.to_dict()
+
+        if post_to_edit_dict['userId'] == current_user_dict['id']:
+            post_to_edit.content = form.data['content']
+            post_to_edit.userId = current_user_dict['id']
+            post_to_edit.updatedAt = date.today()
+            db.session.commit()
+            returning_value = post_to_edit.to_dict()
+            return returning_value
+        return {'Message': 'Unauthorized'}
     return {'errors': validation_errors_to_error_messages(form.errors)},401
 
 
@@ -80,7 +152,19 @@ def update_post(id):
 @post_routes.route('/delete/<id>', methods=['DELETE'])
 @login_required
 def delete_post(id):
+    """
+    Query for deleting a post a user has created
+    """
+    current_user_dict = current_user.to_dict()
     to_delete = Post.query.get(id)
-    db.session.delete(to_delete)
-    db.session.commit()
-    return {"Message": "Post Delete Successfully"}
+
+    if not to_delete:
+        return {"Message": "Post Does Not Exist"}
+
+    to_delete_dict = to_delete.to_dict()
+
+    if current_user_dict['id'] == to_delete_dict['userId']:
+        db.session.delete(to_delete)
+        db.session.commit()
+        return {"Message": "Post Deleted Successfully"}
+    return {"Message": "Unauthorized"}

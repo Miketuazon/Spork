@@ -1,5 +1,4 @@
-from app.models import db, environment, SCHEMA
-from app.models.likes import Like
+from app.models import db, environment, SCHEMA, Like
 from sqlalchemy.sql import text
 
 def seed_likes():
@@ -33,6 +32,7 @@ def seed_likes():
     db.session.add(like_3)
     db.session.add(like_4)
     db.session.add(like_5)
+    db.session.commit()
 
 def undo_likes():
     if environment == "production":
