@@ -21,7 +21,8 @@ export const getCurrentUserPosts = () => async (dispatch) => {
     if (response.ok) {
         const currentUserPosts = await response.json()
         dispatch(getPosts(currentUserPosts))
-    } else throw new Error("Bad Request")
+    }
+    // } else throw new Error("Bad Request")
 }
 
 export default function postsReducer(state = {}, action) {
