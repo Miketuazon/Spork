@@ -1,0 +1,45 @@
+.sign-up-form-below-frog{
+  display: flex;
+  background-color: rgb(140, 105, 246);
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  height: 384px;
+  margin-top: -10px;
+  width: 600px;
+}
+
+
+.form-sign-up {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+label {
+  margin-bottom: 0.5rem;
+}
+
+input {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.email-and-password-form{
+  background-color: rgb(211, 176, 244);
+
+}
+
+.frog-sign-up-video{
+  display: flex;
+}
+
+.form-signup{
+  display: flex;
+  flex-direction: column;
+}

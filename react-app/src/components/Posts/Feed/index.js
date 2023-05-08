@@ -19,7 +19,7 @@ const Feed = () => {
     return (
         <div className='Feed'>
             <div className="post-option">
-                <NavLink exact to="/"> Aa</NavLink>
+                <NavLink className="AA-Text" exact to="/"> Aa</NavLink>
                 <NavLink exact to="/"><i className="fa fa-camera"></i></NavLink>
                 <NavLink exact to="/"><i className="fa fa-quote-left"></i></NavLink>
                 <NavLink exact to="/"><i className="fa fa-chain"></i></NavLink>
@@ -35,7 +35,13 @@ const Feed = () => {
                     </li>
                 ))}
             </ul>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
         </div>
+
     )
 }
 
