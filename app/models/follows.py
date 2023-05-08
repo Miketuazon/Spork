@@ -17,8 +17,8 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 #             "followed_user_id": self.followed_user_id,
 #         }
 
-Follows = db.Table(
-    "follows",
-    db.Column('following_user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
-    db.Column('followed_user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+followers = db.Table(
+    "followers",
+    db.Column('following_user_id', db.Integer, db.ForeignKey('users.id')),
+    db.Column('followed_user_id', db.Integer, db.ForeignKey('users.id')),
 )

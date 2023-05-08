@@ -14,6 +14,13 @@ def seed_users():
     db.session.add(demo)
     db.session.add(marnie)
     db.session.add(bobbie)
+
+    #adding follows
+    demo.follow(marnie)
+    demo.follow(bobbie)
+    marnie.follow(bobbie)
+    bobbie.follow(demo)
+    #demo should have 1 follower, marnie has 1 and bobbie has 2
     db.session.commit()
 
 
@@ -28,5 +35,5 @@ def undo_users():
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM users"))
-        
+
     db.session.commit()

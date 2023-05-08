@@ -1,6 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from .follows import followers
 
 
 class User(db.Model, UserMixin):
@@ -16,8 +17,28 @@ class User(db.Model, UserMixin):
 
     posts = db.relationship('Post', back_populates='owner')
     likes = db.relationship('Like', back_populates='user')
-    # user_followers = db.relationship('')
     comments = db.relationship('Comment', back_populates='comment_owner')
+
+    followed = db.relationship(
+        'User', secondary="followers",
+        primaryjoin=(followers.c.following_user_id == id),
+        secondaryjoin=(followers.c.followed_user_id == id),
+        backref=db.backref('followers', lazy='dynamic'), lazy='dynamic'
+    )
+
+    # Following methods
+    def is_following(self, user):
+        return self.followed.filter(
+            followers.c.followed_user_id == user.id).count() > 0
+
+    def follow(self, user):
+        if not self.is_following(user):
+            self.followed.append(user)
+
+    def unfollow(self, user):
+        if self.is_following(user):
+            self.followed.remove(user)
+
 
     @property
     def password(self):
@@ -34,5 +55,6 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'followed': self.followed,
         }
