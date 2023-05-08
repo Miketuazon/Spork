@@ -13,6 +13,7 @@
 .form-sign-up {
   display: flex;
   flex-direction: column;
+  margin-top: -29px;
 }
 
 .form-row {
