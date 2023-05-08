@@ -74,6 +74,9 @@ def current_user_posts():
 @post_routes.route('/create', methods=['POST'])
 @login_required
 def create_a_post():
+    """
+    Query for creating a post and returns it in a dictionary
+    """
     form = PostForm()
     current_user_dict = current_user.to_dict()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -90,6 +93,9 @@ def create_a_post():
 @post_routes.route('/<id>/comments', methods=['POST'])
 @login_required
 def create_a_comment(id):
+    """
+    Query for creating a comment on an existing post
+    """
     form = CommentForm()
     current_user_dict = current_user.to_dict()
     current_post = Post.query.get(id)
@@ -115,6 +121,9 @@ def create_a_comment(id):
 @post_routes.route("/edit/<id>", methods=["GET", "POST"])
 @login_required
 def update_post(id):
+    """
+    Query for editing an existing post the current user has created
+    """
     form = PostForm()
     current_user_dict = current_user.to_dict()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -143,6 +152,9 @@ def update_post(id):
 @post_routes.route('/delete/<id>', methods=['DELETE'])
 @login_required
 def delete_post(id):
+    """
+    Query for deleting a post a user has created
+    """
     current_user_dict = current_user.to_dict()
     to_delete = Post.query.get(id)
 

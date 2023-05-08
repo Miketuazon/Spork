@@ -12,6 +12,7 @@ const PostItem = ({ post }) => {
                 {post.content}
             </div>
             <div className="post-footer">
+                <button className="like-button">{post.notes} notes</button>
                 <button className="like-button">Like</button>
                 <button className="reblog-button">Reblog</button>
             </div>
