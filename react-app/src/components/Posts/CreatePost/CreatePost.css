@@ -1,0 +1,149 @@
+.create-post-nav {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .create-post-nav form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .create-post-username-gear {
+    display: flex;
+    align-items: center;
+    margin-bottom: -10px;
+  }
+
+  .create-post-username {
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+
+  .create-post-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    border: none;
+    outline: none;
+  }
+
+  .create-post-textarea {
+    font-size: 14px;
+    line-height: 1.5;
+    border: none;
+    outline: none;
+    height: 80px;
+    width: 450px;
+  }
+
+  .create-post-hashtag {
+    font-size: 18px;
+    margin-top: 20px;
+    border: none;
+    outline: none;
+  }
+
+  .create-post-close-for-everyone-post-now-button {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  .create-post-close-button {
+    font-size: 13px;
+    color: #ccc;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .create-post-for-everyone-post-now-button {
+    display: flex;
+    align-items: center;
+list-style: none;
+  }
+
+  .create-post-for-everyone-button,
+  .create-post-post-now-button {
+    font-size: 13px;
+    font-weight: bold;
+    color: #fff;
+    background-color: rgb(190, 184, 184);
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .create-post-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+    min-width: 160px;
+    z-index: 1;
+    list-style: none;
+  }
+
+  .create-post-for-everyone-button:hover + .create-post-dropdown,
+  .create-post-post-now-button:hover + .create-post-dropdown {
+    display: block;
+    list-style: none;
+  }
+
+  .create-post-dropdown li a {
+    display: block;
+    padding: 10px;
+    font-size: 18px;
+    color: #333;
+    text-decoration: none;
+  }
+
+  .create-post-dropdown li a:hover {
+    background-color: #f1f1f1;
+  }
+  .create-post-icons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+  }
+
+  .create-post-icons span {
+    font-size: 20px;
+    margin-right: 10px;
+
+  }
+  .fa-image {
+    color: rgb(241, 110, 70);
+    font-size: 25px;
+  }
+
+  .fa-gif {
+    color: yellow;
+    font-size: 25px;
+  }
+
+  .fa-link {
+    color:  rgb(72, 195, 127);
+    font-size: 25px;
+  }
+
+  .fa-headphones {
+    color: rgb(114, 69, 176);
+    font-size: 25px;
+  }
+
+  .fa-video {
+    color:rgb(224, 66, 245);
+    font-size: 25px;
+  }
+
+  .fa-square-poll-vertical {
+    color: gray;
+    font-size: 25px;
+  }
