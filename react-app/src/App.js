@@ -8,7 +8,7 @@ import Navigation from "./components/Navigation";
 import Feed from "./components/Posts/Feed"
 import AllLikes from "./components/Likes/AllLikes";
 import LikesCounter from "./components/Likes/LikesCounter";
-import CreatePost from "./components/Posts/CreatePostForm";
+import CreatePost from "./components/Posts/CreatePost";
 import CurrentUserPosts from "./components/Posts/CurrentUserPosts";
 function App() {
   const dispatch = useDispatch();
