@@ -10,6 +10,9 @@ comment_routes = Blueprint('comments', __name__)
 @comment_routes.route("/edit/<id>", methods=["GET", "POST"])
 @login_required
 def update_comment(id):
+    """
+    Query for editing a comment the current user has created on any existing post
+    """
     form = CommentForm()
     current_user_dict = current_user.to_dict()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -38,6 +41,9 @@ def update_comment(id):
 @comment_routes.route('/delete/<id>', methods=['DELETE'])
 @login_required
 def delete_comment(id):
+    """
+    Query for deleting a comment the current user has created on any exisitng post
+    """
     current_user_dict = current_user.to_dict()
     to_delete = Comment.query.get(id)
 
