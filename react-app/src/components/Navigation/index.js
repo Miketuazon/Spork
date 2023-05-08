@@ -9,6 +9,11 @@ import CreatePost from '../Posts/CreatePost';
 
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state.session.user);
+	const [showProfileButton, setShowProfileButton] = useState(false);
+
+	const handleProfileButtonClick = () => {
+		setShowProfileButton(!showProfileButton);
+	};
 	console.log('session-user', sessionUser)
 	return (
 
@@ -30,7 +35,9 @@ function Navigation({ isLoaded }) {
 					<NavLink exact to="/"><i className="fa fa-envelope"></i></NavLink>
 					<NavLink exact to="/"><i className='fas fa-comment-dots'></i></NavLink>
 					<NavLink exact to="/"><i className="fa fa-bolt"></i></NavLink>
-					<NavLink exact to="/"><i className='fas fa-user-alt'></i></NavLink>
+					<NavLink exact to='/' onClick={() => setShowProfileButton(!showProfileButton)}>
+						<i className='fas fa-user-alt'></i>
+					</NavLink>
 					<OpenModalButton
 						className='fas fa-pen-square'
 					modalComponent={<CreatePost/>}
