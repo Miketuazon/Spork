@@ -10,7 +10,7 @@ import { NavLink } from "react-router-dom"
 const Feed = () => {
     const dispatch = useDispatch()
     const posts = useSelector(state => state.posts)
-    console.log('Posts', posts)
+    // console.log('Posts', posts)
     useEffect(() => {
         dispatch(getAllPosts())
 
