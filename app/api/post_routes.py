@@ -130,6 +130,7 @@ def update_post(id):
         if post_to_edit_dict['userId'] == current_user_dict['id']:
             post_to_edit.content = form.data['content']
             post_to_edit.userId = current_user_dict['id']
+            post_to_edit.updatedAt = date.today()
             db.session.commit()
             returning_value = post_to_edit.to_dict()
             return returning_value
