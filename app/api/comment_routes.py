@@ -10,7 +10,7 @@ comment_routes = Blueprint('comments', __name__)
 
 @comment_routes.route('/delete/<id>', methods=['DELETE'])
 @login_required
-def delete_post(id):
+def delete_comment(id):
     current_user_dict = current_user.to_dict()
     to_delete = Comment.query.get(id)
 
