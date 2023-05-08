@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from .follows import followers
+from .follows import follows
 
 
 class User(db.Model, UserMixin):
@@ -19,25 +19,13 @@ class User(db.Model, UserMixin):
     likes = db.relationship('Like', back_populates='user')
     comments = db.relationship('Comment', back_populates='comment_owner')
 
-    followed = db.relationship(
-        'User', secondary="followers",
-        primaryjoin=(followers.c.following_user_id == id),
-        secondaryjoin=(followers.c.followed_user_id == id),
-        backref=db.backref('followers', lazy='dynamic'), lazy='dynamic'
+    following = db.relationship(
+        'User',
+        secondary=follows,
+        primaryjoin=(follows.c.follower_id == id),
+        secondaryjoin=(follows.c.followed_id == id),
+        backref=db.backref('followers', lazy='dynamic'),
     )
-
-    # Following methods
-    def is_following(self, user):
-        return self.followed.filter(
-            followers.c.followed_user_id == user.id).count() > 0
-
-    def follow(self, user):
-        if not self.is_following(user):
-            self.followed.append(user)
-
-    def unfollow(self, user):
-        if self.is_following(user):
-            self.followed.remove(user)
 
 
     @property
@@ -56,5 +44,6 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'followed': self.followed,
+            'following': [user.id for user in self.following],
+            'followers': [user.id for user in self.followers]
         }
