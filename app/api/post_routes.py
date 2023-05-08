@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import User, db, Post, Like
+from app.models import User, db, Post, Like, Comment
 from .auth_routes import validation_errors_to_error_messages
-from app.forms import PostForm
+from app.forms import PostForm, CommentForm
 from flask_login import current_user, login_required
 from datetime import date
 
@@ -85,6 +85,30 @@ def create_a_post():
         db.session.add(new_post)
         db.session.commit()
         return {"Successfully Created Post": new_post.to_dict()}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@post_routes.route('/<id>/comments', methods=['POST'])
+@login_required
+def create_a_comment(id):
+    form = CommentForm()
+    current_user_dict = current_user.to_dict()
+    current_post = Post.query.get(id)
+
+    if not current_post:
+        return {"Message": "Post Does Not Exist"}
+
+    current_post_dict = current_post.to_dict()
+
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        new_comment = Comment(
+            content=form.data['content'],
+            userId=current_user_dict['id'],
+            postId=current_post_dict['id']
+        )
+        db.session.add(new_comment)
+        db.session.commit()
+        return {"Successfully Created Comment": new_comment.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
