@@ -1,13 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import OpenModalButton from '../OpenModalButton';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
+import CreatePost from '../Posts/CreatePost';
 // import logo from "../../assets/logo-spork.jpeg"
 
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state.session.user);
-
+	console.log('session-user', sessionUser)
 	return (
 
 		<ul className='home-whole-nav-bar'>
@@ -29,7 +31,11 @@ function Navigation({ isLoaded }) {
 					<NavLink exact to="/"><i className='fas fa-comment-dots'></i></NavLink>
 					<NavLink exact to="/"><i className="fa fa-bolt"></i></NavLink>
 					<NavLink exact to="/"><i className='fas fa-user-alt'></i></NavLink>
-					<NavLink exact to="/"><i className='fas fa-pen-square'></i></NavLink>
+					<OpenModalButton
+						className='fas fa-pen-square'
+					modalComponent={<CreatePost/>}
+					/>
+					{/* <NavLink exact to="/"><i className='fas fa-pen-square'></i></NavLink> */}
 
 				</li>
 			</div>
