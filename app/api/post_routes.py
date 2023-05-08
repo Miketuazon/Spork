@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, session, request
 from app.models import User, db, Post, Like, Comment
 from .auth_routes import validation_errors_to_error_messages
-from app.forms import PostForm, CommentForm
+from app.forms import PostForm, CommentForm, LikeForm
 from flask_login import current_user, login_required
 from datetime import date
 
@@ -38,6 +38,9 @@ def posts():
         return_list.append(post_dict)
     return return_list
 
+
+
+
 @post_routes.route('/current_user')
 @login_required
 def current_user_posts():
@@ -71,6 +74,9 @@ def current_user_posts():
     return return_list
 
 
+
+
+
 @post_routes.route('/create', methods=['POST'])
 @login_required
 def create_a_post():
@@ -89,6 +95,9 @@ def create_a_post():
         db.session.commit()
         return {"Successfully Created Post": new_post.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+
 
 @post_routes.route('/<id>/comments', methods=['POST'])
 @login_required
