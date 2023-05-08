@@ -17,16 +17,23 @@ def posts():
     posts = Post.query.all()
     return_list = []
     for post in posts:
-        like_dict = []
         post_dict = post.to_dict()
+        owner = post.owner
         likes = post.likes
+        post_comments = post.comments
+        like_dict = []
+        comment_list = []
         notes = 0
         for like in likes:
             notes += 1
             like_dict.append(like.user.username)
+        for comment in post_comments:
+            comment_dict = comment.to_dict()
+            comment_dict['comment-owner'] = comment.comment_owner.username
+            comment_list.append(comment_dict)
+        post_dict['comments'] = comment_list
         post_dict["notes"] = notes
         post_dict["likes_user_list"] = like_dict
-        owner = post.owner
         post_dict['owner'] = owner.to_dict()
         return_list.append(post_dict)
     return return_list
