@@ -9,12 +9,14 @@ import { NavLink } from "react-router-dom"
 
 const Feed = () => {
     const dispatch = useDispatch()
-    const posts = useSelector(state => state.posts)
-    // console.log('Posts', posts)
+    const posts = useSelector(state => state?.posts)
+    const currentUser = useSelector(state => state?.session?.user)
+    console.log('Posts', posts)
+    console.log('Current User', currentUser)
     useEffect(() => {
         dispatch(getAllPosts())
 
-    }, [dispatch])
+    }, [dispatch, posts.comments, JSON.stringify(posts), JSON.stringify(Object?.values(posts))])
 
     return (
         <div className='Feed'>
@@ -29,8 +31,8 @@ const Feed = () => {
                 <span></span>
             </div>
             <ul className='posts'>
-                {Object.values(posts).map(post => (
-                    <li key={post.id} className="post">
+                {Object?.values(posts)?.map(post => (
+                    <li key={post?.id} className="post">
                         <PostItem post={post} />
                     </li>
                 ))}

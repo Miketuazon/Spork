@@ -4,12 +4,13 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
+import CreatePost from "./components/Posts/CreatePost";
 import Navigation from "./components/Navigation";
 import Feed from "./components/Posts/Feed"
 import AllLikes from "./components/Likes/AllLikes";
 import LikesCounter from "./components/Likes/LikesCounter";
-import CreatePost from "./components/Posts/CreatePost";
 import CurrentUserPosts from "./components/Posts/CurrentUserPosts";
+import EditPost from "./components/Posts/EditPost";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -26,13 +27,16 @@ function App() {
             <Feed />
           </Route>
           <Route exact path="/create">
-            <CreatePost />
+            <CreatePost/>
           </Route>
           <Route exact path="/login">
             <LoginFormPage />
           </Route>
           <Route exact path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route exact path="/posts/edit/:postId">
+            <EditPost/>
           </Route>
           <Route exact path="/likes">
             <AllLikes />
