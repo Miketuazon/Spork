@@ -3,18 +3,25 @@ from sqlalchemy.sql import text
 
 def seed_posts():
     demo = Post(
+        type="text",
+        title="testing",
         content="hello",
         userId=1
     )
     marnie = Post(
-        content="goodbye",
+        type="image",
+        image_url="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pokemon.com%2Fus%2Fpokedex%2Feevee&psig=AOvVaw1J8p3wI_owwLV1ys_yrvk2&ust=1683740655239000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCJDHuvDk6P4CFQAAAAAdAAAAABAM",
+        content="I Like Eevee",
         userId=2
     )
     bobbie = Post(
-        content="wow really",
+        type="image",
+        image_url="https://assets.pokemon.com/assets/cms2/img/pokedex/full/700.png",
+        content="I like Sylveon",
         userId=3
     )
     demo2 = Post(
+        type="text",
         content="bruh",
         userId=1
     )

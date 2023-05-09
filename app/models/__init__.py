@@ -4,3 +4,4 @@ from .post import Post
 from .db import environment, SCHEMA
 from .likes import Like
 from .comment import Comment
+from app import models

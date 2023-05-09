@@ -82,6 +82,9 @@ def create_a_post():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         new_post = Post(
+            type=form.data['type'],
+            title=form.data['title'],
+            image_url=form.data['image_url'],
             content=form.data['content'],
             userId=current_user_dict['id']
         )
