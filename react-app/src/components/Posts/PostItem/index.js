@@ -7,6 +7,7 @@ import CreateComment from "../../comments/CreateComment"
 import DeleteComment from "../../comments/DeleteComment"
 import EditComment from "../../comments/EditComment"
 
+
 const PostItem = ({ post }) => {
 
     const currentUser = useSelector(state => state?.session?.user)
@@ -43,7 +44,7 @@ const PostItem = ({ post }) => {
                     <></>
                 )}
                 <OpenModalButton
-                    buttonText="Comment"
+                    buttonText={<><i className="fas fa-comment-dots"></i></>}
                     modalComponent={<CreateComment postId={post?.id} />}
                 />
 
@@ -52,9 +53,21 @@ const PostItem = ({ post }) => {
 
         post?.comments.sort((a, b) => new Date(b?.createdAt) - new Date(a?.createdAt))?.map((comment) => {
             return (
-                <ul id="list">
-                    <li><span>{comment?.content}</span><span><OpenModalButton buttonText='Delete' modalComponent={<DeleteComment commentId={comment?.id} />} /></span><span><OpenModalButton buttonText='Update' modalComponent={<EditComment comment={comment}/>} /></span></li>
-                </ul>
+                <ul id="list-for-update-delete">
+                <li>
+                  <span>{comment?.content}</span>
+                  <div class="dropdown-container">
+                    <button class="dropbtn-update-delete"><i class="fa fa-ellipsis-h"></i></button>
+                    <div class="dropdown-update-delete-content">
+                      <span><OpenModalButton buttonText='Delete' modalComponent={<DeleteComment commentId={comment?.id} />} /></span>
+                      <span><OpenModalButton buttonText='Update' modalComponent={<EditComment comment={comment}/>} /></span>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+
+
+
             )
         }): <></>
 

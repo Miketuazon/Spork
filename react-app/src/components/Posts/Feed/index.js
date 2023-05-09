@@ -10,13 +10,20 @@ import { NavLink } from "react-router-dom"
 const Feed = () => {
     const dispatch = useDispatch()
     const posts = useSelector(state => state?.posts)
+    const postsVal = Object?.values(posts)
     const currentUser = useSelector(state => state?.session?.user)
     console.log('Posts', posts)
     console.log('Current User', currentUser)
     useEffect(() => {
-        dispatch(getAllPosts())
+        dispatch(getAllPosts(postsVal))
 
-    }, [dispatch, Object.values(posts)])
+    }, [dispatch, JSON.stringify(postsVal), JSON.stringify(posts)])
+
+    if (!posts) {
+        return null
+    }
+
+
 
     return (
         <div className='Feed'>

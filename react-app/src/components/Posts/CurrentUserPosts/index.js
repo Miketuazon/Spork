@@ -11,6 +11,7 @@ const CurrentUserPosts = () => {
     const history= useHistory()
     const dispatch = useDispatch()
     const posts = useSelector(state => state?.posts)
+    const postsVal = Object.values(posts)
     const currentUser = useSelector(state => state?.session?.user)
 
     if (!currentUser?.id) {
@@ -19,7 +20,7 @@ const CurrentUserPosts = () => {
 
     useEffect(() => {
         dispatch(getCurrentUserPosts())
-    }, [dispatch, Object.values(posts)])
+    }, [dispatch, JSON.stringify(postsVal), JSON.stringify(posts)])
 
     if (!posts) {
         return null
@@ -56,7 +57,7 @@ const CurrentUserPosts = () => {
                 </span>
             </div>
             <ul className='posts'>
-                {Object?.values(posts)?.map(post => (
+                {postsVal?.map(post => (
                     <li key={post?.id} className="current-post">
                         <PostItem post={post} />
                     </li>
