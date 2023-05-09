@@ -118,7 +118,7 @@ def create_a_comment(id):
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-@post_routes.route("/edit/<id>", methods=["GET", "POST"])
+@post_routes.route("/edit/<id>", methods=['PUT'])
 @login_required
 def update_post(id):
     """
