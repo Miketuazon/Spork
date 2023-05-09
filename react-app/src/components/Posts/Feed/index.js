@@ -16,7 +16,7 @@ const Feed = () => {
     useEffect(() => {
         dispatch(getAllPosts())
 
-    }, [dispatch, posts.comments, JSON.stringify(posts), JSON.stringify(Object?.values(posts))])
+    }, [dispatch, Object.values(posts)])
 
     return (
         <div className='Feed'>
