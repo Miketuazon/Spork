@@ -19,7 +19,7 @@ const CurrentUserPosts = () => {
 
     useEffect(() => {
         dispatch(getCurrentUserPosts())
-    }, [dispatch])
+    }, [dispatch, Object.values(posts)])
 
     if (!posts) {
         return null
@@ -57,7 +57,7 @@ const CurrentUserPosts = () => {
             </div>
             <ul className='posts'>
                 {Object?.values(posts)?.map(post => (
-                    <li key={post.id} className="current-post">
+                    <li key={post?.id} className="current-post">
                         <PostItem post={post} />
                     </li>
                 ))}

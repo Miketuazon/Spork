@@ -120,6 +120,7 @@
   padding: 5px 3px;
   margin: 13px;
   border: none;
+  background-color: transparent;
 }
 
 .nav-bar-create-post-modal {
@@ -132,3 +133,10 @@ a.active{
   text-decoration: none;
 }
 
+.create-post-nav-button{
+  height: 20px
+}
+.fas.fa-edit{
+position: absolute;
+right:0px;
+}

@@ -1,3 +1,77 @@
 .hidden {
     display: none;
 }
+
+.profile-dropdown-login {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 300px;
+    padding: 0;
+    margin: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    list-style: none;
+    z-index: 1;
+  }
+
+  .profile-dropdown-login.hidden {
+    display: none;
+    height: 667px;
+
+  }
+  .profile-dropdown-login:not(.hidden) {
+    display: block;
+    height: 724px;
+}
+  .options-for-drop-down {
+    padding: 10px;
+  }
+
+  .options-for-drop-down li {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .options-for-drop-down li:hover {
+    background-color: #f7f7f7;
+  }
+
+  .options-for-drop-down li i {
+    margin-right: 10px;
+  }
+
+  .options-for-drop-down li button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 5px 10px;
+    border: none;
+    background-color: transparent;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .options-for-drop-down li button:hover {
+    background-color: #f7f7f7;
+  }
+
+  .options-for-drop-down li:last-child {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+  }
+
+  .options-for-drop-down li:last-child button {
+    color: #f44336;
+  }
