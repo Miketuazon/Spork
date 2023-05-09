@@ -9,7 +9,7 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     post_type = db.Column(db.String(10), nullable=False)
     title = db.Column(db.String(50), nullable=True)
-    image_url = db.Column(db.String(255), nullable=True)
+    image_url = db.Column(db.String(500), nullable=True)
     content = db.Column(db.String(255), nullable=True)
     userId= db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     createdAt = db.Column(db.DateTime, default=db.func.now())
