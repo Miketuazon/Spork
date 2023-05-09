@@ -1,10 +1,18 @@
 const DELETE_COMMENT = 'comments/deleteComment'
+const PUT_COMMENT = 'comments/putComment'
 
 
 export const deleteComment = (commentId) => {
     return {
         type: DELETE_COMMENT,
         commentId
+    }
+}
+
+export const putComment = (comment) => {
+    return {
+        type: PUT_COMMENT,
+        comment
     }
 }
 
@@ -18,7 +26,19 @@ export const deleteOneComment = (commentId) => async dispatch => {
     }
 }
 
+export const updateOneComment = (comment, commentId) => async dispatch => {
+    const response = await fetch(`/api/comments/edit/${commentId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(comment)
+    })
 
+    if (response.ok) {
+        const res = await response.json()
+        dispatch(putComment(res))
+        return res
+    }
+}
 
 export default function commentsReducer(state = {}, action) {
     let newState;
@@ -26,6 +46,10 @@ export default function commentsReducer(state = {}, action) {
     case DELETE_COMMENT:
         newState = {...state}
         delete newState[action.commentId]
+        return newState
+    case PUT_COMMENT:
+        newState = {...state}
+        newState[action.comment.id] = action.comment
         return newState
     default:
         return state

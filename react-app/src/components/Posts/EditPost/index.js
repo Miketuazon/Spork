@@ -54,7 +54,7 @@ export default function EditPost({post}) {
                             className="update-post-textarea"
                             rows="8"
                             cols="60"
-                            placeholder={Object.values(post?.content)}
+                            placeholder={post?.content}
                             value={content}
                             onChange={(e) => setContent(e.target.value)}
                         />
