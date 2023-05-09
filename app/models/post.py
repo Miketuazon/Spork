@@ -1,5 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-
+from .likes import likes
 class Post(db.Model):
     __tablename__ = "posts"
 
@@ -15,9 +15,14 @@ class Post(db.Model):
     createdAt = db.Column(db.DateTime, default=db.func.now())
     updatedAt = db.Column(db.DateTime, default=db.func.now())
 
+    #likes relationship
+    user_likes = db.relationship(
+        'User',
+        secondary=likes,
+        back_populates="post_likes"
+    )
+
     owner = db.relationship('User', back_populates='posts')
-    likes = db.relationship('Like', back_populates="post")
-    like = db.relationship('Like', back_populates='post')
     comments = db.relationship('Comment', back_populates='comment_post')
 
 
@@ -30,5 +35,7 @@ class Post(db.Model):
             'content': self.content,
             'userId': self.userId,
             'createdAt': self.createdAt,
-            'updatedAt': self.updatedAt
+            'updatedAt': self.updatedAt,
+            "likes": [user.id for user in self.user_likes],
+            'comments': [comment.to_dict() for comment in self.comments]
         }
