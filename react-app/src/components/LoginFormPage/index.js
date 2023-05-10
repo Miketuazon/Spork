@@ -3,6 +3,8 @@ import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import './LoginForm.css';
+import SignupFormModal from "../SignupFormModal";
+import OpenModalButton from "../OpenModalButton";
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -49,6 +51,7 @@ function LoginFormPage() {
           />
         </label>
         <button type="submit">Log In</button>
+
       </form>
     </>
   );

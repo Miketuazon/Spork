@@ -73,3 +73,81 @@
 .post-option ul svg {
     margin-bottom: 5px
 }
+
+
+.text-area-for-comments {
+    display: block;
+    margin: 10px 0;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    padding: 5px;
+    font-size: 16px;
+    background-color: transparent;
+  }
+
+  /* Style for the conversation list */
+  .list-for-update-delete {
+    margin: 20px 0;
+  }
+
+  .list-for-update-delete li {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    list-style: none;
+  }
+
+  /* Style for the comment text bubble */
+  .comment-text-bubble {
+    background-color: #f1f1f1;
+    border-radius: 20px;
+    padding: 10px 20px;
+    max-width: 70%;
+  }
+
+  .comment-text-bubble:before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: -10px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-right: 15px solid #f1f1f1;
+    border-bottom: 10px solid transparent;
+  }
+
+  /* Style for the dropdown menu */
+  .dropdown-container {
+    display: inline-block;
+    position: relative;
+  }
+
+  .dropdown-container .dropbtn-update-delete {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 10px;
+  }
+
+  .dropdown-update-delete-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 100px;
+    z-index: 1;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 5px 10px;
+    right: 0;
+    top: 30px;
+  }
+
+  .dropdown-update-delete-content div {
+    margin: 5px 0;
+  }
+
+  .dropdown-container:hover .dropdown-update-delete-content {
+    display: block;
+  }

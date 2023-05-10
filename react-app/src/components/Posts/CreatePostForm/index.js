@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import "./CreatePost.css"
 
-export default function CreatePost() {
+export default function CreatePosts() {
     return (
         <>
             <form>
@@ -21,7 +21,7 @@ export default function CreatePost() {
                         className="create-post-textarea"
                         rows="10"
                         cols="60"
-                        placeHolder="Go ahead, put anything."
+                        placeholder="Go ahead, put anything."
                     />
                 </div>
                 <br></br>

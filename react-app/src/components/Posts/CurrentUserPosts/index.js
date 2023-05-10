@@ -5,15 +5,28 @@ import { getCurrentUserPosts } from '../../../store/post'
 import PostItem from "../PostItem"
 import "./CurrentUserPosts.css"
 import { NavLink } from "react-router-dom"
+import { useHistory } from 'react-router-dom'
 
 const CurrentUserPosts = () => {
+    const history= useHistory()
     const dispatch = useDispatch()
     const posts = useSelector(state => state?.posts)
     const currentUser = useSelector(state => state?.session?.user)
 
+    if (!currentUser?.id) {
+        history.push("/")
+    }
+
     useEffect(() => {
         dispatch(getCurrentUserPosts())
-    }, [dispatch])
+    }, [dispatch, Object.values(posts)])
+
+    if (!posts) {
+        return null
+    }
+
+
+
     return (
         <div className='current-user-feed'>
             <div>
@@ -44,11 +57,16 @@ const CurrentUserPosts = () => {
             </div>
             <ul className='posts'>
                 {Object?.values(posts)?.map(post => (
-                    <li key={post.id} className="current-post">
+                    <li key={post?.id} className="current-post">
                         <PostItem post={post} />
                     </li>
                 ))}
             </ul>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
         </div>
     )
 }

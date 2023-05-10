@@ -7,7 +7,24 @@ from datetime import date
 
 comment_routes = Blueprint('comments', __name__)
 
-@comment_routes.route("/edit/<id>", methods=["GET", "POST"])
+@comment_routes.route("/<id>")
+@login_required
+def get_comments(id):
+    """
+    Query for getting comments on an existing post
+    """
+    current_post = Post.query.get(id)
+    current_post_dict = current_post.to_dict()
+    comments = Comment.query.filter(Comment.postId
+    == current_post_dict['id'])
+    return_list = []
+    for comment in comments:
+        comment_dict = comment.to_dict()
+        return_list.append(comment_dict)
+    return return_list
+
+
+@comment_routes.route("/edit/<id>", methods=["PUT"])
 @login_required
 def update_comment(id):
     """
@@ -34,8 +51,6 @@ def update_comment(id):
             return returning_value
         return {'Message': 'Unauthorized'}
     return {'errors': validation_errors_to_error_messages(form.errors)},401
-
-
 
 
 @comment_routes.route('/delete/<id>', methods=['DELETE'])

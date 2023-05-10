@@ -31,44 +31,70 @@ function SignupFormModal() {
 
 	return (
 		<>
-			<h1>Sign Up</h1>
-			<form onSubmit={handleSubmit}>
+			<div className="frog-sign-up-video">
+      <video
+      autoPlay
+      muted
+      loop
+      playsInline
+      width="600"
+      height="277"
+      >
+      <source
+        src="https://assets.tumblr.com/pop/src/assets/images/login-wall/art_v2-004010f0.webm"
+        type="video/webm;codec=vp9"
+     />
+      <source
+        src="https://assets.tumblr.com/pop/src/assets/images/login-wall/art_v2-5c3eb22e.mp4"
+        type="video/mp4"
+     />
+    <img
+      src="https://assets.tumblr.com/pop/src/assets/images/login-wall/art_v2-3f0f7a0b.gif"
+      alt=""
+    />
+    </video>
+      </div>
+	  <div className="sign-up-form-below-frog">
+			<h4>Welcome to your corner of the internet</h4>
+			<h5> Glad you're here.</h5>
+			<form className="form-signup" onSubmit={handleSubmit}>
 				<ul>
 					{errors.map((error, idx) => (
 						<li key={idx}>{error}</li>
 					))}
 				</ul>
 				<label>
-					Email
 					<input
 						type="text"
+						placeholder="Email"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 						required
 					/>
 				</label>
 				<label>
-					Username
 					<input
 						type="text"
+						placeholder="Username"
 						value={username}
 						onChange={(e) => setUsername(e.target.value)}
 						required
 					/>
 				</label>
 				<label>
-					Password
+
 					<input
 						type="password"
+						placeholder="Password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
 						required
 					/>
 				</label>
 				<label>
-					Confirm Password
 					<input
 						type="password"
+						placeholder="Confirm Password"
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
 						required
@@ -76,6 +102,7 @@ function SignupFormModal() {
 				</label>
 				<button type="submit">Sign Up</button>
 			</form>
+			</div>
 		</>
 	);
 }

@@ -2,7 +2,7 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from .follows import follows
-
+from .likes import likes
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -15,18 +15,25 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    posts = db.relationship('Post', back_populates='owner')
-    likes = db.relationship('Like', back_populates='user')
-    comments = db.relationship('Comment', back_populates='comment_owner')
-
-    following = db.relationship(
-        'User',
+    #followers relationship
+    followers = db.relationship(
+        "User",
         secondary=follows,
         primaryjoin=(follows.c.follower_id == id),
         secondaryjoin=(follows.c.followed_id == id),
-        backref=db.backref('followers', lazy='dynamic'),
+        backref=db.backref("following", lazy="dynamic"),
+        lazy="dynamic"
     )
 
+    #likes relationship
+    post_likes = db.relationship(
+        "Post",
+        secondary=likes,
+        back_populates="user_likes"
+    )
+
+    posts = db.relationship('Post', back_populates='owner')
+    comments = db.relationship('Comment', back_populates='comment_owner')
 
     @property
     def password(self):
@@ -45,5 +52,6 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             'following': [user.id for user in self.following],
-            'followers': [user.id for user in self.followers]
+            "followers": [user.id for user in self.followers],
+            "likes": [post.id for post in self.post_likes],
         }
