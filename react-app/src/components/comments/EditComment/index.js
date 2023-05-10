@@ -24,7 +24,6 @@ export default function EditComment ({comment}) {
         closeModal()
         }
     }
-
     return (
         <>
             <form onSubmit={onSubmit}>
