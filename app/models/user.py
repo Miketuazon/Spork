@@ -2,6 +2,7 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from .follows import follows
+from .likes import likes
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -24,8 +25,14 @@ class User(db.Model, UserMixin):
         lazy="dynamic"
     )
 
+    #likes relationship
+    post_likes = db.relationship(
+        "Post",
+        secondary=likes,
+        back_populates="user_likes"
+    )
+
     posts = db.relationship('Post', back_populates='owner')
-    likes = db.relationship('Like', back_populates='user')
     comments = db.relationship('Comment', back_populates='comment_owner')
 
     @property
@@ -46,4 +53,5 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'following': [user.id for user in self.following],
             "followers": [user.id for user in self.followers],
+            "likes": [post.id for post in self.post_likes],
         }
