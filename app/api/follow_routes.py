@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-from flask import Blueprint, jsonify, session, request, redirect
-from app.models import User, db, Post, Like, Comment, follows
-=======
+
 from flask import Blueprint, jsonify, session, request
 from app.models import User, db, Post, Comment, follows
->>>>>>> likes-remodel
 from .auth_routes import validation_errors_to_error_messages
 from app.forms import PostForm, CommentForm
 from flask_login import current_user, login_required
