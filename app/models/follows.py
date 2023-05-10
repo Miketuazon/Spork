@@ -5,3 +5,6 @@ follows = db.Table(
     db.Column("follower_id", db.Integer, db.ForeignKey("users.id"), nullable=False),
     db.Column("followed_id", db.Integer, db.ForeignKey("users.id"), nullable=False)
 )
+
+if environment == "production":
+    follows.schema = SCHEMA

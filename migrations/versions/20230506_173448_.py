@@ -8,6 +8,9 @@ Create Date: 2023-05-06 17:34:48.682617
 from alembic import op
 import sqlalchemy as sa
 
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
 revision = 'ec5edcf5e736'
@@ -22,6 +25,8 @@ def upgrade():
         batch_op.add_column(sa.Column('createdAt', sa.DateTime(), nullable=True))
         batch_op.add_column(sa.Column('updatedAt', sa.DateTime(), nullable=True))
 
+    if environment == "production":
+        op.execute(f"ALTER TABLE posts SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 

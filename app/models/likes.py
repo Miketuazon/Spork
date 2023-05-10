@@ -15,3 +15,6 @@ likes = db.Table(
         primary_key=True
     )
 )
+
+if environment == "production":
+    likes.schema = SCHEMA
