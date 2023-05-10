@@ -1,5 +1,5 @@
 
-from flask import Blueprint, jsonify, session, request
+from flask import Blueprint, jsonify, session, request, redirect
 from app.models import User, db, Post, Comment, follows
 from .auth_routes import validation_errors_to_error_messages
 from app.forms import PostForm, CommentForm
