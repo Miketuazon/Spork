@@ -5,6 +5,7 @@ import { createOneComment } from "../../../store/post";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useModal } from "../../../context/Modal";
+import "./CreateComment.css"
 
 export default function CreateComment({postId}) {
     const history = useHistory();
@@ -19,8 +20,8 @@ export default function CreateComment({postId}) {
             content: content
         }
         dispatch(createOneComment(newComment, postId))
+        setContent('')
         closeModal()
-
     }
 
     const handleCancel = (e) => {
@@ -30,17 +31,17 @@ export default function CreateComment({postId}) {
 
     return (
         <>
-            <form onSubmit={onSubmit}>
-                <textarea
-                    className="create-post-textarea"
-                    rows="8"
-                    cols="60"
-                    placeholder="Go ahead, put anything."
-                    value={content}
-                    onChange={(e) => setContent(e.target.value)}
-                />
-                <button type='submit'><i className="fas- fa-comment-dots"></i></button>
-            </form>
+            <form className="create-post-area-comments-form" onSubmit={onSubmit}>
+    <textarea className="create-post-textarea-comments"
+        rows="1"
+        cols="10"
+        placeholder="Go ahead, put anything."
+        value={content}
+        onChange={(e) => setContent(e.target.value)}
+    />
+    <button className='submit-comment' ><i class="fa fa-reply"></i></button>
+</form>
+
 
 
 
