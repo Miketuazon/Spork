@@ -11,12 +11,13 @@ const Feed = () => {
     const dispatch = useDispatch()
     const posts = useSelector(state => state?.posts)
     const currentUser = useSelector(state => state?.session?.user)
+    const postsVal = Object?.values(posts)
     console.log('Posts', posts)
     console.log('Current User', currentUser)
     useEffect(() => {
         dispatch(getAllPosts())
 
-    }, [dispatch, Object.values(posts)])
+    }, [dispatch, JSON.stringify(postsVal)])
 
     return (
         <div className='Feed'>

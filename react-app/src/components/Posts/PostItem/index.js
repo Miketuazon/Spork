@@ -7,6 +7,7 @@ import CreateComment from "../../comments/CreateComment"
 import DeleteComment from "../../comments/DeleteComment"
 import EditComment from "../../comments/EditComment"
 
+
 const PostItem = ({ post }) => {
 
     const currentUser = useSelector(state => state?.session?.user)
@@ -28,37 +29,58 @@ const PostItem = ({ post }) => {
                 <button className="like-button"><i class="fa fa-heart"></i></button>
                 <button className="reblog-button"><i class="fa fa-retweet"></i></button>
                 {currentUser?.id === post?.userId ? (
-                    <span>
+                    <div className="comments-trash-and-update-button">
                         <OpenModalButton
                             buttonText={<><i className="fas fa-trash-alt"></i></>}
                             modalComponent={<DeletePost postId={post?.id} />}
                         />
                         <OpenModalButton
-                            buttonText="Update"
+                            buttonText={<><i className="fa fa-pen-square"></i></>}
                             modalComponent={<EditPost post={post} />}
                         />
 
-                    </span>
+                    </div>
                 ) : (
                     <></>
                 )}
-                <OpenModalButton
-                    buttonText="Comment"
+
+
+            </div>
+            <OpenModalButton className="text-area-for-comments" rows={1} cols={60}
+                    placeholder=" Add to the discussion"
+                    buttonText={<><i className="fas fa-comment-dots"></i></>}
                     modalComponent={<CreateComment postId={post?.id} />}
                 />
 
-            </div>
-        { post?.comments?.length ?
+<ul className="comment-list">
+     { post?.comments?.length ?
 
         post?.comments.sort((a, b) => new Date(b?.createdAt) - new Date(a?.createdAt))?.map((comment) => {
             return (
-                <ul id="list">
-                    <li><span>{comment?.content}</span><span><OpenModalButton buttonText='Delete' modalComponent={<DeleteComment commentId={comment?.id} />} /></span><span><OpenModalButton buttonText='Update' modalComponent={<EditComment comment={comment}/>} /></span></li>
-                </ul>
+                <div className="list-for-update-delete">
+                <li>
+                    <div className="comment-text-bubble">
+                  <div className="the-comments-commented">{comment?.content}<div class="dropdown-container">
+                            <button buttonText={<><i className="fas fa-trash-alt"></i></>} class="dropbtn-update-delete">
+                                <i class="fa fa-ellipsis-h"></i></button>
+                    <div class="dropdown-update-delete-content">
+                      <div className="comments-delete"><OpenModalButton buttonText='Delete' modalComponent={<DeleteComment commentId={comment?.id} />} /></div>
+                      <div className="comments-update"><OpenModalButton buttonText='Update' modalComponent={<EditComment comment={comment}/>} /></div>
+                    </div>
+                  </div>
+                  </div>
+                  </div>
+
+                </li>
+              </div>
+
+
+
             )
         }): <></>
 
 }
+</ul>
         </div >
     )
 }
