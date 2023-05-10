@@ -16,12 +16,12 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     #followers relationship
-    followers = db.relationship(
+    following = db.relationship(
         "User",
         secondary=follows,
         primaryjoin=(follows.c.follower_id == id),
         secondaryjoin=(follows.c.followed_id == id),
-        backref=db.backref("following", lazy="dynamic"),
+        backref=db.backref("followers", lazy="dynamic"),
         lazy="dynamic"
     )
 
