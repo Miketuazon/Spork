@@ -39,7 +39,7 @@ function Navigation({ isLoaded }) {
 						<NavLink exact to="/"><i className='fas fa-comment-dots'></i></NavLink>
 						<NavLink exact to="/"><i className="fa fa-bolt"></i></NavLink>
 						<ProfileButton user={sessionUser} />
-						<OpenModalButton modalComponent={<CreatePost className="fa fa-pen-square"/>}></OpenModalButton>
+						<OpenModalButton buttonText={<><i className="fa fa-pen-square"></i></>} modalComponent={<CreatePost />}></OpenModalButton>
 
 					</li>
 				</div>)

@@ -44,7 +44,9 @@ export default function commentsReducer(state = {}, action) {
     switch (action.type) {
     case DELETE_COMMENT:
         newState = {...state}
+        console.log('Delete NewState', newState)
         delete newState[action.commentId]
+        console.log('Delete 2 NewState', newState)
         return newState
     case PUT_COMMENT:
         newState = {...state}
