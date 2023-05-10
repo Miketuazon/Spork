@@ -53,29 +53,29 @@ function ProfileButton({ user }) {
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-          <div className="options-for-drop-down">
-            <li><i className="fas fa-heart"></i> Likes</li>
-            <li><i className="fas fa-user-friends"></i> Following</li>
-            <li><i className="fas fa-cog"></i> Settings</li>
-            <li><i className="fas fa-ad"></i> Ad-Free</li>
-            <li><i className="fas fa-credit-card"></i> Payment and Purchases</li>
-            <li><i className="fas fa-gift"></i> Gifts</li>
-            <li><i className="fas fa-video"></i> Live Streaming Credits</li>
-            <li><i className="fas fa-bullhorn"></i> What's New</li>
-            <li><i className="fas fa-question-circle"></i> Help</li>
-            <li><i className="fas fa-keyboard"></i> Keyboard Shortcuts</li>
-            <li><i className="fas fa-palette"></i> Change Palette</li>
-            <li><i className="fas fa-file"></i> {user.id}'s Posts</li>
-            <li><i className="fas fa-users"></i> Followers</li>
-            <li><i className="fas fa-chart-line"></i> Activity</li>
-            <li><i className="fas fa-file-alt"></i> Drafts</li>
-            <li><i className="fas fa-stream"></i> Queue</li>
-            <li><i className="fas fa-fire"></i> Posts+ Tumblr Blaze</li>
-            <li><i className="fas fa-cog"></i> Blog Settings</li>
-            <li>
+            <div className="options-for-drop-down">
+              <li><i className="fas fa-heart"></i> Likes</li>
+              <li><i className="fas fa-user-friends"></i> Following</li>
+              <li><i className="fas fa-cog"></i> Settings</li>
+              <li><i className="fas fa-ad"></i> Ad-Free</li>
+              <li><i className="fas fa-credit-card"></i> Payment and Purchases</li>
+              <li><i className="fas fa-gift"></i> Gifts</li>
+              <li><i className="fas fa-video"></i> Live Streaming Credits</li>
+              <li><i className="fas fa-bullhorn"></i> What's New</li>
+              <li><i className="fas fa-question-circle"></i> Help</li>
+              <li><i className="fas fa-keyboard"></i> Keyboard Shortcuts</li>
+              <li><i className="fas fa-palette"></i> Change Palette</li>
+              <li><i className="fas fa-file"></i> {user.username}'s Posts</li>
+              <li><i className="fas fa-users"></i> Followers</li>
+              <li><i className="fas fa-chart-line"></i> Activity</li>
+              <li><i className="fas fa-file-alt"></i> Drafts</li>
+              <li><i className="fas fa-stream"></i> Queue</li>
+              <li><i className="fas fa-fire"></i> Posts+ Tumblr Blaze</li>
+              <li><i className="fas fa-cog"></i> Blog Settings</li>
+              <li>
 
-              <button onClick={handleLogout}><i className="fas fa-sign-out-alt"></i> Log Out</button>
-            </li>
+                <button onClick={handleLogout}><i className="fas fa-sign-out-alt"></i> Log Out</button>
+              </li>
             </div>
           </>
         ) : (
