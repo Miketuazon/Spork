@@ -28,7 +28,9 @@
     display: flex;
     align-items: center;
 }
-
+.myList {
+  display: none;
+}
 .post-footer button {
     border: none;
     background: none;
@@ -42,7 +44,9 @@
     color: #333;
 }
 
-
+.hidden {
+  display: none;
+}
 .post-option {
     box-sizing: border-box;
     background: white;
@@ -85,7 +89,7 @@
     background-color: transparent;
   }
 
-  /* Style for the conversation list */
+
   .list-for-update-delete {
     margin: 20px 0;
   }
@@ -97,7 +101,7 @@
     list-style: none;
   }
 
-  /* Style for the comment text bubble */
+
   .comment-text-bubble {
     background-color: #f1f1f1;
     border-radius: 20px;
@@ -117,37 +121,39 @@
     border-bottom: 10px solid transparent;
   }
 
-  /* Style for the dropdown menu */
-  .dropdown-container {
-    display: inline-block;
-    position: relative;
-  }
+.dropdown-container {
+  display: inline-block;
+  position: relative;
+}
 
-  .dropdown-container .dropbtn-update-delete {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    margin-left: 10px;
-  }
+.dropdown-container .dropbtn-update-delete {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 10px;
+}
 
-  .dropdown-update-delete-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 100px;
-    z-index: 1;
-    border-radius: 10px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    padding: 5px 10px;
-    right: 0;
-    top: 30px;
-  }
+.dropdown-update-delete-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 100px;
+  z-index: 1;
+  border-radius: 10px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 5px 10px;
+  right: 0;
+  top: 30px;
+}
 
-  .dropdown-update-delete-content div {
-    margin: 5px 0;
-  }
+.dropdown-update-delete-content div {
+  margin: 5px 0;
+}
 
-  .dropdown-container:hover .dropdown-update-delete-content {
-    display: block;
-  }
+.dropdown-container:hover .dropdown-update-delete-content,
+.dropdown-container:focus-within .dropdown-update-delete-content {
+  display: block;
+}
+
+

@@ -15,6 +15,8 @@ const onSubmit = async (e) => {
     closeModal()
 }
     return (
-        <button onClick={onSubmit} type='submit'>Delete</button>
+        <form onSubmit={onSubmit}>
+        <button className="delete-button-page" type="submit" type='submit-button-page'>Delete</button>
+        </form>
     )
 }

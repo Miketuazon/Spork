@@ -5,6 +5,7 @@ import { getAllPosts } from '../../../store/post'
 import PostItem from "../PostItem"
 import "./Feed.css"
 import { NavLink } from "react-router-dom"
+import { getCommentsForPost } from '../../../store/comment'
 
 
 const Feed = () => {
@@ -12,12 +13,15 @@ const Feed = () => {
     const posts = useSelector(state => state?.posts)
     const currentUser = useSelector(state => state?.session?.user)
     const postsVal = Object?.values(posts)
+    const postId = postsVal?.id
+    const comments = useSelector(state => state?.comments)
+    const commentId = comments?.id
+    const commentsVal = Object?.values(comments)
     console.log('Posts', posts)
-    console.log('Current User', currentUser)
     useEffect(() => {
         dispatch(getAllPosts())
-
-    }, [dispatch, JSON.stringify(postsVal)])
+        // dispatch(getCommentsForPost(postId))
+    }, [dispatch, JSON.stringify(postsVal), JSON.stringify(commentsVal), JSON.stringify(comments)])
 
     return (
         <div className='Feed'>

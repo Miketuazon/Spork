@@ -6,12 +6,15 @@ import PostItem from "../PostItem"
 import "./CurrentUserPosts.css"
 import { NavLink } from "react-router-dom"
 import { useHistory } from 'react-router-dom'
+import { getCommentsForPost } from '../../../store/comment'
 
 const CurrentUserPosts = () => {
     const history= useHistory()
     const dispatch = useDispatch()
     const posts = useSelector(state => state?.posts)
+    const postId = posts?.id
     const currentUser = useSelector(state => state?.session?.user)
+    const comments = useSelector(state => state?.comments)
 
     if (!currentUser?.id) {
         history.push("/")
@@ -19,7 +22,8 @@ const CurrentUserPosts = () => {
 
     useEffect(() => {
         dispatch(getCurrentUserPosts())
-    }, [dispatch, Object.values(posts)])
+        dispatch(getCommentsForPost(postId))
+    }, [dispatch, Object.values(posts), Object.values(comments)])
 
     if (!posts) {
         return null
