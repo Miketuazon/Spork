@@ -15,8 +15,12 @@ const onSubmit = async (e) => {
     closeModal()
 }
     return (
-        <form onSubmit={onSubmit}>
-        <button className="delete-button-page" type="submit" type='submit-button-page'>Delete</button>
+        <div className=" delete-button-page">
+        <form className="delete-button-page" onSubmit={onSubmit}>
+        <div className="question-delete"> You definitely want to delete this reply? </div>
+        <button type='submit-button-page'>Delete</button>
+
         </form>
+        </div>
     )
 }

@@ -107,7 +107,7 @@ const PostItem = ({ post }) => {
                     <button buttonText={<><i className="fas fa-trash-alt"></i></>} class="dropbtn-update-delete">
                                     <i class="fa fa-ellipsis-h"></i></button>
                         <div class="dropdown-update-delete-content">
-                                    <div className="comments-delete-option"><OpenModalButton buttonText='Delete' modalComponent={<DeleteComment postId={post?.id}  commentId={comment?.id} />} /></div>
+                                    <div className="comments-delete-option"><OpenModalButton className="delete-button-page" buttonText='Delete' modalComponent={<DeleteComment postId={post?.id}  commentId={comment?.id} />} /></div>
                                     <div className="comments-update-option"><OpenModalButton buttonText='Update' modalComponent={<EditComment postId={post?.id}  comment={comment}/>} /></div>
                         </div>
 

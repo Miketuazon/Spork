@@ -5,10 +5,13 @@ import { getAllPosts } from '../../../store/post'
 import PostItem from "../PostItem"
 import "./Feed.css"
 import { NavLink } from "react-router-dom"
+import { getFollowsForUser } from '../../../store/follow'
 import { getCommentsForPost } from '../../../store/comment'
 
 
 const Feed = () => {
+    const followers = useSelector(state => state?.follow)
+    console.log('followers', followers)
     const dispatch = useDispatch()
     const posts = useSelector(state => state?.posts)
     const currentUser = useSelector(state => state?.session?.user)
@@ -20,6 +23,7 @@ const Feed = () => {
     console.log('Posts', posts)
     useEffect(() => {
         dispatch(getAllPosts())
+        dispatch(getFollowsForUser())
         // dispatch(getCommentsForPost(postId))
     }, [dispatch, JSON.stringify(postsVal), JSON.stringify(commentsVal), JSON.stringify(comments)])
 
