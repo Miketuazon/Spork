@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from flask_login import login_required
+from flask_login import login_required, current_user
 from app.models import User
 
 user_routes = Blueprint('users', __name__)
@@ -23,3 +23,14 @@ def user(id):
     """
     user = User.query.get(id)
     return user.to_dict()
+
+@user_routes.route('/<int:id>/follow')
+@login_required
+def follow_user(id):
+    """
+    Query for following a user by their id
+    """
+    user = User.query.get(id)
+    session_user = current_user
+    print(user)
+    return(session_user)
