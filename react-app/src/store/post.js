@@ -45,7 +45,8 @@ export const getAllPosts = () => async (dispatch) => {
     if (response.ok) {
         const posts = await response.json()
         dispatch(getPosts(posts))
-    } else throw new Error("Bad Request")
+    }
+    // else throw new Error("Bad Request")
 }
 
 export const getCurrentUserPosts = () => async (dispatch) => {
