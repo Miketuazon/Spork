@@ -1,7 +1,13 @@
 const DELETE_COMMENT = 'comments/deleteComment'
 const PUT_COMMENT = 'comments/putComment'
+const GET_COMMENTS = 'comments/getComments'
 
-
+export const getComments = (comments) => {
+    return {
+    type:GET_COMMENTS,
+    comments
+    }
+}
 export const deleteComment = (commentId) => {
     return {
         type: DELETE_COMMENT,
@@ -13,6 +19,14 @@ export const putComment = (comment) => {
     return {
         type: PUT_COMMENT,
         comment
+    }
+}
+
+export const getCommentsForPost = (postId) => async dispatch => {
+    const response = await fetch(`/api/comments/${postId}`)
+    if (response.ok) {
+        const res = await response.json()
+        dispatch(getComments(res))
     }
 }
 
@@ -42,6 +56,10 @@ export const updateOneComment = (comment, commentId) => async dispatch => {
 export default function commentsReducer(state = {}, action) {
     let newState;
     switch (action.type) {
+    case GET_COMMENTS:
+    newState = {}
+    action?.posts?.comments?.forEach((comment) => newState[comment?.id] = comment)
+    return newState;
     case DELETE_COMMENT:
         newState = {...state}
         console.log('Delete NewState', newState)

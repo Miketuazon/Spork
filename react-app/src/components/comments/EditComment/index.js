@@ -19,6 +19,7 @@ export default function EditComment ({comment}) {
         const comment = {
             content: content
         }
+        // dispatch(updateOneComment(comment, commentId))
         const updatedComment = dispatch(updateOneComment(comment, commentId))
         if (updatedComment) {
         closeModal()
