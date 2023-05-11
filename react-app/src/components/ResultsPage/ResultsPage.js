@@ -25,7 +25,7 @@ function ResultsPage() {
             <ul className='posts'>
                 {
                     Object?.values(posts)?.map(post => (
-                        post.content.includes(query)
+                        post.content?.includes(query) || post.title?.includes(query)
                             ?
                             <li key={post?.id} className="post">
                                 <PostItem post={post} />
