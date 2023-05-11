@@ -1,14 +1,14 @@
 const GET_FOLLOWERS = 'follow/getFollowers'
 
-const getFollowers = (followers) => {
+const getFollowers = (follow) => {
     return {
         type: GET_FOLLOWERS,
-        followers
+        follow
     }
 }
 
-export const getFollowsForUser = () => async dispatch => {
-    const response = await fetch('/api/follow')
+export const getFollowsForUser = (userId) => async dispatch => {
+    const response = await fetch(`/api/follow/${userId}`)
     console.log('followers res', response)
     if (response.ok) {
         const userFollows = await response.json()
@@ -20,8 +20,8 @@ export default function followersReducer(state={}, action) {
     let newState;
     switch(action.type) {
     case GET_FOLLOWERS:
-        newState={}
-    action.follow.forEach((follow) => newState[follow.id] = follow)
+    newState={}
+    newState[action.follow.id] = action.follow
     return newState
     default:
         return state

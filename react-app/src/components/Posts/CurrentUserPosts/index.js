@@ -7,27 +7,28 @@ import "./CurrentUserPosts.css"
 import { NavLink } from "react-router-dom"
 import { useHistory } from 'react-router-dom'
 import { getCommentsForPost } from '../../../store/comment'
+import Navigation from '../../Navigation'
 
 const CurrentUserPosts = () => {
     const history= useHistory()
     const dispatch = useDispatch()
     const posts = useSelector(state => state?.posts)
-    const postId = posts?.id
+    const postsVal = Object?.values(posts)
     const currentUser = useSelector(state => state?.session?.user)
-    const comments = useSelector(state => state?.comments)
+    // const comments = useSelector(state => state?.comments)
 
-    if (!currentUser?.id) {
+    if (!currentUser) {
         history.push("/")
     }
 
     useEffect(() => {
         dispatch(getCurrentUserPosts())
-        dispatch(getCommentsForPost(postId))
-    }, [dispatch, Object.values(posts), Object.values(comments)])
+        // dispatch(getCommentsForPost(postId))
+    }, [dispatch, JSON.stringify(postsVal), JSON.stringify(posts)])
 
-    if (!posts) {
-        return null
-    }
+    // if (!posts) {
+    //     return null
+    // }
 
 
 
@@ -60,9 +61,9 @@ const CurrentUserPosts = () => {
                 </span>
             </div>
             <ul className='posts'>
-                {Object?.values(posts)?.map(post => (
-                    <li key={post?.id} className="current-post">
-                        <PostItem post={post} />
+                {Object?.values(posts)?.map(currentPost => (
+                    <li key={currentPost?.id} className="current-post">
+                        <PostItem post={currentPost} />
                     </li>
                 ))}
             </ul>

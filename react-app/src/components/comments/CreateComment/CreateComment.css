@@ -8,27 +8,25 @@ form.create-post-area-comments-form {
     border: 1px solid #ccc;
     border-radius: 20px;
     padding: 10px;
-    width: 450px;
+    width: 370px;
     resize: none;
     margin-bottom: 10px;
   }
 
   button[type="submit"] {
-    background-color: #4CAF50;
+    background-color: #00b8ff;
     border: none;
     color: white;
-    padding: 10px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin-bottom: 10px;
-    border-radius: 20px;
+    font-size: 10px;
+    border-radius: 5px;
     cursor: pointer;
   }
 
   button[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #00b8ff;
   }
 
   form.create-post-textarea-comments-form{
@@ -48,4 +46,17 @@ form.create-post-area-comments-form {
     border-radius: 20px;
     margin-left: 10px;
     cursor: pointer;
+  }
+.user-picture-comments{
+    display: flex;
+}
+.user-picture-comments {
+    display: flex;
+    align-items: center;
+  }
+
+  .user-picture-comments img {
+    margin-right: 10px;
+    height: 45px;
+    border-radius: 35px;
   }

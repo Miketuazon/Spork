@@ -5,12 +5,16 @@ const DELETE_POST = 'posts/deletePost'
 const PUT_POST = 'posts/putPost'
 const POST_COMMENT = 'posts/postComment'
 
+
 const getPosts = (posts) => {
     return {
         type: GET_POSTS,
         posts
     }
 }
+
+
+
 
 const postComment = (comment) => {
     return {

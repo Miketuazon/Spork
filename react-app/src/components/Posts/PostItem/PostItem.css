@@ -92,6 +92,7 @@
 
   .list-for-update-delete {
     margin: 20px 0;
+
   }
 
   .list-for-update-delete li {
@@ -100,6 +101,7 @@
     align-items: flex-end;
     list-style: none;
   }
+
 
 
   .comment-text-bubble {

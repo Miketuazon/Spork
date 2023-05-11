@@ -1,4 +1,4 @@
-#root {
+z#root {
   background-color: #0a1b40;
 }
 
@@ -20,4 +20,132 @@
 
 .AA-Text{
 text-decoration: none;
+}
+/* Reset the list styles and remove default button styles */
+.post-types {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  box-sizing: border-box;
+  height: 80px;
+  width: 560px;
+  background-color: white;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 40px;
+  border-radius: 5px;
+}
+
+.post-type-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid #fff;
+
+
+}
+
+
+.post-type-btn:focus {
+  outline: none;
+
+}
+
+.text-btn {
+  color: #35465c;
+  display: flex;
+flex-direction: column;
+
+}
+
+.photo-btn {
+  color: #fc4c4c;
+  display: flex;
+flex-direction: column;
+
+}
+
+.quote-btn {
+  color: #ff8b4e;
+  display: flex;
+flex-direction: column;
+
+}
+
+.link-btn {
+  color: #3cb878;
+  display: flex;
+flex-direction: column;
+
+}
+
+.chat-btn {
+  color: #3a81c3;
+  display: flex;
+flex-direction: column;
+
+}
+
+.audio-btn {
+  color: #a07dfc;
+  display: flex;
+flex-direction: column;
+
+}
+
+.video-btn {
+  color: #e1306c;
+  display: flex;
+flex-direction: column;
+
+}
+
+.post-type-icon {
+  margin-right: 8px;
+  font-size: 20px;
+  display: flex;
+flex-direction: column;
+}
+
+
+.following-foryou-tags-manage {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  background-color: transparent;
+  margin-left: 22px;
+  margin-bottom: -32px;
+}
+
+.following-foryou-tags-manage a {
+  margin: 0 8px;
+  color: rgb(46, 166, 226);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 17px;
+}
+
+.following-foryou-tags-manage a:hover {
+  text-decoration: underline;
+}
+
+.spork-live-thumbnails
+{
+color: white;
+margin-left: 43px;
+}
+
+.spork-live-thumbnails-imgs{
+  display: flex;
+  height: 175px;
 }
