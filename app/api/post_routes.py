@@ -52,6 +52,7 @@ def create_a_post():
             title=form.data['title'],
             image_url=form.data['image_url'],
             content=form.data['content'],
+            link_url=form.data['link_url'],
             userId=current_user_dict['id']
         )
         db.session.add(new_post)

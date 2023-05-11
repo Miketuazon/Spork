@@ -4,7 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
-import CreatePost from "./components/Posts/CreatePost";
+import CreateTextPost from "./components/Posts/CreateTextPost";
 import Navigation from "./components/Navigation";
 import Feed from "./components/Posts/Feed"
 import AllLikes from "./components/Likes/AllLikes";
@@ -27,8 +27,8 @@ function App() {
           <Route exact path="/" >
             <Feed />
           </Route>
-          <Route exact path="/create">
-            <CreatePost/>
+          <Route exact path="/create/text">
+            <CreateTextPost />
           </Route>
           <Route exact path="/login">
             <LoginFormPage />
@@ -37,7 +37,7 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route exact path="/posts/edit/:postId">
-            <EditPost/>
+            <EditPost />
           </Route>
           <Route exact path="/likes">
             <AllLikes />

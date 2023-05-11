@@ -4,7 +4,7 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
-import CreatePost from "../Posts/CreatePost";
+import CreateTextPost from "../Posts/CreateTextPost";
 import './ProfileButton.css'
 
 function ProfileButton({ user }) {
@@ -76,7 +76,7 @@ function ProfileButton({ user }) {
                   <li>
                     <button className="account-menu-dropdown">Blogs </button>
                   </li>
-                  <li><OpenModalButton buttonText="New+" modalComponent={<CreatePost/>}></OpenModalButton></li></div>
+                  <li><OpenModalButton buttonText="New+" modalComponent={<CreateTextPost />}></OpenModalButton></li></div>
                 <div className="bottom-dropdown-menu-small">
                   <li><i className="fas fa-file"></i> {user.username}'s Posts</li>
                   <li><i className="fas fa-users"></i> Followers</li>

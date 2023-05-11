@@ -12,6 +12,7 @@ class Post(db.Model):
     title = db.Column(db.String(50), nullable=True)
     image_url = db.Column(db.String(255), nullable=True)
     content = db.Column(db.String(255), nullable=True)
+    link_url = db.Column(db.String(255), nullable=True)
     userId= db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     createdAt = db.Column(db.DateTime, default=db.func.now())
     updatedAt = db.Column(db.DateTime, default=db.func.now())
@@ -34,6 +35,7 @@ class Post(db.Model):
             'title': self.title,
             'image_url': self.image_url,
             'content': self.content,
+            'link_url': self.link_url,
             'userId': self.userId,
             'createdAt': self.createdAt,
             'updatedAt': self.updatedAt,
