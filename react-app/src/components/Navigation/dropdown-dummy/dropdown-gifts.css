@@ -1,0 +1,80 @@
+
+.background-color-gift {
+ /* background-color: #0a1b40;*/
+  color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  margin: 50px auto;
+  /* max-width: 600px; */
+  height: 768px;
+  margin-top: -33px;
+  margin: -9px;
+  padding-bottom: 103px;
+
+}
+
+.b9fH3 {
+  font-size: 24px;
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+.xINW8 {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.zg7Ni {
+  display: flex;
+  justify-content: center;
+}
+
+.ZYmys {
+  margin: 0 10px;
+}
+
+.TRX6J {
+  background-color: #fff;
+  color: #2e3f54;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.TRX6J:hover {
+  background-color: #fff5db;
+}
+
+.VXTLZ .TRX6J {
+  background-color: #2e3f54;
+  color: #fff;
+}
+
+.VXTLZ .TRX6J:hover {
+  background-color: #23344b;
+}
+
+.EvhBA {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+.GL3jS {
+  text-align: center;
+}
+
+.wNngb {
+  margin: 0;
+}
+
+.r9j7Q
+{
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+}

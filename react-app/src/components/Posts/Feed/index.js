@@ -89,6 +89,7 @@ const Feed = () => {
   </li>
 </ul>
 
+
 <div className='following-foryou-tags-manage'>
 <a href="/dashboard/following">Following</a>
     <a href="/">For you</a>

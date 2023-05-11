@@ -1,0 +1,82 @@
+
+  
+  /* Main container */
+  .ad-free-browsing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Content container */
+  .r9j7Q {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 32px;
+    text-align: center;
+  }
+  
+  /* Title */
+  .o9Dc0 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: #35465D;
+  }
+  
+  /* Description */
+  .UX_E2 {
+    font-size: 18px;
+    margin-bottom: 32px;
+    color: #8E8E8E;
+  }
+  
+  /* Button container */
+  .ozoaa {
+    margin-bottom: 32px;
+  }
+  
+  /* Button style */
+  .TRX6J {
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 32px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+  }
+  
+  /* Primary button style */
+  .TRX6J:nth-child(1) {
+    background-color: #aebaf3;
+    color: #FFFFFF;
+    margin-right: 16px;
+  }
+  
+  /* Secondary button style */
+  .TRX6J:nth-child(2) {
+    background-color: #aebaf3;
+    color: #000000;
+    margin-right: 16px;
+  }
+  
+  /* Discount label */
+  .Rp8gp {
+    background-color: #FF51D3;
+    color: #FFFFFF;
+    padding: 4px;
+    font-size: 14px;
+    margin-left: 8px;
+  }
+  
+  /* Link style */
+  .RmcFk a {
+    color: #8E8E8E;
+    text-decoration: underline;
+  }
+  
+  /* Link hover style */
+  .RmcFk a:hover {
+    color: #35465D;
+  }
+  

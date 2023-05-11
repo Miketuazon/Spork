@@ -46,6 +46,7 @@ const putPost = (post) => {
 
 export const getAllPosts = () => async (dispatch) => {
     const response = await fetch('/api/posts')
+    console.log('posts res', response)
     if (response.ok) {
         const posts = await response.json()
         dispatch(getPosts(posts))
@@ -123,6 +124,7 @@ export default function postsReducer(state = {}, action) {
         case GET_POSTS:
             newState = {}
             action.posts.forEach((post) => newState[post.id] = post)
+            console.log('New State Post', newState)
             return newState
         case POST_POST:
             newState = {...state}

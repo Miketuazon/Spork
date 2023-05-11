@@ -45,8 +45,10 @@ const PostItem = ({ post }) => {
     }
     const onSubmitFollow = async(e) => {
         e.preventDefault()
-       dispatch(getFollowsForUser(post?.userId))
+      const followOrUnfollow= dispatch(getFollowsForUser(post?.userId))
+      if (followOrUnfollow.ok) {
        dispatch(getAllPosts())
+      }
         // window.location.reload(false);
     }
     const openMenu = () => {
@@ -82,7 +84,7 @@ const PostItem = ({ post }) => {
                 <span className="username">{post?.owner?.username}</span>
                 <span className="timestamp">{post?.createdAt}</span>
                 {/* {follower ? <span>Unfollow</span> : <span>Follow</span>} */}
-                { follower && (currentUser.id !== post.userId ) ? <button onClick={onSubmitFollow}>unfollow</button>: !follower && (currentUser?.id !== post?.userId ) ? <button onClick={onSubmitFollow}>Follow</button>:<></>}
+                { currentUser && follower && (currentUser?.id !== post?.userId ) ? <button onClick={onSubmitFollow}>unfollow</button>: currentUser && !follower && (currentUser?.id !== post?.userId ) ? <button onClick={onSubmitFollow}>Follow</button>:<></>}
             </div>
             <div className="post-content">
                 {post?.content}
@@ -120,8 +122,8 @@ const PostItem = ({ post }) => {
 
             <button type='click' onClick={openMenu}>{<><i className="fas fa-comment-dots"></i></>}</button>
             <ul className={ulClassNameUpdateDelete} ref={ulRef}>
-
-            <CreateComment postId={post?.id}/>
+{ currentUser ?
+            <CreateComment postId={post?.id}/>:<></> }
      { post?.comments?.length ?
 
         post?.comments.sort((a, b) => new Date(b?.createdAt) - new Date(a?.createdAt))?.map((comment) => {
@@ -131,8 +133,11 @@ const PostItem = ({ post }) => {
                     <div className="comment-text-bubble">
 
                     <div className="the-comments-commented">{comment?.content}<div class="dropdown-container">
-                    <button buttonText={<><i className="fas fa-trash-alt"></i></>} class="dropbtn-update-delete">
-                                    <i class="fa fa-ellipsis-h"></i></button>
+
+                    {currentUser?.id === comment?.userId ?
+                        <button buttonText={<><i className="fas fa-trash-alt"></i></>} class="dropbtn-update-delete">
+                                    <i class="fa fa-ellipsis-h"></i></button>:<></>
+                                    }
                         <div class="dropdown-update-delete-content">
                         <div className="comment-options">
                 <OpenModalButton
@@ -153,7 +158,9 @@ const PostItem = ({ post }) => {
                     comment={comment}
                 />
               }
+
                 />
+
             </div>
 
                         </div>
