@@ -13,17 +13,19 @@ export const getFollowsForUser = (userId) => async dispatch => {
     if (response.ok) {
         const userFollows = await response.json()
         dispatch(getFollowers(userFollows))
-        return userFollows
     }
 }
 
-export default function followersReducer(state={}, action) {
+export default function followersReducer(state = {}, action) {
     let newState;
     switch(action.type) {
     case GET_FOLLOWERS:
-    newState={}
-    newState[action.follow.id] = action.follow
-    return newState
+            newState = {}
+            action?.follow?.forEach((foll) => {
+                newState[foll?.id] = foll
+            })
+            console.log('New State Follow', newState)
+            return newState;
     default:
         return state
     }

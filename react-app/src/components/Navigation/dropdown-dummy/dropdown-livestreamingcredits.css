@@ -1,0 +1,84 @@
+/* Apply some general styles to the page */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+  
+  /* Style the dialog box */
+  .Lq1wm {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Style the dialog content */
+  .gQZdB {
+    background-color: white;
+    border-radius: 30px;
+    padding: 24px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Style the close button */
+  .SaLOl {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    cursor: pointer;
+  }
+  
+  .SaLOl:focus-visible {
+    outline: none;
+  }
+  
+  /* Style the title */
+  .ZJXId {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  
+  /* Style the text */
+  ._yvUs {
+    color: rgba(0, 0, 0, 0.6);
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  
+  /* Style the button */
+  .TRX6J {
+    background-color: rgb(157, 183, 228);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 62px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .TRX6J:hover {
+    background-color: rgb(177, 199, 234);
+  }
+  
+  .TRX6J:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgb(181, 199, 228);
+  }
+
+  .NlPeN{
+    display: flex;
+    justify-content: center;
+  }

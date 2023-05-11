@@ -12,6 +12,10 @@ import LikesCounter from "./components/Likes/LikesCounter";
 import CurrentUserPosts from "./components/Posts/CurrentUserPosts";
 import EditPost from "./components/Posts/EditPost";
 import ResultsPage from "./components/ResultsPage/ResultsPage"
+import AdFreeComponent from "./components/Navigation/dropdown-dummy/dropdown-adfree";
+import DropdownGifts from "./components/Navigation/dropdown-dummy/dropdown-gifts";
+import LivestreamCredits from "./components/Navigation/dropdown-dummy/dropdown-livestreamingcredits";
+// import UserPage from "./components/UserPage/UserPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,7 +35,15 @@ function App() {
           <Route exact path="/create">
             <CreatePost/>
           </Route>
-
+          <Route exact path="/adfree">
+            <AdFreeComponent/>
+          </Route>
+          <Route exact path="/gifts">
+            <DropdownGifts/>
+          </Route>
+          <Route exact path="/livestreamcredits">
+            <LivestreamCredits/>
+          </Route>
           <Route exact path="/login">
             <LoginFormPage />
           </Route>
@@ -56,6 +68,9 @@ function App() {
           <Route path="/search/">
             <ResultsPage />
           </Route>
+          {/* <Route path="/user/:id">
+            <UserPage />
+          </Route> */}
         </Switch>
       )}
     </>

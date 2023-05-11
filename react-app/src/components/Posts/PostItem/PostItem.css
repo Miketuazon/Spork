@@ -163,3 +163,38 @@
 .show-dropdown-btn:focus ~ .dropdown-container .dropdown-update-delete-content {
   display: block;
 }
+
+.button-follow, .button-unfollow {
+  color: #ffffff;
+  font-size: 1rem;
+  background-color: #0a1b40;
+  border-radius: 68px;
+  padding: 5px 22px;
+  display: inline-block;
+  position: relative;
+}
+
+.button-follow::before, .button-unfollow::before {
+  font-size: 20px;
+  position: absolute;
+  left: 7px;
+  top: 45%;
+  transform: translateY(-50%);
+}
+
+.button-unfollow {
+  color:#0a1b40;
+  background-color: #ffffff;
+}
+
+.button-follow:focus, .button-unfollow:focus {
+  outline: none;
+}
+
+.button-unfollow:active {
+  transform: translateY(1px);
+}
+
+.button-follow:active, .button-unfollow:active {
+  box-shadow: none;
+}

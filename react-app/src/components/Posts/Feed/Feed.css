@@ -54,6 +54,9 @@ text-decoration: none;
 
 }
 
+/* .users-to-follow-list{
+  margin-left: 200px;
+} */
 
 .post-type-btn:focus {
   outline: none;
