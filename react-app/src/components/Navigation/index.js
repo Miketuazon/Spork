@@ -6,8 +6,7 @@ import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import LoginFormModal from '../LoginFormModal';
 import CreatePost from '../Posts/CreatePost';
-
-
+import SearchBar from '../ResultsPage/Searchbar';
 // import logo from "../../assets/logo-spork.jpeg"
 
 function Navigation({ isLoaded }) {
@@ -24,8 +23,8 @@ function Navigation({ isLoaded }) {
 			<div className="left-nav-bar">
 				<NavLink exact to="/"><div className="spork-logo">S</div></NavLink>
 				<div className="search-bar">
-					<input type="text" placeholder=" Search Spork" />
-
+					{/* <input type="text" placeholder=" Search Spork" /> */}
+					< SearchBar />
 				</div>
 			</div>
 			{sessionUser && isLoaded ? (
