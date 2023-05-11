@@ -20,7 +20,7 @@ function SearchBar() {
                     }
                 }}
             />
-            <button onClick={handleSearch}>Search</button>
+            <button onClick={handleSearch}><i class="fa">&#xf002;</i></button>
         </div>
     );
 }
