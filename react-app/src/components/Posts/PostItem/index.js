@@ -37,6 +37,7 @@ const PostItem = ({ post }) => {
         dropdown.current.classList.toggle('dropdown-open')
         document.activeElement.blur();
     }
+
     const onSubmitFollow = async (e) => {
         e.preventDefault()
         dispatch(getFollowsForUser(post?.userId))
@@ -62,7 +63,7 @@ const PostItem = ({ post }) => {
         document.addEventListener('click', closeMenu);
 
         return () => document.removeEventListener("click", closeMenu);
-    }, [dispatch, showMenu,], Object.values(post.owner.followers));
+    }, [dispatch, showMenu]);
 
 
     const ulClassNameUpdateDelete = "list-for-update-delete" + (showMenu ? "" : " hidden");
