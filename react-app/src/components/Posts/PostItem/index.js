@@ -10,7 +10,7 @@ import EditComment from "../../comments/EditComment"
 import { getCommentsForPost } from '../../../store/comment'
 import { useEffect } from "react";
 import { useDispatch } from "react-redux"
-import { getAllPosts } from "../../../store/post";
+import { getAllPosts, getCurrentUserPosts } from "../../../store/post";
 import { useCallback } from "react";
 import FollowOrUnfollow from "../../Follows";
 import { getFollowsForUser } from "../../../store/follow";
@@ -18,16 +18,10 @@ import { getFollowsForUser } from "../../../store/follow";
 
 const PostItem = ({ post }) => {
     const [showMenu, setShowMenu] = useState(false);
-
-    console.log('postUserId', post?.userId)
     const ulRef = useRef();
-    console.log('post', post)
     const openMenuButtonRef = useRef(null)
     const postsVal = Object.values(post)
     const postId = postsVal?.id
-//    const followers = useSelector(state => state?.follow)
-//    const followersVal = Object?.values(followers)
-//    console.log('followersVal', followersVal)
     const dispatch = useDispatch();
     const comments = useSelector(state => state?.comments)
     const commentsVal = Object.values(comments)
@@ -36,19 +30,17 @@ const PostItem = ({ post }) => {
     const currentUser = useSelector(state => state?.session?.user)
 
     const postComments = post?.comments
-    const follower = currentUser?.following?.find(id => id === post?.userId)
+    const follower = Object.values(post.owner.followers).find(id => id === currentUser.id)
     const dropdown = useRef()
     // console.log('follower', follower)
     const handleClick = () => {
         dropdown.current.classList.toggle('dropdown-open')
         document.activeElement.blur();
     }
-    const onSubmitFollow = async(e) => {
+    const onSubmitFollow = async (e) => {
         e.preventDefault()
-      const followOrUnfollow= dispatch(getFollowsForUser(post?.userId))
-      if (followOrUnfollow.ok) {
-       dispatch(getAllPosts())
-      }
+        dispatch(getFollowsForUser(post?.userId))
+        dispatch(getAllPosts())
         // window.location.reload(false);
     }
     const openMenu = () => {
@@ -70,8 +62,7 @@ const PostItem = ({ post }) => {
         document.addEventListener('click', closeMenu);
 
         return () => document.removeEventListener("click", closeMenu);
-    }, [dispatch, showMenu]);
-
+    }, [dispatch, showMenu,], Object.values(post.owner.followers));
 
 
     const ulClassNameUpdateDelete = "list-for-update-delete" + (showMenu ? "" : " hidden");
@@ -101,7 +92,7 @@ const PostItem = ({ post }) => {
                         />
                         <OpenModalButton
                             buttonText={<><i className="fa fa-pen-square"></i></>}
-                            modalComponent={<EditPost postId ={post?.id} post={post} />}
+                            modalComponent={<EditPost postId={post?.id} post={post} />}
                         />
                     </div>
                 ) : (
@@ -117,7 +108,7 @@ const PostItem = ({ post }) => {
                     modalComponent={<CreateComment postId={post?.id} />}
                 /> */}
 
-{/* <ul className="comment-list"> */}
+            {/* <ul className="comment-list"> */}
             <div className="dropdown m-10">
 
             <button type='click' onClick={openMenu}>{<><i className="fas fa-comment-dots"></i></>}</button>
@@ -126,11 +117,11 @@ const PostItem = ({ post }) => {
             <CreateComment postId={post?.id}/>:<></> }
      { post?.comments?.length ?
 
-        post?.comments.sort((a, b) => new Date(b?.createdAt) - new Date(a?.createdAt))?.map((comment) => {
-            return (
-                <div className="list-for-update-delete">
-                <li>
-                    <div className="comment-text-bubble">
+                        post?.comments.sort((a, b) => new Date(b?.createdAt) - new Date(a?.createdAt))?.map((comment) => {
+                            return (
+                                <div className="list-for-update-delete">
+                                    <li>
+                                        <div className="comment-text-bubble">
 
                     <div className="the-comments-commented">{comment?.content}<div class="dropdown-container">
 
@@ -163,23 +154,23 @@ const PostItem = ({ post }) => {
 
             </div>
 
-                        </div>
+                                                </div>
 
-                    </div>
-                  </div>
-                  </div>
+                                            </div>
+                                            </div>
+                                        </div>
 
-                </li>
+                                    </li>
 
-              </div>
+                                </div>
 
 
 
-            )
-        }): null
+                            )
+                        }) : null
 
-}
-</ul>
+                    }
+                </ul>
             </div>
         </div >
     )

@@ -27,7 +27,7 @@ def follow_unfollow_a_user(user_id):
     if follower.id in followed_followers:
         follower.following.remove(followed)
         db.session.commit()
-        return follower_following
+        return {"Message": "Unfollowing"}
 
     # {
     #     "message": f"{follower.username} unfollowed {followed.username}",
@@ -37,4 +37,4 @@ def follow_unfollow_a_user(user_id):
 
     followed.followers.append(follower)
     db.session.commit()
-    return follower_following
+    return {"Message": "Following"}
