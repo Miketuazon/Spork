@@ -12,6 +12,7 @@ import LikesCounter from "./components/Likes/LikesCounter";
 import CurrentUserPosts from "./components/Posts/CurrentUserPosts";
 import EditPost from "./components/Posts/EditPost";
 import ResultsPage from "./components/ResultsPage/ResultsPage"
+import CreateImagePost from "./components/Posts/CreateImagePost";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route exact path="/create/text">
             <CreateTextPost />
+          </Route>
+          <Route exact path="/create/image">
+            <CreateImagePost />
           </Route>
           <Route exact path="/login">
             <LoginFormPage />
