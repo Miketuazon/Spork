@@ -31,11 +31,10 @@ const PostItem = ({ post }) => {
     const dispatch = useDispatch();
     const comments = useSelector(state => state?.comments)
     const commentsVal = Object.values(comments)
-    console.log('comments', comments)
     const commentId = comments?.id
     const menuButtonRef = useRef(null)
     const currentUser = useSelector(state => state?.session?.user)
-    console.log('currentUser', currentUser)
+
     const postComments = post?.comments
     const follower = currentUser?.following?.find(id => id === post?.userId)
     const dropdown = useRef()
@@ -46,7 +45,9 @@ const PostItem = ({ post }) => {
     }
     const onSubmitFollow = async(e) => {
         e.preventDefault()
-        dispatch(getFollowsForUser(post?.userId))
+       dispatch(getFollowsForUser(post?.userId))
+       dispatch(getAllPosts())
+        // window.location.reload(false);
     }
     const openMenu = () => {
         if (showMenu) return;
@@ -54,6 +55,7 @@ const PostItem = ({ post }) => {
     };
 
     useEffect(() => {
+
         // dispatch(getCommentsForPost(postId))
         if (!showMenu) return;
 
@@ -66,7 +68,7 @@ const PostItem = ({ post }) => {
         document.addEventListener('click', closeMenu);
 
         return () => document.removeEventListener("click", closeMenu);
-    }, [dispatch, showMenu, JSON.stringify(postsVal) ]);
+    }, [dispatch, showMenu]);
 
 
 
