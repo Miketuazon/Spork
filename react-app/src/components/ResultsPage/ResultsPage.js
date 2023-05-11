@@ -13,6 +13,8 @@ function ResultsPage() {
     const currentUser = useSelector(state => state?.session?.user)
     const currentUrl = new URL(window.location.href)
     console.log("url =>", currentUrl)
+    const params = new URLSearchParams(currentUrl)
+    console.log(params.get("query"))
     // const query = currentUrl.get("query")
     // console.log("query => ", query)
     const posts = useSelector(state => state?.posts)
