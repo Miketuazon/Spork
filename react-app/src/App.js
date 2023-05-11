@@ -13,6 +13,7 @@ import CurrentUserPosts from "./components/Posts/CurrentUserPosts";
 import EditPost from "./components/Posts/EditPost";
 import ResultsPage from "./components/ResultsPage/ResultsPage"
 import CreateImagePost from "./components/Posts/CreateImagePost";
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -34,6 +35,7 @@ function App() {
           <Route exact path="/create/image">
             <CreateImagePost />
           </Route>
+
           <Route exact path="/login">
             <LoginFormPage />
           </Route>
@@ -55,7 +57,7 @@ function App() {
           <Route exact path="/feed">
             <Feed />
           </Route>
-          <Route exact path="/search/:query">
+          <Route path="/search/">
             <ResultsPage />
           </Route>
         </Switch>

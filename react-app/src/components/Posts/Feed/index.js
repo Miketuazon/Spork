@@ -9,25 +9,24 @@ import { getCommentsForPost } from '../../../store/comment'
 import logo1 from '../../../assets/live-data-1.jpg'
 import logo2 from '../../../assets/live-data-2.jpg'
 import logo3 from '../../../assets/live-data-3.jpg'
-
+import { getFollowsForUser } from '../../../store/follow'
 
 const Feed = () => {
     const followers = useSelector(state => state?.follow)
-    console.log('followers', followers)
+
     const dispatch = useDispatch()
     const posts = useSelector(state => state?.posts)
     const currentUser = useSelector(state => state?.session?.user)
     const postsVal = Object?.values(posts)
-    const postId = posts?.id
     const comments = useSelector(state => state?.comments)
     const commentId = comments?.id
     const commentsVal = Object?.values(comments)
-    console.log('Posts', posts)
+
     useEffect(() => {
         dispatch(getAllPosts())
         // dispatch(getCommentsForPost(postId))
         // dispatch(getCommentsForPost(postId))
-    }, [dispatch, JSON.stringify(postsVal), JSON.stringify(commentsVal), JSON.stringify(comments)])
+    }, [dispatch, JSON.stringify(postsVal), JSON.stringify(posts)])
 
     return (
         <div className='Feed'>

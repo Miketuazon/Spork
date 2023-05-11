@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
+import { NavLink } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
@@ -78,7 +79,8 @@ function ProfileButton({ user }) {
                   </li>
                   <li><OpenModalButton buttonText="New+" modalComponent={<CreateTextPost />}></OpenModalButton></li></div>
                 <div className="bottom-dropdown-menu-small">
-                  <li><i className="fas fa-file"></i> {user.username}'s Posts</li>
+                  {/* <li><NavLink exact to="/posts/current_user"><i className="fas fa-file"></i>{user.username}'s Posts</NavLink></li> */}
+                  <li><i href="/posts/current_user" className="fas fa-file"></i>{user.username}'s Posts</li>
                   <li><i className="fas fa-users"></i> Followers</li>
                   <li><i className="fas fa-chart-line"></i> Activity</li>
                   <li><i className="fas fa-file-alt"></i> Drafts</li>
