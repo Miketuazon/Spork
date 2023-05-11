@@ -16,9 +16,15 @@ export default function EditPost({post}) {
     const currentUser = useSelector(state => state?.session?.user)
     const currentUserId = currentUser.id
     const [content, setContent] = useState(post?.content)
+    const [title, setTitle] = useState(post?.title)
+    const [image_url, setImageUrl] = useState(post?.image_url)
+    const [post_type, setPostType] = useState(post?.post_type)
     const onSubmit = async (e) => {
         e.preventDefault()
         const updatePost = {
+            post_type: 'String',
+            image_url: '1234.jpeg',
+            title: title,
             content: content
         }
         const updatedPost = dispatch(updateOnePost(updatePost, postId))
@@ -30,11 +36,11 @@ export default function EditPost({post}) {
     }
 
 
-
     const handleCancel = (e) => {
         e.preventDefault();
         closeModal();
     }
+
     console.log('currentUser', currentUser)
     return (
         <>
@@ -47,6 +53,8 @@ export default function EditPost({post}) {
                         className="update-post-title"
                         type="text"
                         placeholder="Title"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
                     />
 
                     <div>

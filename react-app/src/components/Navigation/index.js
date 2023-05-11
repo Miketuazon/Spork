@@ -7,6 +7,7 @@ import './Navigation.css';
 import LoginFormModal from '../LoginFormModal';
 import CreatePost from '../Posts/CreatePost';
 
+
 // import logo from "../../assets/logo-spork.jpeg"
 
 function Navigation({ isLoaded }) {
@@ -39,7 +40,7 @@ function Navigation({ isLoaded }) {
 						<NavLink exact to="/"><i className='fas fa-comment-dots'></i></NavLink>
 						<NavLink exact to="/"><i className="fa fa-bolt"></i></NavLink>
 						<ProfileButton user={sessionUser} />
-						<OpenModalButton buttonText={<><i className="fa fa-pen-square"></i></>} modalComponent={<CreatePost />}></OpenModalButton>
+						<OpenModalButton buttonText={<><i className="fa fa-pen-square"></i></>} modalComponent={<CreatePost/>}></OpenModalButton>
 
 					</li>
 				</div>)

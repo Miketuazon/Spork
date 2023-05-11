@@ -11,13 +11,21 @@ export default function CreatePost() {
     const dispatch = useDispatch()
     const currentUser = useSelector(state => state?.session?.user)
     const [content, setContent] = useState('')
+    const [title, setTitle] = useState('')
+    const [image_url, setImageUrl] = useState('')
+    const [post_type, setPostType] = useState('')
     const onSubmit = async (e) => {
         e.preventDefault()
         const newPost = {
+            post_type: post_type || 'String',
+            image_url: image_url || '1234.jpeg',
+            title: title,
             content: content
         }
-  dispatch(createOnePost(newPost))
-  closeModal()
+  const successPost = dispatch(createOnePost(newPost))
+  if (successPost) {
+    closeModal()
+  }
 
     }
 
@@ -29,15 +37,18 @@ export default function CreatePost() {
     return (
         <>
         <div className="create-post-nav">
-                <form onSubmit={onSubmit}>
+                <form>
                 <div className="create-post-username-gear">
                     <span className="create-post-username">{currentUser?.username}</span><i className="fa fa-gear"></i>
                 </div>
                     <input
-                        className="create-post-title"
+                        className="update-post-title"
                         type="text"
                         placeholder="Title"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
                     />
+
 
                 <div>
                     <textarea
@@ -63,15 +74,7 @@ export default function CreatePost() {
                     type="text"
                     placeholder="#add tags to help people find your post"
                 />
-                    <li>
-                        <button  type="submit" className="create-post-post-now-button" ><span>Post now |</span><span className="fa fa-angle-down"></span></button>
-                        <ul className="create-post-dropdown">
-                            <li><a>1</a></li>
-                            <li><a>2</a></li>
-                            <li><a>3</a></li>
-                            <li><a>4</a></li>
-                        </ul>
-                    </li>
+
                 </form>
                 <ul className="create-post-close-for-everyone-post-now-button">
                     <span>
@@ -79,9 +82,7 @@ export default function CreatePost() {
                     </span>
                     <span className="create-post-for-everyone-post-now-button">
                         <li>
-                            <a>
-                                <button className="create-post-for-everyone-button"><span>For Everyone </span><span className="fa fa-angle-down"></span></button>
-                            </a>
+
                             <ul className="create-post-dropdown">
                                 <li><a>1</a></li>
                                 <li><a>2</a></li>
@@ -89,6 +90,15 @@ export default function CreatePost() {
                                 <li><a>4</a></li>
                             </ul>
                         </li>
+                        <li>
+                            <button onClick={onSubmit} className="create-post-post-now-button" ><span>Post now |</span><span className="fa fa-angle-down"></span></button>
+                        <ul className="create-post-dropdown">
+                            <li><a>1</a></li>
+                            <li><a>2</a></li>
+                            <li><a>3</a></li>
+                            <li><a>4</a></li>
+                        </ul>
+                    </li>
                         {/* <div>
                         <li>
                             <button onSubmit={onSubmit} className="create-post-post-now-button" ><span>Post now |</span><span className="fa fa-angle-down"></span></button>
