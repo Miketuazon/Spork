@@ -26,8 +26,18 @@ def follow_unfollow_a_user(user_id):
     if follower.id in followed_followers:
         follower.following.remove(followed)
         db.session.commit()
-        return f"{follower.username} unfollowed {followed.username}"
+        # return f"{follower.username} unfollowed {followed.username}"
+        return {
+        "message": f"{follower.username} unfollowed {followed.username}",
+        "follower": follower.to_dict(),
+        "followed": followed.to_dict(),
+        }
 
     followed.followers.append(follower)
     db.session.commit()
-    return f"{follower.username} followed {followed.username}"
+    # return f"{follower.username} followed {followed.username}"
+    return {
+        "message": f"{follower.username} followed {followed.username}",
+        "follower": follower.to_dict(),
+        "followed": followed.to_dict(),
+    }
