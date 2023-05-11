@@ -29,8 +29,8 @@ def follow_unfollow_a_user(user_id):
         # return f"{follower.username} unfollowed {followed.username}"
         return {
         "message": f"{follower.username} unfollowed {followed.username}",
-        "follower": f"{follower.to_dict()}",
-        "followed": f"{followed.to_dict()}",
+        "follower": follower.to_dict(),
+        "followed": followed.to_dict(),
         }
 
     followed.followers.append(follower)
@@ -38,6 +38,6 @@ def follow_unfollow_a_user(user_id):
     # return f"{follower.username} followed {followed.username}"
     return {
         "message": f"{follower.username} followed {followed.username}",
-        "follower": f"{follower.to_dict()}",
-        "followed": f"{followed.to_dict()}",
+        "follower": follower.to_dict(),
+        "followed": followed.to_dict(),
     }
