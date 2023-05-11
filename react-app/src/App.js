@@ -11,8 +11,7 @@ import AllLikes from "./components/Likes/AllLikes";
 import LikesCounter from "./components/Likes/LikesCounter";
 import CurrentUserPosts from "./components/Posts/CurrentUserPosts";
 import EditPost from "./components/Posts/EditPost";
-
-
+import ResultsPage from "./components/ResultsPage/ResultsPage"
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +31,7 @@ function App() {
           <Route exact path="/create">
             <CreatePost/>
           </Route>
+
           <Route exact path="/login">
             <LoginFormPage />
           </Route>
@@ -52,6 +52,9 @@ function App() {
           </Route>
           <Route exact path="/feed">
             <Feed />
+          </Route>
+          <Route path="/search/">
+            <ResultsPage />
           </Route>
         </Switch>
       )}

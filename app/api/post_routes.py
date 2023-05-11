@@ -18,8 +18,6 @@ def posts():
     return_list = []
     for post in posts:
         post_dict = post.to_dict()
-        owner = post.owner
-        post_dict['owner'] = owner.to_dict()
         return_list.append(post_dict)
     return return_list
 
@@ -35,8 +33,6 @@ def current_user_posts():
     return_list = []
     for post in posts:
         post_dict = post.to_dict()
-        owner = post.owner
-        post_dict['owner'] = owner.to_dict()
         return_list.append(post_dict)
     return return_list
 

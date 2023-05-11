@@ -13,6 +13,7 @@ export const getFollowsForUser = (userId) => async dispatch => {
     if (response.ok) {
         const userFollows = await response.json()
         dispatch(getFollowers(userFollows))
+        return userFollows
     }
 }
 
