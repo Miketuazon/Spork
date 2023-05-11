@@ -5,7 +5,7 @@ import OpenModalButton from '../OpenModalButton';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import LoginFormModal from '../LoginFormModal';
-import CreatePost from '../Posts/CreatePost';
+import CreateTextPost from '../Posts/CreateTextPost';
 import SearchBar from '../ResultsPage/Searchbar';
 // import logo from "../../assets/logo-spork.jpeg"
 
@@ -39,19 +39,19 @@ function Navigation({ isLoaded }) {
 						<NavLink exact to="/"><i className='fas fa-comment-dots'></i></NavLink>
 						<NavLink exact to="/"><i className="fa fa-bolt"></i></NavLink>
 						<ProfileButton user={sessionUser} />
-						<OpenModalButton buttonText={<><i className="fa fa-pen-square"></i></>} modalComponent={<CreatePost/>}></OpenModalButton>
+						<OpenModalButton buttonText={<><i className="fa fa-pen-square"></i></>} modalComponent={<CreateTextPost />}></OpenModalButton>
 
 					</li>
 				</div>)
-				 : (
+				: (
 					<div>
-					<OpenModalButton
-					  clasName="button-green-login"
-					  buttonText="Log In"
-					  modalComponent={<LoginFormModal />}
-					/>
-				  </div>
-				 )
+						<OpenModalButton
+							clasName="button-green-login"
+							buttonText="Log In"
+							modalComponent={<LoginFormModal />}
+						/>
+					</div>
+				)
 
 			}
 

@@ -25,9 +25,9 @@ const PostItem = ({ post }) => {
     const openMenuButtonRef = useRef(null)
     const postsVal = Object.values(post)
     const postId = postsVal?.id
-//    const followers = useSelector(state => state?.follow)
-//    const followersVal = Object?.values(followers)
-//    console.log('followersVal', followersVal)
+    //    const followers = useSelector(state => state?.follow)
+    //    const followersVal = Object?.values(followers)
+    //    console.log('followersVal', followersVal)
     const dispatch = useDispatch();
     const comments = useSelector(state => state?.comments)
     const commentsVal = Object.values(comments)
@@ -43,10 +43,10 @@ const PostItem = ({ post }) => {
         dropdown.current.classList.toggle('dropdown-open')
         document.activeElement.blur();
     }
-    const onSubmitFollow = async(e) => {
+    const onSubmitFollow = async (e) => {
         e.preventDefault()
-       dispatch(getFollowsForUser(post?.userId))
-       dispatch(getAllPosts())
+        dispatch(getFollowsForUser(post?.userId))
+        dispatch(getAllPosts())
         // window.location.reload(false);
     }
     const openMenu = () => {
@@ -74,7 +74,6 @@ const PostItem = ({ post }) => {
 
     const ulClassNameUpdateDelete = "list-for-update-delete" + (showMenu ? "" : " hidden");
 
-
     return (
         <div>
             <div className="post-header">
@@ -82,7 +81,7 @@ const PostItem = ({ post }) => {
                 <span className="username">{post?.owner?.username}</span>
                 <span className="timestamp">{post?.createdAt}</span>
                 {/* {follower ? <span>Unfollow</span> : <span>Follow</span>} */}
-                { follower && (currentUser.id !== post.userId ) ? <button onClick={onSubmitFollow}>unfollow</button>: !follower && (currentUser?.id !== post?.userId ) ? <button onClick={onSubmitFollow}>Follow</button>:<></>}
+                {follower && (currentUser.id !== post.userId) ? <button onClick={onSubmitFollow}>unfollow</button> : !follower && (currentUser?.id !== post?.userId) ? <button onClick={onSubmitFollow}>Follow</button> : <></>}
             </div>
             <div className="post-content">
                 {post?.content}
@@ -99,7 +98,7 @@ const PostItem = ({ post }) => {
                         />
                         <OpenModalButton
                             buttonText={<><i className="fa fa-pen-square"></i></>}
-                            modalComponent={<EditPost postId ={post?.id} post={post} />}
+                            modalComponent={<EditPost postId={post?.id} post={post} />}
                         />
                     </div>
                 ) : (
@@ -115,64 +114,64 @@ const PostItem = ({ post }) => {
                     modalComponent={<CreateComment postId={post?.id} />}
                 /> */}
 
-{/* <ul className="comment-list"> */}
+            {/* <ul className="comment-list"> */}
             <div className="dropdown m-10">
 
-            <button type='click' onClick={openMenu}>{<><i className="fas fa-comment-dots"></i></>}</button>
-            <ul className={ulClassNameUpdateDelete} ref={ulRef}>
+                <button type='click' onClick={openMenu}>{<><i className="fas fa-comment-dots"></i></>}</button>
+                <ul className={ulClassNameUpdateDelete} ref={ulRef}>
 
-            <CreateComment postId={post?.id}/>
-     { post?.comments?.length ?
+                    <CreateComment postId={post?.id} />
+                    {post?.comments?.length ?
 
-        post?.comments.sort((a, b) => new Date(b?.createdAt) - new Date(a?.createdAt))?.map((comment) => {
-            return (
-                <div className="list-for-update-delete">
-                <li>
-                    <div className="comment-text-bubble">
+                        post?.comments.sort((a, b) => new Date(b?.createdAt) - new Date(a?.createdAt))?.map((comment) => {
+                            return (
+                                <div className="list-for-update-delete">
+                                    <li>
+                                        <div className="comment-text-bubble">
 
-                    <div className="the-comments-commented">{comment?.content}<div class="dropdown-container">
-                    <button buttonText={<><i className="fas fa-trash-alt"></i></>} class="dropbtn-update-delete">
-                                    <i class="fa fa-ellipsis-h"></i></button>
-                        <div class="dropdown-update-delete-content">
-                        <div className="comment-options">
-                <OpenModalButton
-                    className="delete-button-page"
-                    buttonText="Delete"
-                    modalComponent={
-                        <DeleteComment
-                    postId={post?.id}
-                    commentId={comment?.id}
-                />
-             }
-                />
-                <OpenModalButton
-                    buttonText="Update"
-                    modalComponent={
-                        <EditComment
-                    postId={post?.id}
-                    comment={comment}
-                />
-              }
-                />
-            </div>
+                                            <div className="the-comments-commented">{comment?.content}<div class="dropdown-container">
+                                                <button buttonText={<><i className="fas fa-trash-alt"></i></>} class="dropbtn-update-delete">
+                                                    <i class="fa fa-ellipsis-h"></i></button>
+                                                <div class="dropdown-update-delete-content">
+                                                    <div className="comment-options">
+                                                        <OpenModalButton
+                                                            className="delete-button-page"
+                                                            buttonText="Delete"
+                                                            modalComponent={
+                                                                <DeleteComment
+                                                                    postId={post?.id}
+                                                                    commentId={comment?.id}
+                                                                />
+                                                            }
+                                                        />
+                                                        <OpenModalButton
+                                                            buttonText="Update"
+                                                            modalComponent={
+                                                                <EditComment
+                                                                    postId={post?.id}
+                                                                    comment={comment}
+                                                                />
+                                                            }
+                                                        />
+                                                    </div>
 
-                        </div>
+                                                </div>
 
-                    </div>
-                  </div>
-                  </div>
+                                            </div>
+                                            </div>
+                                        </div>
 
-                </li>
+                                    </li>
 
-              </div>
+                                </div>
 
 
 
-            )
-        }): null
+                            )
+                        }) : null
 
-}
-</ul>
+                    }
+                </ul>
             </div>
         </div >
     )

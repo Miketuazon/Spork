@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
-import CreatePost from "../Posts/CreatePost";
+import CreatePost from "../Posts/CreateTextPost";
 import './ProfileButton.css'
 
 function ProfileButton({ user }) {
@@ -77,7 +77,7 @@ function ProfileButton({ user }) {
                   <li>
                     <button className="account-menu-dropdown">Blogs </button>
                   </li>
-                  <li><OpenModalButton buttonText="New+" modalComponent={<CreatePost/>}></OpenModalButton></li></div>
+                  <li><OpenModalButton buttonText="New+" modalComponent={<CreatePost />}></OpenModalButton></li></div>
                 <div className="bottom-dropdown-menu-small">
                   {/* <li><NavLink exact to="/posts/current_user"><i className="fas fa-file"></i>{user.username}'s Posts</NavLink></li> */}
                   <li><i href="/posts/current_user" className="fas fa-file"></i>{user.username}'s Posts</li>
