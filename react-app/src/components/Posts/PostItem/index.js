@@ -15,15 +15,9 @@ import { useCallback } from "react";
 
 const PostItem = ({ post }) => {
     const [showMenu, setShowMenu] = useState(false);
-    const postId = post?.id
     const ulRef = useRef();
-    const openMenuButtonRef = useRef(null)
-    const dispatch = useDispatch();
     const comments = useSelector(state => state?.comments)
-    const commentsVal = Object.values(comments)
     console.log('comments', comments)
-    const commentId = comments?.id
-    const menuButtonRef = useRef(null)
     const currentUser = useSelector(state => state?.session?.user)
     const postComments = post?.comments
 
@@ -90,42 +84,42 @@ const PostItem = ({ post }) => {
                     modalComponent={<CreateComment postId={post?.id} />}
                 /> */}
 
-{/* <ul className="comment-list"> */}
+            {/* <ul className="comment-list"> */}
             <button type='click' onClick={openMenu}>{<><i className="fas fa-comment-dots"></i></>}</button>
             <ul className={ulClassNameUpdateDelete} ref={ulRef}>
 
-            <CreateComment postId={post?.id}/>
-     { post?.comments?.length ?
+                <CreateComment postId={post?.id} />
+                {post?.comments?.length ?
 
-        post?.comments.sort((a, b) => new Date(b?.createdAt) - new Date(a?.createdAt))?.map((comment) => {
-            return (
-                <div className="list-for-update-delete">
-                <li>
-                    <div className="comment-text-bubble">
+                    post?.comments.sort((a, b) => new Date(b?.createdAt) - new Date(a?.createdAt))?.map((comment) => {
+                        return (
+                            <div className="list-for-update-delete">
+                                <li>
+                                    <div className="comment-text-bubble">
 
-                    <div className="the-comments-commented">{comment?.content}<div class="dropdown-container">
-                    <button buttonText={<><i className="fas fa-trash-alt"></i></>} class="dropbtn-update-delete">
-                                    <i class="fa fa-ellipsis-h"></i></button>
-                        <div class="dropdown-update-delete-content">
-                                    <div className="comments-delete-option"><OpenModalButton className="delete-button-page" buttonText='Delete' modalComponent={<DeleteComment postId={post?.id}  commentId={comment?.id} />} /></div>
-                                    <div className="comments-update-option"><OpenModalButton buttonText='Update' modalComponent={<EditComment postId={post?.id}  comment={comment}/>} /></div>
-                        </div>
+                                        <div className="the-comments-commented">{comment?.content}<div class="dropdown-container">
+                                            <button buttonText={<><i className="fas fa-trash-alt"></i></>} class="dropbtn-update-delete">
+                                                <i class="fa fa-ellipsis-h"></i></button>
+                                            <div class="dropdown-update-delete-content">
+                                                <div className="comments-delete-option"><OpenModalButton className="delete-button-page" buttonText='Delete' modalComponent={<DeleteComment postId={post?.id} commentId={comment?.id} />} /></div>
+                                                <div className="comments-update-option"><OpenModalButton buttonText='Update' modalComponent={<EditComment postId={post?.id} comment={comment} />} /></div>
+                                            </div>
 
-                    </div>
-                  </div>
-                  </div>
+                                        </div>
+                                        </div>
+                                    </div>
 
-                </li>
+                                </li>
 
-              </div>
+                            </div>
 
 
 
-            )
-        }): null
+                        )
+                    }) : null
 
-}
-</ul>
+                }
+            </ul>
         </div >
     )
 }
