@@ -26,7 +26,7 @@ const Feed = () => {
         dispatch(getAllPosts())
         // dispatch(getCommentsForPost(postId))
         // dispatch(getCommentsForPost(postId))
-    }, [dispatch, JSON.stringify(postsVal), JSON.stringify(posts)])
+    }, [dispatch, JSON.stringify(postsVal)])
 
     return (
         <div className='Feed'>
