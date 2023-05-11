@@ -51,7 +51,7 @@ function App() {
           <Route exact path="/feed">
             <Feed />
           </Route>
-          <Route exact path="/search/:query">
+          <Route path="/search/">
             <ResultsPage />
           </Route>
         </Switch>

@@ -4,7 +4,7 @@ function SearchBar() {
     const [query, setQuery] = useState('');
 
     const handleSearch = () => {
-        window.location.href = `/search/query=${query}`;
+        window.location.href = `/search/results/?query=${query}`;
     };
 
     return (
