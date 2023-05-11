@@ -58,7 +58,7 @@ export default function commentsReducer(state = {}, action) {
     switch (action.type) {
     case GET_COMMENTS:
     newState = {}
-    action?.posts?.comments?.forEach((comment) => newState[comment?.id] = comment)
+    action?.comments?.forEach((comment) => newState[comment?.id] = comment)
     return newState;
     case DELETE_COMMENT:
         newState = {...state}

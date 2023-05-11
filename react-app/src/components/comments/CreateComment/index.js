@@ -31,6 +31,8 @@ export default function CreateComment({postId}) {
 
     return (
         <>
+        <div className="user-picture-comments">
+         <img className="user-cone-comments" src="https://assets.tumblr.com/images/default_avatar/cone_open_64.png" alt="default_image.png" />
             <form className="create-post-area-comments-form" onSubmit={onSubmit}>
     <textarea className="create-post-textarea-comments"
         rows="1"
@@ -41,7 +43,7 @@ export default function CreateComment({postId}) {
     />
     <button className='submit-comment' ><i class="fa fa-reply"></i></button>
 </form>
-
+</div>
 
 
 

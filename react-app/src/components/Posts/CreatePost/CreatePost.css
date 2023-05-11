@@ -54,14 +54,7 @@
     margin-top: 20px;
   }
 
-  .create-post-close-button {
-    font-size: 13px;
-    color: #ccc;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
-  }
+
 
   .create-post-for-everyone-post-now-button {
     display: flex;
@@ -78,6 +71,7 @@ list-style: none;
     border: none;
     outline: none;
     cursor: pointer;
+    border-radius: 5px;
   }
 
   .create-post-dropdown {
@@ -147,9 +141,28 @@ list-style: none;
     color: gray;
     font-size: 25px;
   }
-  .create-post-post-now-button{
-    list-style:none;
+
+  li {
+    list-style: none;
   }
-li {
-  list-style: none;
-}
+  .create-post-post-now-button {
+    list-style: none;
+    font-size: 13px;
+    color: white;
+    background-color: gray;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .create-post-close-button {
+    list-style: none;
+    font-size: 13px;
+    color: white;
+    background-color: gray;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: none
+    ;
+  }

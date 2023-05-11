@@ -10,14 +10,24 @@ import EditComment from "../../comments/EditComment"
 import { getCommentsForPost } from '../../../store/comment'
 import { useEffect } from "react";
 import { useDispatch } from "react-redux"
+import { getAllPosts } from "../../../store/post";
 import { useCallback } from "react";
+import FollowOrUnfollow from "../../Follows";
+import { getFollowsForUser } from "../../../store/follow";
 
 
 const PostItem = ({ post }) => {
     const [showMenu, setShowMenu] = useState(false);
-    const postId = post?.id
+
+    console.log('postUserId', post?.userId)
     const ulRef = useRef();
+    console.log('post', post)
     const openMenuButtonRef = useRef(null)
+    const postsVal = Object.values(post)
+    const postId = postsVal?.id
+//    const followers = useSelector(state => state?.follow)
+//    const followersVal = Object?.values(followers)
+//    console.log('followersVal', followersVal)
     const dispatch = useDispatch();
     const comments = useSelector(state => state?.comments)
     const commentsVal = Object.values(comments)
@@ -25,15 +35,26 @@ const PostItem = ({ post }) => {
     const commentId = comments?.id
     const menuButtonRef = useRef(null)
     const currentUser = useSelector(state => state?.session?.user)
+    console.log('currentUser', currentUser)
     const postComments = post?.comments
-
-
+    const follower = currentUser?.following?.find(id => id === post?.userId)
+    const dropdown = useRef()
+    // console.log('follower', follower)
+    const handleClick = () => {
+        dropdown.current.classList.toggle('dropdown-open')
+        document.activeElement.blur();
+    }
+    const onSubmitFollow = async(e) => {
+        e.preventDefault()
+        dispatch(getFollowsForUser(post?.userId))
+    }
     const openMenu = () => {
         if (showMenu) return;
         setShowMenu(true);
     };
 
     useEffect(() => {
+        // dispatch(getCommentsForPost(postId))
         if (!showMenu) return;
 
         const closeMenu = (e) => {
@@ -45,7 +66,7 @@ const PostItem = ({ post }) => {
         document.addEventListener('click', closeMenu);
 
         return () => document.removeEventListener("click", closeMenu);
-    }, [showMenu, JSON.stringify(postComments)]);
+    }, [dispatch, showMenu, JSON.stringify(postsVal) ]);
 
 
 
@@ -58,6 +79,8 @@ const PostItem = ({ post }) => {
                 <img src="https://assets.tumblr.com/images/default_avatar/cone_open_64.png" alt="default_image.png" />
                 <span className="username">{post?.owner?.username}</span>
                 <span className="timestamp">{post?.createdAt}</span>
+                {/* {follower ? <span>Unfollow</span> : <span>Follow</span>} */}
+                { follower && (currentUser.id !== post.userId ) ? <button onClick={onSubmitFollow}>unfollow</button>: !follower && (currentUser?.id !== post?.userId ) ? <button onClick={onSubmitFollow}>Follow</button>:<></>}
             </div>
             <div className="post-content">
                 {post?.content}
@@ -74,7 +97,7 @@ const PostItem = ({ post }) => {
                         />
                         <OpenModalButton
                             buttonText={<><i className="fa fa-pen-square"></i></>}
-                            modalComponent={<EditPost post={post} />}
+                            modalComponent={<EditPost postId ={post?.id} post={post} />}
                         />
                     </div>
                 ) : (
@@ -91,6 +114,8 @@ const PostItem = ({ post }) => {
                 /> */}
 
 {/* <ul className="comment-list"> */}
+            <div className="dropdown m-10">
+
             <button type='click' onClick={openMenu}>{<><i className="fas fa-comment-dots"></i></>}</button>
             <ul className={ulClassNameUpdateDelete} ref={ulRef}>
 
@@ -107,8 +132,28 @@ const PostItem = ({ post }) => {
                     <button buttonText={<><i className="fas fa-trash-alt"></i></>} class="dropbtn-update-delete">
                                     <i class="fa fa-ellipsis-h"></i></button>
                         <div class="dropdown-update-delete-content">
-                                    <div className="comments-delete-option"><OpenModalButton buttonText='Delete' modalComponent={<DeleteComment postId={post?.id}  commentId={comment?.id} />} /></div>
-                                    <div className="comments-update-option"><OpenModalButton buttonText='Update' modalComponent={<EditComment postId={post?.id}  comment={comment}/>} /></div>
+                        <div className="comment-options">
+                <OpenModalButton
+                    className="delete-button-page"
+                    buttonText="Delete"
+                    modalComponent={
+                        <DeleteComment
+                    postId={post?.id}
+                    commentId={comment?.id}
+                />
+             }
+                />
+                <OpenModalButton
+                    buttonText="Update"
+                    modalComponent={
+                        <EditComment
+                    postId={post?.id}
+                    comment={comment}
+                />
+              }
+                />
+            </div>
+
                         </div>
 
                     </div>
@@ -126,6 +171,7 @@ const PostItem = ({ post }) => {
 
 }
 </ul>
+            </div>
         </div >
     )
 }
