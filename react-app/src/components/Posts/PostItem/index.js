@@ -33,6 +33,8 @@ const PostItem = ({ post }) => {
     // const postFollowersVal = Object?.values(post?.owner?.followers)
     const postComments = post?.comments
     const follower = post?.owner?.followers?.find(id => id === currentUser?.id)
+    const postDate = new Date(post?.createdAt)
+    const formattedDate = new Intl.DateTimeFormat('en-US', { month: 'long', day:'numeric',year: 'numeric' }).format(postDate);
     // const follower = Object.values(post?.owner?.followers).find(id => id === currentUser?.id)
     const dropdown = useRef()
     // console.log('follower', follower)
@@ -80,13 +82,14 @@ const PostItem = ({ post }) => {
             <div className="post-header">
                 <img src="https://assets.tumblr.com/images/default_avatar/cone_open_64.png" alt="default_image.png" />
                 <span className="username">{post?.owner?.username}</span>
-                <span className="timestamp">{post?.createdAt}</span>
+                <span className="timestamp">{formattedDate}</span>
                 {/* {follower ? <span>Unfollow</span> : <span>Follow</span>} */}
                 { currentUser && follower && (currentUser?.id !== post?.userId ) ? <button className="button-unfollow" onClick={onSubmitFollow}>unfollow</button>: currentUser && !follower && (currentUser?.id !== post?.userId ) ? <button className="button-follow" onClick={onSubmitFollow}>Follow</button>:<></>}
             </div>
-            <div className="post-content">
+            <h5>{post?.title}</h5>
+            <p className="post-content">
                 {post?.content}
-            </div>
+            </p>
             <div className="post-footer">
                 <button onClick={openMenu} className="like-button">{notes === 1 ? <div><span>{notes} </span><span>note</span></div> : <div><span>{notes} </span><span>notes</span></div>}</button>
                 <button className="like-button"><i class="fa fa-heart"></i></button>
@@ -125,6 +128,7 @@ const PostItem = ({ post }) => {
      { post?.comments?.length ?
 
                         post?.comments?.sort((a, b) => new Date(b?.createdAt) - new Date(a?.createdAt))?.map((comment) => {
+
                             return (
                                 <div className="list-for-update-delete">
                                     <li>

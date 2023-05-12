@@ -110,7 +110,7 @@ const Feed = () => {
 </div>
 
             <ul className='posts'>
-                {Object?.values(posts)?.map(post => (
+          {Object?.values(posts)?.sort((a, b) => new Date(b?.createdAt) - new Date(a?.createdAt))?.map(post => (
                     <li key={post?.id} className="post">
                         <PostItem post={post} />
                     </li>

@@ -24,11 +24,11 @@ const CurrentUserPosts = () => {
     useEffect(() => {
         dispatch(getCurrentUserPosts())
         // dispatch(getCommentsForPost(postId))
-    }, [dispatch, JSON.stringify(postsVal), JSON.stringify(posts)])
+    }, [dispatch, JSON.stringify(postsVal)])
 
-    // if (!posts) {
-    //     return null
-    // }
+    if (!posts) {
+        return null
+    }
 
 
 
@@ -61,7 +61,7 @@ const CurrentUserPosts = () => {
                 </span>
             </div>
             <ul className='posts'>
-                {Object?.values(posts)?.map(currentPost => (
+                {Object?.values(posts)?.sort((a, b) => new Date(b?.createdAt) - new Date(a?.createdAt))?.map(currentPost => (
                     <li key={currentPost?.id} className="current-post">
                         <PostItem post={currentPost} />
                     </li>
