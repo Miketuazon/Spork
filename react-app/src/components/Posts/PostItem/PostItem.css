@@ -30,23 +30,11 @@
 
 .comment-text-bubble {
   overflow-wrap: break-word;
-  min-width: 100%;
-  max-width: 300%;
 }
-
-.the-comments-commented {
-  max-width: 300px;
-}
-
-.comment-owner {
-  font-weight: bold;
-  max-width: 800px;
-}
-
 
 .post-content {
   margin-bottom: 10px;
-
+  overflow-wrap: break-word;
 }
 
 .post-footer {
