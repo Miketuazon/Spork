@@ -8,9 +8,9 @@ export default function AllLikes() {
 
     return (
         <div>
-            <ul className="posts">
+            <ul className="All-Likes-post">
                 {sessionUser.likes.map(post => (
-                    <li key={post.id} className="post">
+                    <li key={post.id} className="All-Likes-post-2">
                         <LikesPostItem post={post} />
                     </li>
                 ))}

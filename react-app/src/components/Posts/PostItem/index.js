@@ -14,9 +14,13 @@ import { getAllPosts, getCurrentUserPosts } from "../../../store/post";
 import { useCallback } from "react";
 import FollowOrUnfollow from "../../Follows";
 import { getFollowsForUser } from "../../../store/follow";
+import { useModal } from "../../../context/Modal";
+
+
 
 
 const PostItem = ({ post }) => {
+    const { closeModal } = useModal();
     const [showMenu, setShowMenu] = useState(false);
     const ulRef = useRef();
     const openMenuButtonRef = useRef(null)
@@ -24,6 +28,7 @@ const PostItem = ({ post }) => {
     const postId = postsVal?.id
     const dispatch = useDispatch();
     const comments = useSelector(state => state?.comments)
+    console.log('comments', comments)
     const commentsVal = Object.values(comments)
     const commentId = comments?.id
     const menuButtonRef = useRef(null)
@@ -33,8 +38,9 @@ const PostItem = ({ post }) => {
     // const postFollowersVal = Object?.values(post?.owner?.followers)
     const postComments = post?.comments
     const follower = post?.owner?.followers?.find(id => id === currentUser?.id)
-    const postDate = new Date(post?.createdAt)
-    const formattedDate = new Intl.DateTimeFormat('en-US', { month: 'long', day:'numeric',year: 'numeric' }).format(postDate);
+    // const createdAtVal = Object?.values(post?.createdAt)
+    // const postDate = new Date(post?.createdAt)
+    // const formattedDate = new Intl.DateTimeFormat('en-US', { month: 'long', day:'numeric', year: 'numeric' })?.format(postDate);
     // const follower = Object.values(post?.owner?.followers).find(id => id === currentUser?.id)
     const dropdown = useRef()
     // console.log('follower', follower)
@@ -43,13 +49,15 @@ const PostItem = ({ post }) => {
         document.activeElement.blur();
     }
 
+
+
     const onSubmitFollow = async (e) => {
         e.preventDefault()
 
-       const successFollow = dispatch(getFollowsForUser(post?.userId))
-       if (successFollow) {
-        dispatch(getAllPosts())
-       }
+        const successFollow = dispatch(getFollowsForUser(post?.userId))
+        if (successFollow) {
+            dispatch(getAllPosts())
+        }
         // window.location.reload(false);
     }
     const openMenu = () => {
@@ -71,7 +79,7 @@ const PostItem = ({ post }) => {
         document.addEventListener('click', closeMenu);
 
         return () => document.removeEventListener("click", closeMenu);
-    }, [dispatch, showMenu, JSON.stringify(postFollowers)]);
+    }, [dispatch, showMenu, JSON.stringify(postFollowers), JSON.stringify(postComments)]);
 
 
     const ulClassNameUpdateDelete = "list-for-update-delete" + (showMenu ? "" : " hidden");
@@ -80,13 +88,16 @@ const PostItem = ({ post }) => {
     return (
         <div>
             <div className="post-header">
-                <img src="https://assets.tumblr.com/images/default_avatar/cone_open_64.png" alt="default_image.png" />
-                <span className="username">{post?.owner?.username}</span>
-                <span className="timestamp">{formattedDate}</span>
-                {/* {follower ? <span>Unfollow</span> : <span>Follow</span>} */}
-                { currentUser && follower && (currentUser?.id !== post?.userId ) ? <button className="button-unfollow" onClick={onSubmitFollow}>unfollow</button>: currentUser && !follower && (currentUser?.id !== post?.userId ) ? <button className="button-follow" onClick={onSubmitFollow}>Follow</button>:<></>}
+                <dov><img src="https://assets.tumblr.com/images/default_avatar/cone_open_64.png" alt="default_image.png" />{post?.owner?.username}</dov>
+                {/* <span className="username">{post?.owner?.username}</span> */}
+                <div className="username-unfollow-follow">
+                    {/* <span className="timestamp">{post?.createdAt}</span> */}
+                    {/* {follower ? <span>Unfollow</span> : <span>Follow</span>} */}
+                    {currentUser && follower && (currentUser?.id !== post?.userId) ? <button className="button-unfollow" onClick={onSubmitFollow}>unfollow</button> : currentUser && !follower && (currentUser?.id !== post?.userId) ? <button className="button-follow" onClick={onSubmitFollow}>Follow</button> : <></>}
+                </div>
             </div>
-            <h5>{post?.title}</h5>
+            <h7 className="timestamp">{post?.createdAt}</h7>
+            <h4 className="post-item-postTitle">{post?.title}</h4>
             <p className="post-content">
                 {post?.content}
             </p>
@@ -94,12 +105,17 @@ const PostItem = ({ post }) => {
                 <button onClick={openMenu} className="like-button">{notes === 1 ? <div><span>{notes} </span><span>note</span></div> : <div><span>{notes} </span><span>notes</span></div>}</button>
                 <button className="like-button"><i class="fa fa-heart"></i></button>
                 <button className="reblog-button"><i class="fa fa-retweet"></i></button>
+               {/* {currentUser?.id === post?.userId ?
+                <button></button>:<></>
+
+                } */}
                 {currentUser?.id === post?.userId ? (
                     <div className="comments-trash-and-update-button">
                         <OpenModalButton
                             buttonText={<><i className="fas fa-trash-alt"></i></>}
                             modalComponent={<DeletePost postId={post?.id} />}
                         />
+                        {/* <DeletePost postId={postId}/> */}
                         <OpenModalButton
                             buttonText={<><i className="fa fa-pen-square"></i></>}
                             modalComponent={<EditPost postId={post?.id} post={post} />}
@@ -121,57 +137,28 @@ const PostItem = ({ post }) => {
             {/* <ul className="comment-list"> */}
             <div className="dropdown m-10">
 
-            {/* <button type='click' onClick={openMenu}>{<><i className="fas fa-comment-dots"></i></>}</button> */}
-            <ul className={ulClassNameUpdateDelete} ref={ulRef}>
-{ currentUser ?
-            <CreateComment postId={post?.id}/>:<></> }
-     { post?.comments?.length ?
+                {/* <button type='click' onClick={openMenu}>{<><i className="fas fa-comment-dots"></i></>}</button> */}
+                <ul className={ulClassNameUpdateDelete} ref={ulRef}>
+                    {currentUser ?
+                        <CreateComment postId={post?.id} /> : <></>}
+                    {post?.comments?.length ?
 
                         post?.comments?.sort((a, b) => new Date(b?.createdAt) - new Date(a?.createdAt))?.map((comment) => {
 
                             return (
                                 <div className="list-for-update-delete">
-                                    <li>
+
+
+                                        <div className="trash-comment">
                                         <div className="comment-text-bubble">
-
-                    <div className="the-comments-commented">{comment?.content}<div class="dropdown-container">
-
-                    {currentUser?.id === comment?.userId ?
-                        <button buttonText={<><i className="fas fa-trash-alt"></i></>} class="dropbtn-update-delete">
-                                    <i class="fa fa-ellipsis-h"></i></button>:<></>
-                                    }
-                        <div class="dropdown-update-delete-content">
-                        <div className="comment-options">
-                <OpenModalButton
-                    className="delete-button-page"
-                    buttonText="Delete"
-                    modalComponent={
-                        <DeleteComment
-                    postId={post?.id}
-                    commentId={comment?.id}
-                />
-             }
-                />
-                <OpenModalButton
-                    buttonText="Update"
-                    modalComponent={
-                        <EditComment
-                    postId={post?.id}
-                    comment={comment}
-                />
-              }
-
-                />
-
-            </div>
-
-                                                </div>
-
-                                            </div>
+                                            <div className="the-comments-commented">
+                                                <span>{comment?.content}</span>
                                             </div>
                                         </div>
+                                        <span>{currentUser?.id === comment?.userId ? <DeleteComment commentId={comment?.id}><i className="fas fa-trash-alt"></i></DeleteComment> : <></>}</span>
+                                        </div>
 
-                                    </li>
+
 
                                 </div>
 
