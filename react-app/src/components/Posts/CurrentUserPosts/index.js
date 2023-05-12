@@ -35,16 +35,65 @@ const CurrentUserPosts = () => {
     return (
         <div className='current-user-feed'>
             <div>
-                <span className="post-option">
-                    <NavLink exact to="/"> Aa</NavLink>
-                    <NavLink exact to="/"><i className="fa fa-camera"></i></NavLink>
-                    <NavLink exact to="/"><i className="fa fa-quote-left"></i></NavLink>
-                    <NavLink exact to="/"><i className="fa fa-chain"></i></NavLink>
-                    <NavLink exact to="/"><i className='fas fa-comment-dots'></i></NavLink>
-                    <NavLink exact to="/"><i className="fa fa-headphones"></i></NavLink>
-                    <NavLink exact to="/"><i className="fa fa-video-camera"></i></NavLink>
-                    {/* <span></span> */}
-                </span>
+            <ul class="post-types">
+  <li>
+    <button class="post-type-btn text-btn" aria-label="Text">
+      <span class="post-type-icon">
+        <i class="fas fa-font"></i>
+      </span>
+      Text
+    </button>
+  </li>
+  <li>
+    <button class="post-type-btn photo-btn" aria-label="Photo">
+      <span class="post-type-icon">
+        <i class="fas fa-camera"></i>
+      </span>
+      Photo
+    </button>
+  </li>
+  <li>
+    <button class="post-type-btn quote-btn" aria-label="Quote">
+      <span class="post-type-icon">
+        <i class="fas fa-quote-left"></i>
+      </span>
+      Quote
+    </button>
+  </li>
+  <li>
+    <button class="post-type-btn link-btn" aria-label="Link">
+      <span class="post-type-icon">
+        <i class="fas fa-link"></i>
+      </span>
+      Link
+    </button>
+  </li>
+  <li>
+    <button class="post-type-btn chat-btn" aria-label="Chat">
+      <span class="post-type-icon">
+        <i class="fas fa-comment-alt"></i>
+      </span>
+      Chat
+    </button>
+  </li>
+  <li>
+    <button class="post-type-btn audio-btn" aria-label="Audio">
+      <span class="post-type-icon">
+        <i class="fas fa-volume-up"></i>
+      </span>
+      Audio
+    </button>
+  </li>
+  <li>
+    <button class="post-type-btn video-btn" aria-label="Video">
+      <span class="post-type-icon">
+        <i class="fas fa-video"></i>
+      </span>
+      Video
+    </button>
+  </li>
+</ul>
+
                 <span className="current-user-nav-links-list">
                     <ul>
                         <li><NavLink exact to="/">{currentUser?.username}</NavLink></li>
@@ -54,7 +103,7 @@ const CurrentUserPosts = () => {
                         <li><NavLink exact to="/">Drafts</NavLink></li>
                         <li><NavLink exact to="/">Queue</NavLink></li>
                         <li><NavLink exact to="/">Post+</NavLink></li>
-                        <li><NavLink exact to="/">Tumblr Blaze</NavLink></li>
+                        <li><NavLink exact to="/">Spork Blaze</NavLink></li>
                         <li><NavLink exact to="/">Blog settings</NavLink></li>
                         <li><NavLink exact to="/">Mass Post Editor</NavLink></li>
                     </ul>

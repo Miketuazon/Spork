@@ -4,7 +4,7 @@ body {
     padding: 0;
     font-family: sans-serif;
   }
-  
+
   /* Style the dialog box */
   .Lq1wm {
     position: fixed;
@@ -17,7 +17,7 @@ body {
     justify-content: center;
     align-items: center;
   }
-  
+
   /* Style the dialog content */
   .gQZdB {
     background-color: white;
@@ -26,8 +26,9 @@ body {
     max-width: 600px;
     width: 100%;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    margin-left: 503px;
   }
-  
+
   /* Style the close button */
   .SaLOl {
     background-color: transparent;
@@ -37,11 +38,11 @@ body {
     right: 16px;
     cursor: pointer;
   }
-  
+
   .SaLOl:focus-visible {
     outline: none;
   }
-  
+
   /* Style the title */
   .ZJXId {
     font-size: 32px;
@@ -49,14 +50,14 @@ body {
     margin-bottom: 16px;
     text-align: center;
   }
-  
+
   /* Style the text */
   ._yvUs {
     color: rgba(0, 0, 0, 0.6);
     text-align: center;
     margin-bottom: 32px;
   }
-  
+
   /* Style the button */
   .TRX6J {
     background-color: rgb(157, 183, 228);
@@ -68,11 +69,11 @@ body {
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
   }
-  
+
   .TRX6J:hover {
     background-color: rgb(177, 199, 234);
   }
-  
+
   .TRX6J:focus-visible {
     outline: none;
     box-shadow: 0 0 0 2px rgb(181, 199, 228);

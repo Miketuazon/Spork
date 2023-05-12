@@ -31,8 +31,9 @@ function Navigation({ isLoaded }) {
 				<div className='right-nav-bar'>
 					<li className="home-button-icons">
 						{/* <NavLink exact to="/"><div className="spork-logo"></div></NavLink> */}
+
 						<NavLink exact to="/"><i className="fa fa-home"></i></NavLink>
-						<NavLink exact to="/"><i className="fa fa-video-camera"></i></NavLink>
+						<NavLink exact to="/live"><i className="fa fa-video-camera"></i></NavLink>
 						<NavLink exact to="/"><i className="fa fa-compass"></i></NavLink>
 						<NavLink exact to="/"><i className='fas fa-store-alt'></i></NavLink>
 						<NavLink exact to="/"><i className="fa fa-envelope"></i></NavLink>

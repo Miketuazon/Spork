@@ -23,9 +23,10 @@ const onCancel = (e) => {
 }
 
 return (
-<>
-<span><button onClick={onSubmit}>Ok</button></span><span><button onClick={onCancel}>Cancel</button></span>
-</>
+ <>
+            <div onClick={onSubmit}>
+                <i className="fas fa-trash-alt"></i> </div>
+        </>
 )
 
 

@@ -28,7 +28,7 @@ text-decoration: none;
   list-style: none;
   display: flex;
   box-sizing: border-box;
-  height: 80px;
+  height: 85px;
   width: 560px;
   background-color: white;
   justify-content: space-around;
@@ -151,4 +151,27 @@ margin-left: 43px;
 .spork-live-thumbnails-imgs{
   display: flex;
   height: 175px;
+}
+
+
+.live-outer-box {
+  background-color: rgb(100, 109, 226);
+  padding: 10px;
+
+}
+
+
+
+.live-box-more {
+  color: #fff;
+  background-color: transparent;
+  padding: 5px 10px;
+  margin-top: 60px;
+}
+.live-box-more:hover {
+  background-color: rgb(70, 78, 159);
+}
+
+.live-outer-box:hover {
+  background-color: rgb(70, 78, 159);
 }

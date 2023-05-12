@@ -16,6 +16,9 @@ import AdFreeComponent from "./components/Navigation/dropdown-dummy/dropdown-adf
 import DropdownGifts from "./components/Navigation/dropdown-dummy/dropdown-gifts";
 import LivestreamCredits from "./components/Navigation/dropdown-dummy/dropdown-livestreamingcredits";
 // import UserPage from "./components/UserPage/UserPage";
+import FollowingDropdown from "./components/Follows/FollowingDropdown";
+import Live from "./components/Navigation/dropdown-dummy/dropdown-live";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -38,11 +41,20 @@ function App() {
           <Route exact path="/adfree">
             <AdFreeComponent/>
           </Route>
+          <Route exact path="/live">
+            <Live/>
+          </Route>
           <Route exact path="/gifts">
             <DropdownGifts/>
           </Route>
+          <Route exact path="/Likes">
+            <AllLikes/>
+          </Route>
           <Route exact path="/livestreamcredits">
             <LivestreamCredits/>
+          </Route>
+          <Route exact path="/Following">
+            <FollowingDropdown/>
           </Route>
           <Route exact path="/login">
             <LoginFormPage />

@@ -55,6 +55,7 @@ export const login = (email, password) => async (dispatch) => {
 	}
 };
 
+
 export const logout = () => async (dispatch) => {
 	const response = await fetch("/api/auth/logout", {
 		headers: {

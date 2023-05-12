@@ -1,6 +1,6 @@
 .post-header {
     display: flex;
-    align-items: center;
+    justify-content: space-between;
     margin-bottom: 10px;
 }
 
@@ -10,7 +10,13 @@
     border-radius: 50%;
     margin-right: 10px;
 }
+.post-item-postTitle {
+  font-weight: 500;
+}
 
+.post-item-postOwner-username{
+  font-weight: 500;
+}
 .post-header .username {
     font-weight: bold;
     margin-right: 10px;
@@ -91,8 +97,7 @@
 
 
   .list-for-update-delete {
-    margin: 20px 0;
-
+    margin: 20px 15px;
   }
 
   .list-for-update-delete li {
@@ -109,18 +114,7 @@
     border-radius: 20px;
     padding: 10px 20px;
     max-width: 70%;
-  }
-
-  .comment-text-bubble:before {
-    content: "";
-    position: absolute;
-    top: 20px;
-    left: -10px;
-    width: 0;
-    height: 0;
-    border-top: 10px solid transparent;
-    border-right: 15px solid #f1f1f1;
-    border-bottom: 10px solid transparent;
+    margin-right: 10px;
   }
 
 .dropdown-container {
@@ -151,11 +145,13 @@
   margin: 5px 0;
 }
 
-.dropdown-container:hover .dropdown-update-delete-content,
+/* .dropdown-container:hover .dropdown-update-delete-content,
 .dropdown-container:focus-within .dropdown-update-delete-content {
   display: block;
+} */
+.fas.fa-trash-alt {
+  cursor: pointer;
 }
-
 .hide-dropdown-btn:focus ~ .dropdown-container .dropdown-update-delete-content {
   display: none;
 }
@@ -163,7 +159,9 @@
 .show-dropdown-btn:focus ~ .dropdown-container .dropdown-update-delete-content {
   display: block;
 }
-
+.username-unfollow-follow{
+  justify-content: space-between;
+}
 .button-follow, .button-unfollow {
   color: #ffffff;
   font-size: 1rem;
@@ -172,7 +170,10 @@
   padding: 5px 22px;
   display: inline-block;
   position: relative;
+  /* margin-left: 300px; */
 }
+
+
 
 .button-follow::before, .button-unfollow::before {
   font-size: 20px;
@@ -197,4 +198,10 @@
 
 .button-follow:active, .button-unfollow:active {
   box-shadow: none;
+}
+
+.trash-comment{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }

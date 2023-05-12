@@ -14,16 +14,12 @@ const posts = useSelector(state => state?.posts)
 const onSubmit = async (e) => {
     e.preventDefault();
     dispatch(deleteOneComment(commentId))
-    closeModal()
+
 }
     return (
-        <div className=" delete-button-page">
-        <form className="delete-button-page" >
-        <div className="question-delete"> You definitely want to delete this reply? </div>
-
-        <button onClick={onSubmit} type='submit'>Delete</button>
-
-            </form>
-        </div>
+       <>
+            <div onClick={onSubmit}>
+                <i className="fas fa-trash-alt"></i> </div>
+        </>
     )
 }

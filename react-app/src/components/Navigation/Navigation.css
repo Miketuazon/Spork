@@ -140,3 +140,11 @@ a.active{
 position: absolute;
 right:0px;
 }
+
+.spork-search-button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: white;
+}

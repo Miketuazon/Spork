@@ -2,15 +2,18 @@ import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
+import { useSelector } from "react-redux";
 import "./LoginForm.css";
 import SignupFormModal from "../SignupFormModal";
 import OpenModalButton from "../OpenModalButton";
+import * as sessionActions from "../../store/session";
 
 function LoginFormModal() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+
   const { closeModal } = useModal();
 
   const handleSubmit = async (e) => {
@@ -22,6 +25,18 @@ function LoginFormModal() {
       closeModal();
     }
   };
+
+  const demoSignIn = async (e) => {
+    e.preventDefault();
+    const password = "password"
+    const email = "demo@aa.io"
+    const demoData = await dispatch(login(email, password));
+    if (demoData) {
+      setErrors(demoData);
+    } else {
+      closeModal();
+    }
+  }
 
   return (
     <>
@@ -84,7 +99,10 @@ function LoginFormModal() {
         modalComponent={<SignupFormModal/>}
 
         />
-       {/* <a href="/signup">Sign up!</a> */}
+                <button onClick={demoSignIn} type="submit" id='demo-user-button'>
+                  Log in as Demo User
+                </button>
+
 
       </div>
 

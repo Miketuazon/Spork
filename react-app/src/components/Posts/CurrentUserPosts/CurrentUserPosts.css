@@ -47,6 +47,7 @@
 
 .current-user-nav-links-list {
     text-decoration: none;
+    margin: -48px;
 }
 
 a
