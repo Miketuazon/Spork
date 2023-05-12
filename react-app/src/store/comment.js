@@ -4,8 +4,8 @@ const GET_COMMENTS = 'comments/getComments'
 
 export const getComments = (comments) => {
     return {
-    type:GET_COMMENTS,
-    comments
+        type: GET_COMMENTS,
+        comments
     }
 }
 export const deleteComment = (commentId) => {
@@ -56,21 +56,19 @@ export const updateOneComment = (comment, commentId) => async dispatch => {
 export default function commentsReducer(state = {}, action) {
     let newState;
     switch (action.type) {
-    case GET_COMMENTS:
-    newState = {}
-    action?.comments?.forEach((comment) => newState[comment?.id] = comment)
-    return newState;
-    case DELETE_COMMENT:
-        newState = {...state}
-        console.log('Delete NewState', newState)
-        delete newState[action.commentId]
-        console.log('Delete 2 NewState', newState)
-        return newState
-    case PUT_COMMENT:
-        newState = {...state}
-        newState[action.comment.id] = action.comment
-        return newState
-    default:
-        return state
+        case GET_COMMENTS:
+            newState = {}
+            action?.comments?.forEach((comment) => newState[comment?.id] = comment)
+            return newState;
+        case DELETE_COMMENT:
+            newState = { ...state }
+            delete newState[action.commentId]
+            return newState
+        case PUT_COMMENT:
+            newState = { ...state }
+            newState[action.comment.id] = action.comment
+            return newState
+        default:
+            return state
     }
 }

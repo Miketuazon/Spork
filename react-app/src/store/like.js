@@ -15,18 +15,3 @@ export const likeOnePost = (postId) => async dispatch => {
         dispatch(likePost(postLike))
     }
 }
-
-
-export default function likesReducer(state = {}, action) {
-    let newState;
-    switch (action.type) {
-        case POST_LIKE:
-            newState = {}
-            action.like.forEach(element => {
-                newState[element.id] = element
-            });
-            return newState;
-        default:
-            return state
-    }
-}

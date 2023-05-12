@@ -21,6 +21,7 @@ const PostItem = ({ post }) => {
     const postFollowers = post?.owner?.followers
     const notes = Number(post?.comments?.length + post?.likes?.length)
     const postComments = post?.comments
+    const postLikes = post?.likes
     const follower = post?.owner?.followers?.find(id => id === currentUser?.id)
     const liked = post?.likes.find(id => id === currentUser?.id)
 
@@ -57,7 +58,7 @@ const PostItem = ({ post }) => {
         document.addEventListener('click', closeMenu);
 
         return () => document.removeEventListener("click", closeMenu);
-    }, [dispatch, showMenu, JSON.stringify(postFollowers), JSON.stringify(postComments)]);
+    }, [dispatch, showMenu, JSON.stringify(postFollowers), JSON.stringify(postComments), JSON.stringify(postLikes)]);
 
 
     const ulClassNameUpdateDelete = "list-for-update-delete" + (showMenu ? "" : " hidden");
@@ -66,19 +67,19 @@ const PostItem = ({ post }) => {
     return (
         <div>
             <div className="post-header">
-                <dov><img src="https://assets.tumblr.com/images/default_avatar/cone_open_64.png" alt="default_image.png" />{post?.owner?.username}</dov>
+                <div><img src="https://assets.tumblr.com/images/default_avatar/cone_open_64.png" alt="default_image.png" />{post?.owner?.username}</div>
                 <div className="username-unfollow-follow">
                     {currentUser && follower && (currentUser?.id !== post?.userId) ? <button className="button-unfollow" onClick={onSubmitFollow}>unfollow</button> : currentUser && !follower && (currentUser?.id !== post?.userId) ? <button className="button-follow" onClick={onSubmitFollow}>Follow</button> : <></>}
                 </div>
             </div>
-            <h7 className="timestamp">{post?.createdAt}</h7>
+            <h6 className="timestamp">{post?.createdAt}</h6>
             <h4 className="post-item-postTitle">{post?.title}</h4>
             <p className="post-content">
                 {post?.content}
             </p>
             <div className="post-footer">
                 <button onClick={openMenu} className="like-button">{notes === 1 ? <div><span>{notes} </span><span>note</span></div> : <div><span>{notes} </span><span>notes</span></div>}</button>
-                {currentUser && !liked ? <button className="like-button" onClick={onSubmitLike}><i className="far fa-heart"></i></button> : currentUser && liked ? <button className="unlike-button" onClick={onSubmitLike}><i className="fas fa-heart" ></i></button> : <></>}
+                {currentUser && !liked && (currentUser?.id !== post?.userId) ? <button className="like-button" onClick={onSubmitLike}><i className="far fa-heart"></i></button> : currentUser && liked && (currentUser?.id !== post?.userId) ? <button className="unlike-button" onClick={onSubmitLike}><i className="fas fa-heart" ></i></button> : <></>}
                 <button className="reblog-button"><i className="fa fa-retweet"></i></button>
                 {currentUser?.id === post?.userId ? (
                     <div className="comments-trash-and-update-button">
