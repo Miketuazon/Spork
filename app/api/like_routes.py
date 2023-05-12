@@ -10,25 +10,22 @@ like_routes = Blueprint('likes', __name__)
 @login_required
 def like_unlike_post(id):
     post = Post.query.get(id)
+    if not post:
+        return {"errors": "Post does not exist!"}
+    liker = User.query.get(current_user.id)
     liked_posts = [post.id for post in current_user.post_likes]
     liked_users = [user.id for user in post.user_likes]
 
-    if not post:
-        return {"errors": "Post does not exist!"}
+
+    if liker.id == post.userId:
+        return {"errors": "You cannot like your own post"}
 
     if post.id in liked_posts:
-        current_user.post_likes.remove(post)
+        post.user_likes.remove(liker)
         db.session.commit()
-        return {
-        "message": f"Post {post.id} was unliked by {current_user.username}",
-        "post": liked_users,
-        "user": liked_posts
-        }
+        return {"message": f"Post {post.id} was unliked by {liker.username}"}
 
-    current_user.post_likes.append(post)
+
+    post.user_likes.append(liker)
     db.session.commit()
-    return {
-        "message": f"Post {post.id} was liked by {current_user.username}",
-        "post": liked_users,
-        "user": liked_posts
-        }
+    return {"message": f"Post {post.id} was liked by {liker.username}"}

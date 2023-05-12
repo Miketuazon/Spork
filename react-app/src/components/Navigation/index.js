@@ -13,25 +13,18 @@ function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state?.session?.user);
 	const [showProfileButton, setShowProfileButton] = useState(false);
 
-	const handleProfileButtonClick = () => {
-		setShowProfileButton(!showProfileButton);
-	};
-	console.log('session-user', sessionUser)
 	return (
 
 		<ul className='home-whole-nav-bar'>
 			<div className="left-nav-bar">
 				<NavLink exact to="/"><div className="spork-logo">S</div></NavLink>
 				<div className="search-bar">
-					{/* <input type="text" placeholder=" Search Spork" /> */}
 					< SearchBar />
 				</div>
 			</div>
 			{sessionUser && isLoaded ? (
 				<div className='right-nav-bar'>
 					<li className="home-button-icons">
-						{/* <NavLink exact to="/"><div className="spork-logo"></div></NavLink> */}
-
 						<NavLink exact to="/"><i className="fa fa-home"></i></NavLink>
 						<NavLink exact to="/live"><i className="fa fa-video-camera"></i></NavLink>
 						<NavLink exact to="/"><i className="fa fa-compass"></i></NavLink>
@@ -40,19 +33,19 @@ function Navigation({ isLoaded }) {
 						<NavLink exact to="/"><i className='fas fa-comment-dots'></i></NavLink>
 						<NavLink exact to="/"><i className="fa fa-bolt"></i></NavLink>
 						<ProfileButton user={sessionUser} />
-						<OpenModalButton buttonText={<><i className="fa fa-pen-square"></i></>} modalComponent={<CreatePost/>}></OpenModalButton>
+						<OpenModalButton buttonText={<><i className="fa fa-pen-square"></i></>} modalComponent={<CreatePost />}></OpenModalButton>
 
 					</li>
 				</div>)
-				 : (
+				: (
 					<div>
-					<OpenModalButton
-					  clasName="button-green-login"
-					  buttonText="Log In"
-					  modalComponent={<LoginFormModal />}
-					/>
-				  </div>
-				 )
+						<OpenModalButton
+							clasName="button-green-login"
+							buttonText="Log In"
+							modalComponent={<LoginFormModal />}
+						/>
+					</div>
+				)
 
 			}
 

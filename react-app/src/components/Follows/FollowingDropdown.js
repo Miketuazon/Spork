@@ -10,19 +10,11 @@ import { useEffect } from 'react';
 const FollowingDropdown = () => {
   const dispatch = useDispatch();
   const posts = useSelector(state => state?.posts)
-  console.log('posts', posts)
-  const postsVal = Object.values(posts)
   const currentUser = useSelector(state => state?.session?.user)
-  console.log('currentuser', currentUser)
-  const currentUserVal = Object.values(currentUser)
-  const follower = currentUserVal?.following?.filter( id=> id === postsVal?.userId)
-  // const postsFilter = currentUserVal?.filter(currentUser?.following?.id === postsVal?.userId)
-console.log('postsfilter', follower)
 
-
-useEffect(() => {
-dispatch(getAllPosts())
-}, [dispatch])
+  useEffect(() => {
+    dispatch(getAllPosts())
+  }, [dispatch])
   return (
     <div className="lSyOz">
       <main className="rmkqO">
