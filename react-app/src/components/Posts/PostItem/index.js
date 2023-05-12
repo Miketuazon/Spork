@@ -30,7 +30,7 @@ const PostItem = ({ post }) => {
 
         const successFollow = dispatch(getFollowsForUser(post?.userId))
         if (successFollow) {
-            await dispatch(getAllPosts())
+            dispatch(getAllPosts())
         }
     }
     const onSubmitLike = async (e) => {
@@ -38,7 +38,7 @@ const PostItem = ({ post }) => {
 
         const successLike = dispatch(likeOnePost(post?.id))
         if (successLike) {
-            await dispatch(getAllPosts())
+            dispatch(getAllPosts())
         }
     }
     const openMenu = () => {
