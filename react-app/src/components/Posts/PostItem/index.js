@@ -23,14 +23,14 @@ const PostItem = ({ post }) => {
     const postComments = post?.comments
     const postLikes = post?.likes
     const follower = post?.owner?.followers?.find(id => id === currentUser?.id)
-    const liked = post?.likes.find(id => id === currentUser?.id)
+    const liked = post?.likes?.find(id => id === currentUser?.id)
 
     const onSubmitFollow = async (e) => {
         e.preventDefault()
 
         const successFollow = dispatch(getFollowsForUser(post?.userId))
         if (successFollow) {
-            dispatch(getAllPosts())
+            await dispatch(getAllPosts())
         }
     }
     const onSubmitLike = async (e) => {
@@ -38,7 +38,7 @@ const PostItem = ({ post }) => {
 
         const successLike = dispatch(likeOnePost(post?.id))
         if (successLike) {
-            dispatch(getAllPosts())
+            await dispatch(getAllPosts())
         }
     }
     const openMenu = () => {
