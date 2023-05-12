@@ -25,6 +25,29 @@ const PostItem = ({ post }) => {
     const follower = post?.owner?.followers?.find(id => id === currentUser?.id)
     const liked = post?.likes?.find(id => id === currentUser?.id)
 
+    // creating date
+    const months = {
+        0: 'January',
+        1: 'February',
+        2: 'March',
+        3: 'April',
+        4: 'May',
+        5: 'June',
+        6: 'July',
+        7: 'August',
+        8: 'September',
+        9: 'October',
+        10: 'November',
+        11: 'December'
+    }
+
+    const date = new Date(post?.createdAt)
+    const month = months[date?.getMonth()];
+    const day = date?.getDate();
+    const year = date?.getFullYear();
+    const hoursMin = date.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit',});
+
+
     const onSubmitFollow = async (e) => {
         e.preventDefault()
 
@@ -72,7 +95,7 @@ const PostItem = ({ post }) => {
                     {currentUser && follower && (currentUser?.id !== post?.userId) ? <button className="button-unfollow" onClick={onSubmitFollow}>unfollow</button> : currentUser && !follower && (currentUser?.id !== post?.userId) ? <button className="button-follow" onClick={onSubmitFollow}>Follow</button> : <></>}
                 </div>
             </div>
-            <h6 className="timestamp">{post?.createdAt}</h6>
+            <h6 className="timestamp">{month}, {day}, {year} | {hoursMin}</h6>
             <h4 className="post-item-postTitle">{post?.title}</h4>
             <p className="post-content">
                 {post?.content}
