@@ -32,60 +32,60 @@ const Feed = () => {
   return (
     <div className='Feed'>
       {currentUser ?
-        <ul class="post-types">
+        <ul className="post-types">
 
           <li>
-            <button class="post-type-btn text-btn" aria-label="Text">
-              <span class="post-type-icon">
-                <i class="fas fa-font"></i>
+            <button className="post-type-btn text-btn" aria-label="Text">
+              <span className="post-type-icon">
+                <i className="fas fa-font"></i>
               </span>
               Text
             </button>
           </li>
           <li>
-            <button class="post-type-btn photo-btn" aria-label="Photo">
-              <span class="post-type-icon">
-                <i class="fas fa-camera"></i>
+            <button className="post-type-btn photo-btn" aria-label="Photo">
+              <span className="post-type-icon">
+                <i className="fas fa-camera"></i>
               </span>
               Photo
             </button>
           </li>
           <li>
-            <button class="post-type-btn quote-btn" aria-label="Quote">
-              <span class="post-type-icon">
-                <i class="fas fa-quote-left"></i>
+            <button className="post-type-btn quote-btn" aria-label="Quote">
+              <span className="post-type-icon">
+                <i className="fas fa-quote-left"></i>
               </span>
               Quote
             </button>
           </li>
           <li>
-            <button class="post-type-btn link-btn" aria-label="Link">
-              <span class="post-type-icon">
-                <i class="fas fa-link"></i>
+            <button className="post-type-btn link-btn" aria-label="Link">
+              <span className="post-type-icon">
+                <i className="fas fa-link"></i>
               </span>
               Link
             </button>
           </li>
           <li>
-            <button class="post-type-btn chat-btn" aria-label="Chat">
-              <span class="post-type-icon">
-                <i class="fas fa-comment-alt"></i>
+            <button className="post-type-btn chat-btn" aria-label="Chat">
+              <span className="post-type-icon">
+                <i className="fas fa-comment-alt"></i>
               </span>
               Chat
             </button>
           </li>
           <li>
-            <button class="post-type-btn audio-btn" aria-label="Audio">
-              <span class="post-type-icon">
-                <i class="fas fa-volume-up"></i>
+            <button className="post-type-btn audio-btn" aria-label="Audio">
+              <span className="post-type-icon">
+                <i className="fas fa-volume-up"></i>
               </span>
               Audio
             </button>
           </li>
           <li>
-            <button class="post-type-btn video-btn" aria-label="Video">
-              <span class="post-type-icon">
-                <i class="fas fa-video"></i>
+            <button className="post-type-btn video-btn" aria-label="Video">
+              <span className="post-type-icon">
+                <i className="fas fa-video"></i>
               </span>
               Video
             </button>
@@ -108,9 +108,9 @@ const Feed = () => {
           <img className='taylor' src={logo1} alt="logo1" />
           <img className='taylor2' src={logo2} alt="logo2" />
           <img className='britney1' src={logo3} alt="logo3" />
-          <div class="live-outer-box"><a href="/live"></a>
+          <div className="live-outer-box"><a href="/live"></a>
 
-            <div class="live-box-more"><a href="/live">See more +</a></div>
+            <div className="live-box-more"><a href="/live">See more +</a></div>
 
           </div>
 

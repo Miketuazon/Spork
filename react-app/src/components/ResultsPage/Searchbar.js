@@ -20,7 +20,7 @@ function SearchBar() {
                     }
                 }}
             />
-           <button class="spork-search-button" onClick={handleSearch}><i class="fa">&#xf002;</i></button>
+            <button className="spork-search-button" onClick={handleSearch}><i className="fa">&#xf002;</i></button>
 
         </div>
     );

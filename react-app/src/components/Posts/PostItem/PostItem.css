@@ -32,6 +32,14 @@
   overflow-wrap: break-word;
 }
 
+.the-comments-commented {
+  max-width: 400px;
+}
+
+.comment-owner {
+  font-weight: bold;
+}
+
 .post-content {
   margin-bottom: 10px;
   overflow-wrap: break-word;

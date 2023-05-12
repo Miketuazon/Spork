@@ -47,9 +47,9 @@ function ResultsPage() {
                 </button>
             </div>
             <ul className='posts'>
-                {
+                {query !== "" ?
                     sortedPosts?.map(post => (
-                        (post?.content?.toLowerCase())?.includes(query) || (post?.title?.toLowerCase())?.includes(query)
+                        (post?.content?.toLowerCase())?.includes(query) || (post?.title?.toLowerCase())?.includes(query) || post?.owner?.username?.toLowerCase()?.includes(query)
                             ?
                             <li key={post?.id} className="post">
                                 <PostItem post={post} />
@@ -57,6 +57,11 @@ function ResultsPage() {
                             :
                             null
                     ))
+                    :
+                    <div className='empty-message'>
+                        <h1>Your query was empty :/ </h1>
+                        <h2>Please enter at least one character to search posts!</h2>
+                    </div>
                 }
             </ul>
         </div>
