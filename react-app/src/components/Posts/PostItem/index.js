@@ -45,7 +45,7 @@ const PostItem = ({ post }) => {
     const month = months[date?.getMonth()];
     const day = date?.getDate();
     const year = date?.getFullYear();
-    const hoursMin = date.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit',});
+    const hoursMin = date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', });
 
 
     const onSubmitFollow = async (e) => {
@@ -130,16 +130,18 @@ const PostItem = ({ post }) => {
                         post?.comments?.sort((a, b) => new Date(b?.createdAt) - new Date(a?.createdAt))?.map((comment) => {
 
                             return (
-                                <div className="list-for-update-delete">
-                                    <div className="trash-comment">
-                                        <div className="comment-text-bubble">
-                                            <div className="the-comments-commented">
-                                                <span>{comment?.content}</span>
+                                <li key={comment.id}>
+                                    <div className="list-for-update-delete">
+                                        <div className="trash-comment">
+                                            <div className="comment-text-bubble">
+                                                <div className="the-comments-commented">
+                                                    <span>{comment?.content}</span>
+                                                </div>
                                             </div>
+                                            <span>{currentUser?.id === comment?.userId ? <DeleteComment commentId={comment?.id}><i className="fas fa-trash-alt"></i></DeleteComment> : <></>}</span>
                                         </div>
-                                        <span>{currentUser?.id === comment?.userId ? <DeleteComment commentId={comment?.id}><i className="fas fa-trash-alt"></i></DeleteComment> : <></>}</span>
                                     </div>
-                                </div>
+                                </li>
                             )
                         }) : null
                     }

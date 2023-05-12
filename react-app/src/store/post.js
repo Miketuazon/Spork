@@ -67,9 +67,16 @@ export const createOnePost = (post) => async (dispatch) => {
     }
     )
     if (response.ok) {
-        const newPost = await response.json()
-        dispatch(postPost(newPost))
-        return newPost
+        const data = await response.json();
+        dispatch(postPost(data));
+        return null;
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ["An error occurred. Please try again."];
     }
 
 }
@@ -81,9 +88,16 @@ export const createOneComment = (comment, postId) => async (dispatch) => {
         body: JSON.stringify(comment)
     })
     if (response.ok) {
-        const res = await response.json()
-        dispatch(postComment(res))
-        return res
+        const data = await response.json();
+        dispatch(postComment(data));
+        return null;
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ["An error occurred. Please try again."];
     }
 
 }

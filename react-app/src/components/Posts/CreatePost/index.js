@@ -14,6 +14,7 @@ export default function CreatePost() {
     const [title, setTitle] = useState('')
     const [image_url, setImageUrl] = useState('')
     const [post_type, setPostType] = useState('')
+    const [errors, setErrors] = useState([]);
     const onSubmit = async (e) => {
         e.preventDefault()
         const newPost = {
@@ -21,10 +22,10 @@ export default function CreatePost() {
             title: title,
             content: content
         }
-        const successPost = dispatch(createOnePost(newPost))
+        const successPost = await dispatch(createOnePost(newPost))
         if (successPost) {
-            closeModal()
-        }
+            setErrors(successPost)
+        } else closeModal();
 
     }
 
@@ -32,11 +33,16 @@ export default function CreatePost() {
         e.preventDefault();
         closeModal();
     }
-    console.log('currentUser', currentUser)
+    console.log(errors)
     return (
         <>
             <div className="create-post-nav">
                 <form>
+                    <ul>
+                        {errors.map((error, idx) => (
+                            <li key={idx}>{error}</li>
+                        ))}
+                    </ul>
                     <div className="create-post-username-gear">
                         <span className="create-post-username">{currentUser?.username}</span><i className="fa fa-gear"></i>
                     </div>
