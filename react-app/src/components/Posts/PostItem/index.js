@@ -6,50 +6,23 @@ import { useSelector } from "react-redux"
 import EditPost from "../EditPost"
 import CreateComment from "../../comments/CreateComment"
 import DeleteComment from "../../comments/DeleteComment"
-import EditComment from "../../comments/EditComment"
-import { getCommentsForPost } from '../../../store/comment'
 import { useEffect } from "react";
 import { useDispatch } from "react-redux"
-import { getAllPosts, getCurrentUserPosts } from "../../../store/post";
-import { useCallback } from "react";
-import FollowOrUnfollow from "../../Follows";
+import { getAllPosts } from "../../../store/post";
 import { getFollowsForUser } from "../../../store/follow";
-import { useModal } from "../../../context/Modal";
-
-
+import { likeOnePost } from "../../../store/like";
 
 
 const PostItem = ({ post }) => {
-    const { closeModal } = useModal();
     const [showMenu, setShowMenu] = useState(false);
     const ulRef = useRef();
-    const openMenuButtonRef = useRef(null)
-    const postsVal = Object.values(post)
-    const postId = postsVal?.id
     const dispatch = useDispatch();
-    const comments = useSelector(state => state?.comments)
-    console.log('comments', comments)
-    const commentsVal = Object.values(comments)
-    const commentId = comments?.id
-    const menuButtonRef = useRef(null)
     const currentUser = useSelector(state => state?.session?.user)
     const postFollowers = post?.owner?.followers
     const notes = Number(post?.comments?.length + post?.likes?.length)
-    // const postFollowersVal = Object?.values(post?.owner?.followers)
     const postComments = post?.comments
     const follower = post?.owner?.followers?.find(id => id === currentUser?.id)
-    // const createdAtVal = Object?.values(post?.createdAt)
-    // const postDate = new Date(post?.createdAt)
-    // const formattedDate = new Intl.DateTimeFormat('en-US', { month: 'long', day:'numeric', year: 'numeric' })?.format(postDate);
-    // const follower = Object.values(post?.owner?.followers).find(id => id === currentUser?.id)
-    const dropdown = useRef()
-    // console.log('follower', follower)
-    const handleClick = () => {
-        dropdown.current.classList.toggle('dropdown-open')
-        document.activeElement.blur();
-    }
-
-
+    const liked = post?.likes.find(id => id === currentUser?.id)
 
     const onSubmitFollow = async (e) => {
         e.preventDefault()
@@ -58,7 +31,14 @@ const PostItem = ({ post }) => {
         if (successFollow) {
             dispatch(getAllPosts())
         }
-        // window.location.reload(false);
+    }
+    const onSubmitLike = async (e) => {
+        e.preventDefault()
+
+        const successLike = dispatch(likeOnePost(post?.id))
+        if (successLike) {
+            dispatch(getAllPosts())
+        }
     }
     const openMenu = () => {
         if (showMenu) return;
@@ -66,8 +46,6 @@ const PostItem = ({ post }) => {
     };
 
     useEffect(() => {
-
-        // dispatch(getCommentsForPost(postId))
         if (!showMenu) return;
 
         const closeMenu = (e) => {
@@ -89,10 +67,7 @@ const PostItem = ({ post }) => {
         <div>
             <div className="post-header">
                 <dov><img src="https://assets.tumblr.com/images/default_avatar/cone_open_64.png" alt="default_image.png" />{post?.owner?.username}</dov>
-                {/* <span className="username">{post?.owner?.username}</span> */}
                 <div className="username-unfollow-follow">
-                    {/* <span className="timestamp">{post?.createdAt}</span> */}
-                    {/* {follower ? <span>Unfollow</span> : <span>Follow</span>} */}
                     {currentUser && follower && (currentUser?.id !== post?.userId) ? <button className="button-unfollow" onClick={onSubmitFollow}>unfollow</button> : currentUser && !follower && (currentUser?.id !== post?.userId) ? <button className="button-follow" onClick={onSubmitFollow}>Follow</button> : <></>}
                 </div>
             </div>
@@ -103,19 +78,14 @@ const PostItem = ({ post }) => {
             </p>
             <div className="post-footer">
                 <button onClick={openMenu} className="like-button">{notes === 1 ? <div><span>{notes} </span><span>note</span></div> : <div><span>{notes} </span><span>notes</span></div>}</button>
-                <button className="like-button"><i class="fa fa-heart"></i></button>
-                <button className="reblog-button"><i class="fa fa-retweet"></i></button>
-               {/* {currentUser?.id === post?.userId ?
-                <button></button>:<></>
-
-                } */}
+                {currentUser && !liked ? <button className="like-button" onClick={onSubmitLike}><i className="far fa-heart"></i></button> : currentUser && liked ? <button className="unlike-button" onClick={onSubmitLike}><i className="fas fa-heart" ></i></button> : <></>}
+                <button className="reblog-button"><i className="fa fa-retweet"></i></button>
                 {currentUser?.id === post?.userId ? (
                     <div className="comments-trash-and-update-button">
                         <OpenModalButton
                             buttonText={<><i className="fas fa-trash-alt"></i></>}
                             modalComponent={<DeletePost postId={post?.id} />}
                         />
-                        {/* <DeletePost postId={postId}/> */}
                         <OpenModalButton
                             buttonText={<><i className="fa fa-pen-square"></i></>}
                             modalComponent={<EditPost postId={post?.id} post={post} />}
@@ -127,17 +97,7 @@ const PostItem = ({ post }) => {
                 <button type='click' onClick={openMenu}>{<><i className="fas fa-comment-dots"></i></>}</button>
 
             </div>
-            {/* <button  type='click' onClick={openMenu}>{<><i className="fas fa-comment-dots"></i></>}</button> */}
-            {/* <OpenModalButton className="text-area-for-comments" rows={1} cols={60}
-                    placeholder=" Add to the discussion"
-                    buttonText={<><i className="fas fa-comment-dots"></i></>}
-                    modalComponent={<CreateComment postId={post?.id} />}
-                /> */}
-
-            {/* <ul className="comment-list"> */}
             <div className="dropdown m-10">
-
-                {/* <button type='click' onClick={openMenu}>{<><i className="fas fa-comment-dots"></i></>}</button> */}
                 <ul className={ulClassNameUpdateDelete} ref={ulRef}>
                     {currentUser ?
                         <CreateComment postId={post?.id} /> : <></>}
@@ -147,26 +107,17 @@ const PostItem = ({ post }) => {
 
                             return (
                                 <div className="list-for-update-delete">
-
-
-                                        <div className="trash-comment">
+                                    <div className="trash-comment">
                                         <div className="comment-text-bubble">
                                             <div className="the-comments-commented">
                                                 <span>{comment?.content}</span>
                                             </div>
                                         </div>
                                         <span>{currentUser?.id === comment?.userId ? <DeleteComment commentId={comment?.id}><i className="fas fa-trash-alt"></i></DeleteComment> : <></>}</span>
-                                        </div>
-
-
-
+                                    </div>
                                 </div>
-
-
-
                             )
                         }) : null
-
                     }
                 </ul>
             </div>

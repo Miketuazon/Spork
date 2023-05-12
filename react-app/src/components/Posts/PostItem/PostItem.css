@@ -1,121 +1,122 @@
 .post-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 .post-header img {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    margin-right: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
+
 .post-item-postTitle {
   font-weight: 500;
 }
 
-.post-item-postOwner-username{
+.post-item-postOwner-username {
   font-weight: 500;
 }
+
 .post-header .username {
-    font-weight: bold;
-    margin-right: 10px;
+  font-weight: bold;
+  margin-right: 10px;
 }
 
 .post-header .timestamp {
-    color: #666;
+  color: #666;
 }
 
 .post-content {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .post-footer {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
+
 .myList {
   display: none;
 }
+
 .post-footer button {
-    border: none;
-    background: none;
-    font-weight: bold;
-    color: #999;
-    margin-right: 10px;
+  border: none;
+  background: none;
+  font-weight: bold;
+  color: #999;
+  margin-right: 10px;
 }
 
 .post-footer button:hover {
-    cursor: pointer;
-    color: #333;
+  cursor: pointer;
+  color: #333;
 }
 
 .hidden {
   display: none;
 }
+
 .post-option {
-    box-sizing: border-box;
-    background: white;
-    min-height: 100px;
-    border-radius: 3px;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    padding: 20px 5px;
-    display: flex;
-    position: relative;
-    font-size: 30px;
+  box-sizing: border-box;
+  background: white;
+  min-height: 100px;
+  border-radius: 3px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 20px 5px;
+  display: flex;
+  position: relative;
+  font-size: 30px;
 }
 
 .post-option ul {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex
 }
 
 .post-option ul li {
-    width: 100%;
-    list-style-type: none
+  width: 100%;
+  list-style-type: none
 }
 
 .post-option ul svg {
-    margin-bottom: 5px
+  margin-bottom: 5px
 }
 
-
 .text-area-for-comments {
-    display: block;
-    margin: 10px 0;
-    border: none;
-    border-bottom: 1px solid #ccc;
-    padding: 5px;
-    font-size: 16px;
-    background-color: transparent;
-  }
+  display: block;
+  margin: 10px 0;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 5px;
+  font-size: 16px;
+  background-color: transparent;
+}
 
+.list-for-update-delete {
+  margin: 20px 15px;
+}
 
-  .list-for-update-delete {
-    margin: 20px 15px;
-  }
+.list-for-update-delete li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  list-style: none;
+}
 
-  .list-for-update-delete li {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    list-style: none;
-  }
-
-
-
-  .comment-text-bubble {
-    background-color: #f1f1f1;
-    border-radius: 20px;
-    padding: 10px 20px;
-    max-width: 70%;
-    margin-right: 10px;
-  }
+.comment-text-bubble {
+  background-color: #f1f1f1;
+  border-radius: 20px;
+  padding: 10px 20px;
+  max-width: 70%;
+  margin-right: 10px;
+}
 
 .dropdown-container {
   display: inline-block;
@@ -145,24 +146,24 @@
   margin: 5px 0;
 }
 
-/* .dropdown-container:hover .dropdown-update-delete-content,
-.dropdown-container:focus-within .dropdown-update-delete-content {
-  display: block;
-} */
 .fas.fa-trash-alt {
   cursor: pointer;
 }
-.hide-dropdown-btn:focus ~ .dropdown-container .dropdown-update-delete-content {
+
+.hide-dropdown-btn:focus~.dropdown-container .dropdown-update-delete-content {
   display: none;
 }
 
-.show-dropdown-btn:focus ~ .dropdown-container .dropdown-update-delete-content {
+.show-dropdown-btn:focus~.dropdown-container .dropdown-update-delete-content {
   display: block;
 }
-.username-unfollow-follow{
+
+.username-unfollow-follow {
   justify-content: space-between;
 }
-.button-follow, .button-unfollow {
+
+.button-follow,
+.button-unfollow {
   color: #ffffff;
   font-size: 1rem;
   background-color: #0a1b40;
@@ -170,12 +171,12 @@
   padding: 5px 22px;
   display: inline-block;
   position: relative;
-  /* margin-left: 300px; */
 }
 
 
 
-.button-follow::before, .button-unfollow::before {
+.button-follow::before,
+.button-unfollow::before {
   font-size: 20px;
   position: absolute;
   left: 7px;
@@ -184,11 +185,12 @@
 }
 
 .button-unfollow {
-  color:#0a1b40;
+  color: #0a1b40;
   background-color: #ffffff;
 }
 
-.button-follow:focus, .button-unfollow:focus {
+.button-follow:focus,
+.button-unfollow:focus {
   outline: none;
 }
 
@@ -196,11 +198,12 @@
   transform: translateY(1px);
 }
 
-.button-follow:active, .button-unfollow:active {
+.button-follow:active,
+.button-unfollow:active {
   box-shadow: none;
 }
 
-.trash-comment{
+.trash-comment {
   display: flex;
   align-items: center;
   justify-content: flex-end;

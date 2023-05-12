@@ -19,16 +19,9 @@ def like_unlike_post(id):
     if post.id in liked_posts:
         current_user.post_likes.remove(post)
         db.session.commit()
-        return {
-        "message": f"Post {post.id} was unliked by {current_user.username}",
-        "post": liked_users,
-        "user": liked_posts
-        }
+        return {"message": f"Post {post.id} was unliked by {current_user.username}"}
+
 
     current_user.post_likes.append(post)
     db.session.commit()
-    return {
-        "message": f"Post {post.id} was liked by {current_user.username}",
-        "post": liked_users,
-        "user": liked_posts
-        }
+    return {"message": f"Post {post.id} was liked by {current_user.username}"}
