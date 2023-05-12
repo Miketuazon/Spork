@@ -28,8 +28,13 @@
   color: #666;
 }
 
+.comment-text-bubble {
+  overflow-wrap: break-word;
+}
+
 .post-content {
   margin-bottom: 10px;
+  overflow-wrap: break-word;
 }
 
 .post-footer {
@@ -173,8 +178,6 @@
   position: relative;
 }
 
-
-
 .button-follow::before,
 .button-unfollow::before {
   font-size: 20px;
@@ -194,13 +197,10 @@
   outline: none;
 }
 
-.button-unfollow:active {
-  transform: translateY(1px);
-}
-
 .button-follow:active,
 .button-unfollow:active {
   box-shadow: none;
+  transform: translateY(1px);
 }
 
 .trash-comment {
