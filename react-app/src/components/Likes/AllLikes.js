@@ -1,20 +1,31 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import LikesPostItem from "./LikesPostItem"
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import PostItem from "../Posts/PostItem";
+import { getAllPosts } from "../../store/post";
+import "./AllLikes.css"
 
 export default function AllLikes() {
     const sessionUser = useSelector(state => state.session.user)
-
+    const dispatch = useDispatch()
+    const posts = useSelector(state => state?.posts)
+    useEffect(() => {
+        dispatch(getAllPosts())
+        // dispatch(getCommentsForPost(postId))
+        // dispatch(getCommentsForPost(postId))
+    }, [dispatch, JSON.stringify(posts), JSON.stringify(posts.comments), JSON.stringify(posts.likes),])
 
     return (
-        <div>
-            <ul className="All-Likes-post">
-                {sessionUser.likes.map(post => (
-                    <li key={post.id} className="All-Likes-post-2">
-                        <LikesPostItem post={post} />
-                    </li>
-                ))}
-            </ul>
+        <div className="AllLikes">
+            <div>
+                <ul className="posts">
+                    {sessionUser.likes.map(post => (
+                        <li key={post.id} className="post">
+                            <PostItem post={post} />
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
+
     )
 }
