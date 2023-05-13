@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import OpenModalButton from '../OpenModalButton';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
+import { useEffect } from 'react';
 import LoginFormModal from '../LoginFormModal';
 import CreatePost from '../Posts/CreatePost';
 import SearchBar from '../ResultsPage/Searchbar';
@@ -12,11 +13,14 @@ import SearchBar from '../ResultsPage/Searchbar';
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state?.session?.user);
 	const [showProfileButton, setShowProfileButton] = useState(false);
-
+	const posts = useSelector(state => state?.posts)
 	const handleProfileButtonClick = () => {
 		setShowProfileButton(!showProfileButton);
 	};
 	console.log('session-user', sessionUser)
+useEffect(()=> {
+
+},[sessionUser])
 	return (
 
 		<ul className='home-whole-nav-bar'>
@@ -34,11 +38,12 @@ function Navigation({ isLoaded }) {
 
 						<NavLink exact to="/"><i className="fa fa-home"></i></NavLink>
 						<NavLink exact to="/live"><i className="fa fa-video-camera"></i></NavLink>
-						<NavLink exact to="/"><i className="fa fa-compass"></i></NavLink>
-						<NavLink exact to="/"><i className='fas fa-store-alt'></i></NavLink>
-						<NavLink exact to="/"><i className="fa fa-envelope"></i></NavLink>
-						<NavLink exact to="/"><i className='fas fa-comment-dots'></i></NavLink>
-						<NavLink exact to="/"><i className="fa fa-bolt"></i></NavLink>
+						<NavLink exact to="/explore"><i className="fa fa-compass"></i></NavLink>
+						<NavLink exact to="/NavMarket"><i className='fas fa-store-alt'></i></NavLink>
+						<NavLink exact to="/" onClick={() => alert('Coming soon!')}><i className="fa fa-envelope"></i></NavLink>
+						<NavLink exact to="/" onClick={() => alert('Coming soon!')}><i className='fas fa-comment-dots'></i></NavLink>
+						<NavLink exact to="/" onClick={() => alert('Coming soon!')}><i className="fa fa-bolt"></i></NavLink>
+
 						<ProfileButton user={sessionUser} />
 						<OpenModalButton buttonText={<><i className="fa fa-pen-square"></i></>} modalComponent={<CreatePost/>}></OpenModalButton>
 

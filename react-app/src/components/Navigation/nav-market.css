@@ -1,0 +1,95 @@
+.tumblr-mart-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    border-radius: 4px;
+  }
+
+  .categories-nav-market {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .category-nav {
+    border: none;
+    background-color: transparent;
+    padding: 8px 16px;
+    font-size: 16px;
+    color: #999;
+    cursor: pointer;
+  }
+
+  .category-nav.active-nav,
+  .category-nav:hover {
+    color: #000;
+  }
+
+  .products-nav-market {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .product-nav-market {
+    display: flex;
+    flex-direction: column;
+    margin: 16px;
+    padding: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+  }
+
+  .banner-nav {
+    color: #fff;
+    background-color: #000;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .popular-nav {
+    background-color: #f00;
+  }
+
+  .new-nav-market {
+    background-color: #00f;
+  }
+
+  .image-nav-market img {
+    max-width: 100%;
+  }
+
+  .title-nav-market {
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+
+  .description-nav-market {
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+
+  .shop-nav-market,
+  .gift-nav-market {
+    display: inline-block;
+    padding: 8px 16px;
+    border: none;
+    background-color: #000;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .gift-nav-market {
+    margin-left: 8px;
+  }
+  .details-nav-market{
+    text-align: center;
+  }

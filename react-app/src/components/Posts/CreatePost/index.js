@@ -83,21 +83,21 @@ export default function CreatePost() {
                     <span className="create-post-for-everyone-post-now-button">
                         <li>
 
-                            <ul className="create-post-dropdown">
+                            {/* <ul className="create-post-dropdown">
                                 <li><a>1</a></li>
                                 <li><a>2</a></li>
                                 <li><a>3</a></li>
                                 <li><a>4</a></li>
-                            </ul>
+                            </ul> */}
                         </li>
                         <li>
                             <button onClick={onSubmit} className="create-post-post-now-button" ><span>Post now |</span><span className="fa fa-angle-down"></span></button>
-                        <ul className="create-post-dropdown">
+                        {/* <ul className="create-post-dropdown">
                             <li><a>1</a></li>
                             <li><a>2</a></li>
                             <li><a>3</a></li>
                             <li><a>4</a></li>
-                        </ul>
+                        </ul> */}
                     </li>
                         {/* <div>
                         <li>

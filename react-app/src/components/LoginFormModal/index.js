@@ -90,20 +90,21 @@ function LoginFormModal() {
             required
           />
         </label>
-        <button className="submit-button-log-in" type="submit">Log In</button>
+        <button  type="submit">Log In</button>
         <div className="signup-link-in-login-form">
           Don't have an account yet?
           <br></br>
-        <OpenModalButton className="button-sign-up"
+            <div className="submit-button-log-in">
+
+        <OpenModalButton
         buttonText="Sign Up"
         modalComponent={<SignupFormModal/>}
 
-        />
-                <button onClick={demoSignIn} type="submit" id='demo-user-button'>
-                  Log in as Demo User
+        ><button className="sign-up-button"/></OpenModalButton>
+                <button onClick={demoSignIn} className ="demo-sign-in-button" id='demo-user-button'>
+                  Demo User
                 </button>
-
-
+            </div>
       </div>
 
       </form>

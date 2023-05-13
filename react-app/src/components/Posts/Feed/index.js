@@ -10,6 +10,10 @@ import logo1 from '../../../assets/live-data-1.jpg'
 import logo2 from '../../../assets/live-data-2.jpg'
 import logo3 from '../../../assets/live-data-3.jpg'
 import { getFollowsForUser } from '../../../store/follow'
+import videoFile from '../../../assets/taylor-vid-2.MOV';
+import OpenModalButton from '../../OpenModalButton'
+import CreatePost from '../CreatePost'
+
 
 
 const Feed = () => {
@@ -33,86 +37,46 @@ const Feed = () => {
         <div className='Feed'>
           { currentUser ?
             <ul class="post-types">
+              <div className='create-footer'>Text
+              <OpenModalButton name="Create Post" buttonText={<> <i className="fas fa-font"></i></>} modalComponent={<CreatePost/>}></OpenModalButton></div>
+<div className='photo-footer'>Photo<a class="fas fa-camera"onClick={() => alert("Coming soon!")}></a></div>
+<div className='quote-footer'>Quote
+<a class="fas fa-quote-right"onClick={() => alert("Coming soon!")}></a></div>
+<div className='link-footer'>Link<a class="fas fa-link"onClick={() => alert("Coming soon!")}></a></div>
+<div className='chat-footer'>Chat<a class="fas fa-comment-alt"onClick={() => alert("Coming soon!")}></a></div>
+<div className='sound-footer'>Sound<a class="fas fa-volume-up"onClick={() => alert("Coming soon!")}></a></div>
+<div className='video-footer'>Video<a class="fas fa-video"onClick={() => alert("Coming soon!")}></a></div>
 
-  <li>
-    <button class="post-type-btn text-btn" aria-label="Text">
-      <span class="post-type-icon">
-        <i class="fas fa-font"></i>
-      </span>
-      Text
-    </button>
-  </li>
-  <li>
-    <button class="post-type-btn photo-btn" aria-label="Photo">
-      <span class="post-type-icon">
-        <i class="fas fa-camera"></i>
-      </span>
-      Photo
-    </button>
-  </li>
-  <li>
-    <button class="post-type-btn quote-btn" aria-label="Quote">
-      <span class="post-type-icon">
-        <i class="fas fa-quote-left"></i>
-      </span>
-      Quote
-    </button>
-  </li>
-  <li>
-    <button class="post-type-btn link-btn" aria-label="Link">
-      <span class="post-type-icon">
-        <i class="fas fa-link"></i>
-      </span>
-      Link
-    </button>
-  </li>
-  <li>
-    <button class="post-type-btn chat-btn" aria-label="Chat">
-      <span class="post-type-icon">
-        <i class="fas fa-comment-alt"></i>
-      </span>
-      Chat
-    </button>
-  </li>
-  <li>
-    <button class="post-type-btn audio-btn" aria-label="Audio">
-      <span class="post-type-icon">
-        <i class="fas fa-volume-up"></i>
-      </span>
-      Audio
-    </button>
-  </li>
-  <li>
-    <button class="post-type-btn video-btn" aria-label="Video">
-      <span class="post-type-icon">
-        <i class="fas fa-video"></i>
-      </span>
-      Video
-    </button>
-  </li>
+
+
+
 
 </ul>:<></>
 }
 {currentUser ?
 <div className='following-foryou-tags-manage'>
 <a href="/following">Following</a>
-    <a href="/">For you</a>
-    <a href="/">Your tags</a>
-    <a href="/">Manage...</a>
+    <a href="/explore">For you</a>
+    <a onClick={() => alert('This feature is coming soon!')}>Your tags</a>
+    <a onClick={() => alert("Coming soon!")}>Manage...</a>
 
 </div>:<></>
 }
 <div className='spork-live-thumbnails'>
         <h4>Spork Live</h4>
         <div className='spork-live-thumbnails-imgs'>
-                <img className='taylor' src={logo1}  alt="logo1"/>
-                <img className='taylor2' src={logo2} alt="logo2"/>
+                <img className='taylor' href="/live" src={logo1}  alt="logo1"/>
+                <img className='taylor2' src={logo2} alt="logo2" />
                 <img className='britney1' src={logo3} alt="logo3" />
-                <div class="live-outer-box"><a href="/live"></a>
+               <a href="/live">
+                <div class="live-box-more"><a className='live-text' href="/live">See more +</a></div>
+                <div class="live-outer-box"> </div>
 
-                    <div class="live-box-more"><a href="/live">See more +</a></div>
 
-                </div>
+                </a>
+
+
+
 
                 </div>
 

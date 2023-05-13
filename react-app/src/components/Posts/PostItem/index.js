@@ -12,7 +12,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux"
 import { getAllPosts, getCurrentUserPosts } from "../../../store/post";
 import { useCallback } from "react";
-import FollowOrUnfollow from "../../Follows";
+import FollowOrUnfollow from "../../Follows/FollowOrUnfollow";
 import { getFollowsForUser } from "../../../store/follow";
 import { useModal } from "../../../context/Modal";
 
@@ -105,17 +105,18 @@ const PostItem = ({ post }) => {
                 <button onClick={openMenu} className="like-button">{notes === 1 ? <div><span>{notes} </span><span>note</span></div> : <div><span>{notes} </span><span>notes</span></div>}</button>
                 <button className="like-button"><i class="fa fa-heart"></i></button>
                 <button className="reblog-button"><i class="fa fa-retweet"></i></button>
-               {/* {currentUser?.id === post?.userId ?
-                <button></button>:<></>
+                {/* {currentUser?.id === post?.userId ? (<><OpenModalButton
+                    buttonText={<><i className="fa fa-pen-square"></i></>}
+                    modalComponent={<EditPost postId={post?.id} post={post} />}
+                />{<DeletePost posttId={post?.id}><i className="fas fa-trash-alt"></i></DeletePost>}</> ):(<></>)} */}
 
-                } */}
                 {currentUser?.id === post?.userId ? (
                     <div className="comments-trash-and-update-button">
                         <OpenModalButton
                             buttonText={<><i className="fas fa-trash-alt"></i></>}
                             modalComponent={<DeletePost postId={post?.id} />}
                         />
-                        {/* <DeletePost postId={postId}/> */}
+
                         <OpenModalButton
                             buttonText={<><i className="fa fa-pen-square"></i></>}
                             modalComponent={<EditPost postId={post?.id} post={post} />}
@@ -124,7 +125,8 @@ const PostItem = ({ post }) => {
                 ) : (
                     <></>
                 )}
-                <button type='click' onClick={openMenu}>{<><i className="fas fa-comment-dots"></i></>}</button>
+
+                <span></span><span><button type='click' onClick={openMenu}>{<><i className="fas fa-comment-dots"></i></>}</button></span>
 
             </div>
             {/* <button  type='click' onClick={openMenu}>{<><i className="fas fa-comment-dots"></i></>}</button> */}
@@ -149,14 +151,14 @@ const PostItem = ({ post }) => {
                                 <div className="list-for-update-delete">
 
 
-                                        <div className="trash-comment">
+                                    <div className="trash-comment">
                                         <div className="comment-text-bubble">
                                             <div className="the-comments-commented">
                                                 <span>{comment?.content}</span>
                                             </div>
                                         </div>
                                         <span>{currentUser?.id === comment?.userId ? <DeleteComment commentId={comment?.id}><i className="fas fa-trash-alt"></i></DeleteComment> : <></>}</span>
-                                        </div>
+                                    </div>
 
 
 

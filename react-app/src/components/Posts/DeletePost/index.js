@@ -4,13 +4,14 @@ import { deleteOnePost } from "../../../store/post";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useModal } from "../../../context/Modal";
+import "./DeletePost.css"
 
 export default function DeletePost ({postId}){
 const {closeModal} = useModal();
 const history = useHistory();
 const dispatch = useDispatch();
 
-const onSubmit = async (e) => {
+const handleDelete = async (e) => {
     e.preventDefault();
     dispatch(deleteOnePost(postId))
     closeModal()
@@ -23,10 +24,18 @@ const onCancel = (e) => {
 }
 
 return (
- <>
-            <div onClick={onSubmit}>
-                <i className="fas fa-trash-alt"></i> </div>
-        </>
+    <div className="form-div">
+        <div className="delete-post-title">Are you sure you want to delete this post?</div>
+        {/* <form onSubmit={handleDelete} className="form"> */}
+        <h3></h3>
+        <button onClick={handleDelete} className="delete-post-submit-button" id="deleteSpot-button">
+            Yes, delete this post
+        </button>
+        <button className="delete-post-cancel-button"type="button" onClick={onCancel}>
+            Cancel
+        </button>
+        {/* </form> */}
+    </div>
 )
 
 

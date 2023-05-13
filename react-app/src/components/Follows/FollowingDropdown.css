@@ -6,12 +6,14 @@
   }
 
   .IiZ2z {
-    font-size: 20px;
+   
     font-weight: bold;
     margin-bottom: 16px;
     color: white;
   }
-
+.following-page-title {
+  color: white;
+}
   .Il4T7 {
     display: flex;
     align-items: center;
@@ -25,7 +27,7 @@
         padding: 16px;
         font-size: 16px;
         /* border-radius: 4px 0 0 4px; */
-        color: white;
+        color: black;
         width: 330px;
     border-radius: 13px;
   }
