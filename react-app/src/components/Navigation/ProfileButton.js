@@ -117,9 +117,9 @@ function ProfileButton({ user }) {
                   <li><i className="fas fa-stream"></i> Queue</li>
                   <li><i className="fas fa-fire"></i> Posts+ Spork Blaze</li>
                   <li><i className="fas fa-cog"></i> Blog Settings</li>
-              </div>
+                </div>
 
-</div>
+
 
                {/*  <div className="top-dropdown-menu-options"><li><button className="account-menu-dropdown">Blogs </button></li>
                   <li><OpenModalButton buttonText="New+" modalComponent={<CreatePost/>}></OpenModalButton></li></div>
