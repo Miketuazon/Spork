@@ -104,7 +104,7 @@ const PostItem = ({ post }) => {
             </p>
             <div className="post-footer">
                 <button onClick={openMenu} className="like-button">{notes === 1 ? <div><span>{notes} </span><span>note</span></div> : <div><span>{notes} </span><span>notes</span></div>}</button>
-                <button className="like-button"><i class="fa fa-heart"></i></button>
+                {currentUser && !liked && (currentUser?.id !== post?.userId) ? <button className="like-button" onClick={onSubmitLike}><i className="far fa-heart"></i></button> : currentUser && liked && (currentUser?.id !== post?.userId) ? <button className="unlike-button" onClick={onSubmitLike}><i className="fas fa-heart" ></i></button> : <></>}
                 <button className="reblog-button"><i class="fa fa-retweet"></i></button>
                 {/* {currentUser?.id === post?.userId ? (<><OpenModalButton
                     buttonText={<><i className="fa fa-pen-square"></i></>}
