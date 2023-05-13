@@ -116,7 +116,7 @@ function ProfileButton({ user }) {
                   <li><i className="fas fa-stream"></i> Queue</li>
                   <li><i className="fas fa-fire"></i> Posts+ Spork Blaze</li>
                   <li><i className="fas fa-cog"></i> Blog Settings</li>
-
+              </div>
 
 
 
