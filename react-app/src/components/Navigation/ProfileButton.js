@@ -111,7 +111,7 @@ function ProfileButton({ user }) {
                 <div className="bottom-dropdown-menu-small">
                   {/* <li><NavLink exact to="/posts/current_user"><i className="fas fa-file"></i>{user.username}'s Posts</NavLink></li> */}
                   <li onClick={() => { window.location.href = '/posts/current' }}><i className="fas fa-file"></i>{user.username}'s Posts</li>
-                  <li><i className="fas fa-users"></i> Followers {usersFollow > 0 ? usersFollow : <></>}</li>
+                  <li onClick={() => { window.location.href = '/followers' }}><i className="fas fa-users"></i> Followers {usersFollow > 0 ? usersFollow : <></>}</li>
                   <li><i className="fas fa-chart-line"></i> Activity</li>
                   <li><i className="fas fa-file-alt"></i> Drafts</li>
                   <li><i className="fas fa-stream"></i> Queue</li>
@@ -121,7 +121,7 @@ function ProfileButton({ user }) {
 
 
 
-               {/*  <div className="top-dropdown-menu-options"><li><button className="account-menu-dropdown">Blogs </button></li>
+                {/*  <div className="top-dropdown-menu-options"><li><button className="account-menu-dropdown">Blogs </button></li>
                   <li><OpenModalButton buttonText="New+" modalComponent={<CreatePost/>}></OpenModalButton></li></div>
                <div className="bottom-dropdown-menu-small">
                    <li><NavLink exact to="/posts/current_user"><i className="fas fa-file"></i>{user.username}'s Posts</NavLink></li>

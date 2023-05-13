@@ -56,18 +56,18 @@ const PostItem = ({ post }) => {
     const hoursMin = date?.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', });
 
 
-    const onSubmitFollow = async(e) => {
+    const onSubmitFollow = async (e) => {
         e.preventDefault()
 
         dispatch(getFollowsForUser(post?.userId))
         dispatch(getAllPosts())
 
     }
-    const onSubmitLike = async(e) => {
+    const onSubmitLike = async (e) => {
         e.preventDefault()
 
         dispatch(likeOnePost(post?.id))
-        // dispatch(getAllPosts())
+        dispatch(getAllPosts())
 
     }
     const openMenu = () => {
