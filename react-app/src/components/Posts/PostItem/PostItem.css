@@ -32,10 +32,6 @@
   overflow-wrap: break-word;
 }
 
-.the-comments-commented {
-  max-width: 400px;
-}
-
 .comment-owner {
   font-weight: bold;
 }
@@ -127,8 +123,17 @@
   background-color: #f1f1f1;
   border-radius: 20px;
   padding: 10px 20px;
-  max-width: 70%;
+  max-width: 30rem;
   margin-right: 10px;
+  min-width: 3rem;
+}
+
+.trash-comment {
+  min-width: 50%;
+}
+
+.the-comments-commented {
+  min-width: 50%;
 }
 
 .dropdown-container {
@@ -181,6 +186,7 @@
   font-size: 1rem;
   background-color: #0a1b40;
   border-radius: 68px;
+  cursor: pointer;
   padding: 5px 22px;
   display: inline-block;
   position: relative;
@@ -190,14 +196,15 @@
 .button-unfollow::before {
   font-size: 20px;
   position: absolute;
+  cursor: pointer;
   left: 7px;
   top: 45%;
   transform: translateY(-50%);
 }
 
 .button-unfollow {
-  color: #0a1b40;
-  background-color: #ffffff;
+  color: white;
+  background-color: #5264f0;
 }
 
 .button-follow:focus,

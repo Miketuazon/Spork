@@ -1,0 +1,13 @@
+.button-sign-up {
+    background-color: #5308f4;
+    width: 100px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    height: 48px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 15px;
+    cursor: pointer;
+    margin-left: 5px;
+}

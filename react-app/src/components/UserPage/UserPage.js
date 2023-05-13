@@ -11,7 +11,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux"
 import { getAllPosts, getCurrentUserPosts } from "../../store/post";
 import { useCallback } from "react";
-import FollowOrUnfollow from "../Follows/index"
+import FollowOrUnfollow from "../Follows/FollowOrUnfollow";
 import { getFollowsForUser } from "../../store/follow";
 
 

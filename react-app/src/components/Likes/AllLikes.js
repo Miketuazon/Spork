@@ -12,17 +12,17 @@ export default function AllLikes() {
         dispatch(getAllPosts())
         // dispatch(getCommentsForPost(postId))
         // dispatch(getCommentsForPost(postId))
-    }, [dispatch, JSON.stringify(posts), JSON.stringify(posts.comments), JSON.stringify(posts.likes),])
+    }, [dispatch, JSON.stringify(posts), JSON.stringify(posts?.comments), JSON.stringify(posts?.likes),])
 
     return (
         <div className="AllLikes">
             <div>
                 <ul className="posts">
-                    {sessionUser.likes.map(post => (
+                    {sessionUser.likes.length > 0 ? sessionUser.likes.map(post => (
                         <li key={post.id} className="post">
                             <PostItem post={post} />
                         </li>
-                    ))}
+                    )) : <h1 className="no-likes">You haven't liked anything</h1>}
                 </ul>
             </div>
         </div>
