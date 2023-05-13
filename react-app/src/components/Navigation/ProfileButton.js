@@ -23,7 +23,8 @@ function ProfileButton({ user }) {
   const [showPopup, setShowPopup] = useState(false);
   const ulRef = useRef();
   const uniqueIds = new Set();
-  const usersFollow = currentUser?.following?.length
+
+
   const uniqueData = postsVal?.filter(item => {
     if (!uniqueIds.has(item?.userId)) {
       uniqueIds.add(item?.userId);
@@ -40,7 +41,7 @@ function ProfileButton({ user }) {
     setShowMenu(true);
   };
 
-  const followCount = user?.following?.length
+  const followCount = currentUser?.following?.length
 
   useEffect(() => {
     if (!showMenu) return;
@@ -54,7 +55,7 @@ function ProfileButton({ user }) {
     document.addEventListener("click", closeMenu);
 
     return () => document.removeEventListener("click", closeMenu);
-  }, [showMenu, JSON.stringify(currentUser)]);
+  }, [showMenu, JSON.stringify(currentUser), JSON.stringify(followCount)]);
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -95,7 +96,7 @@ function ProfileButton({ user }) {
                   <li><button onClick={handleLogout}> Log Out</button></li></div>
                 <li> <button onClick={() => window.location.href = '/Likes'}> <i className="fas fa-heart"></i> Likes</button></li>
                 <li><i className="fas fa-user-friends"></i>
-                  <button className="following-btn" onClick={() => window.location.href = "/following"}>Following  {user?.following?.length > 0 ? Number(user?.following?.length) : <></>}</button></li>
+                  <button className="following-btn" onClick={() => window.location.href = "/following"}>Following</button></li>
                 <li><button className="popup-btn" onClick={() => alert('Settings feature coming soon, sorry!')}><i className="fas fa-cog"></i> Settings</button></li>
                 <li><button onClick={() => window.location.href = '/adfree'}><i className="fas fa-ad"></i> Ad-Free</button></li>
                 <li onClick={() => window.location.href = "/paymentandpurchases"}><i className="fas fa-credit-card"></i> Payment and Purchases</li>
@@ -111,7 +112,7 @@ function ProfileButton({ user }) {
                 <div className="bottom-dropdown-menu-small">
                   {/* <li><NavLink exact to="/posts/current_user"><i className="fas fa-file"></i>{user.username}'s Posts</NavLink></li> */}
                   <li onClick={() => { window.location.href = '/posts/current' }}><i className="fas fa-file"></i>{user.username}'s Posts</li>
-                  <li onClick={() => { window.location.href = '/followers' }}><i className="fas fa-users"></i> Followers {usersFollow > 0 ? usersFollow : <></>}</li>
+                  <li onClick={() => { window.location.href = '/followers' }}><i className="fas fa-users"></i> Followers</li>
                   <li><i className="fas fa-chart-line"></i> Activity</li>
                   <li><i className="fas fa-file-alt"></i> Drafts</li>
                   <li><i className="fas fa-stream"></i> Queue</li>

@@ -42,7 +42,7 @@ const Feed = () => {
           { currentUser ?
             <ul class="post-types">
               <div className='create-footer'>Text
-              <OpenModalButton name="Create Post" buttonText={<> <i className="fas fa-font"></i></>} modalComponent={<CreatePost/>}></OpenModalButton></div>
+              <OpenModalButton className="Create Post" buttonText={<> <i className="fas fa-font"></i></>} modalComponent={<CreatePost/>}></OpenModalButton></div>
 <div className='photo-footer'>Photo<a class="fas fa-camera"onClick={() => alert("Coming soon!")}></a></div>
 <div className='quote-footer'>Quote
 <a class="fas fa-quote-right"onClick={() => alert("Coming soon!")}></a></div>

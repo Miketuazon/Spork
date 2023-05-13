@@ -8,7 +8,7 @@ const likePost = (likes) => {
 }
 
 export const likeOnePost = (postId) => async dispatch => {
-    const response = await fetch(`/api/likes/${postId}/`)
+    const response = await fetch(`/api/likes/${postId}`)
 
     if (response.ok) {
         const postLike = await response.json()
