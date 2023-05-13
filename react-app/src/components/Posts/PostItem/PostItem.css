@@ -173,6 +173,7 @@
   font-size: 1rem;
   background-color: #0a1b40;
   border-radius: 68px;
+  cursor: pointer;
   padding: 5px 22px;
   display: inline-block;
   position: relative;
@@ -182,14 +183,15 @@
 .button-unfollow::before {
   font-size: 20px;
   position: absolute;
+  cursor: pointer;
   left: 7px;
   top: 45%;
   transform: translateY(-50%);
 }
 
 .button-unfollow {
-  color: #0a1b40;
-  background-color: #ffffff;
+  color: white;
+  background-color: #5264f0;
 }
 
 .button-follow:focus,

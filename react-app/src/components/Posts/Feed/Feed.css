@@ -157,6 +157,9 @@ margin-left: 43px;
 .live-outer-box {
   background-color: rgb(100, 109, 226);
   padding: 10px;
+  height: 179px;
+  margin-top: 99px;
+  margin-top: -90px;
 
 }
 
@@ -174,4 +177,25 @@ margin-left: 43px;
 
 .live-outer-box:hover {
   background-color: rgb(70, 78, 159);
+}
+a.live-text{
+  height: 20px;
+  width: 100px;
+  display: flex;
+  box-sizing: 100px;
+}
+.create-please{
+  background: transparent;
+  border: none;
+}
+
+.create-footer, .photo-footer, .quote-footer, .link-footer, .chat-footer, .sound-footer, .video-footer{
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+button{
+background-color: transparent;
+border: none;
 }

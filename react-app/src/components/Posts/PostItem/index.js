@@ -8,7 +8,9 @@ import CreateComment from "../../comments/CreateComment"
 import DeleteComment from "../../comments/DeleteComment"
 import { useEffect } from "react";
 import { useDispatch } from "react-redux"
-import { getAllPosts } from "../../../store/post";
+import { getAllPosts, getCurrentUserPosts } from "../../../store/post";
+import { useCallback } from "react";
+import FollowOrUnfollow from "../../Follows/FollowOrUnfollow";
 import { getFollowsForUser } from "../../../store/follow";
 import { likeOnePost } from "../../../store/like";
 
@@ -102,14 +104,20 @@ const PostItem = ({ post }) => {
             </p>
             <div className="post-footer">
                 <button onClick={openMenu} className="like-button">{notes === 1 ? <div><span>{notes} </span><span>note</span></div> : <div><span>{notes} </span><span>notes</span></div>}</button>
-                {currentUser && !liked && (currentUser?.id !== post?.userId) ? <button className="like-button" onClick={onSubmitLike}><i className="far fa-heart"></i></button> : currentUser && liked && (currentUser?.id !== post?.userId) ? <button className="unlike-button" onClick={onSubmitLike}><i className="fas fa-heart" ></i></button> : <></>}
-                <button className="reblog-button"><i className="fa fa-retweet"></i></button>
+                <button className="like-button"><i class="fa fa-heart"></i></button>
+                <button className="reblog-button"><i class="fa fa-retweet"></i></button>
+                {/* {currentUser?.id === post?.userId ? (<><OpenModalButton
+                    buttonText={<><i className="fa fa-pen-square"></i></>}
+                    modalComponent={<EditPost postId={post?.id} post={post} />}
+                />{<DeletePost posttId={post?.id}><i className="fas fa-trash-alt"></i></DeletePost>}</> ):(<></>)} */}
+
                 {currentUser?.id === post?.userId ? (
                     <div className="comments-trash-and-update-button">
                         <OpenModalButton
                             buttonText={<><i className="fas fa-trash-alt"></i></>}
                             modalComponent={<DeletePost postId={post?.id} />}
                         />
+
                         <OpenModalButton
                             buttonText={<><i className="fa fa-pen-square"></i></>}
                             modalComponent={<EditPost postId={post?.id} post={post} />}
@@ -118,7 +126,8 @@ const PostItem = ({ post }) => {
                 ) : (
                     <></>
                 )}
-                <button type='click' onClick={openMenu}>{<><i className="fas fa-comment-dots"></i></>}</button>
+
+                <span></span><span><button type='click' onClick={openMenu}>{<><i className="fas fa-comment-dots"></i></>}</button></span>
 
             </div>
             <div className="dropdown m-10">
