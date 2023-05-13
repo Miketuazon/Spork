@@ -31,10 +31,11 @@ const FollowerDropdown = () => {
     const currentUserFollowing = currentUser?.following
     const currentUserVal = Object.values(currentUser)
     const follow = uniqueData?.filter(item => { return item?.owner?.following?.some(id => id === currentUser?.id) })
+    const follower = uniqueData?.filter(item => { return item?.owner?.followers?.some(id => id === currentUser?.id) })
     // const follower = post?.owner?.followers?.find(id => id === currentUser?.id)
     // const postsFilter = currentUserVal?.filter(currentUser?.following?.id === postsVal?.userId)
     const followerCount = follow?.length
-    console.log('FollowCount', followerCount)
+    console.log('FollowCount', follow)
 
     useEffect(() => {
 
@@ -59,16 +60,10 @@ const FollowerDropdown = () => {
                     return (
 
                         <form className="Il4T7" action="">
-                            <input className="dyc2r" type="text" autoComplete="off" placeholder={follows?.owner?.username} value={follows?.owner?.username} />
-                            <button onClick={onSubmitFollow} className="TRX6J BfS8g" aria-label="Follow" disabled="">
-                                <span className="EvhBA Tb7Ey" tabIndex="-1"><i class='fas fa-user-plus'>UnFollow</i></span>
-                            </button>
+                            <input className="dyc2r" type="text" autoComplete="off" placeholder={follows?.owner?.username} value={follows?.owner?.username} readOnly />
                         </form>
                     )
                 }
-
-
-
                 )
                     : <div className="following-page-title"><h1>Oh no! No one follows you!</h1></div>
                 }
