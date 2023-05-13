@@ -48,6 +48,8 @@
     /* margin-top: -2px; */
     border: none;
     outline: none;
+    margin-left: 0;
+    padding-left: 0;
 }
 
 .update-post-close-for-everyone-post-now-button {

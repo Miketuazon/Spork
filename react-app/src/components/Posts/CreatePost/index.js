@@ -77,7 +77,7 @@ export default function CreatePost() {
                     <input
                         className="create-post-hashtag"
                         type="text"
-                        placeholder="#add tags to help people find your post"
+                        placeholder="You can leave title empty but you cannot create a post with less than 3 characters"
                     />
 
                 </form>
@@ -97,13 +97,13 @@ export default function CreatePost() {
                         </li>
                         <li>
                             <button onClick={onSubmit} className="create-post-post-now-button" ><span>Post now |</span><span className="fa fa-angle-down"></span></button>
-                        {/* <ul className="create-post-dropdown">
+                            {/* <ul className="create-post-dropdown">
                             <li><a>1</a></li>
                             <li><a>2</a></li>
                             <li><a>3</a></li>
                             <li><a>4</a></li>
                         </ul> */}
-                    </li>
+                        </li>
                         {/* <div>
                         <li>
                             <button onSubmit={onSubmit} className="create-post-post-now-button" ><span>Post now |</span><span className="fa fa-angle-down"></span></button>

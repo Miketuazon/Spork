@@ -13,6 +13,7 @@ import { useCallback } from "react";
 import FollowOrUnfollow from "../../Follows/FollowOrUnfollow";
 import { getFollowsForUser } from "../../../store/follow";
 import { likeOnePost } from "../../../store/like";
+import EditComment from "../../comments/EditComment";
 
 
 const PostItem = ({ post }) => {
@@ -153,6 +154,11 @@ const PostItem = ({ post }) => {
                                                 </div>
                                             </div>
                                             <span>{currentUser?.id === comment?.userId ? <DeleteComment commentId={comment?.id}><i className="fas fa-trash-alt"></i></DeleteComment> : <></>}</span>
+                                            <span>{currentUser?.id === comment?.userId ? <OpenModalButton
+                                                buttonText={<><i className="fa fa-pen-square edit-comment"></i></>}
+                                                modalComponent={<EditComment commentId={comment?.id} comment={comment} />}
+                                            /> : <></>}</span>
+
                                         </div>
                                     </div>
                                 </li>
