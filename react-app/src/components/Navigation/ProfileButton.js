@@ -4,23 +4,42 @@ import { logout } from "../../store/session";
 import { NavLink } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton";
 import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import CreatePost from "../Posts/CreatePost";
+import FollowingDropdown from "../Follows/FollowingDropdown";
 import './ProfileButton.css'
 
 
 function ProfileButton({ user }) {
+
   const history = useHistory();
+  const currentUser = useSelector(state => state?.session?.user)
+  const posts = useSelector(state => state?.posts)
+  const postsVal = Object?.values(posts)
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const ulRef = useRef();
+  const uniqueIds = new Set();
+  const uniqueData = postsVal?.filter(item => {
+    if (!uniqueIds.has(item?.userId)) {
+      uniqueIds.add(item?.userId);
+      return true;
+    }
+    return false;
+  });
 
+
+
+  const follow = uniqueData?.filter(item => { return item?.owner?.followers?.some(id => id === currentUser?.id) })
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
   };
+
+  const followCount = user?.following?.length
 
   useEffect(() => {
     if (!showMenu) return;
@@ -34,7 +53,7 @@ function ProfileButton({ user }) {
     document.addEventListener("click", closeMenu);
 
     return () => document.removeEventListener("click", closeMenu);
-  }, [showMenu]);
+  }, [showMenu, JSON.stringify(user)]);
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -97,7 +116,21 @@ function ProfileButton({ user }) {
                   <li><i className="fas fa-stream"></i> Queue</li>
                   <li><i className="fas fa-fire"></i> Posts+ Spork Blaze</li>
                   <li><i className="fas fa-cog"></i> Blog Settings</li>
-                </div>
+
+
+
+
+               {/*  <div className="top-dropdown-menu-options"><li><button className="account-menu-dropdown">Blogs </button></li>
+                  <li><OpenModalButton buttonText="New+" modalComponent={<CreatePost/>}></OpenModalButton></li></div>
+               <div className="bottom-dropdown-menu-small">
+                   <li><NavLink exact to="/posts/current_user"><i className="fas fa-file"></i>{user.username}'s Posts</NavLink></li>
+
+
+
+
+
+
+                </div>*/}
               </ul>
             </div>
 

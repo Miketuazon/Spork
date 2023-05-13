@@ -28,6 +28,8 @@ const AdFreeComponent = () => {
             </div>
             <p className="RmcFk">Subscriptions renew automatically. Ad-Free excludes certain promotional content. <a href="https://tumblr.zendesk.com/hc/articles/4418605293975#promotional-content" target="_blank" rel="noopener noreferrer">Learn more</a>.</p>
           </div>
+
+
         </div>
       </div>
     </main>
