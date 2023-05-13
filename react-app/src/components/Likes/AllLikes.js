@@ -18,7 +18,7 @@ export default function AllLikes() {
         <div className="AllLikes">
             <div>
                 <ul className="posts">
-                    {sessionUser.likes > 0 ? sessionUser.likes.map(post => (
+                    {sessionUser.likes.length > 0 ? sessionUser.likes.map(post => (
                         <li key={post.id} className="post">
                             <PostItem post={post} />
                         </li>

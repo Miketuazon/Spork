@@ -32,6 +32,10 @@
   overflow-wrap: break-word;
 }
 
+.comment-owner {
+  font-weight: bold;
+}
+
 .post-content {
   margin-bottom: 10px;
   overflow-wrap: break-word;
@@ -119,8 +123,17 @@
   background-color: #f1f1f1;
   border-radius: 20px;
   padding: 10px 20px;
-  max-width: 70%;
+  max-width: 30rem;
   margin-right: 10px;
+  min-width: 3rem;
+}
+
+.trash-comment {
+  min-width: 50%;
+}
+
+.the-comments-commented {
+  min-width: 50%;
 }
 
 .dropdown-container {
