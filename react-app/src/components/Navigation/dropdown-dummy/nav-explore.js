@@ -57,12 +57,7 @@ const Explore = () => {
       body: "Here are some tips on how to save money on groceries, without sacrificing quality.",
       image: "https://hips.hearstapps.com/hmg-prod/images/how-to-save-money-on-groceries-1673472736.png",
     },
-    {
-      id: 10,
-      title: "How to get a good night's sleep",
-      body: "Here are some tips on how to get a good night's sleep, so you can wake up feeling refreshed and energized.",
-      image: "https://media.glamourmagazine.co.uk/photos/62de970ac0bdbc88bce2931d/1:1/w_1920,h_1920,c_limit/SLEEP%20PERCEPTION%20GAP%20250722%20%20%20GettyImages-1369910115_SQ.jpg",
-    },
+
   ];
 
   return (

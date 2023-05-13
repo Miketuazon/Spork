@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { createOneComment } from "../../../store/post";
+// import { createOneComment } from "../../../store/post";
+import { createOneComment } from "../../../store/comment";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useModal } from "../../../context/Modal";

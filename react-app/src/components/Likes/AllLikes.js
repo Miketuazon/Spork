@@ -12,7 +12,7 @@ export default function AllLikes() {
         dispatch(getAllPosts())
         // dispatch(getCommentsForPost(postId))
         // dispatch(getCommentsForPost(postId))
-    }, [dispatch, JSON.stringify(posts), JSON.stringify(posts.comments), JSON.stringify(posts.likes),])
+    }, [dispatch, JSON.stringify(posts), JSON.stringify(posts?.comments), JSON.stringify(posts?.likes),])
 
     return (
         <div className="AllLikes">
