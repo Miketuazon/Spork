@@ -20,12 +20,18 @@ const PostItem = ({ post }) => {
     const ulRef = useRef();
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state?.session?.user)
-    const postFollowers = post?.owner?.followers
+    const currentFollowing = currentUser?.following
+    const postFollowers = Object?.values(post?.owner?.followers)
+    const postsVal = Object.values(post)
+    const comments = useSelector(state => state?.comments)
     const notes = Number(post?.comments?.length + post?.likes?.length)
-    const postComments = post?.comments
-    const postLikes = post?.likes
+    const postComments = Object.values(post?.comments)
+    const postLikes = Object?.values(post?.likes)
+
     const follower = post?.owner?.followers?.find(id => id === currentUser?.id)
+    console.log('follower', follower)
     const liked = post?.likes?.find(id => id === currentUser?.id)
+    console.log('liked', liked)
 
     // creating date
     const months = {
@@ -47,24 +53,22 @@ const PostItem = ({ post }) => {
     const month = months[date?.getMonth()];
     const day = date?.getDate();
     const year = date?.getFullYear();
-    const hoursMin = date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', });
+    const hoursMin = date?.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', });
 
 
-    const onSubmitFollow = async (e) => {
+    const onSubmitFollow = async(e) => {
         e.preventDefault()
 
-        const successFollow = dispatch(getFollowsForUser(post?.userId))
-        if (successFollow) {
-            dispatch(getAllPosts())
-        }
+        dispatch(getFollowsForUser(post?.userId))
+        dispatch(getAllPosts())
+
     }
-    const onSubmitLike = async (e) => {
+    const onSubmitLike = async(e) => {
         e.preventDefault()
 
-        const successLike = dispatch(likeOnePost(post?.id))
-        if (successLike) {
-            dispatch(getAllPosts())
-        }
+        dispatch(likeOnePost(post?.id))
+        // dispatch(getAllPosts())
+
     }
     const openMenu = () => {
         if (showMenu) return;
@@ -83,7 +87,7 @@ const PostItem = ({ post }) => {
         document.addEventListener('click', closeMenu);
 
         return () => document.removeEventListener("click", closeMenu);
-    }, [dispatch, showMenu, JSON.stringify(postFollowers), JSON.stringify(postComments), JSON.stringify(postLikes)]);
+    }, [dispatch, showMenu, JSON.stringify(post), JSON.stringify(notes), JSON.stringify(postFollowers), JSON.stringify(postComments), JSON.stringify(postLikes), JSON.stringify(currentUser), JSON.stringify(liked), JSON.stringify(follower)]);
 
 
     const ulClassNameUpdateDelete = "list-for-update-delete" + (showMenu ? "" : " hidden");
@@ -104,8 +108,8 @@ const PostItem = ({ post }) => {
             </p>
             <div className="post-footer">
                 <button onClick={openMenu} className="like-button">{notes === 1 ? <div><span>{notes} </span><span>note</span></div> : <div><span>{notes} </span><span>notes</span></div>}</button>
-                <button className="like-button"><i class="fa fa-heart"></i></button>
-                <button className="reblog-button"><i class="fa fa-retweet"></i></button>
+                {/* <button onclick={onSubmitLike} className="like-button"><i class="fa fa-heart"></i></button> */}
+                {currentUser && !liked && (currentUser?.id !== post?.userId) ? <button className="like-button" onClick={onSubmitLike}><i className="far fa-heart"></i></button> : currentUser && liked && (currentUser?.id !== post?.userId) ? <button className="unlike-button" onClick={onSubmitLike}><i className="fas fa-heart" ></i></button> : <></>}
                 {/* {currentUser?.id === post?.userId ? (<><OpenModalButton
                     buttonText={<><i className="fa fa-pen-square"></i></>}
                     modalComponent={<EditPost postId={post?.id} post={post} />}

@@ -1,6 +1,8 @@
 const DELETE_COMMENT = 'comments/deleteComment'
 const PUT_COMMENT = 'comments/putComment'
 const GET_COMMENTS = 'comments/getComments'
+const POST_COMMENT = 'posts/postComment'
+
 
 export const getComments = (comments) => {
     return {
@@ -8,6 +10,15 @@ export const getComments = (comments) => {
         comments
     }
 }
+
+const postComment = (comment) => {
+    return {
+        type: POST_COMMENT,
+        comment
+    }
+}
+
+
 export const deleteComment = (commentId) => {
     return {
         type: DELETE_COMMENT,
@@ -29,7 +40,26 @@ export const getCommentsForPost = (postId) => async dispatch => {
         dispatch(getComments(res))
     }
 }
+export const createOneComment = (comment, postId) => async (dispatch) => {
+    const response = await fetch(`/api/posts/${postId}/comments`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(comment)
+    })
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(postComment(data));
+        return null;
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ["An error occurred. Please try again."];
+    }
 
+}
 export const deleteOneComment = (commentId) => async dispatch => {
     const response = await fetch(`/api/comments/delete/${commentId}`, {
         method: 'DELETE'
@@ -65,6 +95,10 @@ export default function commentsReducer(state = {}, action) {
             delete newState[action.commentId]
             return newState
         case PUT_COMMENT:
+            newState = { ...state }
+            newState[action.comment.id] = action.comment
+            return newState
+        case POST_COMMENT:
             newState = { ...state }
             newState[action.comment.id] = action.comment
             return newState

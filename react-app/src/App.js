@@ -85,7 +85,7 @@ function App() {
           <Route exact path="/feed">
             <Feed />
           </Route>
-          <Route path="/search/">
+          <Route path="/search">
             <ResultsPage />
           </Route>
           {/* <Route path="/user/:id">

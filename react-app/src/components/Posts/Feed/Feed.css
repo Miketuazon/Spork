@@ -193,9 +193,32 @@ a.live-text{
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
+  cursor: pointer;
 }
 
 button{
 background-color: transparent;
 border: none;
+}
+
+.photo-footer{
+  color: rgb(211, 58, 58);
+}
+.quote-footer
+{
+color: orange;
+}
+
+.chat-footer{
+color: blue;
+}
+.sound-footer{
+  color: rgb(151, 118, 182);
+
+}
+.link-footer{
+  color:rgb(72, 195, 127);
+}
+.video-footer{
+  color: rgb(224, 66, 245);
 }

@@ -3,7 +3,7 @@ const GET_POSTS = 'posts/getPosts'
 const POST_POST = 'posts/postPost'
 const DELETE_POST = 'posts/deletePost'
 const PUT_POST = 'posts/putPost'
-const POST_COMMENT = 'posts/postComment'
+// const POST_COMMENT = 'posts/postComment'
 
 
 const getPosts = (posts) => {
@@ -13,12 +13,12 @@ const getPosts = (posts) => {
     }
 }
 
-const postComment = (comment) => {
-    return {
-        type: POST_COMMENT,
-        comment
-    }
-}
+// const postComment = (comment) => {
+//     return {
+//         type: POST_COMMENT,
+//         comment
+//     }
+// }
 
 const postPost = (post) => {
     return {
@@ -42,7 +42,7 @@ const putPost = (post) => {
 }
 
 export const getAllPosts = () => async (dispatch) => {
-    const response = await fetch('/api/posts')
+    const response = await fetch('/api/posts/')
     if (response.ok) {
         const posts = await response.json()
         dispatch(getPosts(posts))
@@ -81,26 +81,26 @@ export const createOnePost = (post) => async (dispatch) => {
 
 }
 
-export const createOneComment = (comment, postId) => async (dispatch) => {
-    const response = await fetch(`/api/posts/${postId}/comments`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(comment)
-    })
-    if (response.ok) {
-        const data = await response.json();
-        dispatch(postComment(data));
-        return null;
-    } else if (response.status < 500) {
-        const data = await response.json();
-        if (data.errors) {
-            return data.errors;
-        }
-    } else {
-        return ["An error occurred. Please try again."];
-    }
+// export const createOneComment = (comment, postId) => async (dispatch) => {
+//     const response = await fetch(`/api/posts/${postId}/comments`, {
+//         method: 'POST',
+//         headers: { 'Content-Type': 'application/json' },
+//         body: JSON.stringify(comment)
+//     })
+//     if (response.ok) {
+//         const data = await response.json();
+//         dispatch(postComment(data));
+//         return null;
+//     } else if (response.status < 500) {
+//         const data = await response.json();
+//         if (data.errors) {
+//             return data.errors;
+//         }
+//     } else {
+//         return ["An error occurred. Please try again."];
+//     }
 
-}
+// }
 
 export const deleteOnePost = (postId) => async (dispatch) => {
     const response = await fetch(`/api/posts/delete/${postId}`, {
@@ -148,10 +148,10 @@ export default function postsReducer(state = {}, action) {
             newState = { ...state }
             newState[action.post.id] = action.post
             return newState
-        case POST_COMMENT:
-            newState = { ...state }
-            newState[action.comment.id] = action.comment
-            return newState
+        // case POST_COMMENT:
+        //     newState = { ...state }
+        //     newState[action.post.comment.id] = action.comment
+        //     return newState
         default:
             return state
     }
