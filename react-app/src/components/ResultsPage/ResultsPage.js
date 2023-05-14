@@ -6,7 +6,7 @@ import PostItem from "../Posts/PostItem"
 import { NavLink, useLocation } from "react-router-dom"
 import './ResultsPage.css'
 import ResultsErrorMessage from './ResultsError'
-
+import ResultsItem from './ResultsItem'
 function ResultsPage() {
     const dispatch = useDispatch()
     const location = useLocation()
@@ -67,7 +67,7 @@ function ResultsPage() {
                 {
                     filteredPosts.map(post => (
                             <li key={post?.id} className="post">
-                                <PostItem post={post} />
+                                <ResultsItem post={post} />
                             </li>
                     ))
                 }
