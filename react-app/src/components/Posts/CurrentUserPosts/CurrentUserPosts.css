@@ -8,6 +8,9 @@
     font-family: Helvetica, Arial, sans-serif;
 }
 
+.no-posts {
+    color: white;
+}
 
 .current-post {
     background-color: #fff;
@@ -50,7 +53,6 @@
     margin: -48px;
 }
 
-a
-{
+a {
     text-decoration: none;
 }

@@ -2,23 +2,18 @@ import React from 'react';
 import "./FollowingDropdown.css"
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { getAllUsers } from '../../store/users';
 import { getAllPosts } from '../../store/post';
 import { useEffect } from 'react';
-import FollowItem from './FollowItem';
 import { getFollowsForUser } from '../../store/follow';
 
 
 const FollowerDropdown = () => {
     const dispatch = useDispatch();
     const posts = useSelector(state => state?.posts)
-    console.log('posts', posts)
 
     const currentUser = useSelector(state => state?.session?.user)
 
-    console.log('currentuser', currentUser)
     const postsVal = Object?.values(posts)
-    console.log('Post Values', postsVal)
     const uniqueIds = new Set();
     const uniqueData = postsVal?.filter(item => {
         if (!uniqueIds.has(item?.userId)) {
@@ -28,14 +23,9 @@ const FollowerDropdown = () => {
         return false;
     });
 
-    const currentUserFollowing = currentUser?.following
-    const currentUserVal = Object.values(currentUser)
     const follow = uniqueData?.filter(item => { return item?.owner?.following?.some(id => id === currentUser?.id) })
     const follower = uniqueData?.filter(item => { return item?.owner?.followers?.some(id => id === currentUser?.id) })
-    // const follower = post?.owner?.followers?.find(id => id === currentUser?.id)
-    // const postsFilter = currentUserVal?.filter(currentUser?.following?.id === postsVal?.userId)
     const followerCount = follow?.length
-    console.log('FollowCount', follow)
 
     useEffect(() => {
 
