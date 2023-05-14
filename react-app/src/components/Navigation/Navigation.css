@@ -1,3 +1,21 @@
+.spork-logo:hover {
+  animation: left-to-right 2s infinite ease-in-out;
+}
+
+@keyframes left-to-right {
+  0% {
+      transform: translateX(0px);
+  }
+
+  50% {
+      transform: translateX(-10px);
+  }
+
+  100% {
+      transform: translateX(0px);
+  }
+}
+
 .profile-dropdown-login{
   display: none;
   position: absolute;
@@ -172,4 +190,3 @@ right:0px;
 i.fa.fa-pen-square{
   color: white;
 }
-

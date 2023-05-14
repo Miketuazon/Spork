@@ -54,10 +54,14 @@ function ResultsPage() {
     return (
         <div className='results-of-search'>
             <div className='sort-container'>
-                <h2 className='sortt'>Sort by:</h2>
+                <div className='sort-and-results'>
+                <h2 className='res'>Results: {filteredPosts.length} | Query: {query}</h2>
+                <h2 className='sortt'>Sort by:
                 <button onClick={handleSortClick} className='sort-button'>
-                    {sortOrder === 'asc' ? <i class='fas fa-angle-down'> Older</i> : <i class='fas fa-angle-up'> Most recent</i>}
+                    {sortOrder === 'asc' ? <i class='fas fa-angle-down'> Older</i> : <i class='fas fa-angle-up'> Newer</i>}
                 </button>
+                </h2>
+                </div>
             </div>
             <ul className='posts'>
                 {
