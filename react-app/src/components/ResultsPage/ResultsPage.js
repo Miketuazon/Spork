@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { getAllPosts } from '../../store/post'
 import PostItem from "../Posts/PostItem"
 import { NavLink, useLocation } from "react-router-dom"
+import './ResultsPage.css'
 
 function ResultsPage() {
     const dispatch = useDispatch()
@@ -18,13 +19,17 @@ function ResultsPage() {
 
     // Creating state and function for sorting posts
     const [sortOrder, setSortOrder] = useState('desc');
-    const sortedPosts = Object.values(posts).sort((a, b) => {
+    function comparePosts(post1, post2) {
+        const timestamp1 = new Date(post1.createdAt).getTime();
+        const timestamp2 = new Date(post2.createdAt).getTime();
         if (sortOrder === 'asc') {
-            return a.createdAt.localeCompare(b.createdAt);
+            return timestamp1 - timestamp2;
         } else {
-            return b.createdAt.localeCompare(a.createdAt);
+            return timestamp2 - timestamp1;
         }
-    });
+    }
+
+    const sortedPosts = Object.values(posts).sort(comparePosts);
 
     function handleSortClick() {
         if (sortOrder === 'asc') {
@@ -33,7 +38,7 @@ function ResultsPage() {
             setSortOrder('asc');
         }
     }
-
+    console.log("sortedPosts", sortedPosts)
     useEffect(() => {
         dispatch(getAllPosts())
 
@@ -41,15 +46,15 @@ function ResultsPage() {
     return (
         <div className='results-of-search'>
             <div className='sort-container'>
-                <h2>Sort by:</h2>
-                <button onClick={handleSortClick}>
-                    {sortOrder === 'asc' ? 'Older' : 'Most Recent Posts'}
+                <h2 className='sortt'>Sort by:</h2>
+                <button onClick={handleSortClick} className='sort-button'>
+                    {sortOrder === 'asc' ? 'Older Posts' : 'Most Recent Posts'}
                 </button>
             </div>
             <ul className='posts'>
                 {
                     sortedPosts?.map(post => (
-                        (post?.content?.toLowerCase())?.includes(query) || (post?.title?.toLowerCase())?.includes(query)
+                        (post?.content?.toLowerCase())?.includes(query) || (post?.title?.toLowerCase())?.includes(query) || (post?.owner?.username?.toLowerCase()?.includes(query))
                             ?
                             <li key={post?.id} className="post">
                                 <PostItem post={post} />
