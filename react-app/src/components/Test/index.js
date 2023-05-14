@@ -98,7 +98,7 @@ const Test = ({ post }) => {
 
     return (
         <>
-            {likes && currentUserLikes.length ?
+            {likes ?
                 <div>
 
                     <div className="post-header-2">
