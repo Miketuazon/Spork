@@ -18,6 +18,7 @@ const ResultsItem = ({ post }) => {
     const likes = post?.likes?.find(id => id === currentUser?.id)
     const follower = post?.owner?.followers?.find(id => id === currentUser?.id)
     const liked = post?.likes?.find(id => id === currentUser?.id)
+    const currentUserLikes = currentUser?.likes
 
     // creating date
     const months = {

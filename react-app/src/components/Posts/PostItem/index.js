@@ -10,7 +10,9 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux"
 import { getAllPosts } from "../../../store/post";
 import { likeOnePost } from "../../../store/like";
+import { getFollowsForUser } from "../../../store/follow";
 import EditComment from "../../comments/EditComment";
+
 
 
 const PostItem = ({ post }) => {
