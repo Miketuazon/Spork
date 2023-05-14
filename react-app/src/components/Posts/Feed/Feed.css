@@ -173,6 +173,7 @@ margin-left: 43px;
 }
 .live-box-more:hover {
   background-color: rgb(70, 78, 159);
+
 }
 
 .live-outer-box:hover {
@@ -199,6 +200,7 @@ a.live-text{
 button{
 background-color: transparent;
 border: none;
+cursor: pointer;
 }
 
 .photo-footer{

@@ -74,11 +74,12 @@ export default function CreatePost() {
                         <span className="fa fa-video"></span>
                         <span className="fa fa-square-poll-vertical"></span>
                     </div>
-                    <input
+                    <span className="create-post-hashtag">You can leave title empty but you cannot create a post with less than 3 characters</span>
+                    {/* <input
                         className="create-post-hashtag"
                         type="text"
                         placeholder="You can leave title empty but you cannot create a post with less than 3 characters"
-                    />
+                    /> */}
 
                 </form>
                 <ul className="create-post-close-for-everyone-post-now-button">

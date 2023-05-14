@@ -11,20 +11,25 @@ import Navigation from '../../Navigation'
 
 const CurrentUserPosts = () => {
   const history = useHistory()
+
   const dispatch = useDispatch()
   const posts = useSelector(state => state?.posts)
-  const postsVal = Object?.values(posts)
   const currentUser = useSelector(state => state?.session?.user)
-  // const comments = useSelector(state => state?.comments)
+  const currentUserLikes = currentUser?.likes
+  const postsVal = Object?.values(posts)
+  console.log('PostsVal', postsVal)
+  const postsLikes = postsVal?.likes
+  console.log('Post Likes', postsLikes)
+  const postsComments = posts?.comments
+  const comments = useSelector(state => state?.comments)
+  const commentId = comments?.id
 
-  if (!currentUser) {
-    history.push("/")
-  }
 
   useEffect(() => {
     dispatch(getCurrentUserPosts())
     // dispatch(getCommentsForPost(postId))
-  }, [dispatch, JSON.stringify(postsVal)])
+    // dispatch(getCommentsForPost(postId))
+  }, [dispatch, JSON.stringify(postsVal), JSON.stringify(currentUser), JSON.stringify(currentUserLikes)])
 
   if (!posts) {
     return null
@@ -94,7 +99,7 @@ const CurrentUserPosts = () => {
           </li>
         </ul>
 
-        <span className="current-user-nav-links-list">
+        {/* <span className="current-user-nav-links-list">
           <ul>
             <li><NavLink exact to="/">{currentUser?.username}</NavLink></li>
             <li><NavLink exact to="/">Posts</NavLink></li>
@@ -107,7 +112,7 @@ const CurrentUserPosts = () => {
             <li><NavLink exact to="/">Blog settings</NavLink></li>
             <li><NavLink exact to="/">Mass Post Editor</NavLink></li>
           </ul>
-        </span>
+        </span> */}
       </div>
       <ul className='posts'>
         {Object?.values(posts)?.sort((a, b) => new Date(b?.createdAt) - new Date(a?.createdAt))?.map(currentPost => (

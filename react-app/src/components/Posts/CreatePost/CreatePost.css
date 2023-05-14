@@ -39,6 +39,10 @@
     outline: none;
     height: 80px;
     width: 450px;
+    max-width: 450px;
+    min-width: 450px;
+    min-height: 80px;
+    max-height: 80px;
   }
 
   .create-post-hashtag {
