@@ -104,16 +104,16 @@ function ProfileButton({ user }) {
                 <li onClick={() => window.location.href = '/livestreamcredits'}><i className='fas fa-coins'></i> Live Streaming Credits</li>
                 <li onClick={() => alert('Whats New feature coming soon, sorry! ')}><button className="popup-btn" onClick={() => alert('Whats New feature coming soon, sorry! ')}><i className="fas fa-bullhorn"></i> What's New</button></li>
                 <li onClick={() => alert('Help feature coming soon, sorry!')}><button className="popup-btn"><i className="fas fa-question-circle"></i> Help</button></li><li>
-                  <button className="popup-btn" onClick={() => alert('Keybord Shortcuts feature coming soon, sorry!')}>
+                  <button className="popup-btn" onClick={() => alert('Keyboard Shortcuts feature coming soon, sorry!')}>
                     <i className="fas fa-keyboard"></i> Keyboard Shortcuts</button></li> <li><button className="popup-btn" onClick={() => alert('Change Palette feature coming soon, sorry!')}>
                       <i className="fas fa-palette"></i> Change Palette </button></li>
-                <div className="top-dropdown-menu-options"><li onClick={() => alert('Keybord Shortcuts feature coming soon, sorry!')}><button className="account-menu-dropdown">Blogs </button></li>
+                <div className="top-dropdown-menu-options"><li onClick={() => alert('Blogs feature coming soon, sorry!')}><button className="account-menu-dropdown">Blogs </button></li>
                   <li><OpenModalButton buttonText="New+" modalComponent={<CreatePost />}></OpenModalButton></li></div>
                 <div className="bottom-dropdown-menu-small">
                   {/* <li><NavLink exact to="/posts/current_user"><i className="fas fa-file"></i>{user.username}'s Posts</NavLink></li> */}
                   <li onClick={() => { window.location.href = '/posts/current' }}><i className="fas fa-file"></i>{user.username}'s Posts</li>
                   <li onClick={() => { window.location.href = '/followers' }}><i className="fas fa-users"></i> Followers</li>
-                  <li onClick={() => alert('Activity feature coming soon, sorry! ')}><i  className="fas fa-chart-line"></i> Activity</li>
+                  <li onClick={() => alert('Activity feature coming soon, sorry! ')}><i className="fas fa-chart-line"></i> Activity</li>
                   <li onClick={() => alert('Drafts feature coming soon, sorry! ')}><i className="fas fa-file-alt"></i> Drafts</li>
                   <li onClick={() => alert('Query feature coming soon, sorry! ')}><i className="fas fa-stream"></i> Queue</li>
                   <li onClick={() => alert('Posts+ Spork Blaze feature coming soon, sorry! ')}><i className="fas fa-fire"></i> Posts+ Spork Blaze</li>

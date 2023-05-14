@@ -75,11 +75,14 @@ export default function EditPost({ post }) {
                         <span className="fa fa-video"></span>
                         <span className="fa fa-square-poll-vertical"></span>
                     </div>
-                    <input
+                    <span className="update-post-hashtag">
+                        You can remove the title but if you try to remove content below 3 characters we will discard your changes.
+                    </span>
+                    {/* <input
                         className="update-post-hashtag"
                         type="text"
                         placeholder="You can remove the title but if you try to remove content below 3 characters we will discard your changes."
-                    />
+                    /> */}
                     <li>
                         <button type="submit" className="update-post-post-now-button" ><span>Post now |</span><span className="fa fa-angle-down"></span></button>
                     </li>

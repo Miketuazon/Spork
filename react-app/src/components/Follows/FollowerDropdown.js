@@ -44,7 +44,7 @@ const FollowerDropdown = () => {
     return (
         <div className="lSyOz">
             <main className="rmkqO">
-                {follow?.length ? <h1 className="IiZ2z">Followers {followerCount}</h1> : <></>}
+                {follow?.length ? <h1 className="IiZ2z">Followers: {followerCount}</h1> : <></>}
 
                 {follow.length ? Object?.values(follow)?.map(follows => {
                     const onSubmitFollow = async (e) => {
@@ -61,7 +61,7 @@ const FollowerDropdown = () => {
                         <form className="Il4T7" action="">
                             <input className="dyc2r" type="text" autoComplete="off" placeholder={follows?.owner?.username} value={follows?.owner?.username} readOnly />
                         </form>
-                      
+
                     )
                 }
                 )
