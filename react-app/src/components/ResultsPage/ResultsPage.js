@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux'
 import { getAllPosts } from '../../store/post'
 import PostItem from "../Posts/PostItem"
 import { NavLink, useLocation } from "react-router-dom"
-import './Resultspage.css'
+import './ResultsPage.css'
+import LoaderIcon from './LoaderIcon.js'
 
 function ResultsPage() {
     const dispatch = useDispatch()
@@ -19,13 +20,18 @@ function ResultsPage() {
 
     // Creating state and function for sorting posts
     const [sortOrder, setSortOrder] = useState('desc');
-    const sortedPosts = Object.values(posts).sort((a, b) => {
+
+    function comparePosts(post1, post2) {
+        const timeA = new Date(post1.createdAt).getTime();
+        const timeB = new Date(post2.createdAt).getTime();
         if (sortOrder === 'asc') {
-            return a.createdAt.localeCompare(b.createdAt);
+            return timeA - timeB;
         } else {
-            return b.createdAt.localeCompare(a.createdAt);
+            return timeB - timeA;
         }
-    });
+    }
+
+    const sortedPosts = Object.values(posts).sort(comparePosts);
 
     function handleSortClick() {
         if (sortOrder === 'asc') {
@@ -67,10 +73,12 @@ function ResultsPage() {
         dispatch(getAllPosts())
 
     }, [dispatch, JSON.stringify(postsVal), JSON.stringify(currentUser)])
+
+    if (postsVal.length === 0) return <LoaderIcon />
     return (
         <div className='results-of-search'>
             <div className='sort-container'>
-                <h2>Sort by:</h2>
+                <span className='sortt'>Sort by:</span>
                 <button onClick={handleSortClick} className='sort-button'>
                     {sortOrder === 'asc' ? 'Older' : 'Most Recent Posts'}
                 </button>
