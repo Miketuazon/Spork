@@ -11,7 +11,9 @@
   width: 210px;
 
 }
-
+.nav-bar-non-function-button{
+  color: white;
+}
 
 .profile-dropdown-login.hidden {
   display: none;
@@ -20,7 +22,15 @@
   display: block;
 }
 
+.span-post-profile-button span {
+  background-color: transparent;
+}
 
+.span-create-post, .span-profile-button{
+padding: 9px;
+cursor: pointer;
+
+}
 .home-button-icons {
   display: flex;
   text-decoration: none;
@@ -121,6 +131,7 @@
   border: none;
   background-color: transparent;
   margin-left: -8px;
+  cursor: pointer;
 }
 
 .nav-bar-create-post-modal {
@@ -129,6 +140,15 @@
 }
 
 
+/* .nav-bar-non-function-button, .span-create-post {
+  background-color: transparent;
+} */
+
+
+.log-in-nav-bar{
+
+  background-color:white;
+}
 a.active{
   text-decoration: none;
 }
@@ -150,5 +170,6 @@ right:0px;
 }
 
 i.fa.fa-pen-square{
-  color: gray;
+  color: white;
 }
+

@@ -94,7 +94,7 @@ const CurrentUserPosts = () => {
           </li>
         </ul>
 
-        <span className="current-user-nav-links-list">
+        {/* <span className="current-user-nav-links-list">
           <ul>
             <li><NavLink exact to="/">{currentUser?.username}</NavLink></li>
             <li><NavLink exact to="/">Posts</NavLink></li>
@@ -107,7 +107,7 @@ const CurrentUserPosts = () => {
             <li><NavLink exact to="/">Blog settings</NavLink></li>
             <li><NavLink exact to="/">Mass Post Editor</NavLink></li>
           </ul>
-        </span>
+        </span> */}
       </div>
       <ul className='posts'>
         {Object?.values(posts)?.sort((a, b) => new Date(b?.createdAt) - new Date(a?.createdAt))?.map(currentPost => (

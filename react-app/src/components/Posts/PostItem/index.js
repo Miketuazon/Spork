@@ -22,12 +22,21 @@ const PostItem = ({ post }) => {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state?.session?.user)
     const currentFollowing = currentUser?.following
+<<<<<<< HEAD
     // const postFollowers = Object?.values(post?.owner?.followers)
     const postsVal = Object.values(post)
     const comments = useSelector(state => state?.comments)
     const notes = Number(post?.comments?.length + post?.likes?.length)
     // const postComments = Object.values(post?.comments)
     // const postLikes = Object?.values(post?.likes)
+=======
+    const postFollowers = post?.owner?.followers
+    const postsVal = Object.values(post)
+    const comments = useSelector(state => state?.comments)
+    const notes = Number(post?.comments?.length + post?.likes?.length)
+    const postComments = post?.comments
+    const postLikes = post?.likes
+>>>>>>> comments-likes-followers
 
     const follower = post?.owner?.followers?.find(id => id === currentUser?.id)
     console.log('follower', follower)
@@ -110,6 +119,10 @@ const PostItem = ({ post }) => {
             <div className="post-footer">
                 <button onClick={openMenu} className="like-button">{notes === 1 ? <div><span>{notes} </span><span>note</span></div> : <div><span>{notes} </span><span>notes</span></div>}</button>
                 {currentUser && !liked && (currentUser?.id !== post?.userId) ? <button className="like-button" onClick={onSubmitLike}><i className="far fa-heart"></i></button> : currentUser && liked && (currentUser?.id !== post?.userId) ? <button className="unlike-button" onClick={onSubmitLike}><i className="fas fa-heart" ></i></button> : <></>}
+<<<<<<< HEAD
+=======
+                {currentUser ? <button onClick={() => alert('Coming soon!')} className="reblog-button"><i class="fa fa-retweet"></i></button>:<></>}
+>>>>>>> comments-likes-followers
                 {/* {currentUser?.id === post?.userId ? (<><OpenModalButton
                     buttonText={<><i className="fa fa-pen-square"></i></>}
                     modalComponent={<EditPost postId={post?.id} post={post} />}
@@ -123,7 +136,7 @@ const PostItem = ({ post }) => {
                         />
 
                         <OpenModalButton
-                            buttonText={<><i className="fa fa-pen-square"></i></>}
+                            buttonText={<><i className="fa fa-pencil"></i></>}
                             modalComponent={<EditPost postId={post?.id} post={post} />}
                         />
                     </div>
