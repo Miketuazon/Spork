@@ -223,3 +223,7 @@
   align-items: center;
   justify-content: flex-end;
 }
+
+i.fa.fa-pen{
+  color: gray;
+}

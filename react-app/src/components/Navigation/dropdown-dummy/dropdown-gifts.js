@@ -11,13 +11,13 @@ const DropdownGifts = () => {
         <div className="xINW8">
           <div className="zg7Ni">
             <div className="ZYmys VXTLZ">
-              <button className="TRX6J" aria-label="Valid">
-                <span className="EvhBA" tabIndex="-1">Valid</span>
+              <button onClick={() => alert('Coming soon!')}  className="TRX6J" aria-label="Valid">
+                Valid
               </button>
             </div>
             <div className="ZYmys">
-              <button className="TRX6J" aria-label="Expired">
-                <span className="EvhBA" tabIndex="-1">Expired</span>
+              <button onClick={() => alert('Coming soon!')}  className="TRX6J" aria-label="Expired">
+                Expired
               </button>
             </div>
           </div>

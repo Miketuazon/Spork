@@ -53,7 +53,6 @@ const FollowerDropdown = () => {
                         const success = dispatch(getFollowsForUser(follows?.userId))
                         if (success) {
                             dispatch(getAllPosts())
-
                             // window.location.reload(false);
                         }
                     }
@@ -62,6 +61,7 @@ const FollowerDropdown = () => {
                         <form className="Il4T7" action="">
                             <input className="dyc2r" type="text" autoComplete="off" placeholder={follows?.owner?.username} value={follows?.owner?.username} readOnly />
                         </form>
+                      
                     )
                 }
                 )

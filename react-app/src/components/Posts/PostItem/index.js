@@ -22,12 +22,13 @@ const PostItem = ({ post }) => {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state?.session?.user)
     const currentFollowing = currentUser?.following
-    // const postFollowers = Object?.values(post?.owner?.followers)
+    const postFollowers = post?.owner?.followers
     const postsVal = Object.values(post)
     const comments = useSelector(state => state?.comments)
     const notes = Number(post?.comments?.length + post?.likes?.length)
-    // const postComments = Object.values(post?.comments)
-    // const postLikes = Object?.values(post?.likes)
+    const postComments = post?.comments
+    const postLikes = post?.likes
+
 
     const follower = post?.owner?.followers?.find(id => id === currentUser?.id)
     console.log('follower', follower)
@@ -123,7 +124,7 @@ const PostItem = ({ post }) => {
                         />
 
                         <OpenModalButton
-                            buttonText={<><i className="fa fa-pen-square"></i></>}
+                            buttonText={<><i className="fa fa-pencil"></i></>}
                             modalComponent={<EditPost postId={post?.id} post={post} />}
                         />
                     </div>

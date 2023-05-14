@@ -23,7 +23,7 @@
 
   .category-nav.active-nav,
   .category-nav:hover {
-    color: #000;
+    color: #fff;
   }
 
   .products-nav-market {
@@ -40,7 +40,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 260px;
   }
 
   .banner-nav {
@@ -93,3 +93,13 @@
   .details-nav-market{
     text-align: center;
   }
+.image-nav-market{
+  display: flex;
+  justify-content: center;
+}
+.description-nav-market{
+  color: white;
+}
+.title-nav-market{
+  color: #999;
+}

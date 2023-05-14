@@ -95,12 +95,13 @@ function LoginFormModal() {
           Don't have an account yet?
           <br></br>
             <div className="submit-button-log-in">
-
+<button className="loginform-sign-in-button">
         <OpenModalButton
         buttonText="Sign Up"
         modalComponent={<SignupFormModal/>}
-
-        ><button className="sign-up-button"/></OpenModalButton>
+        />
+          </button>
+          <button className="sign-up-button"/>
                 <button onClick={demoSignIn} className ="demo-sign-in-button" id='demo-user-button'>
                   Demo User
                 </button>
