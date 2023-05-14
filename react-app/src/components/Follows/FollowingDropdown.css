@@ -38,9 +38,9 @@
   border-radius: 13px;
 }
 
-.dyc2r:hover {
+/* .dyc2r:hover {
   cursor: default;
-}
+} */
 
 .TRX6J {
   border: none;
@@ -56,9 +56,9 @@
   margin-left: 15px;
 }
 
-.TRX6J:hover {
+/* .TRX6J:hover {
   background-color: #0062cc;
-}
+} */
 
 .TRX6J:active {
   transform: translateY(2px);
