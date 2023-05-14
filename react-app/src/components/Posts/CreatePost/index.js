@@ -33,7 +33,6 @@ export default function CreatePost() {
         e.preventDefault();
         closeModal();
     }
-    console.log(errors)
     return (
         <>
             <div className="create-post-nav">

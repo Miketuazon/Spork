@@ -134,7 +134,6 @@ export default function postsReducer(state = {}, action) {
         case GET_POSTS:
             newState = {}
             action.posts.forEach((post) => newState[post.id] = post)
-            console.log('New State Post', newState)
             return newState
         case POST_POST:
             newState = { ...state }

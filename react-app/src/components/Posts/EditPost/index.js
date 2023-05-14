@@ -40,7 +40,6 @@ export default function EditPost({ post }) {
         closeModal();
     }
 
-    console.log('currentUser', currentUser)
     return (
         <>
             <div className="update-post-nav">
