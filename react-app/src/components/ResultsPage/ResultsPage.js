@@ -38,16 +38,16 @@ function ResultsPage() {
 
     // Filter posts if it matches query
     const filteredPosts = sortedPosts.filter(post =>
-        (post?.content?.toLowerCase())?.includes(query) ||
-        (post?.title?.toLowerCase())?.includes(query) ||
-        (post?.owner?.username?.toLowerCase()?.includes(query))
+        (post?.content?.toLowerCase())?.includes(query.toLowerCase()) ||
+        (post?.title?.toLowerCase())?.includes(query.toLowerCase()) ||
+        (post?.owner?.username?.toLowerCase()?.includes(query.toLowerCase()))
     )
 
     useEffect(() => {
         dispatch(getAllPosts())
 
     }, [dispatch, JSON.stringify(filteredPosts)])
-
+    console.log("filteredPosts", filteredPosts)
     // If query is empty or filteredPosts is empty
     if (query.length === 0 || filteredPosts.length === 0) return <ResultsErrorMessage/>
 
@@ -56,7 +56,7 @@ function ResultsPage() {
             <div className='sort-container'>
                 <div className='sort-and-results'>
                 <h2 className='res'>Results: {filteredPosts.length} | Query: {query}</h2>
-                <h2 className='sortt'>Sort by:
+                <h2 className='sortt'>Sort by: &nbsp;
                 <button onClick={handleSortClick} className='sort-button'>
                     {sortOrder === 'asc' ? <i class='fas fa-angle-down'> Older</i> : <i class='fas fa-angle-up'> Newer</i>}
                 </button>

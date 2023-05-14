@@ -95,10 +95,9 @@ const ResultsItem = ({ post }) => {
 
     const ulClassNameUpdateDelete = "list-for-update-delete" + (showMenu ? "" : " hidden");
 
-
     return (
         <>
-            {likes ?
+            {
                 <div>
 
                     <div className="post-header-2">
@@ -115,38 +114,12 @@ const ResultsItem = ({ post }) => {
                     <div className="post-footer-2">
                         <button onClick={openMenu} className="like-button">{notes === 1 ? <div><span>{notes} </span><span>note</span></div> : <div><span>{notes} </span><span>notes</span></div>}</button>
                         {currentUser && !liked && (currentUser?.id !== post?.userId) ? <button className="like-button" onClick={onSubmitLike}><i className="far fa-heart"></i></button> : currentUser && liked && (currentUser?.id !== post?.userId) ? <button className="unlike-button" onClick={onSubmitLike}><i className="fas fa-heart" ></i></button> : <></>}
-                        {/* {currentUser?.id === post?.userId ? (<><OpenModalButton
-                    buttonText={<><i className="fa fa-pen-square"></i></>}
-                    modalComponent={<Editpost postId={post?.id} post={post} />}
-                />{<Deletepost posttId={post?.id}><i className="fas fa-trash-alt"></i></Deletepost>}</> ):(<></>)} */}
-
-                        {/* {currentUser?.id === post?.userId ? (
-                            <div className="comments-trash-and-update-button">
-                                <OpenModalButton
-                                    buttonText={<><i className="fas fa-trash-alt"></i></>}
-                                    modalComponent={<DeletePost postId={post?.id} />}
-                                />
-
-                                <OpenModalButton
-                                    buttonText={<><i className="fa fa-pencil"></i></>}
-                                    modalComponent={<EditPost postId={post?.id} post={post} />}
-                                />
-                            </div>
-                        ) : (
-                            <></>
-                        )} */}
-
                         <span></span><span><button type='click' onClick={openMenu}>{<><i className="fas fa-comment-dots"></i></>}</button></span>
-
                     </div>
                     <div className="dropdown m-10">
                         <ul className={ulClassNameUpdateDelete} ref={ulRef}>
-                            {/* {currentUser ?
-                                <></> : <></>} */}
                             {post?.comments?.length ?
-
                                 post?.comments?.sort((a, b) => new Date(b?.createdAt) - new Date(a?.createdAt))?.map((comment) => {
-
                                     return (
                                         <li key={comment?.id}>
                                             <div className="list-for-update-delete">
@@ -158,12 +131,6 @@ const ResultsItem = ({ post }) => {
                                                             <span>{comment?.content}</span>
                                                         </div>
                                                     </div>
-                                                    {/* <span>{currentUser?.id === comment?.userId ? <DeleteComment commentId={comment?.id}><i className="fas fa-trash-alt"></i></DeleteComment> : <></>}</span>
-                                                    <span>{currentUser?.id === comment?.userId ? <OpenModalButton
-                                                        buttonText={<><i className="fa fa-pen-square edit-comment"></i></>}
-                                                        modalComponent={<EditComment commentId={comment?.id} comment={comment} />}
-                                                    /> : <></>}</span> */}
-
                                                 </div>
                                             </div>
                                         </li>
@@ -173,7 +140,7 @@ const ResultsItem = ({ post }) => {
                         </ul>
                     </div>
 
-                </div> : <></>
+                </div>
 
                     }
         </>

@@ -2,6 +2,15 @@ z#root {
     background-color: #0a1b40;
   }
 
+  .spork-search-button {
+    padding-left: 10px;
+  }
+
+  .cat {
+    object-fit:cover;
+    max-width: 200px;
+  }
+
   .results-of-search, .no-results {
     max-width: 600px;
     margin: 0 auto;
@@ -43,6 +52,9 @@ z#root {
     box-shadow: 4px 4px 4px rgba(0,0,0,0.5);
   }
 
-  .no-results {
+  .no-results, .res {
     overflow-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
