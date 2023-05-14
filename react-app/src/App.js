@@ -17,6 +17,7 @@ import DropdownGifts from "./components/Navigation/dropdown-dummy/dropdown-gifts
 import LivestreamCredits from "./components/Navigation/dropdown-dummy/dropdown-livestreamingcredits";
 // import UserPage from "./components/UserPage/UserPage";
 import FollowingDropdown from "./components/Follows/FollowingDropdown";
+import FollowerDropdown from "./components/Follows/FollowerDropdown";
 import Live from "./components/Navigation/dropdown-dummy/dropdown-live";
 import Explore from "./components/Navigation/dropdown-dummy/nav-explore";
 import NavMarket from "./components/Navigation/nav-market";
@@ -38,31 +39,34 @@ function App() {
             <Feed />
           </Route>
           <Route exact path="/create">
-            <CreatePost/>
+            <CreatePost />
           </Route>
           <Route exact path="/explore" >
             <Explore />
           </Route>
           <Route exact path="/adfree">
-            <AdFreeComponent/>
+            <AdFreeComponent />
           </Route>
           <Route exact path="/live">
-            <Live/>
+            <Live />
           </Route>
           <Route exact path="/gifts">
-            <DropdownGifts/>
+            <DropdownGifts />
           </Route>
           <Route exact path="/Likes">
-            <AllLikes/>
+            <AllLikes />
           </Route>
           <Route exact path="/livestreamcredits">
-            <LivestreamCredits/>
+            <LivestreamCredits />
           </Route>
           <Route exact path="/following">
-            <FollowingDropdown/>
+            <FollowingDropdown />
+          </Route>
+          <Route exact path="/followers">
+            <FollowerDropdown />
           </Route>
           <Route exact path="/NavMarket">
-            <NavMarket/>
+            <NavMarket />
           </Route>
           <Route exact path="/login">
             <LoginFormPage />
@@ -71,7 +75,7 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route exact path="/posts/edit/:postId">
-            <EditPost/>
+            <EditPost />
           </Route>
           <Route exact path="/likes">
             <AllLikes />
@@ -85,7 +89,7 @@ function App() {
           <Route exact path="/feed">
             <Feed />
           </Route>
-          <Route path="/search/">
+          <Route path="/search">
             <ResultsPage />
           </Route>
           {/* <Route path="/user/:id">

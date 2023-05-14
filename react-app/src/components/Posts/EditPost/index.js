@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import "./EditPost.css"
 
-export default function EditPost({post}) {
+export default function EditPost({ post }) {
     const postId = post?.id
     const history = useHistory()
     const { closeModal } = useModal()
@@ -22,8 +22,7 @@ export default function EditPost({post}) {
     const onSubmit = async (e) => {
         e.preventDefault()
         const updatePost = {
-            post_type: 'String',
-            image_url: '1234.jpeg',
+            post_type: 'Text',
             title: title,
             content: content
         }
@@ -79,7 +78,7 @@ export default function EditPost({post}) {
                     <input
                         className="update-post-hashtag"
                         type="text"
-                        placeholder="#add tags to help people find your post"
+                        placeholder="You can remove the title but if you try to remove content below 3 characters we will discard your changes."
                     />
                     <li>
                         <button type="submit" className="update-post-post-now-button" ><span>Post now |</span><span className="fa fa-angle-down"></span></button>

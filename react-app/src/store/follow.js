@@ -16,16 +16,16 @@ export const getFollowsForUser = (userId) => async dispatch => {
     }
 }
 
-export default function followersReducer(state = {}, action) {
-    let newState;
-    switch (action.type) {
-        case GET_FOLLOWERS:
-            newState = {}
-            action?.follow?.forEach((foll) => {
-                newState[foll?.id] = foll
-            })
-            return newState;
-        default:
-            return state
-    }
-}
+// export default function followersReducer(state = {}, action) {
+//     let newState;
+//     switch (action.type) {
+//         case GET_FOLLOWERS:
+//             newState = {}
+//             action?.follow?.forEach((foll) => {
+//                 newState[foll?.id] = foll
+//             })
+//             return newState;
+//         default:
+//             return state
+//     }
+// }

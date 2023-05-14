@@ -23,22 +23,26 @@ const Feed = () => {
   const posts = useSelector(state => state?.posts)
   const currentUser = useSelector(state => state?.session?.user)
   const postsVal = Object?.values(posts)
+  console.log('PostsVal', postsVal)
+  const postsLikes  = postsVal?.likes
+  console.log('Post Likes', postsLikes)
+  const postsComments = posts?.comments
   const comments = useSelector(state => state?.comments)
   const commentId = comments?.id
-  const commentsVal = Object?.values(comments)
+
 
   useEffect(() => {
     dispatch(getAllPosts())
     // dispatch(getCommentsForPost(postId))
     // dispatch(getCommentsForPost(postId))
-  }, [dispatch, JSON.stringify(posts), JSON.stringify(posts.comments)])
+  }, [dispatch, JSON.stringify(postsVal), JSON.stringify(currentUser)])
 
     return (
         <div className='Feed'>
           { currentUser ?
             <ul class="post-types">
               <div className='create-footer'>Text
-              <OpenModalButton name="Create Post" buttonText={<> <i className="fas fa-font"></i></>} modalComponent={<CreatePost/>}></OpenModalButton></div>
+              <OpenModalButton className="Create Post" buttonText={<> <i className="fas fa-font"></i></>} modalComponent={<CreatePost/>}></OpenModalButton></div>
 <div className='photo-footer'>Photo<a class="fas fa-camera"onClick={() => alert("Coming soon!")}></a></div>
 <div className='quote-footer'>Quote
 <a class="fas fa-quote-right"onClick={() => alert("Coming soon!")}></a></div>
@@ -84,18 +88,20 @@ const Feed = () => {
 
       <ul className='posts'>
         {Object?.values(posts)?.sort((a, b) => new Date(b?.createdAt) - new Date(a?.createdAt))?.map(post =>
+
         // post?.createdAt = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' })?.format(post?.createdAt)
         // const postDate = new Date(post?.createdAt)
         // const formattedDate = postDate ? new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' })?.format(postDate) : '';
         // const follower = Object.values(post?.owner?.followers).find(id => id === currentUser?.id)
 
         (
+
           <li key={post?.id} className="post">
             <PostItem post={post} />
           </li>
         )
 
-        )
+         )
         }
       </ul>
       <br></br>
