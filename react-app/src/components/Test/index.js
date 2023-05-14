@@ -1,11 +1,19 @@
 import "./Test.css"
+import OpenModalButton from "../OpenModalButton";
 import React, { useState, useRef } from "react";
+import DeletePost from "../Posts/DeletePost";
 import { useSelector } from "react-redux"
+import EditPost from "../Posts/EditPost";
+import CreateComment from "../comments/CreateComment";
+import DeleteComment from "../comments/DeleteComment";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux"
-import { getAllPosts } from "../../store/post";
+import { getAllPosts, getCurrentUserPosts } from "../../store/post";
+import { useCallback } from "react";
+import FollowOrUnfollow from "../Follows/FollowOrUnfollow";
 import { getFollowsForUser } from "../../store/follow";
 import { likeOnePost } from "../../store/like";
+import EditComment from "../comments/EditComment";
 
 
 const Test = ({ post }) => {
@@ -13,13 +21,20 @@ const Test = ({ post }) => {
     const ulRef = useRef();
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state?.session?.user)
+    const currentFollowing = currentUser?.currentFollowing
     const currentUserLikes = currentUser?.likes
+    const postFollowers = post?.owner?.followers
+    const comments = useSelector(state => state?.comments)
     const notes = Number(post?.comments?.length + post?.likes?.length)
+    const postComments = post?.comments
     const postLikes = post?.likes
 
     const likes = post?.likes?.find(id => id === currentUser?.id)
+    console.log('Likes', likes)
     const follower = post?.owner?.followers?.find(id => id === currentUser?.id)
+    console.log('follower', follower)
     const liked = post?.likes?.find(id => id === currentUser?.id)
+    console.log('liked', liked)
 
     // creating date
     const months = {
@@ -100,13 +115,34 @@ const Test = ({ post }) => {
                     <div className="post-footer-2">
                         <button onClick={openMenu} className="like-button">{notes === 1 ? <div><span>{notes} </span><span>note</span></div> : <div><span>{notes} </span><span>notes</span></div>}</button>
                         {currentUser && !liked && (currentUser?.id !== post?.userId) ? <button className="like-button" onClick={onSubmitLike}><i className="far fa-heart"></i></button> : currentUser && liked && (currentUser?.id !== post?.userId) ? <button className="unlike-button" onClick={onSubmitLike}><i className="fas fa-heart" ></i></button> : <></>}
+                        {/* {currentUser?.id === post?.userId ? (<><OpenModalButton
+                    buttonText={<><i className="fa fa-pen-square"></i></>}
+                    modalComponent={<Editpost postId={post?.id} post={post} />}
+                />{<Deletepost posttId={post?.id}><i className="fas fa-trash-alt"></i></Deletepost>}</> ):(<></>)} */}
+
+                        {/* {currentUser?.id === post?.userId ? (
+                            <div className="comments-trash-and-update-button">
+                                <OpenModalButton
+                                    buttonText={<><i className="fas fa-trash-alt"></i></>}
+                                    modalComponent={<DeletePost postId={post?.id} />}
+                                />
+
+                                <OpenModalButton
+                                    buttonText={<><i className="fa fa-pencil"></i></>}
+                                    modalComponent={<EditPost postId={post?.id} post={post} />}
+                                />
+                            </div>
+                        ) : (
+                            <></>
+                        )} */}
 
                         <span></span><span><button type='click' onClick={openMenu}>{<><i className="fas fa-comment-dots"></i></>}</button></span>
 
                     </div>
                     <div className="dropdown m-10">
                         <ul className={ulClassNameUpdateDelete} ref={ulRef}>
-
+                            {/* {currentUser ?
+                                <></> : <></>} */}
                             {post?.comments?.length ?
 
                                 post?.comments?.sort((a, b) => new Date(b?.createdAt) - new Date(a?.createdAt))?.map((comment) => {
@@ -122,6 +158,11 @@ const Test = ({ post }) => {
                                                             <span>{comment?.content}</span>
                                                         </div>
                                                     </div>
+                                                    {/* <span>{currentUser?.id === comment?.userId ? <DeleteComment commentId={comment?.id}><i className="fas fa-trash-alt"></i></DeleteComment> : <></>}</span>
+                                                    <span>{currentUser?.id === comment?.userId ? <OpenModalButton
+                                                        buttonText={<><i className="fa fa-pen-square edit-comment"></i></>}
+                                                        modalComponent={<EditComment commentId={comment?.id} comment={comment} />}
+                                                    /> : <></>}</span> */}
 
                                                 </div>
                                             </div>
@@ -134,7 +175,7 @@ const Test = ({ post }) => {
 
                 </div> : <></>
 
-            }
+                    }
         </>
     )
 }

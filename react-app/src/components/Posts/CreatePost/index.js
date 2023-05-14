@@ -6,11 +6,14 @@ import { useHistory } from "react-router-dom";
 import "./CreatePost.css"
 
 export default function CreatePost() {
+    const history = useHistory()
     const { closeModal } = useModal()
     const dispatch = useDispatch()
     const currentUser = useSelector(state => state?.session?.user)
     const [content, setContent] = useState('')
     const [title, setTitle] = useState('')
+    const [image_url, setImageUrl] = useState('')
+    const [post_type, setPostType] = useState('')
     const [errors, setErrors] = useState([]);
     const onSubmit = async (e) => {
         e.preventDefault()
@@ -30,6 +33,7 @@ export default function CreatePost() {
         e.preventDefault();
         closeModal();
     }
+    console.log(errors)
     return (
         <>
             <div className="create-post-nav">
@@ -71,6 +75,11 @@ export default function CreatePost() {
                         <span className="fa fa-square-poll-vertical"></span>
                     </div>
                     <span className="create-post-hashtag">You can leave title empty but you cannot create a post with less than 3 characters</span>
+                    {/* <input
+                        className="create-post-hashtag"
+                        type="text"
+                        placeholder="You can leave title empty but you cannot create a post with less than 3 characters"
+                    /> */}
 
                 </form>
                 <ul className="create-post-close-for-everyone-post-now-button">
@@ -80,10 +89,33 @@ export default function CreatePost() {
                     <span className="create-post-for-everyone-post-now-button">
                         <li>
 
+                            {/* <ul className="create-post-dropdown">
+                                <li><a>1</a></li>
+                                <li><a>2</a></li>
+                                <li><a>3</a></li>
+                                <li><a>4</a></li>
+                            </ul> */}
                         </li>
                         <li>
                             <button onClick={onSubmit} className="create-post-post-now-button" ><span>Post now |</span><span className="fa fa-angle-down"></span></button>
+                            {/* <ul className="create-post-dropdown">
+                            <li><a>1</a></li>
+                            <li><a>2</a></li>
+                            <li><a>3</a></li>
+                            <li><a>4</a></li>
+                        </ul> */}
                         </li>
+                        {/* <div>
+                        <li>
+                            <button onSubmit={onSubmit} className="create-post-post-now-button" ><span>Post now |</span><span className="fa fa-angle-down"></span></button>
+                            <ul className="create-post-dropdown">
+                                <li><a>1</a></li>
+                                <li><a>2</a></li>
+                                <li><a>3</a></li>
+                                <li><a>4</a></li>
+                            </ul>
+                        </li>
+                        </div> */}
                     </span>
                 </ul>
             </div>

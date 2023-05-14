@@ -15,6 +15,7 @@ import ResultsPage from "./components/ResultsPage/ResultsPage"
 import AdFreeComponent from "./components/Navigation/dropdown-dummy/dropdown-adfree";
 import DropdownGifts from "./components/Navigation/dropdown-dummy/dropdown-gifts";
 import LivestreamCredits from "./components/Navigation/dropdown-dummy/dropdown-livestreamingcredits";
+// import UserPage from "./components/UserPage/UserPage";
 import FollowingDropdown from "./components/Follows/FollowingDropdown";
 import FollowerDropdown from "./components/Follows/FollowerDropdown";
 import Live from "./components/Navigation/dropdown-dummy/dropdown-live";

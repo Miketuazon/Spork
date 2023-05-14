@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { getAllPosts } from '../../store/post'
-import { useLocation } from "react-router-dom"
+import PostItem from "../Posts/PostItem"
+import { NavLink, useLocation } from "react-router-dom"
 import './ResultsPage.css'
 import ResultsErrorMessage from './ResultsError'
 import ResultsItem from './ResultsItem'
@@ -10,7 +11,9 @@ function ResultsPage() {
     const dispatch = useDispatch()
     const location = useLocation()
     const query = new URLSearchParams(location.search).get('query')
+    const currentUser = useSelector(state => state?.session?.user)
     const posts = useSelector(state => state?.posts)
+    const postsVal = Object?.values(posts)
 
     // Creating state and function for sorting posts
     const [sortOrder, setSortOrder] = useState('desc');
@@ -44,27 +47,28 @@ function ResultsPage() {
         dispatch(getAllPosts())
 
     }, [dispatch, JSON.stringify(filteredPosts)])
+    console.log("filteredPosts", filteredPosts)
     // If query is empty or filteredPosts is empty
-    if (query.length === 0 || filteredPosts.length === 0) return <ResultsErrorMessage />
+    if (query.length === 0 || filteredPosts.length === 0) return <ResultsErrorMessage/>
 
     return (
         <div className='results-of-search'>
             <div className='sort-container'>
                 <div className='sort-and-results'>
-                    <h2 className='res'>Results: {filteredPosts.length} | Query: {query}</h2>
-                    <h2 className='sortt'>Sort by: &nbsp;
-                        <button onClick={handleSortClick} className='sort-button'>
-                            {sortOrder === 'asc' ? <i class='fas fa-angle-down'> Older</i> : <i class='fas fa-angle-up'> Newer</i>}
-                        </button>
-                    </h2>
+                <h2 className='res'>Results: {filteredPosts.length} | Query: {query}</h2>
+                <h2 className='sortt'>Sort by: &nbsp;
+                <button onClick={handleSortClick} className='sort-button'>
+                    {sortOrder === 'asc' ? <i class='fas fa-angle-down'> Older</i> : <i class='fas fa-angle-up'> Newer</i>}
+                </button>
+                </h2>
                 </div>
             </div>
             <ul className='posts'>
                 {
                     filteredPosts.map(post => (
-                        <li key={post?.id} className="post">
-                            <ResultsItem post={post} />
-                        </li>
+                            <li key={post?.id} className="post">
+                                <ResultsItem post={post} />
+                            </li>
                     ))
                 }
             </ul>

@@ -1,9 +1,17 @@
 import "./ResultsPage.css"
+import OpenModalButton from "../OpenModalButton";
 import React, { useState, useRef } from "react";
+import DeletePost from "../Posts/DeletePost";
 import { useSelector } from "react-redux"
+import EditPost from "../Posts/EditPost";
+import CreateComment from "../comments/CreateComment";
+import DeleteComment from "../comments/DeleteComment";
+import EditComment from "../comments/EditComment";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux"
 import { getAllPosts, getCurrentUserPosts } from "../../store/post";
+import { useCallback } from "react";
+import FollowOrUnfollow from "../Follows/FollowOrUnfollow";
 import { getFollowsForUser } from "../../store/follow";
 import { likeOnePost } from "../../store/like";
 
@@ -13,12 +21,20 @@ const ResultsItem = ({ post }) => {
     const ulRef = useRef();
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state?.session?.user)
-    const notes = Number(post?.comments?.length + post?.likes?.length)
-    const postLikes = post?.likes
-    const likes = post?.likes?.find(id => id === currentUser?.id)
-    const follower = post?.owner?.followers?.find(id => id === currentUser?.id)
-    const liked = post?.likes?.find(id => id === currentUser?.id)
+    const currentFollowing = currentUser?.currentFollowing
     const currentUserLikes = currentUser?.likes
+    const postFollowers = post?.owner?.followers
+    const comments = useSelector(state => state?.comments)
+    const notes = Number(post?.comments?.length + post?.likes?.length)
+    const postComments = post?.comments
+    const postLikes = post?.likes
+
+    const likes = post?.likes?.find(id => id === currentUser?.id)
+    console.log('Likes', likes)
+    const follower = post?.owner?.followers?.find(id => id === currentUser?.id)
+    console.log('follower', follower)
+    const liked = post?.likes?.find(id => id === currentUser?.id)
+    console.log('liked', liked)
 
     // creating date
     const months = {
@@ -126,7 +142,7 @@ const ResultsItem = ({ post }) => {
 
                 </div>
 
-            }
+                    }
         </>
     )
 }

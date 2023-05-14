@@ -8,11 +8,12 @@ import CreateComment from "../../comments/CreateComment"
 import DeleteComment from "../../comments/DeleteComment"
 import { useEffect } from "react";
 import { useDispatch } from "react-redux"
-import { getAllPosts } from "../../../store/post";
-import { likeOnePost } from "../../../store/like";
+import { getAllPosts, getCurrentUserPosts } from "../../../store/post";
+import { useCallback } from "react";
+import FollowOrUnfollow from "../../Follows/FollowOrUnfollow";
 import { getFollowsForUser } from "../../../store/follow";
+import { likeOnePost } from "../../../store/like";
 import EditComment from "../../comments/EditComment";
-
 
 
 const PostItem = ({ post }) => {
@@ -20,11 +21,19 @@ const PostItem = ({ post }) => {
     const ulRef = useRef();
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state?.session?.user)
+    const currentFollowing = currentUser?.following
+    const postFollowers = post?.owner?.followers
+    const postsVal = Object.values(post)
+    const comments = useSelector(state => state?.comments)
     const notes = (post?.comments?.length + post?.likes?.length)
     const postComments = post?.comments
     const postLikes = post?.likes
+
+
     const follower = post?.owner?.followers?.find(id => id === currentUser?.id)
+    console.log('follower', follower)
     const liked = post?.likes?.find(id => id === currentUser?.id)
+    console.log('liked', liked)
 
     // creating date
     const months = {
@@ -102,6 +111,10 @@ const PostItem = ({ post }) => {
             <div className="post-footer">
                 <button onClick={openMenu} className="like-button">{notes === 1 ? <div><span>{notes} </span><span>note</span></div> : <div><span>{notes} </span><span>notes</span></div>}</button>
                 {currentUser && !liked && (currentUser?.id !== post?.userId) ? <button className="like-button" onClick={onSubmitLike}><i className="far fa-heart"></i></button> : currentUser && liked && (currentUser?.id !== post?.userId) ? <button className="unlike-button" onClick={onSubmitLike}><i className="fas fa-heart" ></i></button> : <></>}
+                {/* {currentUser?.id === post?.userId ? (<><OpenModalButton
+                    buttonText={<><i className="fa fa-pen-square"></i></>}
+                    modalComponent={<EditPost postId={post?.id} post={post} />}
+                />{<DeletePost posttId={post?.id}><i className="fas fa-trash-alt"></i></DeletePost>}</> ):(<></>)} */}
 
                 {currentUser?.id === post?.userId ? (
                     <div className="comments-trash-and-update-button">

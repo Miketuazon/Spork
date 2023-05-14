@@ -4,18 +4,31 @@ import { useSelector } from 'react-redux'
 import { getCurrentUserPosts } from '../../../store/post'
 import PostItem from "../PostItem"
 import "./CurrentUserPosts.css"
+import { NavLink } from "react-router-dom"
+import { useHistory } from 'react-router-dom'
+import { getCommentsForPost } from '../../../store/comment'
+import Navigation from '../../Navigation'
 
 const CurrentUserPosts = () => {
+  const history = useHistory()
+
   const dispatch = useDispatch()
   const posts = useSelector(state => state?.posts)
   const currentUser = useSelector(state => state?.session?.user)
   const currentUserLikes = currentUser?.likes
   const postsVal = Object?.values(posts)
-
+  console.log('PostsVal', postsVal)
+  const postsLikes = postsVal?.likes
+  console.log('Post Likes', postsLikes)
+  const postsComments = posts?.comments
+  const comments = useSelector(state => state?.comments)
+  const commentId = comments?.id
 
 
   useEffect(() => {
     dispatch(getCurrentUserPosts())
+    // dispatch(getCommentsForPost(postId))
+    // dispatch(getCommentsForPost(postId))
   }, [dispatch, JSON.stringify(postsVal), JSON.stringify(currentUser), JSON.stringify(currentUserLikes)])
 
   if (!posts) {
@@ -85,14 +98,28 @@ const CurrentUserPosts = () => {
             </button>
           </li>
         </ul>
+
+        {/* <span className="current-user-nav-links-list">
+          <ul>
+            <li><NavLink exact to="/">{currentUser?.username}</NavLink></li>
+            <li><NavLink exact to="/">Posts</NavLink></li>
+            <li><NavLink exact to="/">Followers</NavLink></li>
+            <li><NavLink exact to="/">Activity</NavLink></li>
+            <li><NavLink exact to="/">Drafts</NavLink></li>
+            <li><NavLink exact to="/">Queue</NavLink></li>
+            <li><NavLink exact to="/">Post+</NavLink></li>
+            <li><NavLink exact to="/">Spork Blaze</NavLink></li>
+            <li><NavLink exact to="/">Blog settings</NavLink></li>
+            <li><NavLink exact to="/">Mass Post Editor</NavLink></li>
+          </ul>
+        </span> */}
       </div>
       <ul className='posts'>
-        {Object?.values(posts) < 1 ? <h1 className='no-posts'>You have no posts!</h1> : Object?.values(posts)?.sort((a, b) => new Date(b?.createdAt) - new Date(a?.createdAt))?.map(currentPost => (
+        {Object?.values(posts)?.sort((a, b) => new Date(b?.createdAt) - new Date(a?.createdAt))?.map(currentPost => (
           <li key={currentPost?.id} className="current-post">
             <PostItem post={currentPost} />
           </li>
         ))}
-
       </ul>
       <br></br>
       <br></br>
