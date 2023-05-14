@@ -12,11 +12,8 @@ function ResultsPage() {
     const location = useLocation()
     const query = new URLSearchParams(location.search).get('query')
     const currentUser = useSelector(state => state?.session?.user)
-    console.log("query => ", query)
-    console.log('Current User', currentUser)
     const posts = useSelector(state => state?.posts)
     const postsVal = Object?.values(posts)
-    console.log('Posts', posts)
 
     // Creating state and function for sorting posts
     const [sortOrder, setSortOrder] = useState('desc');
@@ -31,7 +28,6 @@ function ResultsPage() {
     }
     // Sort posts into asc or desc
     const sortedPosts = Object.values(posts).sort(comparePosts);
-
     function handleSortClick() {
         if (sortOrder === 'asc') {
             setSortOrder('desc');
@@ -39,21 +35,20 @@ function ResultsPage() {
             setSortOrder('asc');
         }
     }
+
     // Filter posts if it matches query
     const filteredPosts = sortedPosts.filter(post =>
         (post?.content?.toLowerCase())?.includes(query) ||
         (post?.title?.toLowerCase())?.includes(query) ||
         (post?.owner?.username?.toLowerCase()?.includes(query))
     )
-    // console.log("filteredPosts", filteredPosts)
 
     useEffect(() => {
         dispatch(getAllPosts())
 
-    }, [dispatch, JSON.stringify(postsVal)])
+    }, [dispatch, JSON.stringify(filteredPosts)])
 
     // If query is empty or filteredPosts is empty
-    // console.log("query => ", query)
     if (query.length === 0 || filteredPosts.length === 0) return <ResultsErrorMessage/>
 
     return (
@@ -67,13 +62,9 @@ function ResultsPage() {
             <ul className='posts'>
                 {
                     filteredPosts.map(post => (
-                        (post?.content?.toLowerCase())?.includes(query) || (post?.title?.toLowerCase())?.includes(query) || (post?.owner?.username?.toLowerCase()?.includes(query))
-                            ?
                             <li key={post?.id} className="post">
                                 <PostItem post={post} />
                             </li>
-                            :
-                            null
                     ))
                 }
             </ul>
