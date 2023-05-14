@@ -28,7 +28,7 @@ export default function CreatePost() {
         } else closeModal();
 
     }
-
+    //
     const handleCancel = (e) => {
         e.preventDefault();
         closeModal();
