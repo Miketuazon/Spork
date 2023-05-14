@@ -5,6 +5,7 @@ import { getAllPosts } from '../../store/post'
 import PostItem from "../Posts/PostItem"
 import { NavLink, useLocation } from "react-router-dom"
 import './ResultsPage.css'
+import ResultsErrorMessage from './ResultsError'
 
 function ResultsPage() {
     const dispatch = useDispatch()
@@ -28,7 +29,7 @@ function ResultsPage() {
             return timestamp2 - timestamp1;
         }
     }
-
+    // Sort posts into asc or desc
     const sortedPosts = Object.values(posts).sort(comparePosts);
 
     function handleSortClick() {
@@ -38,22 +39,34 @@ function ResultsPage() {
             setSortOrder('asc');
         }
     }
-    console.log("sortedPosts", sortedPosts)
+    // Filter posts if it matches query
+    const filteredPosts = sortedPosts.filter(post =>
+        (post?.content?.toLowerCase())?.includes(query) ||
+        (post?.title?.toLowerCase())?.includes(query) ||
+        (post?.owner?.username?.toLowerCase()?.includes(query))
+    )
+    // console.log("filteredPosts", filteredPosts)
+
     useEffect(() => {
         dispatch(getAllPosts())
 
     }, [dispatch, JSON.stringify(postsVal)])
+
+    // If query is empty or filteredPosts is empty
+    // console.log("query => ", query)
+    if (query.length === 0 || filteredPosts.length === 0) return <ResultsErrorMessage/>
+
     return (
         <div className='results-of-search'>
             <div className='sort-container'>
                 <h2 className='sortt'>Sort by:</h2>
                 <button onClick={handleSortClick} className='sort-button'>
-                    {sortOrder === 'asc' ? 'Older Posts' : 'Most Recent Posts'}
+                    {sortOrder === 'asc' ? <i class='fas fa-angle-down'> Older</i> : <i class='fas fa-angle-up'> Most recent</i>}
                 </button>
             </div>
             <ul className='posts'>
                 {
-                    sortedPosts?.map(post => (
+                    filteredPosts.map(post => (
                         (post?.content?.toLowerCase())?.includes(query) || (post?.title?.toLowerCase())?.includes(query) || (post?.owner?.username?.toLowerCase()?.includes(query))
                             ?
                             <li key={post?.id} className="post">
