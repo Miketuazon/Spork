@@ -12,6 +12,21 @@
     margin-bottom: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+.timestamp-2, .post-content-2, .post-item-postTitle-2 {
+    margin-left: 10px;
+}
+
+.post-footer-2 {
+    margin-left: 6px;
+}
+.post2 {
+    background-color: #fff;
+        /* border: 1px solid #dddfe2; */
+        border-radius: 5px;
+        /* padding: 16px 16px 0 16px; */
+        margin-bottom: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
 .no-likes {
     color: white;

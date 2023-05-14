@@ -39,13 +39,13 @@ console.log('FollowCount', followerCount)
 useEffect(() => {
 
 dispatch(getAllPosts())
-}, [dispatch, JSON.stringify(follow), JSON.stringify(currentUser)])
+}, [dispatch, JSON.stringify(follow), JSON.stringify(currentUser), JSON.stringify(currentUserFollowing)])
   return (
     <div className="lSyOz">
       <main className="rmkqO">
         {follow?.length ? <h1 className="IiZ2z">Following {followerCount}</h1>:<></>}
 
-        { follow.length ? Object?.values(follow)?.map( follows => {
+        { follow?.length ? Object?.values(follow)?.map( follows => {
           const onSubmitFollow = async (e) => {
             e.preventDefault()
 

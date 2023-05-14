@@ -82,12 +82,6 @@ export default function EditPost({ post }) {
                     />
                     <li>
                         <button type="submit" className="update-post-post-now-button" ><span>Post now |</span><span className="fa fa-angle-down"></span></button>
-                        <ul className="update-post-dropdown">
-                            <li><a>1</a></li>
-                            <li><a>2</a></li>
-                            <li><a>3</a></li>
-                            <li><a>4</a></li>
-                        </ul>
                     </li>
                 </form>
                 <ul className="update-post-close-for-everyone-post-now-button">
@@ -99,12 +93,6 @@ export default function EditPost({ post }) {
                             <a>
                                 <button className="update-post-for-everyone-button"><span>For Everyone </span><span className="fa fa-angle-down"></span></button>
                             </a>
-                            <ul className="update-post-dropdown">
-                                <li><a>1</a></li>
-                                <li><a>2</a></li>
-                                <li><a>3</a></li>
-                                <li><a>4</a></li>
-                            </ul>
                         </li>
                         {/* <div>
                         <li>

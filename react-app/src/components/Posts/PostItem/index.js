@@ -25,7 +25,7 @@ const PostItem = ({ post }) => {
     const postFollowers = post?.owner?.followers
     const postsVal = Object.values(post)
     const comments = useSelector(state => state?.comments)
-    const notes = Number(post?.comments?.length + post?.likes?.length)
+    const notes = (post?.comments?.length + post?.likes?.length)
     const postComments = post?.comments
     const postLikes = post?.likes
 
@@ -81,7 +81,7 @@ const PostItem = ({ post }) => {
         if (!showMenu) return;
 
         const closeMenu = (e) => {
-            if (!ulRef.current.contains(e.target)) {
+            if (!ulRef?.current?.contains(e?.target)) {
                 setShowMenu(false);
             }
         };
@@ -89,7 +89,7 @@ const PostItem = ({ post }) => {
         document.addEventListener('click', closeMenu);
 
         return () => document.removeEventListener("click", closeMenu);
-    }, [dispatch, showMenu, JSON.stringify(post), JSON.stringify(notes), JSON.stringify(currentUser), JSON.stringify(liked), JSON.stringify(follower)]);
+    }, [dispatch, showMenu, JSON.stringify(postComments), JSON.stringify(postLikes), JSON.stringify(currentUser), JSON.stringify(liked), JSON.stringify(follower)]);
 
 
     const ulClassNameUpdateDelete = "list-for-update-delete" + (showMenu ? "" : " hidden");
