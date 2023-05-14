@@ -77,9 +77,9 @@ function App() {
           <Route exact path="/posts/edit/:postId">
             <EditPost />
           </Route>
-          <Route exact path="/likes">
+          {/* <Route exact path="/likes">
             <AllLikes />
-          </Route>
+          </Route> */}
           <Route exact path="/posts/current">
             <CurrentUserPosts />
           </Route>

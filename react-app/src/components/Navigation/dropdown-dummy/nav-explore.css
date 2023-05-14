@@ -62,7 +62,6 @@
 
   .explore-post:hover {
     border-color: #000;
-    cursor: pointer;
   }
 
   .explore-post:hover img {

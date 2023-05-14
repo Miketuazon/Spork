@@ -1,0 +1,183 @@
+import "./Test.css"
+import OpenModalButton from "../OpenModalButton";
+import React, { useState, useRef } from "react";
+import DeletePost from "../Posts/DeletePost";
+import { useSelector } from "react-redux"
+import EditPost from "../Posts/EditPost";
+import CreateComment from "../comments/CreateComment";
+import DeleteComment from "../comments/DeleteComment";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux"
+import { getAllPosts, getCurrentUserPosts } from "../../store/post";
+import { useCallback } from "react";
+import FollowOrUnfollow from "../Follows/FollowOrUnfollow";
+import { getFollowsForUser } from "../../store/follow";
+import { likeOnePost } from "../../store/like";
+import EditComment from "../comments/EditComment";
+
+
+const Test = ({ post }) => {
+    const [showMenu, setShowMenu] = useState(false);
+    const ulRef = useRef();
+    const dispatch = useDispatch();
+    const currentUser = useSelector(state => state?.session?.user)
+    const currentFollowing = currentUser?.currentFollowing
+    const currentUserLikes = currentUser?.likes
+    const postFollowers = post?.owner?.followers
+    const comments = useSelector(state => state?.comments)
+    const notes = Number(post?.comments?.length + post?.likes?.length)
+    const postComments = post?.comments
+    const postLikes = post?.likes
+
+    const likes = post?.likes?.find(id => id === currentUser?.id)
+    console.log('Likes', likes)
+    const follower = post?.owner?.followers?.find(id => id === currentUser?.id)
+    console.log('follower', follower)
+    const liked = post?.likes?.find(id => id === currentUser?.id)
+    console.log('liked', liked)
+
+    // creating date
+    const months = {
+        0: 'January',
+        1: 'February',
+        2: 'March',
+        3: 'April',
+        4: 'May',
+        5: 'June',
+        6: 'July',
+        7: 'August',
+        8: 'September',
+        9: 'October',
+        10: 'November',
+        11: 'December'
+    }
+
+    const date = new Date(post?.createdAt)
+    const month = months[date?.getMonth()];
+    const day = date?.getDate();
+    const year = date?.getFullYear();
+    const hoursMin = date?.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', });
+
+
+    const onSubmitFollow = async (e) => {
+        e.preventDefault()
+
+        dispatch(getFollowsForUser(post?.userId))
+        dispatch(getAllPosts())
+
+    }
+    const onSubmitLike = async (e) => {
+        e.preventDefault()
+
+        dispatch(likeOnePost(post?.id))
+        dispatch(getAllPosts())
+
+    }
+    const openMenu = () => {
+        if (showMenu) return;
+        setShowMenu(true);
+    };
+
+    useEffect(() => {
+        if (!showMenu) return;
+
+        const closeMenu = (e) => {
+            if (!ulRef?.current?.contains(e?.target)) {
+                setShowMenu(false);
+            }
+        };
+
+        document.addEventListener('click', closeMenu);
+
+        return () => document.removeEventListener("click", closeMenu);
+    }, [dispatch, showMenu, JSON.stringify(post), JSON.stringify(postLikes), JSON.stringify(notes), JSON.stringify(currentUserLikes), JSON.stringify(currentUser), JSON.stringify(liked), JSON.stringify(follower)]);
+
+
+    const ulClassNameUpdateDelete = "list-for-update-delete" + (showMenu ? "" : " hidden");
+
+
+    return (
+        <>
+            {likes && currentUserLikes.length ?
+                <div>
+
+                    <div className="post-header-2">
+                        <div><img src="https://assets.tumblr.com/images/default_avatar/cone_open_64.png" alt="default_image.png" />{post?.owner?.username}</div>
+                        <div className="username-unfollow-follow">
+                            {currentUser && follower && (currentUser?.id !== post?.userId) ? <button className="button-unfollow" onClick={onSubmitFollow}>unfollow</button> : currentUser && !follower && (currentUser?.id !== post?.userId) ? <button className="button-follow" onClick={onSubmitFollow}>Follow</button> : <></>}
+                        </div>
+                    </div>
+                    <h6 className="timestamp-2">{month}, {day}, {year} | {hoursMin}</h6>
+                    <h4 className="post-item-postTitle-2">{post?.title}</h4>
+                    <p className="post-content-2">
+                        {post?.content}
+                    </p>
+                    <div className="post-footer-2">
+                        <button onClick={openMenu} className="like-button">{notes === 1 ? <div><span>{notes} </span><span>note</span></div> : <div><span>{notes} </span><span>notes</span></div>}</button>
+                        {currentUser && !liked && (currentUser?.id !== post?.userId) ? <button className="like-button" onClick={onSubmitLike}><i className="far fa-heart"></i></button> : currentUser && liked && (currentUser?.id !== post?.userId) ? <button className="unlike-button" onClick={onSubmitLike}><i className="fas fa-heart" ></i></button> : <></>}
+                        {/* {currentUser?.id === post?.userId ? (<><OpenModalButton
+                    buttonText={<><i className="fa fa-pen-square"></i></>}
+                    modalComponent={<Editpost postId={post?.id} post={post} />}
+                />{<Deletepost posttId={post?.id}><i className="fas fa-trash-alt"></i></Deletepost>}</> ):(<></>)} */}
+
+                        {/* {currentUser?.id === post?.userId ? (
+                            <div className="comments-trash-and-update-button">
+                                <OpenModalButton
+                                    buttonText={<><i className="fas fa-trash-alt"></i></>}
+                                    modalComponent={<DeletePost postId={post?.id} />}
+                                />
+
+                                <OpenModalButton
+                                    buttonText={<><i className="fa fa-pencil"></i></>}
+                                    modalComponent={<EditPost postId={post?.id} post={post} />}
+                                />
+                            </div>
+                        ) : (
+                            <></>
+                        )} */}
+
+                        <span></span><span><button type='click' onClick={openMenu}>{<><i className="fas fa-comment-dots"></i></>}</button></span>
+
+                    </div>
+                    <div className="dropdown m-10">
+                        <ul className={ulClassNameUpdateDelete} ref={ulRef}>
+                            {/* {currentUser ?
+                                <></> : <></>} */}
+                            {post?.comments?.length ?
+
+                                post?.comments?.sort((a, b) => new Date(b?.createdAt) - new Date(a?.createdAt))?.map((comment) => {
+
+                                    return (
+                                        <li key={comment?.id}>
+                                            <div className="list-for-update-delete">
+                                                <div className="trash-comment">
+                                                    <div className="comment-text-bubble">
+                                                        <span className="comment-owner">{comment?.owner?.username}</span>
+                                                        <div className="the-comments-commented">
+
+                                                            <span>{comment?.content}</span>
+                                                        </div>
+                                                    </div>
+                                                    {/* <span>{currentUser?.id === comment?.userId ? <DeleteComment commentId={comment?.id}><i className="fas fa-trash-alt"></i></DeleteComment> : <></>}</span>
+                                                    <span>{currentUser?.id === comment?.userId ? <OpenModalButton
+                                                        buttonText={<><i className="fa fa-pen-square edit-comment"></i></>}
+                                                        modalComponent={<EditComment commentId={comment?.id} comment={comment} />}
+                                                    /> : <></>}</span> */}
+
+                                                </div>
+                                            </div>
+                                        </li>
+                                    )
+                                }) : <></>
+                            }
+                        </ul>
+                    </div>
+
+                </div> : <></>
+
+                    }
+        </>
+    )
+}
+
+export default Test

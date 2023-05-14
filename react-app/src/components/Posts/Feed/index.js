@@ -22,6 +22,7 @@ const Feed = () => {
   const dispatch = useDispatch()
   const posts = useSelector(state => state?.posts)
   const currentUser = useSelector(state => state?.session?.user)
+  const currentUserLikes = currentUser?.likes
   const postsVal = Object?.values(posts)
   console.log('PostsVal', postsVal)
   const postsLikes  = postsVal?.likes
@@ -35,7 +36,7 @@ const Feed = () => {
     dispatch(getAllPosts())
     // dispatch(getCommentsForPost(postId))
     // dispatch(getCommentsForPost(postId))
-  }, [dispatch, JSON.stringify(postsVal), JSON.stringify(currentUser)])
+  }, [dispatch, JSON.stringify(postsVal), JSON.stringify(currentUserLikes)])
 
     return (
         <div className='Feed'>
