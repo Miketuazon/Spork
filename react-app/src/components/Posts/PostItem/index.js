@@ -156,7 +156,7 @@ const PostItem = ({ post }) => {
                                             </div>
                                             <span>{currentUser?.id === comment?.userId ? <DeleteComment commentId={comment?.id}><i className="fas fa-trash-alt"></i></DeleteComment> : <></>}</span>
                                             <span>{currentUser?.id === comment?.userId ? <OpenModalButton
-                                                buttonText={<><i className="fa fa-pen-square edit-comment"></i></>}
+                                                buttonText={<><i className="fas fa-pen-square edit-comment"></i></>}
                                                 modalComponent={<EditComment commentId={comment?.id} comment={comment} />}
                                             /> : <></>}</span>
 
