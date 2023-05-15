@@ -90,7 +90,7 @@ function ProfileButton({ user }) {
             <div className="options-for-drop-down">
               <ul>
                 <div className="top-dropdown-menu-options">
-                  <li>
+                  <li onClick={() => alert('Account feature coming soon, sorry!')}>
                     <button className="account-menu-dropdown">Account </button>
                   </li>
                   <li><button onClick={handleLogout}> Log Out</button></li></div>
