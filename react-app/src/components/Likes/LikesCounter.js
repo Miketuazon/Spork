@@ -10,7 +10,7 @@ export default function LikesCounter() {
     // Need to integrate BE data for likes
     return (
         <div className="likes-counter">
-            <i class="fa fa-heart"> 10</i>
+            <i className="fa fa-heart"> 10</i>
         </div>
     )
 }

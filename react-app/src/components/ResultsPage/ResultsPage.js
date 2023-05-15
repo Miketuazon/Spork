@@ -57,7 +57,7 @@ function ResultsPage() {
                     <h2 className='res'>Results: {filteredPosts.length} | Query: {query}</h2>
                     <h2 className='sortt'>Sort by: &nbsp;
                         <button onClick={handleSortClick} className='sort-button'>
-                            {sortOrder === 'asc' ? <i class='fas fa-angle-down'> Older</i> : <i class='fas fa-angle-up'> Newer</i>}
+                            {sortOrder === 'asc' ? <i className='fas fa-angle-down'> Older</i> : <i className='fas fa-angle-up'> Newer</i>}
                         </button>
                     </h2>
                 </div>

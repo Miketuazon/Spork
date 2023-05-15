@@ -39,16 +39,16 @@ const Feed = () => {
   return (
     <div className='Feed'>
       {currentUser ?
-        <ul class="post-types">
+        <ul className="post-types">
           <div className='create-footer'>Text
             <OpenModalButton className="Create Post" buttonText={<> <i className="fas fa-font"></i></>} modalComponent={<CreatePost />}></OpenModalButton></div>
-          <div className='photo-footer'>Photo<a class="fas fa-camera" onClick={() => alert("Coming soon!")}></a></div>
+          <div className='photo-footer'>Photo<a className="fas fa-camera" onClick={() => alert("Coming soon!")}></a></div>
           <div className='quote-footer'>Quote
-            <a class="fas fa-quote-right" onClick={() => alert("Coming soon!")}></a></div>
-          <div className='link-footer'>Link<a class="fas fa-link" onClick={() => alert("Coming soon!")}></a></div>
-          <div className='chat-footer'>Chat<a class="fas fa-comment-alt" onClick={() => alert("Coming soon!")}></a></div>
-          <div className='sound-footer'>Sound<a class="fas fa-volume-up" onClick={() => alert("Coming soon!")}></a></div>
-          <div className='video-footer'>Video<a class="fas fa-video" onClick={() => alert("Coming soon!")}></a></div>
+            <a className="fas fa-quote-right" onClick={() => alert("Coming soon!")}></a></div>
+          <div className='link-footer'>Link<a className="fas fa-link" onClick={() => alert("Coming soon!")}></a></div>
+          <div className='chat-footer'>Chat<a className="fas fa-comment-alt" onClick={() => alert("Coming soon!")}></a></div>
+          <div className='sound-footer'>Sound<a className="fas fa-volume-up" onClick={() => alert("Coming soon!")}></a></div>
+          <div className='video-footer'>Video<a className="fas fa-video" onClick={() => alert("Coming soon!")}></a></div>
 
 
 
@@ -72,8 +72,8 @@ const Feed = () => {
           <img className='taylor2' src={logo2} alt="logo2" />
           <img className='britney1' src={logo3} alt="logo3" />
           <a href="/live">
-            <div class="live-box-more"><a className='live-text' href="/live">See more +</a></div>
-            <div class="live-outer-box"> </div>
+            <div className="live-box-more"><a className='live-text' href="/live">See more +</a></div>
+            <div className="live-outer-box"> </div>
 
 
           </a>
