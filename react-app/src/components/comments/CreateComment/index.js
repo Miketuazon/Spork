@@ -54,7 +54,7 @@ export default function CreateComment({ postId }) {
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
                     />
-                    <button className='submit-comment' ><i class="fa fa-reply"></i></button>
+                    <button className='submit-comment' ><i className="fa fa-reply"></i></button>
                 </form>
             </div>
 
