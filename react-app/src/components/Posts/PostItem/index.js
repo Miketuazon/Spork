@@ -31,9 +31,7 @@ const PostItem = ({ post }) => {
 
 
     const follower = post?.owner?.followers?.find(id => id === currentUser?.id)
-    console.log('follower', follower)
     const liked = post?.likes?.find(id => id === currentUser?.id)
-    console.log('liked', liked)
 
     // creating date
     const months = {

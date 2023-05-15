@@ -17,9 +17,7 @@ const CurrentUserPosts = () => {
   const currentUser = useSelector(state => state?.session?.user)
   const currentUserLikes = currentUser?.likes
   const postsVal = Object?.values(posts)
-  console.log('PostsVal', postsVal)
   const postsLikes = postsVal?.likes
-  console.log('Post Likes', postsLikes)
   const postsComments = posts?.comments
   const comments = useSelector(state => state?.comments)
   const commentId = comments?.id

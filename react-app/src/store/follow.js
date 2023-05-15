@@ -9,7 +9,6 @@ const getFollowers = (follow) => {
 
 export const getFollowsForUser = (userId) => async dispatch => {
     const response = await fetch(`/api/follow/${userId}`)
-    console.log('followers res', response)
     if (response.ok) {
         const userFollows = await response.json()
         dispatch(getFollowers(userFollows))

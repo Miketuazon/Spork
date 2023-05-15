@@ -17,10 +17,9 @@ function Navigation({ isLoaded }) {
 	const handleProfileButtonClick = () => {
 		setShowProfileButton(!showProfileButton);
 	};
-	console.log('session-user', sessionUser)
-useEffect(()=> {
+	useEffect(() => {
 
-},[sessionUser])
+	}, [sessionUser])
 	return (
 
 		<ul className='home-whole-nav-bar'>
@@ -38,7 +37,7 @@ useEffect(()=> {
 						<NavLink exact to="/explore"><i className="fa fa-compass"></i></NavLink>
 						<NavLink exact to="/NavMarket"><i className='fas fa-store-alt'></i></NavLink>
 						<button className="nav-bar-non-function-button" onClick={() => alert('Coming soon!')}><i className="fa fa-envelope"></i></button>
-						<button className="nav-bar-non-function-button"  onClick={() => alert('Coming soon!')}><i className='fas fa-comment-dots'></i></button>
+						<button className="nav-bar-non-function-button" onClick={() => alert('Coming soon!')}><i className='fas fa-comment-dots'></i></button>
 						<button className="nav-bar-non-function-button" onClick={() => alert('Coming soon!')}><i className="fa fa-bolt"></i></button>
 						{/* <ProfileButton user={sessionUser} /> */}
 						<button className="nav-bar-non-function-button"><OpenModalButton className="span-create-post" buttonText={<><i className="fa fa-pen-square"></i></>} modalComponent={<CreatePost />}></OpenModalButton></button><span className="span-profile-button"><ProfileButton user={sessionUser} /></span>

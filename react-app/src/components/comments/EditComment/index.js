@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useModal } from "../../../context/Modal";
 
 
-export default function EditComment ({comment}) {
+export default function EditComment({ comment }) {
     const commentId = comment?.id
     const history = useHistory()
     const { closeModal } = useModal()
@@ -22,7 +22,7 @@ export default function EditComment ({comment}) {
         // dispatch(updateOneComment(comment, commentId))
         const updatedComment = dispatch(updateOneComment(comment, commentId))
         if (updatedComment) {
-        closeModal()
+            closeModal()
         }
     }
     return (
@@ -32,7 +32,7 @@ export default function EditComment ({comment}) {
                     className="update-comment-textarea"
                     rows="8"
                     cols="60"
-                    placeHolder={comment?.content}
+                    placeholder={comment?.content}
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                 />
