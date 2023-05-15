@@ -4,19 +4,56 @@
 
 @keyframes left-to-right {
   0% {
-      transform: translateX(0px);
+    transform: translateX(0px);
   }
 
   50% {
-      transform: translateX(-10px);
+    transform: translateX(-10px);
   }
 
   100% {
-      transform: translateX(0px);
+    transform: translateX(0px);
   }
 }
 
-.profile-dropdown-login{
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 60%;
+  display: inline-block;
+  background-color: white;
+  border: solid 1px black;
+  margin-left: 20%;
+  text-align: center;
+  z-index: 1;
+}
+
+.group-link {
+  display: inline-block;
+  margin: auto;
+}
+
+.footer ul li {
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+.name {
+  margin-right: 10px;
+  color: black;
+}
+
+.link a {
+  margin-left: 10px;
+  color: blue;
+  cursor: pointer
+}
+
+.end {
+  margin-right: 4rem;
+}
+
+.profile-dropdown-login {
   display: none;
   position: absolute;
   top: 35px;
@@ -29,13 +66,15 @@
   width: 210px;
 
 }
-.nav-bar-non-function-button{
+
+.nav-bar-non-function-button {
   color: white;
 }
 
 .profile-dropdown-login.hidden {
   display: none;
 }
+
 .profile-dropdown-login:not(.hidden) {
   display: block;
 }
@@ -44,11 +83,13 @@
   background-color: transparent;
 }
 
-.span-create-post, .span-profile-button{
-padding: 9px;
-cursor: pointer;
+.span-create-post,
+.span-profile-button {
+  padding: 9px;
+  cursor: pointer;
 
 }
+
 .home-button-icons {
   display: flex;
   text-decoration: none;
@@ -138,7 +179,8 @@ cursor: pointer;
 .home-button-icons a:hover {
   color: #fff;
 }
-.button-green-login{
+
+.button-green-login {
   color: rgb(65, 224, 65);
   text-decoration: solid;
   font-style: normal;
@@ -163,20 +205,22 @@ cursor: pointer;
 } */
 
 
-.log-in-nav-bar{
+.log-in-nav-bar {
 
-  background-color:white;
+  background-color: white;
 }
-a.active{
+
+a.active {
   text-decoration: none;
 }
 
-.create-post-nav-button{
+.create-post-nav-button {
   height: 20px
 }
-.fas.fa-edit{
-position: absolute;
-right:0px;
+
+.fas.fa-edit {
+  position: absolute;
+  right: 0px;
 }
 
 .spork-search-button {
@@ -187,6 +231,6 @@ right:0px;
   color: white;
 }
 
-i.fa.fa-pen-square{
+i.fa.fa-pen-square {
   color: white;
 }

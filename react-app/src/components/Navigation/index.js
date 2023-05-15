@@ -21,12 +21,43 @@ function Navigation({ isLoaded }) {
 
 	}, [sessionUser])
 	return (
-
 		<ul className='home-whole-nav-bar'>
 			<div className="left-nav-bar">
 				<NavLink exact to="/"><div className="spork-logo">S</div></NavLink>
 				<div className="search-bar">
 					< SearchBar />
+				</div>
+				<div className='footer'>
+					<ul className='group-link'>
+						<li className='name'>
+							Brian Washington:
+						</li>
+						<li className='link'>
+							<a href='https://www.linkedin.com/in/brian-washington-668129244/'>LinkedIn</a>
+							<a href='https://github.com/zipzopboppitybop' className='end'>Github</a>
+						</li>
+						<li className='name'>
+							Derrick Truong:
+						</li>
+						<li className='link'>
+							<a href='https://www.linkedin.com/in/derrick-truong-1a092121a/'>LinkedIn</a>
+							<a href='https://github.com/Derrick-Truong' className='end'>Github</a>
+						</li>
+						<li className='name'>
+							Kisha Onia:
+						</li>
+						<li className='link'>
+							<a href='https://www.linkedin.com/in/kisha-rose-onia-63bb35182/'>LinkedIn</a>
+							<a href='https://github.com/kishaonia' className='end'>Github</a>
+						</li>
+						<li className='name'>
+							Michael Tuazon:
+						</li>
+						<li className='link'>
+							<a href='https://www.linkedin.com/in/miketuazon/'>LinkedIn</a>
+							<a href='https://github.com/Miketuazon' className='end'>Github</a>
+						</li>
+					</ul>
 				</div>
 			</div>
 			{sessionUser && isLoaded ? (
