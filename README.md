@@ -73,24 +73,25 @@ This web application was designed and developed within a two-week time.  Below a
 - Users can unlike a post if they want to remove it from their likes page
 ![likes](./spork_ReadMeGifs/Spork_likesPage.gif)
 
-### Comments
+### **Comments**
 - Users are able to comment on other users' post
 - Users can edit a comment if they want to change it
 - Users can also delete their comment as well
 ![comments](./spork_ReadMeGifs/Spork_createUpdateDeleteComment.gif)
 
-### Follows
+### **Follows**
 - Users are able to follow a user that created the post
 - Users are can unfollow a user in their following page
 ![follows](./spork_ReadMeGifs/Spork_following.gif)
 
-### Search Bar
+### **Search Bar**
 - Users are able to search posts through querying for a post's content, creator, or title
 - Users also can switch the order between older or newer posts
+![readme](./spork_ReadMeGifs/Spork_searchBar.gif)
 
 <hr>
 
-## Future Features
+## **Future Features**
 - Make other post types available such as: Photo, Quote, Link
 - AWS integration for posts with pictures
 
