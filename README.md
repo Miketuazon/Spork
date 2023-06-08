@@ -43,42 +43,65 @@ Our team consisted of the following engineers:
 ## Features
 This web application was designed and developed within a two-week time.  Below are all the main features I was able to implement.
 
-## **Log In / Sign Up**
+### **Log In / Sign Up**
 - Secure User Authorization using Werkzeug Security hashing
 - User Log In / Sign Up errors are shown in form
 - Demo user provided for users that want to test the site
 
 ![logIn](./spork_ReadMeGifs/Spork_logInSignUp.gif)
 
-## **Posts Feed**
+### **Posts Feed**
 - Displays the posts made by users
 - Users can like / unlike the posts
 - Users can follow / unfollow the user that created the post
 ![feed](./spork_ReadMeGifs/Spork_feed.gif)
 
-## **Create/Update Posts**
+### **Create/Update Posts**
 - A modal opens and allows a user to create a post
 - User can also edit the post if they made a mistake
 - Post will display User of post, time stamp, title, content, and notes
 ![create/updatePost](./spork_ReadMeGifs/Spork_createUpdatePost.gif)
 
-## **Delete a Post**
+### **Delete a Post**
 - A modal opens and allows a user to delete a post they created
 - Post is removed from all pages it would be displayed on
 - User can opt to cancel if they do not want to delete their post
 ![deletePost](./spork_ReadMeGifs/Spork_deletePost.gif)
 
-## **Likes Page**
+### **Likes Page**
 - Users are able to see which posts they have liked
 - Users can unlike a post if they want to remove it from their likes page
 ![likes](./spork_ReadMeGifs/Spork_likesPage.gif)
 
-## Comments
+### Comments
 - Users are able to comment on other users' post
 - Users can edit a comment if they want to change it
 - Users can also delete their comment as well
+![comments](./spork_ReadMeGifs/Spork_createUpdateDeleteComment.gif)
 
+### Follows
+- Users are able to follow a user that created the post
+- Users are can unfollow a user in their following page
+![follows](./spork_ReadMeGifs/Spork_following.gif)
 
-## Follows
+### Search Bar
+- Users are able to search posts through querying for a post's content, creator, or title
+- Users also can switch the order between older or newer posts
 
-## Search Bar
+<hr>
+
+## Future Features
+- Make other post types available such as: Photo, Quote, Link
+- AWS integration for posts with pictures
+
+<hr>
+
+## Code Snippet
+### **Search Bar**
+We wanted to not only implement a way to search through posts, but also be able to sort them. A problem we faced as a team, was undestanding how can we query in our search, and then render a page that includes posts with that query.
+
+In order to solve this, we first had to get all the posts. Then, we needed to have a way to sort those posts from either older posts, or newer. After, we then filtered if the query in includes in the each post's content, title, or owner. If there were no posts with that query, we would return an error message.
+
+At the end, we came together to figure out a way to render those events, and successfuly created a clean Search Bar feature!
+
+![commentCode](./spork_ReadMeGifs/Spork_commentCode.png)
