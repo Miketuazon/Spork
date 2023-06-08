@@ -1,15 +1,15 @@
-.log-in-form-below-frog{
-    display: flex;
-    background-color: rgb(140, 105, 246);
-    flex-direction: column;
-    align-items: center;
-    color: white;
-    height: 300px;
-    margin-top: -10px;
+.log-in-form-below-frog {
+  display: flex;
+  background-color: rgb(140, 105, 246);
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  height: 300px;
+  margin-top: -10px;
 }
 
-.demo-sign-in-button{
-  background-color: #5308f4;
+.demo-sign-in-button {
+  background-color: #5308F4;
   width: 100px;
   height: 50px;
   border: none;
@@ -21,45 +21,121 @@
   cursor: pointer;
   margin-left: 5px;
 }
-.loginform-sign-in-button{
-    background-color: #5308f4;
-      width: 100px;
-      height: 50px;
-      border: none;
-      border-radius: 5px;
-      height: 48px;
-      color: white;
-      font-weight: bold;
-      margin-bottom: 15px;
-      cursor: pointer;
-      margin-left: 5px;
 
+.loginform-sign-in-button {
+  background-color: #5308F4;
+  width: 100px;
+  height: 50px;
+  border: none;
+  border-radius: 5px;
+  height: 48px;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 15px;
+  cursor: pointer;
+  margin-left: 5px;
 }
-.signup-link-in-login-form{
+
+.signup-link-in-login-form {
   justify-content: space-between;
 }
 
 .form-log-in {
-    display: flex;
-    flex-direction: column;
-  }
+  display: flex;
+  flex-direction: column;
+}
 
-  .form-row {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1rem;
-  }
+.form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
 
-  label {
-    margin-bottom: 0.5rem;
-  }
+label {
+  margin-bottom: 0.5rem;
+}
 
-  input {
-    padding: 0.5rem;
-    font-size: 1rem;
-  }
+input {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
 
-  .email-and-password-form{
-    background-color: rgb(211, 176, 244);
+.email-and-password-form {
+  background-color: rgb(211, 176, 244);
+  border-radius: .5rem;
+}
 
-  }
+.login-button {
+  height: 30px;
+}
+
+.log-in-form-below-frog {
+  display: flex;
+  background-color: rgb(140, 105, 246);
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  height: 300px;
+  margin-top: -10px;
+}
+
+.demo-sign-in-button {
+  background-color: #5308F4;
+  width: 100px;
+  height: 50px;
+  border: none;
+  border-radius: 5px;
+  height: 48px;
+  color: black;
+  font-weight: bold;
+  margin-bottom: 15px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.loginform-sign-in-button {
+  background-color: #5308F4;
+  width: 100px;
+  height: 50px;
+  border: none;
+  border-radius: 5px;
+  height: 48px;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 15px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.signup-link-in-login-form {
+  justify-content: space-between;
+}
+
+.form-log-in {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+label {
+  margin-bottom: 0.5rem;
+}
+
+input {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.email-and-password-form {
+  background-color: rgb(211, 176, 244);
+  border-radius: .5rem;
+}
+
+.login-button {
+  height: 30px;
+}

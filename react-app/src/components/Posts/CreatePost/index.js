@@ -4,7 +4,6 @@ import { createOnePost } from "../../../store/post";
 import { useModal } from "../../../context/Modal";
 import { useHistory } from "react-router-dom";
 import "./CreatePost.css"
-
 export default function CreatePost() {
     const history = useHistory()
     const { closeModal } = useModal()
@@ -26,7 +25,6 @@ export default function CreatePost() {
         if (successPost) {
             setErrors(successPost)
         } else closeModal();
-
     }
     //
     const handleCancel = (e) => {
@@ -39,7 +37,7 @@ export default function CreatePost() {
                 <form>
                     <ul>
                         {errors.map((error, idx) => (
-                            <li key={idx}>{error}</li>
+                            <li className="error-message" key={idx}>{error}</li>
                         ))}
                     </ul>
                     <div className="create-post-username-gear">
@@ -52,8 +50,6 @@ export default function CreatePost() {
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                     />
-
-
                     <div>
                         <textarea
                             className="create-post-textarea"
@@ -79,7 +75,6 @@ export default function CreatePost() {
                         type="text"
                         placeholder="You can leave title empty but you cannot create a post with less than 3 characters"
                     /> */}
-
                 </form>
                 <ul className="create-post-close-for-everyone-post-now-button">
                     <span>
@@ -87,7 +82,6 @@ export default function CreatePost() {
                     </span>
                     <span className="create-post-for-everyone-post-now-button">
                         <li>
-
                             {/* <ul className="create-post-dropdown">
                                 <li><a>1</a></li>
                                 <li><a>2</a></li>
