@@ -47,7 +47,7 @@ export const login = (email, password) => async (dispatch) => {
 		return null;
 	} else if (response.status < 500) {
 		const data = await response.json();
-		console.log("data => ", data)
+		// console.log("data => ", data)
 		if (data.errors) {
 			return ["Invalid credentials"]
 		}
@@ -89,7 +89,7 @@ export const signUp = (username, email, password) => async (dispatch) => {
 	} else if (response.status < 500) {
 		const data = await response.json();
 		if (data.errors) {
-			return data.errors;
+			return (Object.values(data.errors));
 		}
 	} else {
 		return ["An error occurred. Please try again."];
