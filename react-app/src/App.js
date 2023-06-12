@@ -15,13 +15,13 @@ import ResultsPage from "./components/ResultsPage/ResultsPage"
 import AdFreeComponent from "./components/Navigation/dropdown-dummy/dropdown-adfree";
 import DropdownGifts from "./components/Navigation/dropdown-dummy/dropdown-gifts";
 import LivestreamCredits from "./components/Navigation/dropdown-dummy/dropdown-livestreamingcredits";
-// import UserPage from "./components/UserPage/UserPage";
 import FollowingDropdown from "./components/Follows/FollowingDropdown";
 import FollowerDropdown from "./components/Follows/FollowerDropdown";
 import Live from "./components/Navigation/dropdown-dummy/dropdown-live";
 import Explore from "./components/Navigation/dropdown-dummy/nav-explore";
 import NavMarket from "./components/Navigation/nav-market";
-import NotFoundPage from "./components/Navigation/404";
+import NotFoundPage from "./components/Navigation/404";import LoadingScreen from "./components/LoadingScreen";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -33,10 +33,16 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
+      {!isLoaded && (
+        <LoadingScreen />
+      )}
       {isLoaded && (
         <Switch>
           <Route exact path="/" >
             <Feed />
+          </Route>
+          <Route exact path="/loading" >
+            <LoadingScreen />
           </Route>
           <Route exact path="/create">
             <CreatePost />

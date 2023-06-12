@@ -19,13 +19,35 @@
 .footer {
   position: fixed;
   bottom: 0;
-  width: 60%;
+  width: 105%;
   display: inline-block;
   background-color: white;
   border: solid 1px black;
-  margin-left: 20%;
   text-align: center;
   z-index: 1;
+
+}
+
+.navBar>* {
+  flex: 1 1 auto;
+}
+
+.navBar {
+  /* border: 2px solid lightgray; /
+  / border-radius: 25px; /
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  / flex:  /
+  height: 5rem;
+  flex-direction: row;
+  list-style: none;
+  / background-color: #1A4645; /
+  / font-family: 'Lato'; /
+  / border: solid 2px #1A4645; */
+  position: sticky;
+  font-weight: 400;
+  margin: 0px;
 }
 
 .group-link {
@@ -64,7 +86,6 @@
   z-index: 1;
   height: 120px;
   width: 210px;
-
 }
 
 .nav-bar-non-function-button {
@@ -87,26 +108,24 @@
 .span-profile-button {
   padding: 9px;
   cursor: pointer;
-
 }
 
 .home-button-icons {
   display: flex;
   text-decoration: none;
+  width: 8rem;
 }
-
 
 .home-whole-nav-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 50px;
-  background-color: #0a1b40;
+  background-color: #0A1B40;
   color: white;
   font-size: 1.2rem;
   margin-top: 0;
   border-bottom: 0.5px solid white;
-
 }
 
 .left-nav-bar {
@@ -118,6 +137,7 @@
 .right-nav-bar {
   display: flex;
   align-items: center;
+  font-size: 2rem;
 }
 
 .spork-logo {
@@ -128,7 +148,7 @@
   height: 45px;
   border-radius: 50%;
   font-size: 2rem;
-  background-color: #0a1b40;
+  background-color: #0A1B40;
   color: #fff;
   font-weight: bold;
   cursor: pointer;
@@ -148,8 +168,8 @@
   font-size: 1rem;
   border: none;
   border-radius: 5px;
-  background-color: #4a5a82;
-  color: #f5f6f7;
+  background-color: #4A5A82;
+  color: #F5F6F7;
   outline: none;
 }
 
@@ -196,17 +216,12 @@
 
 .nav-bar-create-post-modal {
   display: inline-flex;
-
 }
-
 
 /* .nav-bar-non-function-button, .span-create-post {
   background-color: transparent;
 } */
-
-
 .log-in-nav-bar {
-
   background-color: white;
 }
 
@@ -233,4 +248,12 @@ a.active {
 
 i.fa.fa-pen-square {
   color: white;
+}
+
+.error-message {
+  color: red;
+}
+
+.fa-home {
+  margin-right: -1rem;
 }

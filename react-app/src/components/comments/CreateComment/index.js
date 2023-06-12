@@ -39,7 +39,7 @@ export default function CreateComment({ postId }) {
         <>
             <ul>
                 {errors.map((error, idx) => (
-                    <li key={idx}>{error}</li>
+                    <li className="error-message" key={idx}>{error}</li>
                 ))}
             </ul>
             <div className="user-picture-comments">
