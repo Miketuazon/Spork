@@ -90,16 +90,13 @@ function ProfileButton({ user }) {
             <div className="options-for-drop-down">
               <ul>
                 <div className="top-dropdown-menu-options">
-                  <li onClick={() => alert('Account feature coming soon, sorry!')}>
-                    <button className="account-menu-dropdown">Account </button>
-                  </li>
                   <li><button onClick={handleLogout}> Log Out</button></li></div>
                 <li onClick={() => window.location.href = '/Likes'}> <i className="fas fa-heart"></i>Likes</li>
                 <li onClick={() => window.location.href = "/following"}><i className="fas fa-user-friends"></i>
                   Following</li>
                 <li onClick={() => { window.location.href = '/followers' }}><i className="fas fa-users"></i> Followers</li>
                 <li onClick={() => { window.location.href = '/posts/current' }}><i className="fas fa-file"></i>{user.username}'s Posts</li>
-                <div className="top-dropdown-menu-options"><li onClick={() => alert('Blogs feature coming soon, sorry!')}><button className="account-menu-dropdown">Blogs </button></li>
+                <div className="top-dropdown-menu-options">
                   <li><OpenModalButton buttonText="New+" modalComponent={<CreatePost />}></OpenModalButton></li></div>
 
               </ul>

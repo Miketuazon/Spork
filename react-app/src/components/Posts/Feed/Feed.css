@@ -8,6 +8,10 @@ z#root {
   font-family: Helvetica, Arial, sans-serif;
 }
 
+.posts {
+  margin-top: 1rem;
+}
+
 
 .post {
   background-color: #fff;
@@ -18,9 +22,10 @@ z#root {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.AA-Text{
-text-decoration: none;
+.AA-Text {
+  text-decoration: none;
 }
+
 /* Reset the list styles and remove default button styles */
 .post-types {
   margin: 0;
@@ -66,49 +71,49 @@ text-decoration: none;
 .text-btn {
   color: #35465c;
   display: flex;
-flex-direction: column;
+  flex-direction: column;
 
 }
 
 .photo-btn {
   color: #fc4c4c;
   display: flex;
-flex-direction: column;
+  flex-direction: column;
 
 }
 
 .quote-btn {
   color: #ff8b4e;
   display: flex;
-flex-direction: column;
+  flex-direction: column;
 
 }
 
 .link-btn {
   color: #3cb878;
   display: flex;
-flex-direction: column;
+  flex-direction: column;
 
 }
 
 .chat-btn {
   color: #3a81c3;
   display: flex;
-flex-direction: column;
+  flex-direction: column;
 
 }
 
 .audio-btn {
   color: #a07dfc;
   display: flex;
-flex-direction: column;
+  flex-direction: column;
 
 }
 
 .video-btn {
   color: #e1306c;
   display: flex;
-flex-direction: column;
+  flex-direction: column;
 
 }
 
@@ -116,7 +121,7 @@ flex-direction: column;
   margin-right: 8px;
   font-size: 20px;
   display: flex;
-flex-direction: column;
+  flex-direction: column;
 }
 
 
@@ -142,13 +147,12 @@ flex-direction: column;
   text-decoration: underline;
 }
 
-.spork-live-thumbnails
-{
-color: white;
-margin-left: 43px;
+.spork-live-thumbnails {
+  color: white;
+  margin-left: 43px;
 }
 
-.spork-live-thumbnails-imgs{
+.spork-live-thumbnails-imgs {
   display: flex;
   height: 175px;
 }
@@ -171,6 +175,7 @@ margin-left: 43px;
   padding: 5px 10px;
   margin-top: 60px;
 }
+
 .live-box-more:hover {
   background-color: rgb(70, 78, 159);
 
@@ -179,48 +184,59 @@ margin-left: 43px;
 .live-outer-box:hover {
   background-color: rgb(70, 78, 159);
 }
-a.live-text{
+
+a.live-text {
   height: 20px;
   width: 100px;
   display: flex;
   box-sizing: 100px;
 }
-.create-please{
+
+.create-please {
   background: transparent;
   border: none;
 }
 
-.create-footer, .photo-footer, .quote-footer, .link-footer, .chat-footer, .sound-footer, .video-footer{
+.create-footer,
+.photo-footer,
+.quote-footer,
+.link-footer,
+.chat-footer,
+.sound-footer,
+.video-footer {
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
   cursor: pointer;
 }
 
-button{
-background-color: transparent;
-border: none;
-cursor: pointer;
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
-.photo-footer{
+.photo-footer {
   color: rgb(211, 58, 58);
 }
-.quote-footer
-{
-color: orange;
+
+.quote-footer {
+  color: orange;
 }
 
-.chat-footer{
-color: blue;
+.chat-footer {
+  color: blue;
 }
-.sound-footer{
+
+.sound-footer {
   color: rgb(151, 118, 182);
 
 }
-.link-footer{
-  color:rgb(72, 195, 127);
+
+.link-footer {
+  color: rgb(72, 195, 127);
 }
-.video-footer{
+
+.video-footer {
   color: rgb(224, 66, 245);
 }

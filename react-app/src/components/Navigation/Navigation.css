@@ -19,12 +19,35 @@
 .footer {
   position: fixed;
   bottom: 0;
-  width: 100%;
+  width: 105%;
   display: inline-block;
   background-color: white;
   border: solid 1px black;
   text-align: center;
   z-index: 1;
+
+}
+
+.navBar>* {
+  flex: 1 1 auto;
+}
+
+.navBar {
+  /* border: 2px solid lightgray; /
+  / border-radius: 25px; /
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  / flex:  /
+  height: 5rem;
+  flex-direction: row;
+  list-style: none;
+  / background-color: #1A4645; /
+  / font-family: 'Lato'; /
+  / border: solid 2px #1A4645; */
+  position: sticky;
+  font-weight: 400;
+  margin: 0px;
 }
 
 .group-link {
@@ -90,6 +113,7 @@
 .home-button-icons {
   display: flex;
   text-decoration: none;
+  width: 8rem;
 }
 
 .home-whole-nav-bar {
@@ -113,6 +137,7 @@
 .right-nav-bar {
   display: flex;
   align-items: center;
+  font-size: 2rem;
 }
 
 .spork-logo {
