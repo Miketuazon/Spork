@@ -11,6 +11,8 @@ import SearchBar from '../ResultsPage/Searchbar';
 // import logo from "../../assets/logo-spork.jpeg"
 // import AdDropdown from "./dropdown-adfree";
 // import DropdownGifts from "./DropdownGifts";
+// import AdDropdown from "./dropdown-adfree";
+// import DropdownGifts from "./DropdownGifts";
 
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state?.session?.user);
@@ -69,7 +71,7 @@ function Navigation({ isLoaded }) {
 						<OpenModalButton ><i className="fa fa-video-camera"></i></OpenModalButton>
 						<NavLink exact to="/explore"><i className="fa fa-compass"></i></NavLink>
 						<OpenModalButton exact to="/NavMarket"><i className='fas fa-store-alt'></i></OpenModalButton>
-						{/* <button className="nav-bar-non-function-button" onClick={() => alert('Coming soon!')}><i className="fa fa-envelope"></i></button>
+						 <button className="nav-bar-non-function-button" onClick={() => alert('Coming soon!')}><i className="fa fa-envelope"></i></button>
 						<button className="nav-bar-non-function-button" onClick={() => alert('Coming soon!')}><i className='fas fa-comment-dots'></i></button>
 						<button className="nav-bar-non-function-button" onClick={() => alert('Coming soon!')}><i className="fa fa-bolt"></i></button> */}
 						{/* <ProfileButton user={sessionUser} /> */}

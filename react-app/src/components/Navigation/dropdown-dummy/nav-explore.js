@@ -61,6 +61,7 @@ const Explore = () => {
   ];
 
   return (
+    <div className="modal-open-tab">
     <div className="explore">
       <h1 className="explore-header">Today on Tumblr</h1>
       <ul className="explore-list">
@@ -72,6 +73,7 @@ const Explore = () => {
           </li>
         ))}
       </ul>
+    </div>
     </div>
   );
 };
