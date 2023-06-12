@@ -1,31 +1,33 @@
 .hidden {
-    display: none;
+  display: none;
 }
 
 .profile-dropdown-login {
-    position: absolute;
-    top: 50px;
-    right: 0;
-    width: 300px;
-    padding: 0;
-    margin: 0;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    list-style: none;
-    z-index: 1;
-  }
-
-  .profile-dropdown-login.hidden {
-    display: none;
-    height: 667px;
-
-  }
-  .profile-dropdown-login:not(.hidden) {
-    display: block;
-    height: 724px;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: 300px;
+  padding: 0;
+  margin: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  list-style: none;
+  z-index: 1;
 }
+
+.profile-dropdown-login.hidden {
+  display: none;
+  height: 667px;
+
+}
+
+.profile-dropdown-login:not(.hidden) {
+  display: block;
+  height: 15rem;
+}
+
 .options-for-drop-down {
   position: absolute;
   top: -2px;
@@ -49,7 +51,7 @@
   display: flex;
   align-items: center;
   padding: 10px 20px;
-  color:black;
+  color: black;
   cursor: pointer;
   transition: background-color 0.2s;
 }
@@ -71,6 +73,7 @@
   border: none;
   background-color: transparent;
 }
+
 .options-for-drop-down button:hover {
   background-color: #f5f5f5;
 }
@@ -78,11 +81,11 @@
 .options-for-drop-down button i {
   margin-right: 10px;
 }
-.top-dropdown-menu-options{
-display: flex;
-justify-content: space-evenly;
-font-size: 10px;
-align-items: center;
-background-color: rgba(228, 228, 228, 0.697);
-}
 
+.top-dropdown-menu-options {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 10px;
+  align-items: center;
+  background-color: rgba(228, 228, 228, 0.697);
+}

@@ -228,3 +228,7 @@ i.fa.fa-pen-square {
 .error-message {
   color: red;
 }
+
+.fa-home {
+  margin-right: -1rem;
+}

@@ -64,15 +64,7 @@ function Navigation({ isLoaded }) {
 				<div className='right-nav-bar'>
 					<li className="home-button-icons">
 						<NavLink exact to="/"><i className="fa fa-home"></i></NavLink>
-						<NavLink exact to="/live"><i className="fa fa-video-camera"></i></NavLink>
-						<NavLink exact to="/explore"><i className="fa fa-compass"></i></NavLink>
-						<NavLink exact to="/NavMarket"><i className='fas fa-store-alt'></i></NavLink>
-						<button className="nav-bar-non-function-button" onClick={() => alert('Coming soon!')}><i className="fa fa-envelope"></i></button>
-						<button className="nav-bar-non-function-button" onClick={() => alert('Coming soon!')}><i className='fas fa-comment-dots'></i></button>
-						<button className="nav-bar-non-function-button" onClick={() => alert('Coming soon!')}><i className="fa fa-bolt"></i></button>
-						{/* <ProfileButton user={sessionUser} /> */}
 						<button className="nav-bar-non-function-button"><OpenModalButton className="span-create-post" buttonText={<><i className="fa fa-pen-square"></i></>} modalComponent={<CreatePost />}></OpenModalButton></button><span className="span-profile-button"><ProfileButton user={sessionUser} /></span>
-						{/* <span className="span-profile-button"><ProfileButton user={sessionUser}/></span> */}
 
 					</li>
 				</div>)
