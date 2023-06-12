@@ -3,7 +3,7 @@ import './dropdown-live.css';
 
 const Live = () => {
   return (
-
+    <div className="modal-open-tab">
       <div className="XWuoc">
         <div className="Zlvz6">
           <div className="QK6UU">
@@ -29,6 +29,7 @@ const Live = () => {
 
           </div>
         </div>
+      </div>
       </div>
 
   );

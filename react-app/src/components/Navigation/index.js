@@ -9,6 +9,8 @@ import LoginFormModal from '../LoginFormModal';
 import CreatePost from '../Posts/CreatePost';
 import SearchBar from '../ResultsPage/Searchbar';
 // import logo from "../../assets/logo-spork.jpeg"
+// import AdDropdown from "./dropdown-adfree";
+// import DropdownGifts from "./DropdownGifts";
 
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state?.session?.user);
@@ -64,10 +66,10 @@ function Navigation({ isLoaded }) {
 				<div className='right-nav-bar'>
 					<li className="home-button-icons">
 						<NavLink exact to="/"><i className="fa fa-home"></i></NavLink>
-						<NavLink exact to="/live"><i className="fa fa-video-camera"></i></NavLink>
+						<OpenModalButton ><i className="fa fa-video-camera"></i></OpenModalButton>
 						<NavLink exact to="/explore"><i className="fa fa-compass"></i></NavLink>
-						<NavLink exact to="/NavMarket"><i className='fas fa-store-alt'></i></NavLink>
-						<button className="nav-bar-non-function-button" onClick={() => alert('Coming soon!')}><i className="fa fa-envelope"></i></button>
+						<OpenModalButton exact to="/NavMarket"><i className='fas fa-store-alt'></i></OpenModalButton>
+						 <button className="nav-bar-non-function-button" onClick={() => alert('Coming soon!')}><i className="fa fa-envelope"></i></button>
 						<button className="nav-bar-non-function-button" onClick={() => alert('Coming soon!')}><i className='fas fa-comment-dots'></i></button>
 						<button className="nav-bar-non-function-button" onClick={() => alert('Coming soon!')}><i className="fa fa-bolt"></i></button>
 						{/* <ProfileButton user={sessionUser} /> */}

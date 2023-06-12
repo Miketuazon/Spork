@@ -3,6 +3,7 @@ import './dropdown-gifts.css'
 
 const DropdownGifts = () => {
   return (
+    <div className="modal-open-tab">
     <main className="s9s8Q gifts">
       <div className="background-color-gift">
         <div className="go-back-home-button">
@@ -29,6 +30,7 @@ const DropdownGifts = () => {
         </div>
       </div>
     </main>
+    </div>
   );
 };
 

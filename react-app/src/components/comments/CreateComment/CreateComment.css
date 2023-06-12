@@ -15,6 +15,7 @@ form.create-post-area-comments-form {
 
   button[type="submit"] {
     background-color: #00b8ff;
+    height: 30px;
     border: none;
     color: white;
     text-align: center;

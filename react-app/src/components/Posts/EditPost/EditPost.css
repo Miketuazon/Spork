@@ -59,13 +59,16 @@
 }
 
 .update-post-close-button {
+list-style: none;
     font-size: 13px;
-        font-weight: bold;
-        color: #fff;
-        background-color: rgb(190, 184, 184);
-        border: none;
-        outline: none;
-        cursor: pointer;
+    color: white;
+    background-color: gray;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    ;
 }
 
 .update-post-for-everyone-post-now-button {

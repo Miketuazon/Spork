@@ -2,6 +2,8 @@ import React from 'react';
 
 const AdFreeComponent = () => {
   return (
+
+      <div className="modal-open-tab">
     <main className="s9s8Q ad-free-browsing">
       <div className="background-color-gift">
         <div className="go-back-home-button">
@@ -34,6 +36,7 @@ const AdFreeComponent = () => {
         </div>
       </div>
     </main>
+    </div>
   );
 };
 
