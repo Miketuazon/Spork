@@ -160,13 +160,14 @@ list-style: none;
   }
 
   .create-post-close-button {
-    list-style: none;
+  list-style: none;
     font-size: 13px;
     color: white;
     background-color: gray;
     border: none;
     outline: none;
     cursor: pointer;
-    border-radius: none
+    border-radius: 5px;
+    font-weight: bold;
     ;
   }

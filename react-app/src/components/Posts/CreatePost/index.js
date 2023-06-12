@@ -41,7 +41,8 @@ export default function CreatePost() {
                         ))}
                     </ul>
                     <div className="create-post-username-gear">
-                        <span className="create-post-username">{currentUser?.username}</span><i className="fa fa-gear"></i>
+                        <span className="create-post-username">{currentUser?.username}</span>
+                        {/* <i className="fa fa-gear"></i> */}
                     </div>
                     <input
                         className="update-post-title"
@@ -61,14 +62,14 @@ export default function CreatePost() {
                         />
                         <br></br>
                     </div>
-                    <div className="create-post-icons">
+                    {/* <div className="create-post-icons">
                         <span className="fa fa-image"></span>
                         <span className="fa fa-gif"></span>
                         <span className="fa fa-link"></span>
                         <span className="fa fa-headphones"></span>
                         <span className="fa fa-video"></span>
                         <span className="fa fa-square-poll-vertical"></span>
-                    </div>
+                    </div> */}
                     <span className="create-post-hashtag">You can leave title empty but you cannot create a post with less than 3 characters</span>
                     {/* <input
                         className="create-post-hashtag"

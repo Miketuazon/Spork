@@ -5,7 +5,7 @@ const LivestreamCredits = () => {
   return (
 
 
-
+    <div className="modal-open-tab">
       <div className="yKniX">
         <div className="CXPww gQZdB">
 
@@ -35,7 +35,7 @@ const LivestreamCredits = () => {
           </div>
         </div>
       </div>
-
+    </div>
   );
 };
 

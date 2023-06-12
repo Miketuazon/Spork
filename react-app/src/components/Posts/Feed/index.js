@@ -38,53 +38,6 @@ const Feed = () => {
 
   return (
     <div className='Feed'>
-      {currentUser ?
-        <ul className="post-types">
-          <div className='create-footer'>Text
-            <OpenModalButton className="Create Post" buttonText={<> <i className="fas fa-font"></i></>} modalComponent={<CreatePost />}></OpenModalButton></div>
-          <div className='photo-footer'>Photo<a className="fas fa-camera" onClick={() => alert("Coming soon!")}></a></div>
-          <div className='quote-footer'>Quote
-            <a className="fas fa-quote-right" onClick={() => alert("Coming soon!")}></a></div>
-          <div className='link-footer'>Link<a className="fas fa-link" onClick={() => alert("Coming soon!")}></a></div>
-          <div className='chat-footer'>Chat<a className="fas fa-comment-alt" onClick={() => alert("Coming soon!")}></a></div>
-          <div className='sound-footer'>Sound<a className="fas fa-volume-up" onClick={() => alert("Coming soon!")}></a></div>
-          <div className='video-footer'>Video<a className="fas fa-video" onClick={() => alert("Coming soon!")}></a></div>
-
-
-
-
-
-        </ul> : <></>
-      }
-      {currentUser ?
-        <div className='following-foryou-tags-manage'>
-          <a href="/following">Following</a>
-          <a href="/explore">For you</a>
-          <a onClick={() => alert('This feature is coming soon!')}>Your tags</a>
-          <a onClick={() => alert("Coming soon!")}>Manage...</a>
-
-        </div> : <></>
-      }
-      <div className='spork-live-thumbnails'>
-        <h4>Spork Live</h4>
-        <div className='spork-live-thumbnails-imgs'>
-          <img className='taylor' href="/live" src={logo1} alt="logo1" />
-          <img className='taylor2' src={logo2} alt="logo2" />
-          <img className='britney1' src={logo3} alt="logo3" />
-          <a href="/live">
-            <div className="live-box-more"><a className='live-text' href="/live">See more +</a></div>
-            <div className="live-outer-box"> </div>
-
-
-          </a>
-
-
-
-
-        </div>
-
-      </div>
-
       <ul className='posts'>
         {Object?.values(posts)?.sort((a, b) => new Date(b?.createdAt) - new Date(a?.createdAt))?.map(post =>
 
