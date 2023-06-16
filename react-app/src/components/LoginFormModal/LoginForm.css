@@ -15,7 +15,7 @@
   border: none;
   border-radius: 5px;
   height: 48px;
-  color: black;
+  color: white;
   font-weight: bold;
   margin-bottom: 15px;
   cursor: pointer;
@@ -43,6 +43,7 @@
 .form-log-in {
   display: flex;
   flex-direction: column;
+  color: white;
 }
 
 .form-row {
@@ -67,6 +68,7 @@ input {
 
 .login-button {
   height: 30px;
+
 }
 
 .log-in-form-below-frog {
@@ -86,11 +88,12 @@ input {
   border: none;
   border-radius: 5px;
   height: 48px;
-  color: black;
+  color: white;
   font-weight: bold;
   margin-bottom: 15px;
   cursor: pointer;
   margin-left: 5px;
+
 }
 
 .loginform-sign-in-button {
@@ -99,21 +102,24 @@ input {
   height: 50px;
   border: none;
   border-radius: 5px;
-  height: 48px;
+  height: 52px;
   color: white;
   font-weight: bold;
   margin-bottom: 15px;
   cursor: pointer;
+  margin-top: .1rem;
   margin-left: 5px;
 }
 
 .signup-link-in-login-form {
   justify-content: space-between;
+
 }
 
 .form-log-in {
   display: flex;
   flex-direction: column;
+  color: white;
 }
 
 .form-row {
@@ -129,6 +135,7 @@ label {
 input {
   padding: 0.5rem;
   font-size: 1rem;
+
 }
 
 .email-and-password-form {
@@ -138,4 +145,13 @@ input {
 
 .login-button {
   height: 30px;
+
+}
+
+.sign-up-button {
+  color: white
+}
+
+.loginform-sign-in-button .hello {
+  color: white;
 }

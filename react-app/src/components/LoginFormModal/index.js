@@ -33,6 +33,7 @@ function LoginFormModal() {
       closeModal();
     }
   }
+
   return (
     <>
       <div className="frog-login-video">
@@ -72,7 +73,7 @@ function LoginFormModal() {
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              required
+
             />
           </label>
           <label>
@@ -81,27 +82,29 @@ function LoginFormModal() {
               placeholder="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              required
+
             />
           </label>
           <button className="login-button" type="submit">Log In</button>
           <div className="signup-link-in-login-form">
             Don't have an account yet?
             <br></br>
-            <div className="submit-button-log-in">
-              <button className="loginform-sign-in-button">
-                <OpenModalButton
-                  buttonText="Sign Up"
-                  modalComponent={<SignupFormModal />}
-                />
-              </button>
-              <button className="sign-up-button" />
-              <button onClick={demoSignIn} className="demo-sign-in-button" id='demo-user-button'>
-                Demo User
-              </button>
-            </div>
           </div>
         </form>
+        <div className="submit-button-log-in">
+          <button className="loginform-sign-in-button" >
+
+            <OpenModalButton
+              buttonText={"Sign Up"}
+              modalComponent={<SignupFormModal />}
+            />
+
+          </button>
+          <button onClick={demoSignIn} className="demo-sign-in-button" id='demo-user-button'>
+            Demo User
+          </button>
+        </div>
+
       </div>
     </>
   );

@@ -3,7 +3,7 @@ import "./Loading.css"
 
 function LoadingScreen() {
   return (
-    <div class="hourglass"></div>
+    <div className="hourglass"></div>
 
   );
 }
