@@ -8,6 +8,12 @@
   margin-top: -10px;
 }
 
+.login-button {
+  height: 30px;
+  font-size: 2rem;
+  background-color: red;
+}
+
 .demo-sign-in-button {
   background-color: #5308F4;
   width: 100px;
@@ -34,6 +40,11 @@
   margin-bottom: 15px;
   cursor: pointer;
   margin-left: 5px;
+}
+
+.demo-sign-in-button:hover,
+.loginform-sign-in-button:hover {
+  background-color: #00b8ff;
 }
 
 .signup-link-in-login-form {
@@ -143,10 +154,7 @@ input {
   border-radius: .5rem;
 }
 
-.login-button {
-  height: 30px;
 
-}
 
 .sign-up-button {
   color: white
@@ -154,4 +162,8 @@ input {
 
 .loginform-sign-in-button .hello {
   color: white;
+}
+
+.hi {
+  background-color: reds;
 }

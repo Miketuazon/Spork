@@ -85,7 +85,7 @@ function LoginFormModal() {
 
             />
           </label>
-          <button className="login-button" type="submit">Log In</button>
+          <button className="login-button hi" type="submit">Log In</button>
           <div className="signup-link-in-login-form">
             Don't have an account yet?
             <br></br>

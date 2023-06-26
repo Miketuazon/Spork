@@ -1,63 +1,66 @@
 form.create-post-area-comments-form {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .create-post-textarea-comments {
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    padding: 10px;
-    width: 370px;
-    resize: none;
-    margin-bottom: 10px;
-  }
-
-  button[type="submit"] {
-    background-color: #00b8ff;
-    height: 30px;
-    border: none;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
-  button[type="submit"]:hover {
-    background-color: #00b8ff;
-  }
-
-  form.create-post-textarea-comments-form{
-    display: flex;
-  }
-
-  .submit-comment{
-    background-color: #0a1b40;
-    border: none;
-    color: white;
-    padding: 5px 12px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    /* font-size: 13px; */
-    margin-bottom: 10px;
-    border-radius: 20px;
-    margin-left: 10px;
-    cursor: pointer;
-  }
-.user-picture-comments{
-    display: flex;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
-.user-picture-comments {
-    display: flex;
-    align-items: center;
-  }
 
-  .user-picture-comments img {
-    margin-right: 10px;
-    height: 45px;
-    border-radius: 35px;
-  }
+.create-post-textarea-comments {
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 10px;
+  width: 370px;
+  resize: none;
+  margin-bottom: 10px;
+}
+
+button[type="submit"] {
+  background-color: #5308F4;
+  height: 30px;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #00b8ff;
+}
+
+form.create-post-textarea-comments-form {
+  display: flex;
+}
+
+.submit-comment {
+  background-color: #0a1b40;
+  border: none;
+  color: white;
+  padding: 5px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  /* font-size: 13px; */
+  margin-bottom: 10px;
+  border-radius: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.user-picture-comments {
+  display: flex;
+}
+
+.user-picture-comments {
+  display: flex;
+  align-items: center;
+}
+
+.user-picture-comments img {
+  margin-right: 10px;
+  height: 45px;
+  border-radius: 35px;
+}
