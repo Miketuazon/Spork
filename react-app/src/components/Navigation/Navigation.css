@@ -153,6 +153,7 @@
   font-weight: bold;
   cursor: pointer;
   text-decoration: none;
+  margin-left: 2rem;
 }
 
 .search-bar {
