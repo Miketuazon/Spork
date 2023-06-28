@@ -258,3 +258,16 @@ i.fa.fa-pen-square {
 .fa-home {
   margin-right: -1rem;
 }
+
+.login-button-modal {
+  margin: .7rem;
+  background-color: #5308F4;
+  color: white;
+  border: none;
+  border-radius: .4rem;
+  padding: .3rem 1rem;
+}
+
+.login-button-modal:hover {
+  background-color: #00b8ff;
+}

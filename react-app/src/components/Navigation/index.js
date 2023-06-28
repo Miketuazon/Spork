@@ -8,11 +8,7 @@ import { useEffect } from 'react';
 import LoginFormModal from '../LoginFormModal';
 import CreatePost from '../Posts/CreatePost';
 import SearchBar from '../ResultsPage/Searchbar';
-// import logo from "../../assets/logo-spork.jpeg"
-// import AdDropdown from "./dropdown-adfree";
-// import DropdownGifts from "./DropdownGifts";
-// import AdDropdown from "./dropdown-adfree";
-// import DropdownGifts from "./DropdownGifts";
+import LoginButton from './LoginButton';
 
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state?.session?.user);
@@ -80,13 +76,13 @@ function Navigation({ isLoaded }) {
 					</li>
 				</div>)
 				: (
-					<div className="log-in-nav-bar">
-						<OpenModalButton
-							clasName="button-green-login"
-							buttonText="Log In"
-							modalComponent={<LoginFormModal />}
-						/>
-					</div>
+
+					<LoginButton
+						clasName="button-green-login"
+						buttonText="Log In"
+						modalComponent={<LoginFormModal />}
+					/>
+
 				)
 
 			}
