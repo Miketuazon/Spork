@@ -3,6 +3,8 @@
 Welcome to SPORK, a modern web app that enables users to create posts and share them with other users via a personalized feed. With SPORK, you can share your thoughts, ideas, and experiences with the world, and connect with like-minded individuals who share your interests.
 
 Live link -> https://spork-group-project.onrender.com/
+<br>
+Live link 2 (if above is not working) -> https://spork-lnm4.onrender.com
 <hr>
 
 ## Technologies Used
