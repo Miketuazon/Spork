@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import PostItem from "../Posts/PostItem";
-import { getAllPosts } from "../../store/post";
+import { thunkGetAllPosts } from "../../store/post";
 import "./AllLikes.css"
 import Test from "../Test";
 
@@ -16,7 +16,7 @@ export default function AllLikes() {
 
 
     useEffect(() => {
-        dispatch(getAllPosts())
+        dispatch(thunkGetAllPosts())
         // dispatch(getCommentsForPost(postId))
         // dispatch(getCommentsForPost(postId))
     }, [dispatch, JSON.stringify(sessionUserLikesVal), JSON.stringify(postsLikesVal)])

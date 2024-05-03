@@ -6,7 +6,7 @@ const PUT_POST = 'posts/putPost'
 // const POST_COMMENT = 'posts/postComment'
 
 
-const getPosts = (posts) => {
+const actionGetPosts = (posts) => {
     return {
         type: GET_POSTS,
         posts
@@ -41,20 +41,23 @@ const putPost = (post) => {
     }
 }
 
-export const getAllPosts = () => async (dispatch) => {
+export const thunkGetAllPosts = () => async (dispatch) => {
     const response = await fetch('/api/posts/')
+
     if (response.ok) {
         const posts = await response.json()
-        dispatch(getPosts(posts))
+        dispatch(actionGetPosts(posts))
+        return posts;
+    } else {
+        return response;
     }
-    // else throw new Error("Bad Request")
 }
 
 export const getCurrentUserPosts = () => async (dispatch) => {
     const response = await fetch('/api/posts/current_user')
     if (response.ok) {
         const currentUserPosts = await response.json()
-        dispatch(getPosts(currentUserPosts))
+        dispatch(actionGetPosts(currentUserPosts))
     }
     // } else throw new Error("Bad Request")
 }
@@ -128,13 +131,13 @@ export const updateOnePost = (post, postId) => async (dispatch) => {
 
 }
 
-export default function postsReducer(state = {}, action) {
+const initialState = { posts: null }
+
+export default function postsReducer(state = initialState, action) {
     let newState;
     switch (action.type) {
         case GET_POSTS:
-            newState = {}
-            action.posts.forEach((post) => newState[post.id] = post)
-            return newState
+            return {...state, posts: action.posts}
         case POST_POST:
             newState = { ...state }
             newState[action.post.id] = action.post

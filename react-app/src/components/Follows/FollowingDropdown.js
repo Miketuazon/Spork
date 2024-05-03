@@ -3,7 +3,7 @@ import "./FollowingDropdown.css"
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { getAllUsers } from '../../store/users';
-import { getAllPosts } from '../../store/post';
+import { thunkGetAllPosts } from '../../store/post';
 import { useEffect } from 'react';
 import FollowItem from './FollowItem';
 import { getFollowsForUser } from '../../store/follow';
@@ -32,7 +32,7 @@ const FollowingDropdown = () => {
 
   useEffect(() => {
 
-    dispatch(getAllPosts())
+    dispatch(thunkGetAllPosts())
   }, [dispatch, JSON.stringify(follow), JSON.stringify(currentUser), JSON.stringify(currentUserFollowing)])
   return (
     <div className="lSyOz">
@@ -45,7 +45,7 @@ const FollowingDropdown = () => {
 
             const success = dispatch(getFollowsForUser(follows?.userId))
             if (success) {
-              dispatch(getAllPosts())
+              dispatch(thunkGetAllPosts())
 
               // window.location.reload(false);
             }

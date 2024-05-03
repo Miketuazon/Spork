@@ -8,7 +8,7 @@ import CreateComment from "../comments/CreateComment";
 import DeleteComment from "../comments/DeleteComment";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux"
-import { getAllPosts, getCurrentUserPosts } from "../../store/post";
+import { thunkGetAllPosts, getCurrentUserPosts } from "../../store/post";
 import { useCallback } from "react";
 import FollowOrUnfollow from "../Follows/FollowOrUnfollow";
 import { getFollowsForUser } from "../../store/follow";
@@ -60,14 +60,14 @@ const Test = ({ post }) => {
         e.preventDefault()
 
         dispatch(getFollowsForUser(post?.userId))
-        dispatch(getAllPosts())
+        dispatch(thunkGetAllPosts())
 
     }
     const onSubmitLike = async (e) => {
         e.preventDefault()
 
         dispatch(likeOnePost(post?.id))
-        dispatch(getAllPosts())
+        dispatch(thunkGetAllPosts())
 
     }
     const openMenu = () => {

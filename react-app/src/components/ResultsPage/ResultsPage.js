@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
-import { getAllPosts } from '../../store/post'
+import { thunkGetAllPosts } from '../../store/post'
 import PostItem from "../Posts/PostItem"
 import { NavLink, useLocation } from "react-router-dom"
 import './ResultsPage.css'
@@ -44,7 +44,7 @@ function ResultsPage() {
     )
 
     useEffect(() => {
-        dispatch(getAllPosts())
+        dispatch(thunkGetAllPosts())
 
     }, [dispatch, JSON.stringify(filteredPosts)])
     // If query is empty or filteredPosts is empty

@@ -14,12 +14,8 @@ def posts():
     """
     Query for all posts and returns them in a list of post dictionaries
     """
-    posts = Post.query.all()
-    return_list = []
-    for post in posts:
-        post_dict = post.to_dict()
-        return_list.append(post_dict)
-    return return_list
+    posts = [post.to_dict() for post in Post.query.all()]
+    return posts
 
 @post_routes.route('/current_user')
 @login_required

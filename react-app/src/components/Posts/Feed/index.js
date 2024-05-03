@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
-import { getAllPosts } from '../../../store/post'
+import { thunkGetAllPosts } from '../../../store/post'
 import PostItem from "../PostItem"
 import "./Feed.css"
 import { NavLink } from "react-router-dom"
@@ -20,7 +20,7 @@ const Feed = () => {
   const followers = useSelector(state => state?.follow)
 
   const dispatch = useDispatch()
-  const posts = useSelector(state => state?.posts)
+  const posts = useSelector(state => state?.posts.posts)
   const currentUser = useSelector(state => state?.session?.user)
   const currentUserLikes = currentUser?.likes
   const postsVal = Object?.values(posts)
@@ -31,7 +31,7 @@ const Feed = () => {
 
 
   useEffect(() => {
-    dispatch(getAllPosts())
+    dispatch(thunkGetAllPosts())
     // dispatch(getCommentsForPost(postId))
     // dispatch(getCommentsForPost(postId))
   }, [dispatch, JSON.stringify(postsVal), JSON.stringify(currentUserLikes)])
