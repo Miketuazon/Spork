@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateOnePost } from "../../../store/post";
+import { thunkEditPost } from "../../../store/post";
 import { useModal } from "../../../context/Modal";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
@@ -26,12 +26,10 @@ export default function EditPost({ post }) {
             title: title,
             content: content
         }
-        const updatedPost = dispatch(updateOnePost(updatePost, postId))
+        const updatedPost = dispatch(thunkEditPost(updatePost, postId))
         if (updatedPost) {
             closeModal()
         }
-
-
     }
 
 

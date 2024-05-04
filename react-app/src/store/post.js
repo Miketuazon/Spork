@@ -24,7 +24,7 @@ const actionDeletePost = (postId) => {
     }
 }
 
-const putPost = (post) => {
+const actionPutPost = (post) => {
     return {
         type: PUT_POST,
         post
@@ -49,7 +49,6 @@ export const getCurrentUserPosts = () => async (dispatch) => {
         const currentUserPosts = await response.json()
         dispatch(actionGetPosts(currentUserPosts))
     }
-    // } else throw new Error("Bad Request")
 }
 
 export const thunkCreatePost = (post) => async (dispatch) => {
@@ -66,7 +65,6 @@ export const thunkCreatePost = (post) => async (dispatch) => {
     }
 
     return data;
-
 }
 
 export const thunkDeletePost = (postId) => async (dispatch) => {
@@ -79,26 +77,25 @@ export const thunkDeletePost = (postId) => async (dispatch) => {
     }
 }
 
-export const updateOnePost = (post, postId) => async (dispatch) => {
+export const thunkEditPost = (post, postId) => async (dispatch) => {
     const response = await fetch(`/api/posts/edit/${postId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(post)
     })
 
+    const data = await response.json();
+
     if (response.ok) {
-        const res = await response.json()
-        dispatch(putPost(res))
-        return res
-    }
+        dispatch(actionPutPost(data));
+    } 
 
-
+    return data;
 }
 
 const initialState = { posts: null }
 
 export default function postsReducer(state = initialState, action) {
-    let newState;
     switch (action.type) {
         case GET_POSTS:
             return {...state, posts: action.posts}
@@ -107,9 +104,7 @@ export default function postsReducer(state = initialState, action) {
         case DELETE_POST:
             return {...state, posts: state.posts.filter(post => post.id !== action.postId)};
         case PUT_POST:
-            newState = { ...state }
-            newState[action.post.id] = action.post
-            return newState
+            return {...state, posts: state.posts.map(post => post.id === action.post.id ? action.post : post)}
         default:
             return state
     }

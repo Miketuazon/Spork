@@ -56,6 +56,7 @@ def create_a_post():
         return new_post.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+
 @post_routes.route('/<id>/comments', methods=['POST'])
 @login_required
 def create_a_comment(id):
@@ -82,8 +83,6 @@ def create_a_comment(id):
         db.session.commit()
         return {"Successfully Created Comment": new_comment.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
-
-
 
 
 @post_routes.route("/edit/<id>", methods=['PUT'])
@@ -114,8 +113,6 @@ def update_post(id):
             return returning_value
         return {'errors': "This post isn't yours!"}, 403
     return {'errors': validation_errors_to_error_messages(form.errors)},401
-
-
 
 
 @post_routes.route('/delete/<id>', methods=['DELETE'])
