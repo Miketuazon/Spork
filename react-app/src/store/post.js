@@ -20,7 +20,7 @@ const actionGetPosts = (posts) => {
 //     }
 // }
 
-const postPost = (post) => {
+const actionCreatePost = (post) => {
     return {
         type: POST_POST,
         post
@@ -62,7 +62,7 @@ export const getCurrentUserPosts = () => async (dispatch) => {
     // } else throw new Error("Bad Request")
 }
 
-export const createOnePost = (post) => async (dispatch) => {
+export const thunkCreatePost = (post) => async (dispatch) => {
     const response = await fetch('/api/posts/create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -71,15 +71,11 @@ export const createOnePost = (post) => async (dispatch) => {
     )
     if (response.ok) {
         const data = await response.json();
-        dispatch(postPost(data));
-        return null;
-    } else if (response.status < 500) {
-        const data = await response.json();
-        if (data.errors) {
-            return data.errors;
-        }
+        dispatch(actionCreatePost(data));
+        return data;
     } else {
-        return ["An error occurred. Please try again."];
+        const data = await response.json();
+        return data;
     }
 
 }
@@ -139,9 +135,7 @@ export default function postsReducer(state = initialState, action) {
         case GET_POSTS:
             return {...state, posts: action.posts}
         case POST_POST:
-            newState = { ...state }
-            newState[action.post.id] = action.post
-            return newState
+            return { ...state, posts: [...state.posts, action.post] }
         case DELETE_POST:
             newState = { ...state }
             delete newState[action.postId]

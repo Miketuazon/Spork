@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createOnePost } from "../../../store/post";
+import { thunkCreatePost } from "../../../store/post";
 import { useModal } from "../../../context/Modal";
 import { useHistory } from "react-router-dom";
 import "./CreatePost.css"
@@ -21,9 +21,10 @@ export default function CreatePost() {
             title: title,
             content: content
         }
-        const successPost = await dispatch(createOnePost(newPost))
-        if (successPost) {
-            setErrors(successPost)
+        const successPost = await dispatch(thunkCreatePost(newPost))
+        console.log("successPost", successPost.errors)
+        if (successPost.errors) {
+            setErrors(successPost.errors)
         } else closeModal();
     }
     //
@@ -36,9 +37,16 @@ export default function CreatePost() {
             <div className="create-post-nav">
                 <form>
                     <ul>
-                        {errors.map((error, idx) => (
-                            <li className="error-message" key={idx}>{error}</li>
-                        ))}
+                        {errors.length > 0 ? (
+                            <>
+                                {errors?.map((error, idx) => (
+                                    <li className="error-message" key={idx}>{error}</li>
+                                ))}
+                            </>
+                        ) : (
+                            <></>
+                        )}
+
                     </ul>
                     <div className="create-post-username-gear">
                         <span className="create-post-username">{currentUser?.username}</span>
@@ -56,7 +64,7 @@ export default function CreatePost() {
                             className="create-post-textarea"
                             rows="8"
                             cols="60"
-                            placeholder="Go ahead, put anything."
+                            placeholder="Content must be between 3 and 255 characters."
                             value={content}
                             onChange={(e) => setContent(e.target.value)}
                         />
