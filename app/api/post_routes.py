@@ -17,17 +17,6 @@ def posts():
     posts = [post.to_dict() for post in Post.query.all()]
     return posts
 
-@post_routes.route('/<id>')
-def post(id):
-    """
-    Query for one post and returns it in a dictionary
-    """
-    post = Post.query.get(id)
-
-    if not post:
-        return {"errors": "Post Does Not Exist!"}, 404
-    
-    return post.to_dict()
 
 @post_routes.route('/current_user')
 @login_required

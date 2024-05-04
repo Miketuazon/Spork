@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { deleteOnePost } from "../../../store/post";
+import { thunkDeletePost, } from "../../../store/post";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useModal } from "../../../context/Modal";
 import "./DeletePost.css"
 
@@ -13,14 +13,14 @@ const dispatch = useDispatch();
 
 const handleDelete = async (e) => {
     e.preventDefault();
-    dispatch(deleteOnePost(postId))
-    closeModal()
+    dispatch(thunkDeletePost(postId));
+    closeModal();
 
 }
 
 const onCancel = (e) => {
     e.preventDefault();
-    closeModal()
+    closeModal();
 }
 
 return (

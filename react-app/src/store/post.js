@@ -10,13 +10,6 @@ const actionGetPosts = (posts) => {
     }
 }
 
-// const postComment = (comment) => {
-//     return {
-//         type: POST_COMMENT,
-//         comment
-//     }
-// }
-
 const actionCreatePost = (post) => {
     return {
         type: POST_POST,
@@ -24,7 +17,7 @@ const actionCreatePost = (post) => {
     }
 }
 
-const deletePost = (postId) => {
+const actionDeletePost = (postId) => {
     return {
         type: DELETE_POST,
         postId
@@ -76,13 +69,13 @@ export const thunkCreatePost = (post) => async (dispatch) => {
 
 }
 
-export const deleteOnePost = (postId) => async (dispatch) => {
+export const thunkDeletePost = (postId) => async (dispatch) => {
     const response = await fetch(`/api/posts/delete/${postId}`, {
         method: 'DELETE'
     })
 
     if (response.ok) {
-        dispatch(deletePost(postId))
+        dispatch(actionDeletePost(postId))
     }
 }
 
@@ -112,17 +105,11 @@ export default function postsReducer(state = initialState, action) {
         case POST_POST:
             return { ...state, posts: [...state.posts, action.post] }
         case DELETE_POST:
-            newState = { ...state }
-            delete newState[action.postId]
-            return newState
+            return {...state, posts: state.posts.filter(post => post.id !== action.postId)};
         case PUT_POST:
             newState = { ...state }
             newState[action.post.id] = action.post
             return newState
-        // case POST_COMMENT:
-        //     newState = { ...state }
-        //     newState[action.post.comment.id] = action.comment
-        //     return newState
         default:
             return state
     }
