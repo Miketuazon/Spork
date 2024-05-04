@@ -1,10 +1,10 @@
+const GET_COMMENTS = 'comments/getComments'
 const DELETE_COMMENT = 'comments/deleteComment'
 const PUT_COMMENT = 'comments/putComment'
-const GET_COMMENTS = 'comments/getComments'
 const POST_COMMENT = 'posts/postComment'
 
 
-export const getComments = (comments) => {
+export const actionGetCurrentUserComments = (comments) => {
     return {
         type: GET_COMMENTS,
         comments
@@ -33,11 +33,11 @@ export const putComment = (comment) => {
     }
 }
 
-export const getCommentsForPost = (postId) => async dispatch => {
-    const response = await fetch(`/api/comments/${postId}`)
+export const thunkGetCurrentUserComments = () => async dispatch => {
+    const response = await fetch(`/api/comments/`)
     if (response.ok) {
         const res = await response.json()
-        dispatch(getComments(res))
+        dispatch(actionGetCurrentUserComments(res))
     }
 }
 export const createOneComment = (comment, postId) => async (dispatch) => {
@@ -83,25 +83,18 @@ export const updateOneComment = (comment, commentId) => async dispatch => {
     }
 }
 
-export default function commentsReducer(state = {}, action) {
-    let newState;
+const initialState = { userComments: null }
+
+export default function commentsReducer(state = initialState, action) {
     switch (action.type) {
         case GET_COMMENTS:
-            newState = {}
-            action?.comments?.forEach((comment) => newState[comment?.id] = comment)
-            return newState;
+            return {...state, userComments: action.comments}
         case DELETE_COMMENT:
-            newState = { ...state }
-            delete newState[action.commentId]
-            return newState
+            return {...state, userComments: state.userComments.filter(comment => comment.id !== action.commentId)};
         case PUT_COMMENT:
-            newState = { ...state }
-            newState[action.comment.id] = action.comment
-            return newState
+            return {...state, userComments: state.userComments.map(comment => comment.id === action.comment.id ? action.comment : comment)}
         case POST_COMMENT:
-            newState = { ...state }
-            newState[action.comment.id] = action.comment
-            return newState
+            return { ...state, userComments: [...state.userComments, action.comment] }
         default:
             return state
     }
