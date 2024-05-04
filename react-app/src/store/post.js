@@ -1,10 +1,7 @@
-
 const GET_POSTS = 'posts/getPosts'
 const POST_POST = 'posts/postPost'
 const DELETE_POST = 'posts/deletePost'
 const PUT_POST = 'posts/putPost'
-// const POST_COMMENT = 'posts/postComment'
-
 
 const actionGetPosts = (posts) => {
     return {
@@ -67,39 +64,17 @@ export const thunkCreatePost = (post) => async (dispatch) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(post)
-    }
-    )
+    })
+
+    const data = await response.json();
+
     if (response.ok) {
-        const data = await response.json();
         dispatch(actionCreatePost(data));
-        return data;
-    } else {
-        const data = await response.json();
-        return data;
     }
+
+    return data;
 
 }
-
-// export const createOneComment = (comment, postId) => async (dispatch) => {
-//     const response = await fetch(`/api/posts/${postId}/comments`, {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify(comment)
-//     })
-//     if (response.ok) {
-//         const data = await response.json();
-//         dispatch(postComment(data));
-//         return null;
-//     } else if (response.status < 500) {
-//         const data = await response.json();
-//         if (data.errors) {
-//             return data.errors;
-//         }
-//     } else {
-//         return ["An error occurred. Please try again."];
-//     }
-
-// }
 
 export const deleteOnePost = (postId) => async (dispatch) => {
     const response = await fetch(`/api/posts/delete/${postId}`, {

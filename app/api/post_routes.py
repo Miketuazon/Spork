@@ -17,6 +17,18 @@ def posts():
     posts = [post.to_dict() for post in Post.query.all()]
     return posts
 
+@post_routes.route('/<id>')
+def post(id):
+    """
+    Query for one post and returns it in a dictionary
+    """
+    post = Post.query.get(id)
+
+    if not post:
+        return {"errors": "Post Does Not Exist!"}, 404
+    
+    return post.to_dict()
+
 @post_routes.route('/current_user')
 @login_required
 def current_user_posts():
@@ -80,7 +92,7 @@ def create_a_comment(id):
         db.session.add(new_comment)
         db.session.commit()
         return {"Successfully Created Comment": new_comment.to_dict()}
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
 
@@ -111,7 +123,7 @@ def update_post(id):
             db.session.commit()
             returning_value = post_to_edit.to_dict()
             return returning_value
-        return {'Message': 'Unauthorized'}
+        return {'errors': "This post isn't yours!"}, 403
     return {'errors': validation_errors_to_error_messages(form.errors)},401
 
 
@@ -127,7 +139,7 @@ def delete_post(id):
     to_delete = Post.query.get(id)
 
     if not to_delete:
-        return {"Message": "Post Does Not Exist"}
+        return {"errors": "Post Does Not Exist!"}, 404
 
     to_delete_dict = to_delete.to_dict()
 
@@ -135,4 +147,4 @@ def delete_post(id):
         db.session.delete(to_delete)
         db.session.commit()
         return {"Message": "Post Deleted Successfully"}
-    return {"Message": "Unauthorized"}
+    return {'errors': "This post isn't yours!"}, 403
