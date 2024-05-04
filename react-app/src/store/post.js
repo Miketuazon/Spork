@@ -93,18 +93,18 @@ export const thunkEditPost = (post, postId) => async (dispatch) => {
     return data;
 }
 
-const initialState = { posts: null }
+const initialState = { allPosts: null }
 
 export default function postsReducer(state = initialState, action) {
     switch (action.type) {
         case GET_POSTS:
-            return {...state, posts: action.posts}
+            return {...state, allPosts: action.posts}
         case POST_POST:
-            return { ...state, posts: [...state.posts, action.post] }
+            return { ...state, allPosts: [...state.allPosts, action.post] }
         case DELETE_POST:
-            return {...state, posts: state.posts.filter(post => post.id !== action.postId)};
+            return {...state, allPosts: state.allPosts.filter(post => post.id !== action.postId)};
         case PUT_POST:
-            return {...state, posts: state.posts.map(post => post.id === action.post.id ? action.post : post)}
+            return {...state, allPosts: state.allPosts.map(post => post.id === action.post.id ? action.post : post)}
         default:
             return state
     }
