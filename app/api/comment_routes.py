@@ -7,21 +7,14 @@ from datetime import date
 
 comment_routes = Blueprint('comments', __name__)
 
-@comment_routes.route("/<id>")
+@comment_routes.route("/")
 @login_required
-def get_comments(id):
+def get_current_comments():
     """
-    Query for getting comments on an existing post
+    Query for getting current users comments and returns them in a list of comment dictionaries
     """
-    current_post = Post.query.get(id)
-    current_post_dict = current_post.to_dict()
-    comments = Comment.query.filter(Comment.postId
-    == current_post_dict['id'])
-    return_list = []
-    for comment in comments:
-        comment_dict = comment.to_dict()
-        return_list.append(comment_dict)
-    return return_list
+    current_user_dict = current_user.to_dict()
+    return current_user_dict['comments']
 
 
 @comment_routes.route("/edit/<id>", methods=["PUT"])

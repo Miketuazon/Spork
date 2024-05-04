@@ -24,5 +24,5 @@ class Comment(db.Model):
             'content': self.content,
             'createdAt': self.createdAt,
             'updatedAt': self.updatedAt,
-            'owner': self.comment_owner.to_dict()
+            'owner': self.comment_owner.username
         }

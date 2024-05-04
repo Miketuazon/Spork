@@ -147,7 +147,7 @@ const PostItem = ({ post }) => {
                                     <div className="list-for-update-delete">
                                         <div className="trash-comment">
                                             <div className="comment-text-bubble">
-                                                <span className="comment-owner">{comment.owner.username}</span>
+                                                <span className="comment-owner">{comment.owner}</span>
                                                 <div className="the-comments-commented">
 
                                                     <span>{comment?.content}</span>
