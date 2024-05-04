@@ -72,23 +72,10 @@ const PostItem = ({ post }) => {
 
     }
     const openMenu = () => {
-        if (showMenu) return;
-        setShowMenu(true);
+        setShowMenu(!showMenu);
     };
 
-    useEffect(() => {
-        if (!showMenu) return;
 
-        const closeMenu = (e) => {
-            if (!ulRef?.current?.contains(e?.target)) {
-                setShowMenu(false);
-            }
-        };
-
-        //document.addEventListener('click', closeMenu);
-
-        return () => document.removeEventListener("click", closeMenu);
-    }, [dispatch, showMenu, JSON.stringify(postComments), JSON.stringify(postLikes), JSON.stringify(currentUser), JSON.stringify(liked), JSON.stringify(follower)]);
 
 
     const ulClassNameUpdateDelete = "list-for-update-delete" + (showMenu ? "" : " hidden");
