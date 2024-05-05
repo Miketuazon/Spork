@@ -2,19 +2,16 @@ import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { thunkGetAllPosts } from '../../../store/post'
-import { thunkGetCurrentUserComments } from '../../../store/comment'
 import PostItem from "../PostItem"
 import "./Feed.css"
 
 const Feed = () => {
   const dispatch = useDispatch()
   const posts = useSelector(state => state?.posts.allPosts)
-  const currentUserComments = useSelector(state => state?.comments?.userComments)
 
   useEffect(() => {
     dispatch(thunkGetAllPosts())
-    dispatch(thunkGetCurrentUserComments())
-  }, [dispatch, JSON.stringify(currentUserComments)])
+  }, [dispatch])
 
   return (
     <div className='Feed'>

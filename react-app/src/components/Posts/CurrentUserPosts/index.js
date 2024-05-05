@@ -6,7 +6,6 @@ import PostItem from "../PostItem"
 import "./CurrentUserPosts.css"
 import { NavLink } from "react-router-dom"
 import { useHistory } from 'react-router-dom'
-import { getCommentsForPost } from '../../../store/comment'
 import Navigation from '../../Navigation'
 
 const CurrentUserPosts = () => {

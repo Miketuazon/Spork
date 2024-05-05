@@ -2,6 +2,7 @@ const GET_POSTS = 'posts/getPosts'
 const POST_POST = 'posts/postPost'
 const DELETE_POST = 'posts/deletePost'
 const PUT_POST = 'posts/putPost'
+const POST_COMMENT = 'posts/postComment'
 
 const actionGetPosts = (posts) => {
     return {
@@ -28,6 +29,13 @@ const actionPutPost = (post) => {
     return {
         type: PUT_POST,
         post
+    }
+}
+
+const actionPostComment = (comment) => {
+    return {
+        type: POST_COMMENT,
+        comment
     }
 }
 
@@ -93,6 +101,24 @@ export const thunkEditPost = (post, postId) => async (dispatch) => {
     return data;
 }
 
+export const thunkCreateComment = (comment, postId) => async (dispatch) => {
+    const response = await fetch(`/api/posts/${postId}/comments`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(comment)
+    })
+
+    const data = await response.json();
+
+    if (response.ok) {
+        
+        dispatch(actionPostComment(data));
+        return data;
+    } 
+
+    return data;
+}
+
 const initialState = { allPosts: null }
 
 export default function postsReducer(state = initialState, action) {
@@ -105,6 +131,9 @@ export default function postsReducer(state = initialState, action) {
             return {...state, allPosts: state.allPosts.filter(post => post.id !== action.postId)};
         case PUT_POST:
             return {...state, allPosts: state.allPosts.map(post => post.id === action.post.id ? action.post : post)}
+        case POST_COMMENT:
+            console.log(action.comment)
+            return { ...state, allPosts: state.allPosts.map(post => post.id === action.comment.postId ? {...post, comments: [...post.comments, action.comment]} : post) }
         default:
             return state
     }

@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-// import { createOneComment } from "../../../store/post";
-import { createOneComment } from "../../../store/comment";
+import { thunkCreateComment } from "../../../store/post";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useModal } from "../../../context/Modal";
@@ -21,18 +20,13 @@ export default function CreateComment({ postId }) {
         const newComment = {
             content: content
         }
-        const successComment = await dispatch(createOneComment(newComment, postId))
-        if (successComment) {
+        const successComment = await dispatch(thunkCreateComment(newComment, postId))
+        if (successComment.errors) {
             setErrors(successComment)
         } else {
             setContent('')
             closeModal()
         }
-    }
-
-    const handleCancel = (e) => {
-        e.preventDefault();
-        closeModal();
     }
 
     return (

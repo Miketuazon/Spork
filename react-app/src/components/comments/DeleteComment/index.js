@@ -1,4 +1,4 @@
-import { deleteOneComment, getCommentsForPost } from "../../../store/comment";
+//import { deleteOneComment, getCommentsForPost } from "../../../store/comment";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../../context/Modal";
@@ -13,7 +13,7 @@ const posts = useSelector(state => state?.posts)
 
 const onSubmit = async (e) => {
     e.preventDefault();
-    dispatch(deleteOneComment(commentId))
+    //dispatch(deleteOneComment(commentId))
 
 }
     return (

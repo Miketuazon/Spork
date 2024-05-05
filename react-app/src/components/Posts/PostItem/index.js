@@ -22,7 +22,6 @@ const PostItem = ({ post }) => {
     const ulRef = useRef();
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state?.session?.user)
-    const currentUserComments = useSelector(state => state?.comments?.userComments)
     const currentFollowing = currentUser?.following
     const postFollowers = post?.owner?.followers
     //const postsVal = Object.values(post)

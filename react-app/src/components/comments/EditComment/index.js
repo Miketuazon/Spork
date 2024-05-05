@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { updateOneComment } from "../../../store/comment";
+//import { updateOneComment } from "../../../store/comment";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useModal } from "../../../context/Modal";
@@ -20,10 +20,10 @@ export default function EditComment({ comment }) {
             content: content
         }
         // dispatch(updateOneComment(comment, commentId))
-        const updatedComment = dispatch(updateOneComment(comment, commentId))
-        if (updatedComment) {
-            closeModal()
-        }
+        //const updatedComment = dispatch(updateOneComment(comment, commentId))
+        //if (updatedComment) {
+            //closeModal()
+        //}
     }
     return (
         <>

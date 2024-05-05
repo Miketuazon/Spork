@@ -81,7 +81,7 @@ def create_a_comment(id):
         )
         db.session.add(new_comment)
         db.session.commit()
-        return {"Successfully Created Comment": new_comment.to_dict()}
+        return new_comment.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
