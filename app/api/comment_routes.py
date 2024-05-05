@@ -7,15 +7,6 @@ from datetime import date
 
 comment_routes = Blueprint('comments', __name__)
 
-@comment_routes.route("/")
-@login_required
-def get_current_comments():
-    """
-    Query for getting current users comments and returns them in a list of comment dictionaries
-    """
-    current_user_dict = current_user.to_dict()
-    return current_user_dict['comments']
-
 
 @comment_routes.route("/edit/<id>", methods=["PUT"])
 @login_required
@@ -64,4 +55,4 @@ def delete_comment(id):
         db.session.delete(to_delete)
         db.session.commit()
         return {"Message": "Comment Deleted Successfully"}
-    return {"Message": "Unauthorized"}
+    return {"Message": "Unauthorized"}, 401

@@ -1,10 +1,8 @@
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-//import { updateOneComment } from "../../../store/comment";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useModal } from "../../../context/Modal";
-
 
 export default function EditComment({ comment }) {
     const commentId = comment?.id
@@ -25,6 +23,7 @@ export default function EditComment({ comment }) {
             //closeModal()
         //}
     }
+
     return (
         <>
             <form onSubmit={onSubmit}>
@@ -41,6 +40,4 @@ export default function EditComment({ comment }) {
 
         </>
     )
-
-
 }

@@ -45,17 +45,6 @@ export default function CreateComment({ postId }) {
                     <button className='submit-comment' ><i className="fa fa-reply"></i></button>
                 </form>
             </div>
-
-
-
-
-
-
-
-
         </>
     )
-
-
-
 }
