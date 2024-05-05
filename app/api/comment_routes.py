@@ -31,7 +31,7 @@ def update_comment(id):
         comment_to_edit = Comment.query.get(id)
 
         if not comment_to_edit:
-            return {'Message': "Comment Does Not Exist"}
+            return {'Message': "Comment Does Not Exist"}, 404
 
         comment_to_edit_dict = comment_to_edit.to_dict()
 
@@ -56,7 +56,7 @@ def delete_comment(id):
     to_delete = Comment.query.get(id)
 
     if not to_delete:
-        return {"Message": "Comment Does Not Exist"}
+        return {"Message": "Comment Does Not Exist"}, 404
 
     to_delete_dict = to_delete.to_dict()
 

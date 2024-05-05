@@ -1,9 +1,15 @@
+// Post Actions
 const GET_POSTS = 'posts/getPosts'
 const POST_POST = 'posts/postPost'
 const DELETE_POST = 'posts/deletePost'
 const PUT_POST = 'posts/putPost'
-const POST_COMMENT = 'posts/postComment'
 
+// Comment Actions
+const POST_COMMENT = 'posts/postComment'
+const DELETE_COMMENT = 'posts/deleteComment'
+const PUT_COMMENT = 'posts/putComment'
+
+// Post Action Creators
 const actionGetPosts = (posts) => {
     return {
         type: GET_POSTS,
@@ -32,6 +38,7 @@ const actionPutPost = (post) => {
     }
 }
 
+// Comment Action Creators
 const actionPostComment = (comment) => {
     return {
         type: POST_COMMENT,
@@ -39,6 +46,14 @@ const actionPostComment = (comment) => {
     }
 }
 
+const actionDeleteComment = (commentId) => {
+    return {
+        type: DELETE_COMMENT,
+        commentId
+    }
+}
+
+// Post Thunks
 export const thunkGetAllPosts = () => async (dispatch) => {
     const response = await fetch('/api/posts/')
 
@@ -101,6 +116,7 @@ export const thunkEditPost = (post, postId) => async (dispatch) => {
     return data;
 }
 
+// Comment Thunks
 export const thunkCreateComment = (comment, postId) => async (dispatch) => {
     const response = await fetch(`/api/posts/${postId}/comments`, {
         method: 'POST',
@@ -119,12 +135,23 @@ export const thunkCreateComment = (comment, postId) => async (dispatch) => {
     return data;
 }
 
-const initialState = { allPosts: null }
+export const thunkDeleteComment = (commentId) => async (dispatch) => {
+    const response = await fetch(`/api/comments/delete/${commentId}`, {
+        method: 'DELETE'
+    })
+
+    if (response.ok) {
+        dispatch(actionDeleteComment(commentId))
+    }
+
+}
+
+const initialState = { allPosts: null, allComments: null}
 
 export default function postsReducer(state = initialState, action) {
     switch (action.type) {
         case GET_POSTS:
-            return {...state, allPosts: action.posts}
+            return {...state, allPosts: action.posts, allComments: action.posts.map(post => post.comments)}
         case POST_POST:
             return { ...state, allPosts: [...state.allPosts, action.post] }
         case DELETE_POST:
@@ -132,8 +159,17 @@ export default function postsReducer(state = initialState, action) {
         case PUT_POST:
             return {...state, allPosts: state.allPosts.map(post => post.id === action.post.id ? action.post : post)}
         case POST_COMMENT:
-            console.log(action.comment)
-            return { ...state, allPosts: state.allPosts.map(post => post.id === action.comment.postId ? {...post, comments: [...post.comments, action.comment]} : post) }
+            return { ...state, allPosts: state.allPosts.map(post => post.id === action.comment.postId ? {...post, comments: [...post.comments, action.comment]} : post), allComments: [...state.allComments, action.comment]}
+        case DELETE_COMMENT:
+            for (let i = 0; i < state.allPosts.length; i++) {
+                for (let j = 0; j < state.allPosts[i].comments.length; j++) {
+                    if (state.allPosts[i].comments[j].id === action.commentId) {
+                        state.allPosts[i].comments.splice(j, 1)
+                    }
+                }
+            }
+            
+            return {...state, allPosts: [...state.allPosts]};
         default:
             return state
     }
