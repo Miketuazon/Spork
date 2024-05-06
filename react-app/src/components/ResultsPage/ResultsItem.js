@@ -13,7 +13,7 @@ import { thunkGetAllPosts, getCurrentUserPosts } from "../../store/post";
 import { useCallback } from "react";
 //import FollowOrUnfollow from "../Follows/FollowOrUnfollow";
 //import { getFollowsForUser } from "../../store/follow";
-import { likeOnePost } from "../../store/like";
+//import { likeOnePost } from "../../store/like";
 
 
 const ResultsItem = ({ post }) => {
@@ -66,8 +66,8 @@ const ResultsItem = ({ post }) => {
     const onSubmitLike = async (e) => {
         e.preventDefault()
 
-        dispatch(likeOnePost(post?.id))
-        dispatch(thunkGetAllPosts())
+        //dispatch(likeOnePost(post?.id))
+        //dispatch(thunkGetAllPosts())
 
     }
     const openMenu = () => {

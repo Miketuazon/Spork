@@ -1,19 +1,14 @@
 import "./PostItem.css"
 import OpenModalButton from "../../OpenModalButton"
 import React, { useState, useRef } from "react";
-import DeletePost from "../DeletePost"
 import { useSelector } from "react-redux"
 import EditPost from "../EditPost"
+import DeletePost from "../DeletePost"
 import CreateComment from "../../comments/CreateComment"
+import EditComment from "../../comments/EditComment";
 import DeleteComment from "../../comments/DeleteComment"
 import { thunkAddFollow, thunkRemoveFollow } from "../../../store/session";
-import { useEffect } from "react";
 import { useDispatch } from "react-redux"
-import { getCurrentUserPosts } from "../../../store/post";
-import { thunkGetAllPosts } from '../../../store/post'
-import { useCallback } from "react";
-import { likeOnePost } from "../../../store/like";
-import EditComment from "../../comments/EditComment";
 import { thunkAddLike, thunkRemoveLike } from "../../../store/post";
 
 const PostItem = ({ post }) => {

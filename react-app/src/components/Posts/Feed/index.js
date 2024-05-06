@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { thunkGetAllPosts } from '../../../store/post'
 import PostItem from "../PostItem"
+import LoadingScreen from '../../LoadingScreen'
 import "./Feed.css"
 
 const Feed = () => {
@@ -26,7 +27,7 @@ const Feed = () => {
               ))}
           </>
         ) : (
-          <div><h1 className="no-posts">No Posts</h1></div>
+          <LoadingScreen />
         )}
       </ul>
     </div>
