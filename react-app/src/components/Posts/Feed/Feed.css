@@ -6,6 +6,7 @@ z#root {
   max-width: 600px;
   margin: 0 auto;
   font-family: Helvetica, Arial, sans-serif;
+  margin-bottom: 3rem;
 }
 
 .posts {

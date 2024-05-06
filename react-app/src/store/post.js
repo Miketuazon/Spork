@@ -1,10 +1,10 @@
-// Post Actions
+// Post Constants
 const GET_POSTS = 'posts/getPosts'
 const POST_POST = 'posts/postPost'
 const DELETE_POST = 'posts/deletePost'
 const PUT_POST = 'posts/putPost'
 
-// Comment Actions
+// Comment Constants
 const POST_COMMENT = 'posts/postComment'
 const DELETE_COMMENT = 'posts/deleteComment'
 const PUT_COMMENT = 'posts/putComment'

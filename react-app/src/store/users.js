@@ -26,7 +26,6 @@ export default function usersReducer(state = {}, action) {
     newState = {}
     action.users.forEach(user => {
         newState[user.id] = user
-
     })
     return newState;
     default:

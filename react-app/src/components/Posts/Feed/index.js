@@ -19,22 +19,16 @@ const Feed = () => {
         {posts ? (
           <>
             {Object.values(posts)?.sort((a, b) => new Date(b?.createdAt) - new Date(a?.createdAt))?.map(post =>
-                    (
-                      <li key={post?.id} className="post">
-                        <PostItem post={post} />
-                      </li>
-                    ))}
+              (
+                <li key={post?.id} className="post">
+                  <PostItem post={post} />
+                </li>
+              ))}
           </>
         ) : (
           <div><h1 className="no-posts">No Posts</h1></div>
         )}
-
       </ul>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
     </div>
   )
 }

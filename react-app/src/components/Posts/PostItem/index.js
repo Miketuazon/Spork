@@ -6,6 +6,7 @@ import { useSelector } from "react-redux"
 import EditPost from "../EditPost"
 import CreateComment from "../../comments/CreateComment"
 import DeleteComment from "../../comments/DeleteComment"
+import { thunkAddFollow, thunkRemoveFollow } from "../../../store/session";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux"
 import { getCurrentUserPosts } from "../../../store/post";
@@ -16,12 +17,12 @@ import { getFollowsForUser } from "../../../store/follow";
 import { likeOnePost } from "../../../store/like";
 import EditComment from "../../comments/EditComment";
 
-
 const PostItem = ({ post }) => {
     const [showMenu, setShowMenu] = useState(false);
     const ulRef = useRef();
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state?.session?.user)
+    const following = currentUser.following.find(id => id === post.userId)
     const currentFollowing = currentUser?.following
     const postFollowers = post?.owner?.followers
     //const postsVal = Object.values(post)
@@ -30,7 +31,7 @@ const PostItem = ({ post }) => {
     const postComments = post?.comments
     const postLikes = post?.likes
 
-    const follower = post?.owner?.followers?.find(id => id === currentUser?.id)
+    
     const liked = post?.likes?.find(id => id === currentUser?.id)
 
     // creating date
@@ -55,13 +56,16 @@ const PostItem = ({ post }) => {
     const year = date?.getFullYear();
     const hoursMin = date?.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', });
 
-
     const onSubmitFollow = async (e) => {
         e.preventDefault()
 
-        dispatch(getFollowsForUser(post?.userId))
-        dispatch(thunkGetAllPosts())
+        dispatch(thunkAddFollow(post?.userId))
+    }
 
+    const onSubmitUnfollow = async (e) => {
+        e.preventDefault()
+
+        dispatch(thunkRemoveFollow(post?.userId))
     }
     const onSubmitLike = async (e) => {
         e.preventDefault()
@@ -74,18 +78,14 @@ const PostItem = ({ post }) => {
         setShowMenu(!showMenu);
     };
 
-
-
-
     const ulClassNameUpdateDelete = "list-for-update-delete" + (showMenu ? "" : " hidden");
-
 
     return (
         <div>
             <div className="post-header">
                 <div><img src="https://assets.tumblr.com/images/default_avatar/cone_open_64.png" alt="default_image.png" />{post?.owner?.username}</div>
                 <div className="username-unfollow-follow">
-                    {currentUser && follower && (currentUser?.id !== post?.userId) ? <button className="button-unfollow" onClick={onSubmitFollow}>unfollow</button> : currentUser && !follower && (currentUser?.id !== post?.userId) ? <button className="button-follow" onClick={onSubmitFollow}>Follow</button> : <></>}
+                    {currentUser &&  following && (currentUser?.id !== post?.userId) ? <button className="button-unfollow" onClick={onSubmitUnfollow}>unfollow</button> : currentUser && !following && (currentUser?.id !== post?.userId) ? <button className="button-follow" onClick={onSubmitFollow}>Follow</button> : <></>}
                 </div>
             </div>
             <h6 className="timestamp">{month}, {day}, {year} | {hoursMin}</h6>
@@ -140,7 +140,6 @@ const PostItem = ({ post }) => {
                                                 buttonText={<><i className="fas fa-pen-square edit-comment"></i></>}
                                                 modalComponent={<EditComment comment={comment} />}
                                             /> : <></>}</span>
-
                                         </div>
                                     </div>
                                 </li>

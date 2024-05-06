@@ -1,6 +1,8 @@
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
+const ADD_FOLLOW = "session/ADD_FOLLOW";
+const REMOVE_FOLLOW = "session/REMOVE_FOLLOW";
 
 const setUser = (user) => ({
 	type: SET_USER,
@@ -10,6 +12,16 @@ const setUser = (user) => ({
 const removeUser = () => ({
 	type: REMOVE_USER,
 });
+
+const actionAddFollow = (userId) => ({
+	type: ADD_FOLLOW,
+	userId
+})
+
+const actionRemoveFollow = (userId) => ({
+	type: REMOVE_FOLLOW,
+	userId
+})
 
 const initialState = { user: null };
 
@@ -47,7 +59,6 @@ export const login = (email, password) => async (dispatch) => {
 		return null;
 	} else if (response.status < 500) {
 		const data = await response.json();
-		// console.log("data => ", data)
 		if (data.errors) {
 			return ["Invalid credentials"]
 		}
@@ -96,12 +107,32 @@ export const signUp = (username, email, password) => async (dispatch) => {
 	}
 };
 
+export const thunkAddFollow = (userId) => async (dispatch) => {
+	const response = await fetch(`/api/follow/${userId}`);
+
+	if (response.ok) {
+		dispatch(actionAddFollow(userId));
+	}
+}
+
+export const thunkRemoveFollow = (userId) => async (dispatch) => {
+	const response = await fetch(`/api/follow/${userId}`);
+
+	if (response.ok) {
+		dispatch(actionRemoveFollow(userId));
+	}
+}
+
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
 		case SET_USER:
 			return { user: action.payload };
 		case REMOVE_USER:
 			return { user: null };
+		case ADD_FOLLOW:
+			return { user: { ...state.user, following: [...state.user.following, action.userId] } }
+		case REMOVE_FOLLOW:
+			return { user: { ...state.user, following: state.user.following.filter(id => id !== action.userId) } }
 		default:
 			return state;
 	}
