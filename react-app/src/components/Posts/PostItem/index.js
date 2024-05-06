@@ -21,15 +21,9 @@ const PostItem = ({ post }) => {
     const ulRef = useRef();
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state?.session?.user)
-    const following = currentUser.following.find(id => id === post.userId)
-    const liked = post.likes.find(id => id === currentUser.id)
-    const currentFollowing = currentUser?.following
-    const postFollowers = post?.owner?.followers
-    //const postsVal = Object.values(post)
-    const comments = useSelector(state => state?.comments)
+    const following = currentUser?.following.find(id => id === post.userId)
+    const liked = post.likes.find(id => id === currentUser?.id)
     const notes = (post?.comments?.length + post?.likes?.length)
-    const postComments = post?.comments
-    const postLikes = post?.likes
 
 
     // creating date
