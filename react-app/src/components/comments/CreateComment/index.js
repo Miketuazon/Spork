@@ -13,6 +13,7 @@ export default function CreateComment({ postId }) {
     const onSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
+        
         const newComment = {
             content: content
         }

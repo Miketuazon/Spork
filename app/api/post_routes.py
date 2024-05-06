@@ -112,7 +112,7 @@ def update_post(id):
             returning_value = post_to_edit.to_dict()
             return returning_value
         return {'errors': "This post isn't yours!"}, 403
-    return {'errors': validation_errors_to_error_messages(form.errors)},401
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 @post_routes.route('/delete/<id>', methods=['DELETE'])

@@ -2,36 +2,31 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkEditPost } from "../../../store/post";
 import { useModal } from "../../../context/Modal";
-import { useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { useParams } from "react-router-dom";
 import "./EditPost.css"
 
 export default function EditPost({ post }) {
-    const postId = post?.id
-    const history = useHistory()
     const { closeModal } = useModal()
     const dispatch = useDispatch()
-    // const postId = post?.id
     const currentUser = useSelector(state => state?.session?.user)
-    const currentUserId = currentUser.id
     const [content, setContent] = useState(post?.content)
     const [title, setTitle] = useState(post?.title)
-    const [image_url, setImageUrl] = useState(post?.image_url)
-    const [post_type, setPostType] = useState(post?.post_type)
+    const [errors, setErrors] = useState([]);
+
     const onSubmit = async (e) => {
         e.preventDefault()
+        setErrors([]);
         const updatePost = {
             post_type: 'Text',
             title: title,
             content: content
         }
-        const updatedPost = dispatch(thunkEditPost(updatePost, postId))
-        if (updatedPost) {
-            closeModal()
+        const updatedPost = await dispatch(thunkEditPost(updatePost, post.id));
+        if (updatedPost.errors) {
+            setErrors(updatedPost.errors);
+        } else {
+            closeModal();
         }
     }
-
 
     const handleCancel = (e) => {
         e.preventDefault();
@@ -42,6 +37,17 @@ export default function EditPost({ post }) {
         <>
             <div className="update-post-nav">
                 <form onSubmit={onSubmit}>
+                <ul>
+                    {errors.length > 0 ? (
+                            <>
+                                {errors?.map((error, idx) => (
+                                    <li className="error-message" key={idx}>{error}</li>
+                                ))}
+                            </>
+                        ) : (
+                            <></>
+                        )}
+                    </ul>
                     <div className="update-post-username-gear">
                         <span className="update-post-username">{currentUser?.username}</span><i className="fa fa-gear"></i>
                     </div>
@@ -75,11 +81,6 @@ export default function EditPost({ post }) {
                     <span className="update-post-hashtag">
                         You can remove the title but if you try to remove content below 3 characters we will discard your changes.
                     </span>
-                    {/* <input
-                        className="update-post-hashtag"
-                        type="text"
-                        placeholder="You can remove the title but if you try to remove content below 3 characters we will discard your changes."
-                    /> */}
                     <li>
                         <button type="submit" className="update-post-post-now-button" ><span>Post now |</span><span className="fa fa-angle-down"></span></button>
                     </li>
@@ -94,21 +95,8 @@ export default function EditPost({ post }) {
                                 <button className="update-post-for-everyone-button"><span>For Everyone </span><span className="fa fa-angle-down"></span></button>
                             </a>
                         </li>
-                        {/* <div>
-                        <li>
-                            <button onSubmit={onSubmit} className="update-post-post-now-button" ><span>Post now |</span><span className="fa fa-angle-down"></span></button>
-                            <ul className="update-post-dropdown">
-                                <li><a>1</a></li>
-                                <li><a>2</a></li>
-                                <li><a>3</a></li>
-                                <li><a>4</a></li>
-                            </ul>
-                        </li>
-                        </div> */}
                     </span>
                 </ul>
-
-                {/* </form> */}
             </div>
         </>
     )

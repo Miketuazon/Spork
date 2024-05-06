@@ -106,7 +106,7 @@ const PostItem = ({ post }) => {
 
                         <OpenModalButton
                             buttonText={<><i className="fa fa-pencil"></i></>}
-                            modalComponent={<EditPost postId={post?.id} post={post} />}
+                            modalComponent={<EditPost post={post} />}
                         />
                     </div>
                 ) : (
@@ -138,7 +138,7 @@ const PostItem = ({ post }) => {
                                             <span className="delete-comment-icon" style={{"marginRight": "5px"}}>{currentUser?.id === comment?.userId ? <DeleteComment commentId={comment.id}><i className="fas fa-trash-alt"></i></DeleteComment> : <></>}</span>
                                             <span>{currentUser?.id === comment?.userId ? <OpenModalButton
                                                 buttonText={<><i className="fas fa-pen-square edit-comment"></i></>}
-                                                modalComponent={<EditComment commentId={comment?.id} comment={comment} />}
+                                                modalComponent={<EditComment comment={comment} />}
                                             /> : <></>}</span>
 
                                         </div>

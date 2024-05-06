@@ -1,32 +1,44 @@
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useModal } from "../../../context/Modal";
+import { thunkEditComment } from "../../../store/post";
 
 export default function EditComment({ comment }) {
-    const commentId = comment?.id
-    const history = useHistory()
-    const { closeModal } = useModal()
+    const dispatch = useDispatch();
+    const { closeModal } = useModal();
     const [content, setContent] = useState(comment?.content)
-    const dispatch = useDispatch()
-    const currentUser = useSelector(state => state?.session?.user)
+    const [errors, setErrors] = useState([]);
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        const comment = {
+        setErrors([]);
+
+        const updateComment = {
             content: content
         }
-        // dispatch(updateOneComment(comment, commentId))
-        //const updatedComment = dispatch(updateOneComment(comment, commentId))
-        //if (updatedComment) {
-            //closeModal()
-        //}
+
+        const updatedComment = await dispatch(thunkEditComment(updateComment, comment.id));
+        if (updatedComment.errors) {
+            setErrors(updatedComment.errors);
+        } else {
+            closeModal();
+        }
     }
 
     return (
         <>
             <form onSubmit={onSubmit}>
+            <ul>
+                {errors.length > 0 ? (
+                    <>
+                        {errors?.map((error, idx) => (
+                            <li className="error-message" key={idx}>{error}</li>
+                        ))}
+                    </>
+                ) : (
+                    <></>
+                    )}
+            </ul>
                 <textarea
                     className="update-comment-textarea"
                     rows="8"
@@ -37,7 +49,6 @@ export default function EditComment({ comment }) {
                 />
                 <button type='submit'>Reply</button>
             </form>
-
         </>
     )
 }
