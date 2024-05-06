@@ -75,7 +75,7 @@ const PostItem = ({ post }) => {
     const onSubmitUnlike = async (e) => {
         e.preventDefault();
 
-        dispatch(thunkRemoveLike(post.id));
+        dispatch(thunkRemoveLike(post.id, currentUser.id));
     }
     const openMenu = () => {
         setShowMenu(!showMenu);

@@ -72,10 +72,10 @@ const actionAddLike = (postId, userId) => {
     }
 }
 
-const actionRemoveLike = (postId) => {
+const actionRemoveLike = (postId, userId) => {
     return {
         type: REMOVE_LIKE,
-        postId
+        postId, userId
     }
 }
 
@@ -195,11 +195,11 @@ export const thunkAddLike = (postId, userId) => async (dispatch) => {
     }
 }
 
-export const thunkRemoveLike = (postId) => async (dispatch) => {
+export const thunkRemoveLike = (postId, userId) => async (dispatch) => {
     const response = await fetch(`/api/likes/${postId}`)
 
     if (response.ok) {
-        dispatch(actionRemoveLike(postId))
+        dispatch(actionRemoveLike(postId, userId))
     }
 }
 
@@ -239,7 +239,7 @@ export default function postsReducer(state = initialState, action) {
         case ADD_LIKE:
             return {...state, allPosts: state.allPosts.map(post => post.id === action.postId ? {...post, likes: [...post.likes, action.userId]} : post)}
         case REMOVE_LIKE:
-            return state
+            return {...state, allPosts: state.allPosts.map(post => post.id === action.postId ? {...post, likes: post.likes.filter(id => id !== action.userId)} : post)}
         default:
             return state
     }
