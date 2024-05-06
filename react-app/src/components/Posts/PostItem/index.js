@@ -12,10 +12,9 @@ import { useDispatch } from "react-redux"
 import { getCurrentUserPosts } from "../../../store/post";
 import { thunkGetAllPosts } from '../../../store/post'
 import { useCallback } from "react";
-import FollowOrUnfollow from "../../Follows/FollowOrUnfollow";
-import { getFollowsForUser } from "../../../store/follow";
 import { likeOnePost } from "../../../store/like";
 import EditComment from "../../comments/EditComment";
+import { thunkAddLike, thunkRemoveLike } from "../../../store/post";
 
 const PostItem = ({ post }) => {
     const [showMenu, setShowMenu] = useState(false);
@@ -23,6 +22,7 @@ const PostItem = ({ post }) => {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state?.session?.user)
     const following = currentUser.following.find(id => id === post.userId)
+    const liked = post.likes.find(id => id === currentUser.id)
     const currentFollowing = currentUser?.following
     const postFollowers = post?.owner?.followers
     //const postsVal = Object.values(post)
@@ -31,8 +31,6 @@ const PostItem = ({ post }) => {
     const postComments = post?.comments
     const postLikes = post?.likes
 
-    
-    const liked = post?.likes?.find(id => id === currentUser?.id)
 
     // creating date
     const months = {
@@ -57,22 +55,27 @@ const PostItem = ({ post }) => {
     const hoursMin = date?.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', });
 
     const onSubmitFollow = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
-        dispatch(thunkAddFollow(post?.userId))
+        dispatch(thunkAddFollow(post.userId));
     }
 
     const onSubmitUnfollow = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
-        dispatch(thunkRemoveFollow(post?.userId))
+        dispatch(thunkRemoveFollow(post.userId));
     }
+
     const onSubmitLike = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
-        dispatch(likeOnePost(post?.id))
-        dispatch(thunkGetAllPosts())
+        dispatch(thunkAddLike(post.id, currentUser.id));
+    }
 
+    const onSubmitUnlike = async (e) => {
+        e.preventDefault();
+
+        dispatch(thunkRemoveLike(post.id));
     }
     const openMenu = () => {
         setShowMenu(!showMenu);
@@ -95,7 +98,7 @@ const PostItem = ({ post }) => {
             </p>
             <div className="post-footer">
                 <button onClick={openMenu} className="like-button">{notes === 1 ? <div><span>{notes} </span><span>note</span></div> : <div><span>{notes} </span><span>notes</span></div>}</button>
-                {currentUser && !liked && (currentUser?.id !== post?.userId) ? <button className="like-button" onClick={onSubmitLike}><i className="far fa-heart"></i></button> : currentUser && liked && (currentUser?.id !== post?.userId) ? <button className="unlike-button" onClick={onSubmitLike}><i className="fas fa-heart" ></i></button> : <></>}
+                {currentUser && !liked && (currentUser?.id !== post?.userId) ? <button className="like-button" onClick={onSubmitLike}><i className="far fa-heart"></i></button> : currentUser && liked && (currentUser?.id !== post?.userId) ? <button className="unlike-button" onClick={onSubmitUnlike}><i className="fas fa-heart" ></i></button> : <></>}
 
                 {currentUser?.id === post?.userId ? (
                     <div className="comments-trash-and-update-button">

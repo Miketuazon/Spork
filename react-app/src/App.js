@@ -15,8 +15,8 @@ import ResultsPage from "./components/ResultsPage/ResultsPage"
 import AdFreeComponent from "./components/Navigation/dropdown-dummy/dropdown-adfree";
 import DropdownGifts from "./components/Navigation/dropdown-dummy/dropdown-gifts";
 import LivestreamCredits from "./components/Navigation/dropdown-dummy/dropdown-livestreamingcredits";
-import FollowingDropdown from "./components/Follows/FollowingDropdown";
-import FollowerDropdown from "./components/Follows/FollowerDropdown";
+//import FollowingDropdown from "./components/Follows/FollowingDropdown";
+//import FollowerDropdown from "./components/Follows/FollowerDropdown";
 import Live from "./components/Navigation/dropdown-dummy/dropdown-live";
 import Explore from "./components/Navigation/dropdown-dummy/nav-explore";
 import NavMarket from "./components/Navigation/nav-market";
@@ -47,32 +47,14 @@ function App() {
           <Route exact path="/create">
             <CreatePost />
           </Route>
-          {/* <Route exact path="/explore" >
-            <Explore />
-          </Route> */}
-          {/* <Route exact path="/adfree">
-            <AdFreeComponent />
-          </Route> */}
-          {/* <Route exact path="/live">
-            <Live />
-          </Route>
-          <Route exact path="/gifts">
-            <DropdownGifts />
-          </Route> */}
           <Route exact path="/Likes">
             <AllLikes />
           </Route>
-          {/* <Route exact path="/livestreamcredits">
-            <LivestreamCredits />
-          </Route> */}
-          <Route exact path="/following">
+          {/* <Route exact path="/following">
             <FollowingDropdown />
           </Route>
           <Route exact path="/followers">
             <FollowerDropdown />
-          </Route>
-          {/* <Route exact path="/NavMarket">
-            <NavMarket />
           </Route> */}
           <Route exact path="/login">
             <LoginFormPage />
@@ -83,9 +65,6 @@ function App() {
           <Route exact path="/posts/edit/:postId">
             <EditPost />
           </Route>
-          {/* <Route exact path="/likes">
-            <AllLikes />
-          </Route> */}
           <Route exact path="/posts/current">
             <CurrentUserPosts />
           </Route>
@@ -98,11 +77,6 @@ function App() {
           <Route path="/search">
             <ResultsPage />
           </Route>
-          {/* <Route path="/user/:id">
-            <UserPage />
-          </Route> */}
-
-
         <Route path='*'><NotFoundPage/></Route>
         </Switch>
       )}

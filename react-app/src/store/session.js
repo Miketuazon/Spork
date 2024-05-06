@@ -1,6 +1,8 @@
-// constants
+// User Constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
+
+// Follow Constants
 const ADD_FOLLOW = "session/ADD_FOLLOW";
 const REMOVE_FOLLOW = "session/REMOVE_FOLLOW";
 
@@ -16,15 +18,17 @@ const removeUser = () => ({
 const actionAddFollow = (userId) => ({
 	type: ADD_FOLLOW,
 	userId
-})
+});
 
 const actionRemoveFollow = (userId) => ({
 	type: REMOVE_FOLLOW,
 	userId
-})
+});
 
 const initialState = { user: null };
 
+// Thunks
+// User Thunks
 export const authenticate = () => async (dispatch) => {
 	const response = await fetch("/api/auth/", {
 		headers: {
@@ -107,6 +111,7 @@ export const signUp = (username, email, password) => async (dispatch) => {
 	}
 };
 
+// Follow Thunks
 export const thunkAddFollow = (userId) => async (dispatch) => {
 	const response = await fetch(`/api/follow/${userId}`);
 

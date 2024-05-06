@@ -9,6 +9,10 @@ const POST_COMMENT = 'posts/postComment'
 const DELETE_COMMENT = 'posts/deleteComment'
 const PUT_COMMENT = 'posts/putComment'
 
+// Like Constants
+const ADD_LIKE = 'posts/addLike';
+const REMOVE_LIKE = 'posts/removeLike';
+
 // Post Action Creators
 const actionGetPosts = (posts) => {
     return {
@@ -60,17 +64,32 @@ const actionPutComment = (comment) => {
     }
 }
 
+// Like Action Creators
+const actionAddLike = (postId, userId) => {
+    return {
+        type: ADD_LIKE,
+        postId, userId
+    }
+}
+
+const actionRemoveLike = (postId) => {
+    return {
+        type: REMOVE_LIKE,
+        postId
+    }
+}
+
 // Post Thunks
 export const thunkGetAllPosts = () => async (dispatch) => {
     const response = await fetch('/api/posts/')
 
+    const data = await response.json();
+
     if (response.ok) {
-        const posts = await response.json()
-        dispatch(actionGetPosts(posts))
-        return posts;
-    } else {
-        return response;
+        dispatch(actionGetPosts(data))
     }
+
+    return data;
 }
 
 export const getCurrentUserPosts = () => async (dispatch) => {
@@ -167,6 +186,23 @@ export const thunkEditComment = (comment, commentId) => async (dispatch) => {
     return data;
 }
 
+// Like Thunks
+export const thunkAddLike = (postId, userId) => async (dispatch) => {
+    const response = await fetch(`/api/likes/${postId}`)
+
+    if (response.ok) {
+        dispatch(actionAddLike(postId, userId))
+    }
+}
+
+export const thunkRemoveLike = (postId) => async (dispatch) => {
+    const response = await fetch(`/api/likes/${postId}`)
+
+    if (response.ok) {
+        dispatch(actionRemoveLike(postId))
+    }
+}
+
 const initialState = { allPosts: null}
 
 export default function postsReducer(state = initialState, action) {
@@ -200,6 +236,10 @@ export default function postsReducer(state = initialState, action) {
                 }
             }
             return {...state, allPosts: [...state.allPosts]};
+        case ADD_LIKE:
+            return {...state, allPosts: state.allPosts.map(post => post.id === action.postId ? {...post, likes: [...post.likes, action.userId]} : post)}
+        case REMOVE_LIKE:
+            return state
         default:
             return state
     }

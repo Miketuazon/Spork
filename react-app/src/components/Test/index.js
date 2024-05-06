@@ -10,8 +10,8 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux"
 import { thunkGetAllPosts, getCurrentUserPosts } from "../../store/post";
 import { useCallback } from "react";
-import FollowOrUnfollow from "../Follows/FollowOrUnfollow";
-import { getFollowsForUser } from "../../store/follow";
+//import FollowOrUnfollow from "../Follows/FollowOrUnfollow";
+//import { getFollowsForUser } from "../../store/follow";
 import { likeOnePost } from "../../store/like";
 import EditComment from "../comments/EditComment";
 
@@ -59,7 +59,7 @@ const Test = ({ post }) => {
     const onSubmitFollow = async (e) => {
         e.preventDefault()
 
-        dispatch(getFollowsForUser(post?.userId))
+       // dispatch(getFollowsForUser(post?.userId))
         dispatch(thunkGetAllPosts())
 
     }
