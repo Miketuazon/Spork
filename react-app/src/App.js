@@ -20,8 +20,8 @@ import LivestreamCredits from "./components/Navigation/dropdown-dummy/dropdown-l
 import Live from "./components/Navigation/dropdown-dummy/dropdown-live";
 import Explore from "./components/Navigation/dropdown-dummy/nav-explore";
 import NavMarket from "./components/Navigation/nav-market";
-import NotFoundPage from "./components/Navigation/404";import LoadingScreen from "./components/LoadingScreen";
-
+import NotFoundPage from "./components/Navigation/404";
+import LoadingScreen from "./components/LoadingScreen";
 
 function App() {
   const dispatch = useDispatch();

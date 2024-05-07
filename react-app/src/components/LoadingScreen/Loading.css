@@ -38,6 +38,7 @@ body {
   -webkit-clip-path: var(--polygonH);
   overflow: hidden;
   position: relative;
+  top: 50%;
   width: 5em;
   height: 9em;
   z-index: 0;
