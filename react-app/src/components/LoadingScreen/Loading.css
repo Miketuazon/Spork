@@ -37,12 +37,10 @@ body {
   clip-path: var(--polygonH);
   -webkit-clip-path: var(--polygonH);
   overflow: hidden;
-  position: relative;
-  top: 50%;
   width: 5em;
   height: 9em;
   z-index: 0;
-  margin: 20% auto;
+  margin: 10% 47%;
 }
 
 .hourglass:before,
@@ -64,7 +62,7 @@ body {
   background-size: 100% 3.6em;
   clip-path: var(--polygonB1);
   -webkit-clip-path: var(--polygonB1);
-  top: 0.5em;
+
   left: 0.5em;
   width: 4em;
   height: 8em;
@@ -78,7 +76,6 @@ body {
     linear-gradient(90deg, #0000 0.75em, #0003 0.75em 1.25em, #0000 1.25em 3.75em, #fff3 3.75em 4.25em, #fff0 4.25em 6.75em, #0003 6.75em 7.25em, #0000 7.25em) 0 0.5em / 100% 8em,
     linear-gradient(90deg, #0000 0.5em, #0003 0.5em 1.5em, #0000 1.5em 3.5em, #fff3 3.5em 4.5em, #fff0 4.5em 6.5em, #0003 6.5em 7.5em, #0000 7.5em) 0 100% / 100% 0.5em;
   background-repeat: repeat-x;
-  top: 0;
   left: -3em;
   width: 200%;
   height: 100%;

@@ -13,30 +13,30 @@ const Feed = () => {
   const postsClassName = posts ? "posts" : "loading";
 
   useEffect(() => {
-    //dispatch(thunkGetAllPosts());
+    dispatch(thunkGetAllPosts());
   }, [dispatch]);
 
   return (
-    <div className='Feed'>
-      <ul className={postsClassName}>
-        {posts ? (
-          <>
+    <>
+      {posts ? (
+        <div className='Feed'>
+          <ul className={postsClassName}>
             {Object.values(posts).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))?.map(post =>
               (
                 <li key={post.id} className="post">
                   <PostItem post={post} />
                 </li>
               ))}
-          </>
-        ) : (
-          <>
-            <div className={postsClassName}>
-              <LoadingScreen />
-            </div>
-          </>
-        )}
-      </ul>
-    </div>
+          </ul>
+        </div>
+      ) : (
+      <>
+        <div className={postsClassName}>
+          <LoadingScreen />
+        </div>
+      </>
+      )}  
+    </>
   )
 }
 

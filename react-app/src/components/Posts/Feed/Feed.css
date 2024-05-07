@@ -14,8 +14,9 @@ z#root {
 }
 
 .loading {
-  margin-top: 25rem;
+  top: auto;
 }
+
 
 .post {
   background-color: #fff;
