@@ -22,13 +22,11 @@ def seed_posts():
     )
     post2 = Post(
         post_type="image",
-        image_url="https://assets.pokemon.com/assets/cms2/img/pokedex/full/133.png",
         content="I like eevee",
         userId=2
     )
     post3 = Post(
         post_type="text",
-        image_url="https://assets.pokemon.com/assets/cms2/img/pokedex/full/700.png",
         content="I like sylveon",
         userId=3
     )
