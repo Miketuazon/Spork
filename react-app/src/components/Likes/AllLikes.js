@@ -34,7 +34,7 @@ export default function AllLikes() {
 
                     )
 
-}) : <div><h1 className="no-likes">You haven't liked anything</h1></div>}
+}) : <div><h3 className="no-likes">You haven't liked anything</h3></div>}
                 </ul>
             </div>
         </div>

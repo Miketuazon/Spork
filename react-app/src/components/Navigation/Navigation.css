@@ -17,14 +17,24 @@
 }
 
 .footer {
-  position: fixed;
+  /* position: fixed;
   bottom: 0;
   width: 105%;
   display: inline-block;
   background-color: white;
   border: solid 1px black;
   text-align: center;
-  z-index: 1;
+  z-index: 1; */
+  position: fixed;
+    bottom: 0;
+    width: 105%;
+    display: inline-block;
+    background-color: #314265;
+    /* border: solid 1px black; */
+    text-align: center;
+    z-index: 1;
+    /* height: 2.5rem; */
+    /* display: flex; */
 
 }
 
@@ -51,24 +61,42 @@
 }
 
 .group-link {
-  display: inline-block;
+  /* display: inline-block;
   margin: auto;
+  display: flex;
+  justify-content: center; */
+  display: inline-block;
+  /* margin: auto; */
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
 }
 
 .footer ul li {
   display: inline-block;
-  margin-right: 1rem;
+  /* margin-right: 1rem; */
+
 }
 
 .name {
-  margin-right: 10px;
-  color: black;
+  /* margin-right: 10px; */
+  /* color: black; */
+  color: #738ebb;
+  font-size: smaller;
+
 }
 
 .link a {
   margin-left: 10px;
-  color: blue;
+  /* color: blue; */
+  color: #b3b3b3;
+
   cursor: pointer
+}
+
+.link a:hover{
+  color: white;
 }
 
 .end {
@@ -270,4 +298,11 @@ i.fa.fa-pen-square {
 
 .login-button-modal:hover {
   background-color: #00b8ff;
+}
+
+.brian-link,
+.derrick-link,
+.kisha-link,
+.michael-link{
+padding: -10px;
 }

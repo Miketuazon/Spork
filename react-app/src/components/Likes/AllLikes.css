@@ -2,6 +2,9 @@
     max-width: 600px;
     margin: 0 auto;
     font-family: Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
 }
 
 .post {

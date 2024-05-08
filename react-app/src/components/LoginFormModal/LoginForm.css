@@ -17,10 +17,10 @@
 .demo-sign-in-button {
   background-color: #5308F4;
   width: 100px;
-  height: 50px;
+  /* height: 50px; */
   border: none;
   border-radius: 5px;
-  height: 48px;
+  height: 35px;
   color: white;
   font-weight: bold;
   margin-bottom: 15px;
@@ -92,7 +92,7 @@ input {
   margin-top: -10px;
 }
 
-.demo-sign-in-button {
+/* .demo-sign-in-button {
   background-color: #5308F4;
   width: 100px;
   height: 50px;
@@ -105,7 +105,7 @@ input {
   cursor: pointer;
   margin-left: 5px;
 
-}
+} */
 
 .loginform-sign-in-button {
   background-color: #5308F4;
@@ -113,7 +113,8 @@ input {
   height: 50px;
   border: none;
   border-radius: 5px;
-  height: 52px;
+  /* height: 52px; */
+  height: 35px;
   color: white;
   font-weight: bold;
   margin-bottom: 15px;
