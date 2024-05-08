@@ -77,9 +77,14 @@ input {
   border-radius: .5rem;
 }
 
+.error-messages-login > .error-message {
+  font-weight: bold;
+}
+
 .login-button {
   height: 30px;
-
+  padding: 0px;
+  font-size: 1rem;
 }
 
 .log-in-form-below-frog {

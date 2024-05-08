@@ -62,7 +62,7 @@ function LoginFormModal() {
       <div className="log-in-form-below-frog">
         <h4>Enter your email to log in or register:</h4>
         <form className="form-log-in" onSubmit={handleSubmit}>
-          <ul>
+          <ul className="error-messages-login">
             {errors.map((error, idx) => (
               <li className="error-message" key={idx}>{error}</li>
             ))}
@@ -85,7 +85,7 @@ function LoginFormModal() {
 
             />
           </label>
-          <button className="login-button hi" type="submit">Log In</button>
+          <button className="login-button" type="submit">Log In</button>
           <div className="signup-link-in-login-form">
             Don't have an account yet?
             <br></br>
