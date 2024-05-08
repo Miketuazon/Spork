@@ -6,6 +6,7 @@ import PostItem from "../PostItem";
 import LoadingScreen from '../../LoadingScreen';
 import "./Feed.css";
 import "../../LoadingScreen/Loading.css";
+import SideMenu from '../../SideMenu';
 
 const Feed = () => {
   const dispatch = useDispatch();
@@ -28,6 +29,9 @@ const Feed = () => {
                 </li>
               ))}
           </ul>
+          <div className='side-menu-container'>
+              < SideMenu />
+          </div>
         </div>
       ) : (
       <>
@@ -35,7 +39,7 @@ const Feed = () => {
           <LoadingScreen />
         </div>
       </>
-      )}  
+      )}
     </>
   )
 }

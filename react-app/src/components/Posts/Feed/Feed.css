@@ -3,10 +3,13 @@ z#root {
 }
 
 .Feed {
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
   font-family: Helvetica, Arial, sans-serif;
   margin-bottom: 3rem;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
 }
 
 .posts {

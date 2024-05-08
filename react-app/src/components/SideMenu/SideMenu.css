@@ -1,0 +1,49 @@
+.categoriesSideMenu {
+    color: #ACB4BD;
+}
+
+.sporkLogoSideMenu {
+    color: white;
+}
+
+.sideMenu {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    width: 33%;
+    max-width: 360px;
+    height: 100vh;
+    margin-right: 30px;
+}
+
+.accountDropdown {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.createPostButton {
+    padding: 8px 16px;
+    font-size: 1rem;
+    border-radius: 40px;
+}
+
+.side-menu-container {
+    max-height: 900px;
+}
+
+.createPostButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-weight: bold;
+    align-items: center;
+    background-color: #00b8ff;
+    gap: 2px;
+}
+
+.createPostButtonContainer {
+    display: flex;
+    align-items: center;
+}
