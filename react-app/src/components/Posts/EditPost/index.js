@@ -82,7 +82,7 @@ export default function EditPost({ post }) {
                         You can remove the title but if you try to remove content below 3 characters we will discard your changes.
                     </span>
                     <li>
-                        <button type="submit" className="update-post-post-now-button" ><span>Post now |</span><span className="fa fa-angle-down"></span></button>
+                        <button type="submit" className="update-post-post-now-button" ><span>Post now </span><span className="fa fa-angle-down"></span></button>
                     </li>
                 </form>
                 <ul className="update-post-close-for-everyone-post-now-button">

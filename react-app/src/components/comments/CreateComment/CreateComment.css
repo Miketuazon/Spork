@@ -14,7 +14,7 @@ form.create-post-area-comments-form {
 }
 
 button[type="submit"] {
-  background-color: #5308F4;
+  /* background-color: #5308F4;
   height: 30px;
   border: none;
   color: white;
@@ -24,11 +24,23 @@ button[type="submit"] {
   font-size: 1rem;
   font-weight: bold;
   border-radius: 5px;
-  cursor: pointer;
+  cursor: pointer; */
+  background-color: #216ba5;
+    height: 2.5rem;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    /* font-size: .8rem; */
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
 }
 
 button[type="submit"]:hover {
-  background-color: #00b8ff;
+  background-color: #1b4c5f;
 }
 
 form.create-post-textarea-comments-form {

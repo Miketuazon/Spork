@@ -35,12 +35,21 @@
 
 
 .update-post-textarea {
-    font-size: 14px;
+    /* font-size: 14px;
     line-height: 1.5;
     border: none;
     outline: none;
     height: 80px;
+    width: 450px; */
+    font-size: 14px;
+    line-height: 1.5;
+    border: 1px solid #c3bfbf85;
+    border-radius: 5px;
+    padding: 10px;
+    outline: none;
+    height: 80px;
     width: 450px;
+
 }
 
 .update-post-hashtag {
@@ -68,6 +77,8 @@ list-style: none;
     cursor: pointer;
     border-radius: 5px;
     font-weight: bold;
+    height: 2.5em;
+    width: 3rem;
     ;
 }
 
