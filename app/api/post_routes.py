@@ -3,6 +3,7 @@ from app.models import User, db, Post, Comment
 from .auth_routes import validation_errors_to_error_messages
 from app.forms import PostForm, CommentForm
 from flask_login import current_user, login_required
+from app.api.aws_helpers import upload_file_to_s3, get_unique_filename, remove_file_from_s3
 from datetime import date
 
 post_routes = Blueprint('posts', __name__)
@@ -41,18 +42,27 @@ def create_a_post():
     Query for creating a post and returns it in a dictionary
     """
     form = PostForm()
-    current_user_dict = current_user.to_dict()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         new_post = Post(
             post_type=form.data['post_type'],
             title=form.data['title'],
-            image_url=form.data['image_url'],
             content=form.data['content'],
-            userId=current_user_dict['id']
+            userId=current_user.id
         )
         db.session.add(new_post)
         db.session.commit()
+
+        if form.data['file_one']:
+            file_one = form.data['file_one']
+            file_one_upload = upload_file_to_s3(file_one)
+
+            if "url" not in file_one_upload:
+                return {"errors": "Url not in upload_image"}, 400
+
+            url = file_one_upload["url"]
+            new_post.file_one = url
+            db.session.commit()
         return new_post.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
