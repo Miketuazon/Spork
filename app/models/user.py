@@ -14,6 +14,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    description = db.Column(db.String(500))
 
     #followers relationship
     following = db.relationship(
@@ -51,6 +52,7 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
+            'description': self.description,
             'following': [user.id for user in self.following],
             "followers": [user.id for user in self.followers],
             "likes": [post.id for post in self.post_likes],
