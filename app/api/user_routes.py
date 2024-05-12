@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import User, db
-from app.forms import UserNameForm
+from app.forms import UserNameForm, EmailForm
 from .auth_routes import validation_errors_to_error_messages
 
 user_routes = Blueprint('users', __name__)
@@ -34,8 +34,37 @@ def edit_username():
     """
     form = UserNameForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.data['username'] == current_user.username and current_user.check_password( form.data['password']):
+        return current_user.to_dict()
+    
+    if current_user.check_password( form.data['password']) == False:
+        return {'errors': ['Incorrect Password']}, 401
+
     if form.validate_on_submit():
         current_user.username = form.data['username']
+
+        db.session.commit()
+        return current_user.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@user_routes.route('/current_user/edit_email', methods=['PUT'])
+@login_required
+def edit_email():
+    """
+    Query for editing a user's username and returns that user in a dictionary
+    """
+    form = EmailForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.data['email'] == current_user.email and current_user.check_password( form.data['password']):
+        return current_user.to_dict()
+    
+    if current_user.check_password( form.data['password']) == False:
+        return {'errors': ['Incorrect Password']}, 401
+    
+    if form.validate_on_submit():
+        current_user.email = form.data['email']
         db.session.commit()
         return current_user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
