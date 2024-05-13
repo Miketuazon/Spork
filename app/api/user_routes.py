@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from flask_login import login_required, current_user
+from flask_login import login_required, current_user, logout_user
 from app.models import User, db
 from app.forms import UserNameForm, EmailForm, PasswordForm
 from .auth_routes import validation_errors_to_error_messages
@@ -95,13 +95,17 @@ def edit_password():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-@user_routes.route('/<int:id>/follow')
+@user_routes.route('/current_user/delete', methods=['DELETE'])
 @login_required
-def follow_user(id):
+def delete_user():
     """
-    Query for following a user by their id
+    Query for deleting a user and returns a message
     """
-    user = User.query.get(id)
-    session_user = current_user
-    print(user)
-    return(session_user)
+    if current_user.id == 1:
+        return {'errors': ['Cannot delete demo user!']}, 401
+    
+    db.session.delete(current_user)
+    db.session.commit()
+    logout_user()
+    return {"Message": "User Deleted Successfully"}
+
