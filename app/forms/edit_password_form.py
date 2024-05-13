@@ -15,7 +15,7 @@ def password_matches(form, field):
         raise ValidationError('Password was incorrect.')
 
 
-class EditPasswordForm(FlaskForm):
-    password = StringField('password', validators=[DataRequired(), password_matches])
+class PasswordForm(FlaskForm):
+    password = StringField('password', validators=[DataRequired()])
     new_password = StringField('new_password', validators=[DataRequired(message="Please add a New Password!"), Length(min=6, message='Password must be atleast 6 characters long!')])
     confirm_password = StringField('confirm_password', validators=[DataRequired(message="Please confirm your Password!"), Length(min=6, message='Password must be atleast 6 characters long!')])

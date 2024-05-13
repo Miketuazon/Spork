@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import User, db
-from app.forms import UserNameForm, EmailForm
+from app.forms import UserNameForm, EmailForm, PasswordForm
 from .auth_routes import validation_errors_to_error_messages
 
 user_routes = Blueprint('users', __name__)
@@ -52,7 +52,7 @@ def edit_username():
 @login_required
 def edit_email():
     """
-    Query for editing a user's username and returns that user in a dictionary
+    Query for editing a user's email and returns that user in a dictionary
     """
     form = EmailForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -65,6 +65,31 @@ def edit_email():
     
     if form.validate_on_submit():
         current_user.email = form.data['email']
+        db.session.commit()
+        return current_user.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@user_routes.route('/current_user/edit_password', methods=['PUT'])
+@login_required
+def edit_password():
+    """
+    Query for editing a user's password and returns that user in a dictionary
+    """
+    form = PasswordForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if current_user.check_password( form.data['password']) == False:
+        return {'errors': ['Incorrect Password']}, 401
+    
+    if form.data['new_password'] == form.data['password']:
+        return {'errors': ['New Password must be different from current password']}, 401
+    
+    if form.data['new_password'] != form.data['confirm_password']:
+        return {'errors': ['Passwords do not match']}, 401
+    
+    if form.validate_on_submit():
+        current_user.password = form.data['new_password']
         db.session.commit()
         return current_user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
