@@ -6,6 +6,9 @@ from .auth_routes import validation_errors_to_error_messages
 
 user_routes = Blueprint('users', __name__)
 
+def is_demo_user(user):
+    return user.id == 1
+
 
 @user_routes.route('/')
 @login_required
@@ -35,6 +38,9 @@ def edit_username():
     form = UserNameForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
+    if is_demo_user(current_user):
+        return {'errors': ['Cannot edit Demo user!']}, 401
+
     if form.data['username'] == current_user.username and current_user.check_password( form.data['password']):
         return current_user.to_dict()
     
@@ -56,6 +62,9 @@ def edit_email():
     """
     form = EmailForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+
+    if is_demo_user(current_user):
+        return {'errors': ['Cannot edit Demo user!']}, 401
 
     if form.data['email'] == current_user.email and current_user.check_password( form.data['password']):
         return current_user.to_dict()
@@ -79,14 +88,14 @@ def edit_password():
     form = PasswordForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
+    if is_demo_user(current_user):
+        return {'errors': ['Cannot edit Demo user!']}, 401
+
     if current_user.check_password( form.data['password']) == False:
         return {'errors': ['Incorrect Password']}, 401
     
     if form.data['new_password'] == form.data['password']:
         return {'errors': ['New Password must be different from current password']}, 401
-    
-    if form.data['new_password'] != form.data['confirm_password']:
-        return {'errors': ['Passwords do not match']}, 401
     
     if form.validate_on_submit():
         current_user.password = form.data['new_password']
@@ -101,8 +110,8 @@ def delete_user():
     """
     Query for deleting a user and returns a message
     """
-    if current_user.id == 1:
-        return {'errors': ['Cannot delete demo user!']}, 401
+    if is_demo_user(current_user):
+        return {'errors': ['Cannot delete Demo user!']}, 401
     
     db.session.delete(current_user)
     db.session.commit()
