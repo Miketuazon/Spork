@@ -78,6 +78,10 @@
     width: 100%;
 }
 
+.createPostButtonContainer > .hello {
+    width: 100%;
+}
+
 .side-menu-container {
     max-height: 900px;
 }

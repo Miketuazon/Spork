@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import "./SideMenu.css"
 import { logout } from "../../store/session";
 import { useHistory } from "react-router-dom";
+import OpenModalButton from "../OpenModalButton";
+import CreatePost from "../Posts/CreatePost";
 
 const SideMenu = () => {
     const history = useHistory();
@@ -27,7 +29,7 @@ const SideMenu = () => {
         e.preventDefault();
         dispatch(logout());
         history.push('/')
-      };
+    };
 
     // Code to hide and show account dropdown
     const showAccountDiv = "account-container" + (showAccount ? "" : " hidden")
@@ -62,10 +64,11 @@ const SideMenu = () => {
                     </div>
                 </ul>
                 <div className="createPostButtonContainer">
-                    <button className="createPostButton">
+                    <OpenModalButton className="createPostButton" buttonText={<button className="createPostButton">
                         <i class="fa fa-pencil" aria-hidden="true"></i>
                         Create
-                    </button>
+                    </button>} modalComponent={<CreatePost />}>
+                    </OpenModalButton>
                 </div>
             </div>
         </>
