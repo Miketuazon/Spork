@@ -40,7 +40,7 @@ const SideMenu = () => {
                     <div className="HomeButton">
                         <h1 className="sporkLogoSideMenu">Spork</h1>
                     </div>
-                    <li className="homeDropdown">
+                    <li className="homeDropdown" onClick={() => window.location.href = '/'}>
                         <div className="sideIcon">
                             <i class="fa fa-home" aria-hidden="true"></i>
                         </div>
@@ -56,8 +56,8 @@ const SideMenu = () => {
                         </div>
                     </li>
                     <div className={showAccountDiv}>
-                        <div className="likes-account">Likes</div>
-                        <div className="following-account">Following</div>
+                        <div className="likes-account" onClick={() => window.location.href = '/Likes'}>Likes</div>
+                        <div className="following-account" onClick={() => window.location.href = "/following"}>Following</div>
                         <div className="logOutButton-account" onClick={handleLogout}>Log Out</div>
                     </div>
                 </ul>
