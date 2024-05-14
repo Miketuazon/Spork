@@ -40,6 +40,13 @@
     flex-direction: row;
 }
 
+.homeDropdown:hover, .accountDropdown:hover, .likes-account:hover,
+.following-account:hover, .logOutButton-account:hover
+  {
+    background-color: #122943;
+    cursor: pointer;
+}
+
 .accountDropdown {
     display: flex;
     align-items: center;
@@ -52,6 +59,10 @@
     align-items: center;
     justify-content: space-between;
     flex-basis: 100%;
+}
+
+.account-container {
+    border-top: 2px solid #21374F;
 }
 
 .createPostButtonContainer {
