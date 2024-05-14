@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import "./SideMenu.css"
+import { logout } from "../../store/session";
+import { useHistory } from "react-router-dom";
 
 const SideMenu = () => {
-
+    const history = useHistory();
     const dispatch = useDispatch();
     const [showAccount, setShowAccount] = useState(false)
     const [showAccountValue, setShowValue] = useState("Show Account")
@@ -19,6 +21,13 @@ const SideMenu = () => {
             setShowAccount(false)
         }
     }
+
+    // log out
+    const handleLogout = (e) => {
+        e.preventDefault();
+        dispatch(logout());
+        history.push('/')
+      };
 
     // Code to hide and show account dropdown
     const showAccountDiv = "account-container" + (showAccount ? "" : " hidden")
@@ -49,7 +58,7 @@ const SideMenu = () => {
                     <div className={showAccountDiv}>
                         <div className="likes-account">Likes</div>
                         <div className="following-account">Following</div>
-                        <div className="logOutButton-account">Log Out</div>
+                        <div className="logOutButton-account" onClick={handleLogout}>Log Out</div>
                     </div>
                 </ul>
                 <div className="createPostButtonContainer">
