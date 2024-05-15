@@ -1,0 +1,110 @@
+.categoriesSideMenu {
+    color: #ACB4BD;
+}
+
+.login-sidemenu {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sporkLogoSideMenu {
+    color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.side-menu-container {
+    flex-basis: 20%;
+    margin-right: 5%
+}
+
+.homeIcon .accountDropdown {
+    padding: 8px 16px;
+}
+
+.sideMenu {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    width: 33%;
+    max-width: 160px;
+    height: 90vh;
+    margin-right: 30px;
+    position: fixed;
+}
+
+.sideIcon {
+    width: 14px;
+    margin-right: 5px;
+}
+
+.homeDropdown {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.homeDropdown:hover, .accountDropdown:hover, .likes-account:hover,
+.following-account:hover, .logOutButton-account:hover
+  {
+    background-color: #122943;
+    cursor: pointer;
+}
+
+.accountDropdown {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+}
+
+.account {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-basis: 100%;
+}
+
+.account-container {
+    border-top: 2px solid #21374F;
+}
+
+.createPostButtonContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.createPostButton {
+    padding: 8px 16px;
+    font-size: 1rem;
+    border-radius: 40px;
+    width: 100%;
+}
+
+.createPostButtonContainer > .hello {
+    width: 100%;
+}
+
+.side-menu-container {
+    max-height: 900px;
+}
+
+.createPostButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-weight: bold;
+    align-items: center;
+    background-color: #00b8ff;
+    gap: 2px;
+}
+
+.createPostButtonContainer {
+    display: flex;
+    align-items: center;
+}
+
+/* #122943 for hovering over sidemenu */
