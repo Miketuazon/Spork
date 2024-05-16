@@ -5,23 +5,15 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import CreatePost from "./components/Posts/CreatePost";
-import Navigation from "./components/Navigation";
 import Feed from "./components/Posts/Feed"
 import AllLikes from "./components/Likes/AllLikes";
 import LikesCounter from "./components/Likes/LikesCounter";
 import CurrentUserPosts from "./components/Posts/CurrentUserPosts";
 import EditPost from "./components/Posts/EditPost";
 import ResultsPage from "./components/ResultsPage/ResultsPage"
-import AdFreeComponent from "./components/Navigation/dropdown-dummy/dropdown-adfree";
-import DropdownGifts from "./components/Navigation/dropdown-dummy/dropdown-gifts";
-import LivestreamCredits from "./components/Navigation/dropdown-dummy/dropdown-livestreamingcredits";
-//import FollowingDropdown from "./components/Follows/FollowingDropdown";
-//import FollowerDropdown from "./components/Follows/FollowerDropdown";
-import Live from "./components/Navigation/dropdown-dummy/dropdown-live";
-import Explore from "./components/Navigation/dropdown-dummy/nav-explore";
-import NavMarket from "./components/Navigation/nav-market";
 import NotFoundPage from "./components/Navigation/404";
 import LoadingScreen from "./components/LoadingScreen";
+import SideMenu from "./components/SideMenu";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,7 +24,7 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
+      <SideMenu isLoaded={isLoaded}/>
       {!isLoaded && (
         <LoadingScreen />
       )}

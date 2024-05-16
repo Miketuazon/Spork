@@ -3,7 +3,7 @@ z#root {
 }
 
 .Feed {
-  max-width: 100rem;
+  max-width: 35rem;
   margin: 0 auto;
   font-family: Helvetica, Arial, sans-serif;
   margin-bottom: 3rem;
@@ -15,7 +15,7 @@ z#root {
 
 .posts {
   margin-top: 1rem;
-  width: 40%;
+  width: 100%;
 }
 
 .loading {
@@ -187,13 +187,4 @@ button {
 
 .video-footer {
   color: rgb(224, 66, 245);
-}
-
-.right-side-menu {
-  margin-left: 1rem;
-}
-
-.left-side-menu {
-  margin-right: 12rem;
-  margin-left: -10rem;
 }

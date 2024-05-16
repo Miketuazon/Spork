@@ -6,7 +6,6 @@ import PostItem from "../PostItem";
 import LoadingScreen from '../../LoadingScreen';
 import "./Feed.css";
 import "../../LoadingScreen/Loading.css";
-import SideMenu from '../../SideMenu';
 
 const Feed = () => {
   const dispatch = useDispatch();
@@ -20,9 +19,6 @@ const Feed = () => {
   return (
     <>
     <div className="Feed">
-    <div className='right-side-menu'>
-      <SideMenu />
-    </div>
       {posts ? (
           <ul className={postsClassName}>
             {Object.values(posts).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))?.map(post =>
@@ -39,10 +35,6 @@ const Feed = () => {
         </div>
       </>
       )}
-      <div className='left-side-menu'>
-        <SideMenu />
-      </div>
-
     </div>
     </>
   )

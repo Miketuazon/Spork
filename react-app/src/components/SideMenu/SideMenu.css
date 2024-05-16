@@ -30,9 +30,10 @@
     justify-content:space-between;
     width: 33%;
     max-width: 160px;
-    height: 90vh;
+    height: 100vh;
     margin-right: 30px;
     position: fixed;
+    left: 26%;
 }
 
 .sideIcon {
