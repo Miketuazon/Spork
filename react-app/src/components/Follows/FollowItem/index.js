@@ -14,8 +14,6 @@ const FollowItem = ({follow}) => {
         }
     }
 
-    console.log(isFollowing);
-
     const onSubmitFollow = async (e) => {
         e.preventDefault();
 
