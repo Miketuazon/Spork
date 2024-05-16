@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import "./SideMenu.css"
 import { logout } from "../../store/session";
 import { useHistory } from "react-router-dom";
@@ -48,7 +49,7 @@ const SideMenu = () => {
                     <ul className="categoriesSideMenu">
                         <div className="sporkLogoSide"></div>
                         <div className="HomeButton">
-                            <h1 className="sporkLogoSideMenu">Spork</h1>
+                        <NavLink exact to="/"><h1 className="sporkLogoSideMenu">Spork</h1></NavLink>
                         </div>
                         <li className="homeDropdown" onClick={() => window.location.href = '/'}>
                             <div className="sideIcon">
