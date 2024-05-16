@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { thunkGetAllPosts } from '../../../store/post';
+import { thunkGetAllPosts, thunkGetLikedPosts } from '../../../store/post';
 import PostItem from "../PostItem";
 import LoadingScreen from '../../LoadingScreen';
 import "./Feed.css";
@@ -14,6 +14,7 @@ const Feed = () => {
 
   useEffect(() => {
     dispatch(thunkGetAllPosts());
+    dispatch(thunkGetLikedPosts());
   }, [dispatch]);
 
   return (

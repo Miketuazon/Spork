@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { thunkGetAllPosts } from "../../store/post";
+import { thunkGetLikedPosts } from "../../store/post";
 import { useHistory } from "react-router-dom";
 import PostItem from "../Posts/PostItem";
 import LoadingScreen from "../LoadingScreen";
@@ -10,11 +11,13 @@ import "../Posts/Feed/Feed.css"
 export default function AllLikes() {
     const dispatch = useDispatch()
     const history = useHistory()
-    const sessionUser = useSelector(state => state?.session.user)
-    const posts = useSelector(state => state.posts.allPosts);
+    const sessionUser = useSelector(state => state.session.user)
+    const posts = useSelector(state => state.posts.likedPosts);
+
 
     useEffect(() => {
         dispatch(thunkGetAllPosts());
+        dispatch(thunkGetLikedPosts());
     }, [dispatch])
 
     if (!sessionUser) history.push('/')
