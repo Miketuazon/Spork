@@ -250,8 +250,16 @@ export default function postsReducer(state = initialState, action) {
                     }
                 }
             }
+
+            for (let i = 0; i < state.currentUserPosts.length; i++) {
+                for (let j = 0; j < state.currentUserPosts[i].comments.length; j++) {
+                    if (state.currentUserPosts[i].comments[j].id === action.commentId) {
+                        state.currentUserPosts[i].comments.splice(j, 1)
+                    }
+                }
+            }
             
-            return {...state, allPosts: [...state.allPosts], likedPosts: [...state.likedPosts]};
+            return {...state, allPosts: [...state.allPosts], likedPosts: [...state.likedPosts], currentUserPosts: [...state.currentUserPosts]};
         case PUT_COMMENT:
             for (let i = 0; i < state.allPosts.length; i++) {
                 for (let j = 0; j < state.allPosts[i].comments.length; j++) {
@@ -268,7 +276,15 @@ export default function postsReducer(state = initialState, action) {
                     }
                 }
             }
-            return {...state, allPosts: [...state.allPosts], likedPosts: [...state.likedPosts]};
+
+            for (let i = 0; i < state.currentUserPosts.length; i++) {
+                for (let j = 0; j < state.currentUserPosts[i].comments.length; j++) {
+                    if (state.currentUserPosts[i].comments[j].id === action.comment.id) {
+                        state.currentUserPosts[i].comments[j] = action.comment
+                    }
+                }
+            }
+            return {...state, allPosts: [...state.allPosts], likedPosts: [...state.likedPosts], currentUserPosts: [...state.currentUserPosts]};
         case ADD_LIKE:
             return {...state, allPosts: state.allPosts.map(post => post.id === action.postId ? {...post, likes: [...post.likes, action.userId]} : post), likedPosts: state.likedPosts.map(post => post.id === action.postId ? {...post, likes: [...post.likes, action.userId]} : post)}
         case REMOVE_LIKE:
