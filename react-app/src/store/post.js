@@ -242,8 +242,16 @@ export default function postsReducer(state = initialState, action) {
                     }
                 }
             }
+
+            for (let i = 0; i < state.likedPosts.length; i++) {
+                for (let j = 0; j < state.likedPosts[i].comments.length; j++) {
+                    if (state.likedPosts[i].comments[j].id === action.commentId) {
+                        state.likedPosts[i].comments.splice(j, 1)
+                    }
+                }
+            }
             
-            return {...state, allPosts: [...state.allPosts]};
+            return {...state, allPosts: [...state.allPosts], likedPosts: [...state.likedPosts]};
         case PUT_COMMENT:
             for (let i = 0; i < state.allPosts.length; i++) {
                 for (let j = 0; j < state.allPosts[i].comments.length; j++) {
@@ -252,7 +260,15 @@ export default function postsReducer(state = initialState, action) {
                     }
                 }
             }
-            return {...state, allPosts: [...state.allPosts]};
+
+            for (let i = 0; i < state.likedPosts.length; i++) {
+                for (let j = 0; j < state.likedPosts[i].comments.length; j++) {
+                    if (state.likedPosts[i].comments[j].id === action.comment.id) {
+                        state.likedPosts[i].comments[j] = action.comment
+                    }
+                }
+            }
+            return {...state, allPosts: [...state.allPosts], likedPosts: [...state.likedPosts]};
         case ADD_LIKE:
             return {...state, allPosts: state.allPosts.map(post => post.id === action.postId ? {...post, likes: [...post.likes, action.userId]} : post), likedPosts: state.likedPosts.map(post => post.id === action.postId ? {...post, likes: [...post.likes, action.userId]} : post)}
         case REMOVE_LIKE:
