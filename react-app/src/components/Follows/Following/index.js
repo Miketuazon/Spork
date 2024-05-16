@@ -2,13 +2,15 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { thunkGetFollowing } from '../../../store/session';
+import LoadingScreen from '../../LoadingScreen';
+import FollowItem from '../FollowItem';
+import "../../Posts/Feed/Feed.css"
 
 const FollowingDropdown = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const following = useSelector(state => state.session.user.following);
-
-  console.log(sessionUser)
+  const postsClassName = following ? "posts" : "loading";
 
   useEffect(() => {
     dispatch(thunkGetFollowing(sessionUser.id));
@@ -16,15 +18,17 @@ const FollowingDropdown = () => {
 
   return (
     <>
-        <div>
+        <div className='Feed'>
             {following ? (
-                following.map(follow => (
-                    <div key={follow.id}>
-                        <h3>{follow.username}</h3>
-                    </div>
-                ))
+                <ul className={postsClassName}>
+                    {Object.values(following).map(follow => (
+                        <li key={follow.id} className='post'>
+                            <FollowItem follow={follow} />
+                        </li>
+                    ))}
+                </ul>
             ) : (
-                <h3>No Following</h3>
+                <LoadingScreen />
             )}
         </div>
     </>
