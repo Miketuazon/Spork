@@ -189,3 +189,9 @@ button {
 .video-footer {
   color: rgb(224, 66, 245);
 }
+
+.follow-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

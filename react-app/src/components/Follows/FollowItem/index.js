@@ -28,7 +28,7 @@ const FollowItem = ({follow}) => {
 
   return (
     <>
-        <div >
+        <div className='follow-item'>
             <div><img src="https://assets.tumblr.com/images/default_avatar/cone_open_64.png" alt="default_image.png" />{follow.username}</div>
             <div className="username-unfollow-follow">
                 {currentUser && isFollowing  ? <button className="button-unfollow" onClick={onSubmitUnfollow}>unfollow</button> : currentUser && !isFollowing? <button className="button-follow" onClick={onSubmitFollow}>Follow</button> : <></>}
