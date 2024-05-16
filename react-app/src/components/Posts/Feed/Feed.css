@@ -19,7 +19,8 @@ z#root {
 }
 
 .loading {
-  top: auto;
+  margin-top: 12rem;
+  margin-left: -7rem;
 }
 
 .post {
