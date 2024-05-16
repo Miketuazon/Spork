@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { thunkGetAllPosts } from '../../../store/post';
+import { thunkGetAllPosts, thunkGetLikedPosts } from '../../../store/post';
 import PostItem from "../PostItem";
 import LoadingScreen from '../../LoadingScreen';
 import "./Feed.css";
@@ -14,12 +14,13 @@ const Feed = () => {
 
   useEffect(() => {
     dispatch(thunkGetAllPosts());
+    dispatch(thunkGetLikedPosts());
   }, [dispatch]);
 
   return (
     <>
+    <div className="Feed">
       {posts ? (
-        <div className='Feed'>
           <ul className={postsClassName}>
             {Object.values(posts).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))?.map(post =>
               (
@@ -28,14 +29,14 @@ const Feed = () => {
                 </li>
               ))}
           </ul>
-        </div>
       ) : (
       <>
         <div className={postsClassName}>
           <LoadingScreen />
         </div>
       </>
-      )}  
+      )}
+    </div>
     </>
   )
 }

@@ -1,43 +1,47 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import PostItem from "../Posts/PostItem";
 import { thunkGetAllPosts } from "../../store/post";
+import { thunkGetLikedPosts } from "../../store/post";
+import { useHistory } from "react-router-dom";
+import PostItem from "../Posts/PostItem";
+import LoadingScreen from "../LoadingScreen";
 import "./AllLikes.css"
-import Test from "../Test";
+import "../Posts/Feed/Feed.css"
 
 export default function AllLikes() {
-    const sessionUser = useSelector(state => state?.session.user)
-    const sessionUserLikes = sessionUser?.likes
-    const sessionUserLikesLength = sessionUser?.likes?.length
-    const sessionUserLikesVal = Object?.values(sessionUserLikes)
     const dispatch = useDispatch()
-    const postsLikes = useSelector(state => state?.posts)
-    const postsLikesVal = Object?.values(postsLikes)
+    const history = useHistory()
+    const sessionUser = useSelector(state => state.session.user)
+    const posts = useSelector(state => state.posts.likedPosts);
 
 
     useEffect(() => {
-        dispatch(thunkGetAllPosts())
-        // dispatch(getCommentsForPost(postId))
-        // dispatch(getCommentsForPost(postId))
-    }, [dispatch, JSON.stringify(sessionUserLikesVal), JSON.stringify(postsLikesVal)])
+        dispatch(thunkGetAllPosts());
+        dispatch(thunkGetLikedPosts());
+    }, [dispatch])
+
+    if (!sessionUser) history.push('/')
 
     return (
-        <div className="AllLikes">
-            <div>
-                <ul className="likes-posts">
-                    {sessionUserLikes?.length > 0 ? Object?.values(postsLikes)?.map(post => {
-
-                    return (
-                        <li key={post?.id} className="post2">
-                            <Test post={post}/>
-                        </li>
-
-                    )
-
-}) : <div><h3 className="no-likes">You haven't liked anything</h3></div>}
-                </ul>
+        <>
+        <div className="Feed">
+          {posts ? (
+              <ul className="posts">
+                {Object.values(posts).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))?.map(post =>
+                  (
+                    <li key={post.id} className="post">
+                      <PostItem post={post} />
+                    </li>
+                  ))}
+              </ul>
+          ) : (
+          <>
+            <div className="loading">
+              <LoadingScreen />
             </div>
+          </>
+          )}
         </div>
-
-    )
+        </>
+      )
 }

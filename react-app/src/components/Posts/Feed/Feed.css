@@ -3,20 +3,25 @@ z#root {
 }
 
 .Feed {
-  max-width: 600px;
+  max-width: 35rem;
   margin: 0 auto;
   font-family: Helvetica, Arial, sans-serif;
   margin-bottom: 3rem;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  margin-left: auto;
 }
 
 .posts {
   margin-top: 1rem;
+  width: 100%;
 }
 
 .loading {
-  top: auto;
+  margin-top: 12rem;
+  margin-left: -7rem;
 }
-
 
 .post {
   background-color: #fff;
@@ -60,66 +65,52 @@ z#root {
   cursor: pointer;
   transition: all 0.3s ease;
   border: 1px solid #fff;
-
-
 }
-
-/* .users-to-follow-list{
-  margin-left: 200px;
-} */
 
 .post-type-btn:focus {
   outline: none;
-
 }
 
 .text-btn {
   color: #35465c;
   display: flex;
   flex-direction: column;
-
 }
 
 .photo-btn {
   color: #fc4c4c;
   display: flex;
   flex-direction: column;
-
 }
 
 .quote-btn {
   color: #ff8b4e;
   display: flex;
   flex-direction: column;
-
 }
 
 .link-btn {
   color: #3cb878;
   display: flex;
   flex-direction: column;
-
 }
 
 .chat-btn {
   color: #3a81c3;
   display: flex;
   flex-direction: column;
-
 }
 
 .audio-btn {
   color: #a07dfc;
   display: flex;
   flex-direction: column;
-
 }
 
 .video-btn {
   color: #e1306c;
   display: flex;
   flex-direction: column;
-
 }
 
 .post-type-icon {
@@ -128,7 +119,6 @@ z#root {
   display: flex;
   flex-direction: column;
 }
-
 
 .following-foryou-tags-manage {
   display: flex;
@@ -150,51 +140,6 @@ z#root {
 
 .following-foryou-tags-manage a:hover {
   text-decoration: underline;
-}
-
-.spork-live-thumbnails {
-  color: white;
-  margin-left: 43px;
-}
-
-.spork-live-thumbnails-imgs {
-  display: flex;
-  height: 175px;
-}
-
-
-.live-outer-box {
-  background-color: rgb(100, 109, 226);
-  padding: 10px;
-  height: 179px;
-  margin-top: 99px;
-  margin-top: -90px;
-
-}
-
-
-
-.live-box-more {
-  color: #fff;
-  background-color: transparent;
-  padding: 5px 10px;
-  margin-top: 60px;
-}
-
-.live-box-more:hover {
-  background-color: rgb(70, 78, 159);
-
-}
-
-.live-outer-box:hover {
-  background-color: rgb(70, 78, 159);
-}
-
-a.live-text {
-  height: 20px;
-  width: 100px;
-  display: flex;
-  box-sizing: 100px;
 }
 
 .create-please {
@@ -235,7 +180,6 @@ button {
 
 .sound-footer {
   color: rgb(151, 118, 182);
-
 }
 
 .link-footer {
@@ -244,4 +188,10 @@ button {
 
 .video-footer {
   color: rgb(224, 66, 245);
+}
+
+.follow-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

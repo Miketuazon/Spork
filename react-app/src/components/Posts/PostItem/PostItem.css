@@ -12,7 +12,8 @@
 }
 
 .post-item-postTitle {
-  font-weight: 500;
+  font-weight: bold;
+  font-size: 1.6rem;
 }
 
 .post-item-postOwner-username {
@@ -39,6 +40,7 @@
 .post-content {
   margin-bottom: 10px;
   overflow-wrap: break-word;
+  font-size: 1.2rem;
 }
 
 .post-footer {

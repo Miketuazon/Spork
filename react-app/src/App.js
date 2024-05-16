@@ -5,23 +5,18 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import CreatePost from "./components/Posts/CreatePost";
-import Navigation from "./components/Navigation";
 import Feed from "./components/Posts/Feed"
 import AllLikes from "./components/Likes/AllLikes";
 import LikesCounter from "./components/Likes/LikesCounter";
 import CurrentUserPosts from "./components/Posts/CurrentUserPosts";
 import EditPost from "./components/Posts/EditPost";
 import ResultsPage from "./components/ResultsPage/ResultsPage"
-import AdFreeComponent from "./components/Navigation/dropdown-dummy/dropdown-adfree";
-import DropdownGifts from "./components/Navigation/dropdown-dummy/dropdown-gifts";
-import LivestreamCredits from "./components/Navigation/dropdown-dummy/dropdown-livestreamingcredits";
-//import FollowingDropdown from "./components/Follows/FollowingDropdown";
-//import FollowerDropdown from "./components/Follows/FollowerDropdown";
-import Live from "./components/Navigation/dropdown-dummy/dropdown-live";
-import Explore from "./components/Navigation/dropdown-dummy/nav-explore";
-import NavMarket from "./components/Navigation/nav-market";
 import NotFoundPage from "./components/Navigation/404";
 import LoadingScreen from "./components/LoadingScreen";
+import SideMenu from "./components/SideMenu";
+import FollowingDropdown from "./components/Follows/Following";
+import FollowerDropdown from "./components/Follows/Followers";
+import SearchBar from "./components/ResultsPage/Searchbar";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,7 +27,8 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
+      <SideMenu isLoaded={isLoaded}/>
+      {/* <SearchBar  isLoaded={isLoaded}/> */}
       {!isLoaded && (
         <LoadingScreen />
       )}
@@ -50,12 +46,12 @@ function App() {
           <Route exact path="/Likes">
             <AllLikes />
           </Route>
-          {/* <Route exact path="/following">
+           <Route exact path="/following">
             <FollowingDropdown />
           </Route>
           <Route exact path="/followers">
             <FollowerDropdown />
-          </Route> */}
+          </Route> 
           <Route exact path="/login">
             <LoginFormPage />
           </Route>

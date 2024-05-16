@@ -7,9 +7,6 @@ const getUsers = (users) => {
     }
 }
 
-
-
-
 export const getAllUsers = () => async (dispatch) => {
     const response = await fetch('/api/users')
     if (response.ok) {

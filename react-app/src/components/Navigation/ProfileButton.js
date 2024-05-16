@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
-import { NavLink } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import CreatePost from "../Posts/CreatePost";
-import FollowingDropdown from "../Follows/FollowingDropdown";
 import './ProfileButton.css'
 
 

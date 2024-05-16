@@ -12,6 +12,7 @@ const PUT_COMMENT = 'posts/putComment'
 // Like Constants
 const ADD_LIKE = 'posts/addLike';
 const REMOVE_LIKE = 'posts/removeLike';
+const GET_LIKED_POSTS = 'posts/getLikedPosts';
 
 // Post Action Creators
 const actionGetPosts = (posts) => {
@@ -76,6 +77,13 @@ const actionRemoveLike = (postId, userId) => {
     return {
         type: REMOVE_LIKE,
         postId, userId
+    }
+}
+
+const actionGetLikedPosts = (likedPosts) => {
+    return {
+        type: GET_LIKED_POSTS,
+        likedPosts
     }
 }
 
@@ -203,7 +211,16 @@ export const thunkRemoveLike = (postId, userId) => async (dispatch) => {
     }
 }
 
-const initialState = { allPosts: null}
+export const thunkGetLikedPosts = () => async (dispatch) => {
+    const response = await fetch("/api/posts/likes")
+
+    if (response.ok) {
+        const likedPosts = await response.json()
+        dispatch(actionGetLikedPosts(likedPosts))
+    }
+}
+
+const initialState = { allPosts: null, likedPosts: null}
 
 export default function postsReducer(state = initialState, action) {
     switch (action.type) {
@@ -216,7 +233,7 @@ export default function postsReducer(state = initialState, action) {
         case PUT_POST:
             return {...state, allPosts: state.allPosts.map(post => post.id === action.post.id ? action.post : post)}
         case POST_COMMENT:
-            return { ...state, allPosts: state.allPosts.map(post => post.id === action.comment.postId ? {...post, comments: [...post.comments, action.comment]} : post)}
+            return { ...state, allPosts: state.allPosts.map(post => post.id === action.comment.postId ? {...post, comments: [...post.comments, action.comment]} : post), likedPosts: state.likedPosts.map(post => post.id === action.comment.postId ? {...post, comments: [...post.comments, action.comment]} : post)}
         case DELETE_COMMENT:
             for (let i = 0; i < state.allPosts.length; i++) {
                 for (let j = 0; j < state.allPosts[i].comments.length; j++) {
@@ -225,8 +242,16 @@ export default function postsReducer(state = initialState, action) {
                     }
                 }
             }
+
+            for (let i = 0; i < state.likedPosts.length; i++) {
+                for (let j = 0; j < state.likedPosts[i].comments.length; j++) {
+                    if (state.likedPosts[i].comments[j].id === action.commentId) {
+                        state.likedPosts[i].comments.splice(j, 1)
+                    }
+                }
+            }
             
-            return {...state, allPosts: [...state.allPosts]};
+            return {...state, allPosts: [...state.allPosts], likedPosts: [...state.likedPosts]};
         case PUT_COMMENT:
             for (let i = 0; i < state.allPosts.length; i++) {
                 for (let j = 0; j < state.allPosts[i].comments.length; j++) {
@@ -235,11 +260,21 @@ export default function postsReducer(state = initialState, action) {
                     }
                 }
             }
-            return {...state, allPosts: [...state.allPosts]};
+
+            for (let i = 0; i < state.likedPosts.length; i++) {
+                for (let j = 0; j < state.likedPosts[i].comments.length; j++) {
+                    if (state.likedPosts[i].comments[j].id === action.comment.id) {
+                        state.likedPosts[i].comments[j] = action.comment
+                    }
+                }
+            }
+            return {...state, allPosts: [...state.allPosts], likedPosts: [...state.likedPosts]};
         case ADD_LIKE:
-            return {...state, allPosts: state.allPosts.map(post => post.id === action.postId ? {...post, likes: [...post.likes, action.userId]} : post)}
+            return {...state, allPosts: state.allPosts.map(post => post.id === action.postId ? {...post, likes: [...post.likes, action.userId]} : post), likedPosts: state.likedPosts.map(post => post.id === action.postId ? {...post, likes: [...post.likes, action.userId]} : post)}
         case REMOVE_LIKE:
-            return {...state, allPosts: state.allPosts.map(post => post.id === action.postId ? {...post, likes: post.likes.filter(id => id !== action.userId)} : post)}
+            return {...state, allPosts: state.allPosts.map(post => post.id === action.postId ? {...post, likes: post.likes.filter(id => id !== action.userId)} : post), likedPosts: state.likedPosts.map(post => post.id === action.postId ? {...post, likes: post.likes.filter(id => id !== action.userId)} : post)}
+        case GET_LIKED_POSTS:
+            return {...state, likedPosts: action.likedPosts}
         default:
             return state
     }

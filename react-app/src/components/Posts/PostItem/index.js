@@ -46,13 +46,13 @@ const PostItem = ({ post }) => {
     const onSubmitFollow = async (e) => {
         e.preventDefault();
 
-        dispatch(thunkAddFollow(post.userId));
+        dispatch(thunkAddFollow(post.owner));
     }
 
     const onSubmitUnfollow = async (e) => {
         e.preventDefault();
 
-        dispatch(thunkRemoveFollow(post.userId));
+        dispatch(thunkRemoveFollow(post.owner));
     }
 
     const onSubmitLike = async (e) => {
