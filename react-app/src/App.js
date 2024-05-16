@@ -14,6 +14,7 @@ import ResultsPage from "./components/ResultsPage/ResultsPage"
 import NotFoundPage from "./components/Navigation/404";
 import LoadingScreen from "./components/LoadingScreen";
 import SideMenu from "./components/SideMenu";
+import FollowingDropdown from "./components/Follows/Following";
 import SearchBar from "./components/ResultsPage/Searchbar";
 
 function App() {
@@ -44,12 +45,12 @@ function App() {
           <Route exact path="/Likes">
             <AllLikes />
           </Route>
-          {/* <Route exact path="/following">
+           <Route exact path="/following">
             <FollowingDropdown />
           </Route>
-          <Route exact path="/followers">
+          {/* <Route exact path="/followers">
             <FollowerDropdown />
-          </Route> */}
+          </Route>  */}
           <Route exact path="/login">
             <LoginFormPage />
           </Route>

@@ -20,14 +20,25 @@ def users():
     return [user.to_dict() for user in users]
 
 
-@user_routes.route('/<int:id>')
+
+@user_routes.route('/<int:id>/following')
 @login_required
-def user(id):
+def user_following(id):
     """
     Query for a user by id and returns that user in a dictionary
     """
     user = User.query.get(id)
-    return user.to_dict()
+    return [user.to_dict() for user in user.following]
+
+
+@user_routes.route('/<int:id>/followers')
+@login_required
+def user_followers(id):
+    """
+    Query for a user by id and returns that user in a dictionary
+    """
+    user = User.query.get(id)
+    return [user.to_dict() for user in user.followers]
 
 @user_routes.route('/current_user/edit_username', methods=['PUT'])
 @login_required

@@ -53,17 +53,17 @@ const SideMenu = () => {
                         </div>
                         <li className="homeDropdown" onClick={() => window.location.href = '/'}>
                             <div className="sideIcon">
-                                <i class="fa fa-home" aria-hidden="true"></i>
+                                <i className="fa fa-home" aria-hidden="true"></i>
                             </div>
                             <div className="sideTitle">Home</div>
                         </li>
                         <li className="accountDropdown">
                             <div className="sideIcon">
-                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <i className="fa fa-user" aria-hidden="true"></i>
                             </div>
                             <div className="account" onClick={handleAccountClick}>
                                 Account
-                                <div><i class="fa fa-caret-down" aria-hidden="true"></i></div>
+                                <div><i className="fa fa-caret-down" aria-hidden="true"></i></div>
                             </div>
                         </li>
                         <div className={showAccountDiv}>
@@ -74,7 +74,7 @@ const SideMenu = () => {
                     </ul>
                     <div className="createPostButtonContainer">
                         <OpenModalButton className="createPostButton" buttonText={<button className="createPostButton">
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                            <i className="fa fa-pencil" aria-hidden="true"></i>
                             Create
                         </button>} modalComponent={<CreatePost />}>
                         </OpenModalButton>
@@ -90,7 +90,7 @@ const SideMenu = () => {
                         </div>
                         <div className="login-sidemenu">
                             <LoginButton
-                                clasName="button-green-login"
+                                className="button-green-login"
                                 buttonText="Log In"
                                 modalComponent={<LoginFormModal />}
                             />

@@ -5,6 +5,8 @@ const REMOVE_USER = "session/REMOVE_USER";
 // Follow Constants
 const ADD_FOLLOW = "session/ADD_FOLLOW";
 const REMOVE_FOLLOW = "session/REMOVE_FOLLOW";
+const GET_FOLLOWERS = "session/GET_FOLLOWERS";
+const GET_FOLLOWING = "session/GET_FOLLOWING";
 
 const setUser = (user) => ({
 	type: SET_USER,
@@ -23,6 +25,16 @@ const actionAddFollow = (userId) => ({
 const actionRemoveFollow = (userId) => ({
 	type: REMOVE_FOLLOW,
 	userId
+});
+
+const actionGetFollowers = (followers) => ({
+	type: GET_FOLLOWERS,
+	followers
+});
+
+const actionGetFollowing = (following) => ({
+	type: GET_FOLLOWING,
+	following
 });
 
 const initialState = { user: null };
@@ -128,12 +140,34 @@ export const thunkRemoveFollow = (userId) => async (dispatch) => {
 	}
 }
 
+export const thunkGetFollowers = (userId) => async (dispatch) => {
+	const response = await fetch(`/api/users/${userId}/followers`);
+
+	if (response.ok) {
+		const data = await response.json();
+		dispatch(actionGetFollowers(data));
+	}
+}
+
+export const thunkGetFollowing = (userId) => async (dispatch) => {
+	const response = await fetch(`/api/users/${userId}/following`);
+
+	if (response.ok) {
+		const data = await response.json();
+		dispatch(actionGetFollowing(data));
+	}
+}
+
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
 		case SET_USER:
 			return { user: action.payload };
 		case REMOVE_USER:
 			return { user: null };
+		case GET_FOLLOWERS:
+			return { user: { ...state.user, followers: action.followers } }
+		case GET_FOLLOWING:
+			return { user: { ...state.user, following: action.following } }
 		case ADD_FOLLOW:
 			return { user: { ...state.user, following: [...state.user.following, action.userId] } }
 		case REMOVE_FOLLOW:
