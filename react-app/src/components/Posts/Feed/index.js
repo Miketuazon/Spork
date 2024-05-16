@@ -19,8 +19,11 @@ const Feed = () => {
 
   return (
     <>
+    <div className="Feed">
+    <div className='right-side-menu'>
+      <SideMenu />
+    </div>
       {posts ? (
-        <div className='Feed'>
           <ul className={postsClassName}>
             {Object.values(posts).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))?.map(post =>
               (
@@ -29,10 +32,6 @@ const Feed = () => {
                 </li>
               ))}
           </ul>
-          <div className='side-menu-container'>
-              < SideMenu />
-          </div>
-        </div>
       ) : (
       <>
         <div className={postsClassName}>
@@ -40,6 +39,11 @@ const Feed = () => {
         </div>
       </>
       )}
+      <div className='left-side-menu'>
+        <SideMenu />
+      </div>
+
+    </div>
     </>
   )
 }
