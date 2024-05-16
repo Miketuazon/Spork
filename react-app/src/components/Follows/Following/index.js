@@ -23,7 +23,7 @@ const FollowingDropdown = () => {
                 <ul className={postsClassName}>
                     {Object.values(following).map(follow => (
                         <li key={follow.id} className='post'>
-                            <FollowItem follow={follow} />
+                            <FollowItem follow={follow}/>
                         </li>
                     ))}
                 </ul>
