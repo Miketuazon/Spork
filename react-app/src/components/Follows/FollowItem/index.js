@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from "react-redux"
 import { thunkAddFollow, thunkRemoveFollow } from '../../../store/session';
@@ -14,18 +14,18 @@ const FollowItem = ({follow}) => {
         }
     }
 
-    console.log(isFollowing)
-    
+    console.log(follow)
+
     const onSubmitFollow = async (e) => {
         e.preventDefault();
 
-        dispatch(thunkAddFollow(follow.id));
+        dispatch(thunkAddFollow(follow));
     }
 
     const onSubmitUnfollow = async (e) => {
         e.preventDefault();
 
-        dispatch(thunkRemoveFollow(follow.id));
+        dispatch(thunkRemoveFollow(follow));
     }
 
   return (

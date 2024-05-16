@@ -124,19 +124,19 @@ export const signUp = (username, email, password) => async (dispatch) => {
 };
 
 // Follow Thunks
-export const thunkAddFollow = (userId) => async (dispatch) => {
-	const response = await fetch(`/api/follow/${userId}`);
+export const thunkAddFollow = (user) => async (dispatch) => {
+	const response = await fetch(`/api/follow/${user.id}`);
 
 	if (response.ok) {
-		dispatch(actionAddFollow(userId));
+		dispatch(actionAddFollow(user.id));
 	}
 }
 
-export const thunkRemoveFollow = (userId) => async (dispatch) => {
-	const response = await fetch(`/api/follow/${userId}`);
+export const thunkRemoveFollow = (user) => async (dispatch) => {
+	const response = await fetch(`/api/follow/${user.id}`);
 
 	if (response.ok) {
-		dispatch(actionRemoveFollow(userId));
+		dispatch(actionRemoveFollow(user.id));
 	}
 }
 
