@@ -233,7 +233,7 @@ export default function postsReducer(state = initialState, action) {
         case PUT_POST:
             return {...state, allPosts: state.allPosts.map(post => post.id === action.post.id ? action.post : post)}
         case POST_COMMENT:
-            return { ...state, allPosts: state.allPosts.map(post => post.id === action.comment.postId ? {...post, comments: [...post.comments, action.comment]} : post)}
+            return { ...state, allPosts: state.allPosts.map(post => post.id === action.comment.postId ? {...post, comments: [...post.comments, action.comment]} : post), likedPosts: state.likedPosts.map(post => post.id === action.comment.postId ? {...post, comments: [...post.comments, action.comment]} : post)}
         case DELETE_COMMENT:
             for (let i = 0; i < state.allPosts.length; i++) {
                 for (let j = 0; j < state.allPosts[i].comments.length; j++) {
