@@ -220,12 +220,12 @@ export const thunkGetLikedPosts = () => async (dispatch) => {
     }
 }
 
-const initialState = { allPosts: null, likedPosts: null}
+const initialState = { allPosts: null, likedPosts: null, currentUserPosts: null}
 
 export default function postsReducer(state = initialState, action) {
     switch (action.type) {
         case GET_POSTS:
-            return {...state, allPosts: action.posts}
+            return {...state, allPosts: action.posts, currentUserPosts: action.posts.filter(post => post.userId === action.posts[0].userId), likedPosts: action.posts.filter(post => post.likes.includes(action.posts[0].userId))}
         case POST_POST:
             return { ...state, allPosts: [...state.allPosts, action.post] }
         case DELETE_POST:
@@ -233,7 +233,7 @@ export default function postsReducer(state = initialState, action) {
         case PUT_POST:
             return {...state, allPosts: state.allPosts.map(post => post.id === action.post.id ? action.post : post)}
         case POST_COMMENT:
-            return { ...state, allPosts: state.allPosts.map(post => post.id === action.comment.postId ? {...post, comments: [...post.comments, action.comment]} : post), likedPosts: state.likedPosts.map(post => post.id === action.comment.postId ? {...post, comments: [...post.comments, action.comment]} : post)}
+            return { ...state, allPosts: state.allPosts.map(post => post.id === action.comment.postId ? {...post, comments: [...post.comments, action.comment]} : post), likedPosts: state.likedPosts.map(post => post.id === action.comment.postId ? {...post, comments: [...post.comments, action.comment]} : post), currentUserPosts: state.currentUserPosts.map(post => post.id === action.comment.postId ? {...post, comments: [...post.comments, action.comment]} : post)}
         case DELETE_COMMENT:
             for (let i = 0; i < state.allPosts.length; i++) {
                 for (let j = 0; j < state.allPosts[i].comments.length; j++) {
