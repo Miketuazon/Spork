@@ -25,14 +25,18 @@ def current_user_posts():
     """
     Query for all user's posts and returns them in a list of post dictionaries
     """
+    posts = [post.to_dict() for post in Post.query.filter(Post.userId == current_user.id).all()]
+    return posts 
 
-    current_user_dict = current_user.to_dict()
-    posts = Post.query.filter(Post.userId == current_user_dict['id'])
-    return_list = []
-    for post in posts:
-        post_dict = post.to_dict()
-        return_list.append(post_dict)
-    return return_list
+
+@post_routes.route('/likes')
+@login_required
+def liked_posts():
+    """
+    Query for all liked posts and returns them in a list of post dictionaries
+    """
+    liked_posts = [post.to_dict() for post in Post.query.join(Post.user_likes).filter(User.id == current_user.id).all()]
+    return liked_posts
 
 
 @post_routes.route('/create', methods=['POST'])

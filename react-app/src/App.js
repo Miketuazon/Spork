@@ -14,6 +14,7 @@ import ResultsPage from "./components/ResultsPage/ResultsPage"
 import NotFoundPage from "./components/Navigation/404";
 import LoadingScreen from "./components/LoadingScreen";
 import SideMenu from "./components/SideMenu";
+import SearchBar from "./components/ResultsPage/Searchbar";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ function App() {
   return (
     <>
       <SideMenu isLoaded={isLoaded}/>
+      {/* <SearchBar  isLoaded={isLoaded}/> */}
       {!isLoaded && (
         <LoadingScreen />
       )}

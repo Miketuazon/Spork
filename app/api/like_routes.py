@@ -14,8 +14,6 @@ def like_unlike_post(id):
         return {"errors": "Post does not exist!"}
     liker = User.query.get(current_user.id)
     liked_posts = [post.id for post in current_user.post_likes]
-    liked_users = [user.id for user in post.user_likes]
-
 
     if liker.id == post.userId:
         return {"errors": "You cannot like your own post"}
