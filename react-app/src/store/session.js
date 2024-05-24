@@ -169,7 +169,7 @@ export default function reducer(state = initialState, action) {
 		case GET_FOLLOWING:
 			return { user: { ...state.user, following: action.following } }
 		case ADD_FOLLOW:
-			return { user: { ...state.user, following: [...state.user.following, action.userId] } }
+			return { user: { ...state.user, following: [...state.user.following, action.userId.id] } }
 		case REMOVE_FOLLOW:
 			for (let i = 0; i < state.user.following.length; i++) {
 				if (state.user.following[i].id === action.userId) {

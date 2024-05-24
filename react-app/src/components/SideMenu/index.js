@@ -67,7 +67,8 @@ const SideMenu = () => {
                             </div>
                         </li>
                         <div className={showAccountDiv}>
-                            <div  className="following-account" onClick={() => window.location.href = "/posts"}>Posts</div>
+                            <div className="following-account" onClick={() => window.location.href = "/likes"}>Likes</div>
+                            <div className="following-account" onClick={() => window.location.href = "/posts"}>Posts</div>
                             <div className="following-account" onClick={() => window.location.href = "/following"}>Following</div>
                             <div className="following-account" onClick={() => window.location.href = "/followers"}>Followers</div>
                             <div className="logOutButton-account" onClick={handleLogout}>Log Out</div>

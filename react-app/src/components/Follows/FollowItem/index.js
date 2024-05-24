@@ -12,6 +12,10 @@ const FollowItem = ({follow}) => {
         if (currentUser.following[i].id === follow.id) {
             isFollowing = true;
         }
+
+        if (currentUser.following[i] === follow.id) {
+            isFollowing = true;
+        }
     }
 
     const onSubmitFollow = async (e) => {
