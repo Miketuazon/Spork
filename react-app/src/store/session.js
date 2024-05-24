@@ -128,7 +128,7 @@ export const thunkAddFollow = (user) => async (dispatch) => {
 	const response = await fetch(`/api/follow/${user.id}`);
 
 	if (response.ok) {
-		dispatch(actionAddFollow(user.id));
+		dispatch(actionAddFollow(user));
 	}
 }
 
