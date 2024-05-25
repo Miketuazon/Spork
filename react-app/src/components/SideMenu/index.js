@@ -10,7 +10,7 @@ import LoginButton from "../Navigation/LoginButton";
 import LoginFormModal from "../LoginFormModal";
 
 const SideMenu = () => {
-    const sessionUser = useSelector(state => state?.session?.user);
+    const sessionUser = useSelector(state => state.session.user);
     const history = useHistory();
     const dispatch = useDispatch();
     const [showAccount, setShowAccount] = useState(false)
@@ -67,10 +67,22 @@ const SideMenu = () => {
                             </div>
                         </li>
                         <div className={showAccountDiv}>
-                            <div className="following-account" onClick={() => window.location.href = "/likes"}>Likes</div>
-                            <div className="following-account" onClick={() => window.location.href = "/posts"}>Posts</div>
-                            <div className="following-account" onClick={() => window.location.href = "/following"}>Following</div>
-                            <div className="following-account" onClick={() => window.location.href = "/followers"}>Followers</div>
+                            <div className="following-account" onClick={() => window.location.href = "/likes"}>
+                                <p>Likes</p>
+                                <p>{sessionUser.likes.length}</p>
+                            </div>
+                            <div className="following-account" onClick={() => window.location.href = "/posts"}>
+                                <p>Posts</p>
+                                <p>{sessionUser.posts.length}</p> 
+                            </div>
+                            <div className="following-account" onClick={() => window.location.href = "/following"}>
+                                <p>Following</p> 
+                                <p>{sessionUser.following.length}</p>
+                            </div>
+                            <div className="following-account" onClick={() => window.location.href = "/followers"}>
+                                <p>Followers</p>
+                                <p>{sessionUser.followers.length}</p>
+                            </div>
                             <div className="logOutButton-account" onClick={handleLogout}>Log Out</div>
                         </div>
                     </ul>

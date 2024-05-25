@@ -86,7 +86,7 @@ function Navigation({ isLoaded }) {
 				: (
 
 					<LoginButton
-						clasName="button-green-login"
+						className="button-green-login"
 						buttonText="Log In"
 						modalComponent={<LoginFormModal />}
 					/>
