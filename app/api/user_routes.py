@@ -1,8 +1,9 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user, logout_user
 from app.models import User, db
-from app.forms import UserNameForm, EmailForm, PasswordForm
+from app.forms import UserNameForm, EmailForm, PasswordForm, ProfileForm
 from .auth_routes import validation_errors_to_error_messages
+from app.api.aws_helpers import upload_file_to_s3, get_unique_filename, remove_file_from_s3
 
 user_routes = Blueprint('users', __name__)
 
@@ -39,6 +40,46 @@ def user_followers(id):
     """
     user = User.query.get(id)
     return [user.to_dict() for user in user.followers]
+
+
+@user_routes.route('/current_user/edit_profile', methods=['PUT'])
+@login_required
+def edit_profile():
+    """
+    Query for editing a user's profile and returns that user in a dictionary
+    """
+    form = ProfileForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if is_demo_user(current_user):
+        return {'errors': ['Cannot edit Demo user!']}, 401
+
+    if form.validate_on_submit():
+        if form.data['profile_image']:
+            remove_file_from_s3(current_user.profile_image)
+            pfp = form.data['profile_image']
+            pfp_upload = upload_file_to_s3(pfp)
+
+            if "url" not in pfp_upload:
+                return pfp_upload, 400
+            url = pfp_upload["url"]
+            current_user.profile_image = url
+
+        if form.data['profile_banner']:
+            remove_file_from_s3(current_user.profile_banner)
+            banner = form.data['profile_banner']
+            banner_upload = upload_file_to_s3(banner)
+
+            if "url" not in banner_upload:
+                return banner_upload, 400
+            url = banner_upload["url"]
+            current_user.profile_banner = url
+
+        current_user.title = form.data['title']
+        current_user.description = form.data['description']
+        db.session.commit()
+        return current_user.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @user_routes.route('/current_user/edit_username', methods=['PUT'])
 @login_required
