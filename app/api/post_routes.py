@@ -67,6 +67,105 @@ def create_a_post():
             url = file_one_upload["url"]
             new_post.file_one = url
             db.session.commit()
+        
+        if form.data['file_two']:
+            file_two = form.data['file_two']
+            file_two_upload = upload_file_to_s3(file_two)
+
+            if "url" not in file_two_upload:
+                return {"errors": "Url not in upload_image"}, 400
+
+            url = file_two_upload["url"]
+            new_post.file_two = url
+            db.session.commit()
+        
+        if form.data['file_three']:
+            file_three = form.data['file_three']
+            file_three_upload = upload_file_to_s3(file_three)
+
+            if "url" not in file_three_upload:
+                return {"errors": "Url not in upload_image"}, 400
+
+            url = file_three_upload["url"]
+            new_post.file_three = url
+            db.session.commit()
+        
+        if form.data['file_four']:
+            file_four = form.data['file_four']
+            file_four_upload = upload_file_to_s3(file_four)
+
+            if "url" not in file_four_upload:
+                return {"errors": "Url not in upload_image"}, 400
+
+            url = file_four_upload["url"]
+            new_post.file_four = url
+            db.session.commit()
+        
+        if form.data['file_five']:
+            file_five = form.data['file_five']
+            file_five_upload = upload_file_to_s3(file_five)
+
+            if "url" not in file_five_upload:
+                return {"errors": "Url not in upload_image"}, 400
+
+            url = file_five_upload["url"]
+            new_post.file_five = url
+            db.session.commit()
+        
+        if form.data['file_six']:
+            file_six = form.data['file_six']
+            file_six_upload = upload_file_to_s3(file_six)
+
+            if "url" not in file_six_upload:
+                return {"errors": "Url not in upload_image"}, 400
+
+            url = file_six_upload["url"]
+            new_post.file_six = url
+            db.session.commit()
+
+        if form.data['file_seven']:
+            file_seven = form.data['file_seven']
+            file_seven_upload = upload_file_to_s3(file_seven)
+
+            if "url" not in file_seven_upload:
+                return {"errors": "Url not in upload_image"}, 400
+
+            url = file_seven_upload["url"]
+            new_post.file_seven = url
+            db.session.commit()
+        
+        if form.data['file_eight']:
+            file_eight = form.data['file_eight']
+            file_eight_upload = upload_file_to_s3(file_eight)
+
+            if "url" not in file_eight_upload:
+                return {"errors": "Url not in upload_image"}, 400
+
+            url = file_eight_upload["url"]
+            new_post.file_eight = url
+            db.session.commit()
+        
+        if form.data['file_nine']:
+            file_nine = form.data['file_nine']
+            file_nine_upload = upload_file_to_s3(file_nine)
+
+            if "url" not in file_nine_upload:
+                return {"errors": "Url not in upload_image"}, 400
+
+            url = file_nine_upload["url"]
+            new_post.file_nine = url
+            db.session.commit()
+
+        if form.data['file_ten']:
+            file_ten = form.data['file_ten']
+            file_ten_upload = upload_file_to_s3(file_ten)
+
+            if "url" not in file_ten_upload:
+                return {"errors": "Url not in upload_image"}, 400
+
+            url = file_ten_upload["url"]
+            new_post.file_ten = url
+            db.session.commit()
         return new_post.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 

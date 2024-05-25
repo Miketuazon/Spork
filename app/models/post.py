@@ -13,6 +13,15 @@ class Post(db.Model):
     content = db.Column(db.String(255), nullable=True)
     userId= db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     file_one = db.Column(db.String)
+    file_two = db.Column(db.String)
+    file_three = db.Column(db.String)
+    file_four = db.Column(db.String)
+    file_five = db.Column(db.String)
+    file_six = db.Column(db.String)
+    file_seven = db.Column(db.String)
+    file_eight = db.Column(db.String)
+    file_nine = db.Column(db.String)
+    file_ten = db.Column(db.String)
     createdAt = db.Column(db.DateTime, default=db.func.now())
     updatedAt = db.Column(db.DateTime, default=db.func.now())
 
@@ -35,6 +44,15 @@ class Post(db.Model):
             'content': self.content,
             'userId': self.userId,
             'file_one': self.file_one,
+            'file_two': self.file_two,
+            'file_three': self.file_three,
+            'file_four': self.file_four,
+            'file_five': self.file_five,
+            'file_six': self.file_six,
+            'file_seven': self.file_seven,
+            'file_eight': self.file_eight,
+            'file_nine': self.file_nine,
+            'file_ten': self.file_ten,
             'createdAt': self.createdAt,
             'updatedAt': self.updatedAt,
             'likes': [user.id for user in self.user_likes],
