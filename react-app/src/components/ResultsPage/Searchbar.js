@@ -8,8 +8,9 @@ function SearchBar() {
     };
 
     return (
-        <div>
+        <div className='search-bar'>
             <input
+                className="spork-search-bar"
                 type="text"
                 value={query}
                 placeholder=" Search Spork"

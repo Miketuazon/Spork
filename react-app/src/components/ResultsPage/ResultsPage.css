@@ -66,3 +66,21 @@ z#root {
   color: #999;
   font-weight: bold;
 }
+
+.search-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  width: 33%;
+  max-width: 160px;
+  height: 100vh;
+  margin-right: 30px;
+  position: fixed;
+  left: 65%;
+  margin-top: 1rem;
+}
+
+.spork-search-bar {
+  width: 150%;
+  height: 2rem;
+}
