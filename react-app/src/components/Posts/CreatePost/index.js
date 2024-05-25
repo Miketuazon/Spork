@@ -22,7 +22,6 @@ export default function CreatePost() {
         const successPost = await dispatch(thunkCreatePost(newPost))
         if (successPost.errors) {
             setErrors(successPost.errors)
-            console.log(successPost)
         } else closeModal();
     }
 

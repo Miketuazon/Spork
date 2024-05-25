@@ -1,5 +1,6 @@
 import React from 'react';
 import { useModal } from '../../context/Modal';
+import "./LoginButton.css";
 
 function LoginButton({
   modalComponent, // component to render inside the modal

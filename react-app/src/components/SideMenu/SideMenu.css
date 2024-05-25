@@ -2,6 +2,10 @@
     color: #ACB4BD;
 }
 
+.button-green-login {
+    color: white;
+}
+
 .login-sidemenu {
     display: flex;
     align-items: center;
@@ -45,6 +49,12 @@
     display: flex;
     align-items: center;
     flex-direction: row;
+}
+
+.following-account {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .homeDropdown:hover, .accountDropdown:hover, .likes-account:hover,

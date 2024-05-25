@@ -15,6 +15,9 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(500))
+    profile_image = db.Column(db.String, default="https://assets.tumblr.com/images/default_avatar/cone_open_64.png")
+    profile_banner = db.Column(db.String, default="https://assets.tumblr.com/images/default_avatar/cone_open_64.png")
+    title = db.Column(db.String(26))
 
     #followers relationship
     following = db.relationship(
@@ -53,8 +56,12 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             'description': self.description,
+            'profile_image': self.profile_image,
+            'profile_banner': self.profile_banner,
+            'title': self.title,
             'following': [user.id for user in self.following],
             "followers": [user.id for user in self.followers],
             "likes": [post.id for post in self.post_likes],
-            "comments": [comment.to_dict() for comment in self.comments]
+            "comments": [comment.to_dict() for comment in self.comments],
+            "posts": [post.id for post in self.posts],
         }
