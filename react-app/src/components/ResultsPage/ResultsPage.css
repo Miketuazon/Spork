@@ -81,6 +81,33 @@ z#root {
 }
 
 .spork-search-bar {
-  width: 150%;
+  width: 180%;
   height: 2rem;
+}
+
+.footer {
+  margin-right: 30px;
+  position: fixed;
+  left: 65%;
+  color:white;
+  margin-top: 3.2rem;
+  height: 29%;
+}
+
+.footer-title {
+  margin-left: 2rem;
+}
+
+
+.name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  width: 20rem;
+
+}
+
+.user-icon {
+  font-size: 2rem;
 }
