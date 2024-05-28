@@ -28,7 +28,7 @@ function App() {
   return (
     <>
       <SideMenu isLoaded={isLoaded}/>
-      {/* <SearchBar  isLoaded={isLoaded}/> */}
+      <SearchBar  isLoaded={isLoaded}/>
       {!isLoaded && (
         <LoadingScreen />
       )}

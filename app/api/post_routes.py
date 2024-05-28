@@ -341,8 +341,7 @@ def update_post(id):
             post_to_edit.userId = current_user_dict['id']
             post_to_edit.updatedAt = date.today()
             db.session.commit()
-            returning_value = post_to_edit.to_dict()
-            return returning_value
+            return post_to_edit.to_dict()
         return {'errors': "This post isn't yours!"}, 403
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
