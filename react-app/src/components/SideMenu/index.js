@@ -85,6 +85,12 @@ const SideMenu = () => {
                             </div>
                             <div className="logOutButton-account" onClick={handleLogout}>Log Out</div>
                         </div>
+                        <li className="homeDropdown" onClick={() => window.location.href = '/settings'}>
+                            <div className="sideIcon">
+                                <i className="fa fa-gear" aria-hidden="true"></i>
+                            </div>
+                            <div className="sideTitle">Settings</div>
+                        </li>
                     </ul>
                     <div className="createPostButtonContainer">
                         <OpenModalButton className="createPostButton" buttonText={<button className="createPostButton">
