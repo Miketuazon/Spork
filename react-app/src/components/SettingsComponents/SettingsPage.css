@@ -1,5 +1,5 @@
 #settings-page {
-    max-width: 35rem;
+    max-width: 33rem;
     margin: 0 auto;
     font-family: Helvetica, Arial, sans-serif;
     margin-bottom: 3rem;
@@ -7,4 +7,25 @@
     flex-direction: row-reverse;
     justify-content: center;
     margin-left: auto;
+    background-color: white;
+}
+
+#user-appearence {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#username {
+    margin-left: 2rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+#change-appearence-button {
+    margin-right: 2rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
 }
