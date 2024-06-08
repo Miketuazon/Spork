@@ -1,0 +1,10 @@
+#settings-page {
+    max-width: 35rem;
+    margin: 0 auto;
+    font-family: Helvetica, Arial, sans-serif;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    margin-left: auto;
+}
