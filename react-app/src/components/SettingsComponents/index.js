@@ -8,11 +8,16 @@ const SettingsPage = () => {
   return (
     <div id='settings-page'>
 
-        <div id='user-appearence'>
+        <div>
             <p id='username'>{sessionUser.username}</p>
             <button id='change-appearence-button'>Edit Appearance</button>
         </div>
+
         <img id='profile-banner' src={sessionUser.profile_banner} alt='Hello' />
+
+        <div id='profile-picture-container'>
+            <img id='profile-picture' src={sessionUser.profile_image} alt='Hello' />
+        </div>
     </div>
   )
 }
