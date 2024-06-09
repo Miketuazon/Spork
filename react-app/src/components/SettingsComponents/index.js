@@ -18,6 +18,13 @@ const SettingsPage = () => {
         <div id='profile-picture-container'>
             <img id='profile-picture' src={sessionUser.profile_image} alt='Hello' />
         </div>
+
+        {sessionUser.title ? (
+            <h1 id='title'>{sessionUser.title}</h1>
+        ) : (
+            <h1 id='title'>Untitled</h1>
+        )}
+
     </div>
   )
 }
