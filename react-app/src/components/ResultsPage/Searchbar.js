@@ -14,7 +14,7 @@ function SearchBar() {
                     className="spork-search-bar"
                     type="text"
                     value={query}
-                    placeholder=" Search Spork"
+                    placeholder={`Search Spork`}
                     onChange={(e) => setQuery(e.target.value)}
                     onKeyPress={(e) => {
                         if (e.key === 'Enter') {
@@ -22,7 +22,6 @@ function SearchBar() {
                         }
                     }}
                 />
-                <button className="spork-search-button" onClick={handleSearch}><i className="fa">&#xf002;</i></button>
             </div>
             <div className='footer'>
                     <h1 className='footer-title'>Meet the Team!</h1>

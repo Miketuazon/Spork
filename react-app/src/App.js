@@ -17,6 +17,7 @@ import SideMenu from "./components/SideMenu";
 import FollowingDropdown from "./components/Follows/Following";
 import FollowerDropdown from "./components/Follows/Followers";
 import SearchBar from "./components/ResultsPage/Searchbar";
+import SettingsPage from "./components/SettingsComponents";
 
 function App() {
   const dispatch = useDispatch();
@@ -72,6 +73,9 @@ function App() {
           </Route>
           <Route path="/search">
             <ResultsPage />
+          </Route>
+          <Route path="/settings">
+            <SettingsPage />
           </Route>
         <Route path='*'><NotFoundPage/></Route>
         </Switch>
